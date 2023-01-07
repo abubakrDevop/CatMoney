@@ -61,11 +61,11 @@
             .info_number {
                 width: 160px;
                 height: 37px;
-                border: solid 1px rgba(0, 0, 0, 0.342);
-                background: #F1F1F1;
+                background: #0000008c;
                 border-radius: 5px;
                 font-size: 22px;
                 font-weight: bold;
+                color: white;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -73,6 +73,7 @@
                 .info_number_text {
                     font-size: 14px;
                     margin-left: 5px;
+                    color: white;
                 }
             }
         }

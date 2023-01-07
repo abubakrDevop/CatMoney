@@ -66,6 +66,7 @@ export const Main = () => {
       </section>
       <section className={cls.main__section}>
         <Routes>
+          <Route index element={<Home />} />
           <Route path="home" element={<Home />} />
           <Route path="profil" element={<Profil />} />
         </Routes>
