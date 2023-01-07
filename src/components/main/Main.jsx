@@ -11,6 +11,8 @@ import  { IoHomeOutline,
         } from "react-icons/io5"
 import { Home } from "../../pages/home/Home";
 import { Profil } from "../../pages/profil/Profil";
+import { SignUp } from "../../pages/register/signUp/SignUp";
+import { SignIn } from "../../pages/register/signIn/SignIn";
 
 export const Main = () => {
   const buttonItems = [
@@ -69,6 +71,8 @@ export const Main = () => {
           <Route index element={<Home />} />
           <Route path="home" element={<Home />} />
           <Route path="profil" element={<Profil />} />
+          <Route path="register" element={<SignUp />} />
+          <Route path="login" element={<SignIn />} />
         </Routes>
       </section>
     </main>
