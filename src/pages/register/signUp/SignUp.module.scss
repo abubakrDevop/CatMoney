@@ -52,6 +52,10 @@
                     font-weight: bold;
                     font-size: 15px;
                 }
+
+                &:focus::placeholder {
+                    color: black;
+                }
             }
 
             .show_hide {
@@ -87,6 +91,16 @@
 
         .text {
             margin: 10px;
+        }
+
+        .error {
+            position: relative;
+            left: 144px;
+            top: 13px;
+            color: red;
+            height: 13px;
+            font-size: 14px;
+            align-self: flex-start;
         }
     }
 }
