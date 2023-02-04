@@ -1,32 +1,34 @@
 import React from "react";
 import cls from '../header/Header.module.scss'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 export const Header = () => {
+  const location = useLocation();
+  
   const links = [
     {
       id: 1,
-      to: '',
+      to: '/',
       title: 'Главная',
     },
     {
       id: 2,
-      to: '',
+      to: '/tasks',
       title: 'Задания',
     },
     {
       id: 3,
-      to: '',
+      to: '/statistics',
       title: 'Статистика',
     },
     {
       id: 4,
-      to: '',
+      to: '/information',
       title: 'Информация',
     },
     {
       id: 5,
-      to: '',
+      to: '/contacts',
       title: 'Контакты',
     },
   ]
@@ -37,7 +39,7 @@ export const Header = () => {
       <section className={cls.header__section}>
         {
           links.map(item => (
-            <Link to={''} key={item.id} className={cls.section__title}> {item.title} </Link>
+            <Link to={item.to} key={item.id} className={cls.section__title} style={location.pathname === item.to ? {"color": "rgb(244, 66, 80)"} : null}> {item.title} </Link>
           ))
         }
       </section>
