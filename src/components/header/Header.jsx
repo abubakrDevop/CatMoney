@@ -39,7 +39,7 @@ export const Header = () => {
       <section className={cls.header__section}>
         {
           links.map(item => (
-            <Link to={item.to} key={item.id} className={cls.section__title} style={location.pathname === item.to ? {"color": "rgb(244, 66, 80)"} : null}> {item.title} </Link>
+            <Link to={item.to} key={item.id} className={location.pathname === item.to ? cls.section__title__active : cls.section__title}> {item.title} </Link>
           ))
         }
       </section>

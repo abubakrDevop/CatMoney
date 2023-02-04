@@ -30,6 +30,17 @@
             padding-top: .375rem;
         };
 
+        .section__title__active {
+            font-size: .875rem;
+            text-decoration: none;
+            color: rgb(244, 66, 80);
+            font-weight: bold;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            padding-bottom: .375rem;
+            padding-top: .375rem;
+        };
+
         .section__title:hover {
             cursor: pointer;
             padding-left: 1rem;
