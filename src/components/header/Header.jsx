@@ -35,7 +35,7 @@ export const Header = () => {
   ]
 
   return (
-    <header className={cls.header}>
+    <header className={location.pathname !== '/' ? cls.header_active : cls.header}>
       <img className={cls.header__logo} src="https://ja-africa.org/wp-content/uploads/2020/02/FedEx-Logo-PNG-Transparent.png" alt="logo" />
       <section className={cls.header__section}>
         {
@@ -50,9 +50,9 @@ export const Header = () => {
         }
         {
           localStorage.getItem('registered') === true ?
-          <IoPersonOutline className={cls.header__icon} /> 
+          <Link to={'/profile'}><IoPersonOutline className={cls.header__icon} /></Link>
           :
-          <IoLogInOutline className={cls.header__icon} />
+          <Link to={'/register'}><IoLogInOutline className={cls.header__icon} /></Link>
         }
       </section>
     </header>

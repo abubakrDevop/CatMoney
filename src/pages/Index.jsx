@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Header } from "../components/header/Header";
 import { Routes, Route } from 'react-router-dom'
 import { Root } from "../components/Root";
+import { Register } from "./register/Register";
 
 const StyledMain = styled.main `
   width: 100%;
@@ -19,7 +20,7 @@ export const Index = () => {
       <Header />
       <Routes>
         <Route index path="" element={<Root />} />
-        <Route path="" element={''} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </StyledMain>
   )
