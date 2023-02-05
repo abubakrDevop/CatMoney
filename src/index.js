@@ -10,6 +10,21 @@ const Global = createGlobalStyle `
     padding: 0;
     box-sizing: border-box;
   }
+
+  body::-webkit-scrollbar {
+    width: 10px;
+    background: rgb(0, 89, 255);
+  }
+
+  body::-webkit-scrollbar-track {
+    color: inherit;
+  }
+
+  body::-webkit-scrollbar-thumb {
+    width: 100%
+    height: 1px;
+    background: aqua;
+  }
 `
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

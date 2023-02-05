@@ -1,12 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 .main {
     width: 100%;
     height: 70vh;
     color: white;
+    font-family: 'Roboto', sans-serif;
 
     .main__title {
         margin-top: 8%;
         font-size: 20px;
         font-weight: bold;
+        border-bottom: solid 5px white;
+        width: 210px;
+        height: 35px;
     }
 
     .main__headtitle {
@@ -19,8 +25,64 @@
     }
 
     .main__button {
-        width: 300px;
+        position: relative;
+        width: 350px;
         height: 45px;
         font-weight: bold;
+        border: none;
+        background: linear-gradient(to left, purple, aqua);
+        border-radius: 3px;
+        color: white;
+        font-size: 16px;
+        overflow: hidden;
+        z-index: 0;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0%;
+            background: linear-gradient(to left, rgb(60, 0, 128), rgba(0, 89, 255, 0.5));
+            transition: .5s;
+            border-bottom-left-radius: 50%;
+            border-bottom-right-radius: 50%;
+            z-index: -1;
+        }
+
+        &:hover::before {
+            height: 180%;
+        }
+    }
+
+    .main__section {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .scroll_icon {
+            position: relative;
+            top: 50px;
+            font-size: 45px;
+            animation: anime 2s linear infinite;
+        }
+    }
+
+    @keyframes anime {
+        0% {
+            top: 50px;
+            filter: drop-shadow(0 0 0px white);
+        }
+        50% {
+            top: 70px;
+            filter: drop-shadow(0 0 10px white);
+            color: aqua;
+        }
+        100% {
+            top: 50px;
+            filter: drop-shadow(0 0 0px white);
+        }
     }
 }

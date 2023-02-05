@@ -1,6 +1,7 @@
 import React from "react";
 import cls from '../header/Header.module.scss'
 import { Link, useLocation } from 'react-router-dom'
+import { IoPersonOutline, IoLogInOutline } from 'react-icons/io5'
 
 export const Header = () => {
   const location = useLocation();
@@ -39,8 +40,19 @@ export const Header = () => {
       <section className={cls.header__section}>
         {
           links.map(item => (
-            <Link to={item.to} key={item.id} className={location.pathname === item.to ? cls.section__title__active : cls.section__title}> {item.title} </Link>
+            <Link 
+              to={item.to} 
+              key={item.id} 
+              className={location.pathname === item.to ? cls.section__title__active : cls.section__title}> 
+              {item.title} 
+            </Link>
           ))
+        }
+        {
+          localStorage.getItem('registered') === true ?
+          <IoPersonOutline className={cls.header__icon} /> 
+          :
+          <IoLogInOutline className={cls.header__icon} />
         }
       </section>
     </header>
