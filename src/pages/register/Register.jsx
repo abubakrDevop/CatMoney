@@ -1,6 +1,8 @@
 import React from 'react'
 import cls from '../register/Register.module.scss'
 import { IoChevronForwardOutline } from 'react-icons/io5'
+import { SignIn } from './signIn/SignIn'
+import { SignUp } from './signUp/SignUp'
 
 export const Register = () => {
   const [active, setActive] = React.useState(false)
@@ -29,7 +31,7 @@ export const Register = () => {
           : 
           `${cls.register_face} ${cls.label_active_front}`}
         >
-          
+          <SignIn />
         </div>
 
         <div className={active === true ? 
@@ -37,7 +39,7 @@ export const Register = () => {
           : 
           `${cls.register_face} ${cls.label_active_back}`}
         >
-          
+          <SignUp />
         </div>
       </div>
 
