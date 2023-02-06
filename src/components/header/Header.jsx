@@ -1,7 +1,12 @@
 import React from "react";
 import cls from '../header/Header.module.scss'
 import { Link, useLocation } from 'react-router-dom'
-import { IoPersonOutline, IoLogInOutline } from 'react-icons/io5'
+import  { 
+          IoLogInOutline,
+          IoLogOutOutline,
+          IoGiftOutline,
+          IoNotificationsOutline, 
+        } from 'react-icons/io5'
 
 export const Header = () => {
   const location = useLocation();
@@ -35,26 +40,49 @@ export const Header = () => {
   ]
 
   return (
-    <header className={location.pathname !== '/' ? cls.header_active : cls.header}>
+    <header className={cls.header}>
+
       <img className={cls.header__logo} src="https://ja-africa.org/wp-content/uploads/2020/02/FedEx-Logo-PNG-Transparent.png" alt="logo" />
-      <section className={cls.header__section}>
+      
+      <section className={cls.header_titles}>
         {
           links.map(item => (
             <Link 
-              to={item.to} 
               key={item.id} 
-              className={location.pathname === item.to ? cls.section__title__active : cls.section__title}> 
+              to={item.to} 
+              className={location.pathname === item.to ? cls.section__title__active : cls.section__title} 
+            > 
               {item.title} 
             </Link>
           ))
         }
-        {
-          localStorage.getItem('registered') === true ?
-          <Link to={'/profile'}><IoPersonOutline className={cls.header__icon} /></Link>
-          :
-          <Link to={'/register'}><IoLogInOutline className={cls.header__icon} /></Link>
-        }
       </section>
+
+      <section className={cls.header_section}>
+        <div className={cls.header_info}>
+          <IoGiftOutline className={cls.info_icon} />
+          <IoNotificationsOutline className={cls.info_icon} />
+          {
+              localStorage.getItem('registered') === true ? 
+            <span>Войдите в аккаунт!</span>
+            :
+            <Link to={'/profile'} className={cls.header_profil}>
+              <img className={cls.profil_img} src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80" alt="img" />
+              <span className={cls.profil_text}>Alex Kendal</span>
+            </Link>
+          }
+        </div>
+  
+        <div className={cls.header_register}>
+          {
+            localStorage.getItem('registered') === true ?
+            <Link className={cls.header__icon} to={'/register'}><IoLogInOutline /></Link>
+            :
+            <Link className={cls.header__icon} to={'/register'}><IoLogOutOutline /></Link>
+          }
+        </div>
+      </section>
+
     </header>
   )
 }

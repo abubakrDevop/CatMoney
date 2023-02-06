@@ -3,6 +3,8 @@
 .header {
     width: 100%;
     height: 70px;
+    background: rgba(255, 255, 255, 0.755);
+    padding: 0px 30px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -14,83 +16,97 @@
         height: 40px;
     }
 
-    .header__section {
-        width: 550px;
-        display: inherit;
-        justify-content: inherit;
+    .header_titles {
+        width: 600px;
+        height: 30px;
+        display: flex;
         align-items: center;
+        justify-content: space-between;
 
         .section__title {
-            text-decoration: none;
-            color: white;
+            width: 110px;
+            height: 30px;
+            color: rgba(0, 0, 0, 0.8);
+            background: rgba(255, 255, 255, 0);
             font-weight: bold;
-        };
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
         .section__title__active {
-            text-decoration: none;
-            color: white;
+            width: 110px;
+            height: 30px;
+            color: black;
+            background: white;
             font-weight: bold;
-            cursor: pointer;
-            border-bottom: solid 2px aqua;
-        }
-
-        .section__title:hover {
-            color: aqua;
-        }
-
-        .header__icon {
-            color: white;
-            font-size: 25px;
-            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 3px;
         }
     }
-}
 
-.header_active {
-    width: 100%;
-    height: 70px;
-    // background: rgba(255, 255, 255, 0.5);
-    padding: 0 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Roboto', sans-serif;
-    transition: .5s;
-
-    .header__logo {
-        width: 150px;
-        height: 40px;
-    }
-
-    .header__section {
-        width: 550px;
-        display: inherit;
-        justify-content: inherit;
+    .header_section {
+        position: relative;
+        width: 250px;
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
         align-items: center;
+        z-index: 0;
 
-        .section__title {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            transition: .5s
-        };
-
-        .section__title__active {
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            border-bottom: solid 2px aqua;
+        &::before {
+            position: absolute;
+            content: '';
+            top: 0;
+            left: -50px;
+            width: 150%;
+            height: 100%;
+            background: rgb(0, 0, 0);
+            z-index: -1;
+            transform: skew(-45deg);
         }
 
-        .section__title:hover {
-            color: aqua;
+        .header_info {
+            width: 210px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            .info_icon {
+                font-size: 22px;
+                color: rgba(255, 255, 255, 0.7);
+            }
+
+            .header_profil {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                text-decoration: none;
+                color: white;
+
+                .profil_img {
+                    width: 35px;
+                    height: 35px;
+                    border-radius: 50%;
+                }
+
+                .profil_text {
+                    margin-left: 10px;
+                }
+            }
         }
 
-        .header__icon {
-            color: white;
-            font-size: 25px;
-            cursor: pointer;
+        .header_register {
+            .header__icon {
+                position: relative;
+                top: 3px;
+                color: rgba(255, 255, 255, 0.7);
+                font-size: 24px;
+            }
         }
     }
 }
