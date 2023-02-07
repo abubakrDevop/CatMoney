@@ -12,21 +12,30 @@
         font-size: 20px;
         font-weight: bold;
         border-bottom: solid 5px white;
-        width: 210px;
-        height: 35px;
+        width: 500px;
+        height: 55px;
     }
 
     .main__headtitle {
         font-size: 50px;
+        margin: 20px 0 0 0;
     }
 
     .main__description {
-        width: 500px;
+        width: 515px;
         margin: 20px 0px 20px 0px;
+
+        .main__des_in {
+            color: white;
+            background: rgb(146, 128, 26);
+            border-radius: 3px;
+            margin: 0 5px 0 5px;
+        }
     }
 
     .main__button {
         position: relative;
+        top: 10px;
         width: 350px;
         height: 45px;
         font-weight: bold;
@@ -65,7 +74,7 @@
 
         .scroll_icon {
             position: relative;
-            top: 50px;
+            top: 0px;
             font-size: 45px;
             animation: anime 2s linear infinite;
         }
@@ -73,16 +82,16 @@
 
     @keyframes anime {
         0% {
-            top: 50px;
+            top: 20px;
             filter: drop-shadow(0 0 0px white);
         }
         50% {
-            top: 70px;
+            top: 55px;
             filter: drop-shadow(0 0 10px white);
             color: aqua;
         }
         100% {
-            top: 50px;
+            top: 20px;
             filter: drop-shadow(0 0 0px white);
         }
     }

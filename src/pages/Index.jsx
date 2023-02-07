@@ -6,6 +6,8 @@ import { Root } from "../components/Root";
 import { Register } from "./register/Register";
 import { Tasks } from "./tasks/Tasks";
 import { Statistics } from "./statistics/Statistics";
+import { Information } from "./information/Information";
+import { About } from "./about-us/About";
 
 const StyledMain = styled.main `
   width: 100%;
@@ -40,8 +42,8 @@ export const Index = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/tasks" element={<Tasks />} />
         <Route path="/statistics" element={<Statistics />} />
-        <Route path="/information" element={''} />
-        <Route path="/contacts" element={''} />
+        <Route path="/information" element={<Information />} />
+        <Route path="/about-us" element={<About />} />
       </Routes>
     </StyledMain>
   )

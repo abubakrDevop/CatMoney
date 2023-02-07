@@ -115,7 +115,7 @@
     }
 
     .label_active_front {
-        transform: perspective(500px) rotateZ(180deg);
+        // transform: perspective(500px) rotateZ(180deg);
         z-index: -1;
         opacity: 0;
         transition: 1.5s ease-in-out;
@@ -130,7 +130,7 @@
     }
 
     .label_active_back {
-        transform: perspective(500px) rotateZ(-180deg);
+        // transform: perspective(500px) rotateZ(-180deg);
         z-index: -1;
         opacity: 0;
         transition: 1.5s ease-in-out;

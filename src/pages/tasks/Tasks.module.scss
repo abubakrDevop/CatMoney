@@ -12,8 +12,10 @@
     align-items: center;
 
     .tasks_headtitle {
+        font-size: 20px;
+
         &:nth-child(2) {
-            margin: 20px;
+            margin: 10px;
             font-size: 50px;
         }
     }

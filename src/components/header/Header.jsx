@@ -34,8 +34,8 @@ export const Header = () => {
     },
     {
       id: 5,
-      to: '/contacts',
-      title: 'Контакты',
+      to: '/about-us',
+      title: 'О нас!',
     },
   ]
 

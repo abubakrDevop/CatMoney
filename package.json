@@ -7,6 +7,7 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.2",
+    "ramda": "^0.28.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.41.5",
@@ -14,10 +15,12 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
+    "react-slider-swiper": "^2.0.6",
     "redux": "^4.2.0",
     "redux-thunk": "^2.4.2",
     "sass": "^1.57.1",
     "styled-components": "^5.3.6",
+    "swiper": "^9.0.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

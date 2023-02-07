@@ -5,9 +5,12 @@ import { IoChevronDownOutline } from 'react-icons/io5'
 export const Main = () => {
   return (
     <main className={cls.main}>
-      <p className={cls.main__title}>Начать зарабатывать</p>
-      <h1 className={cls.main__headtitle}>Мгновенный доход <br /> Быстрые выплаты</h1>
-      <p className={cls.main__description}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero voluptas cupiditate quasi doloremque, architecto aliquid placeat exercitationem excepturi culpa dolorem doloribus corporis cumque suscipit voluptate dolor temporibus aliquam hic quidem!</p>
+      <p className={cls.main__title}>Начните зарабатывать вместе с нами!</p>
+      <h1 className={cls.main__headtitle}>Выполняйте задания <br /> Выводите деньги</h1>
+      <p className={cls.main__description}>Быстрый доход, мгновеные выплаты. Мы стараемся помочь людям как второ источник дохода, на нашем сайте ежедневно обновляються задания что дает быстро заработать первые деньги. Покупая 
+        <span className={cls.main__des_in}> премиум </span> 
+      вы получаете дополнительные плюшки и бонусы :D
+      </p>
       <button className={cls.main__button}>Перейти к заданиям</button>
 
       <section className={cls.main__section}>
