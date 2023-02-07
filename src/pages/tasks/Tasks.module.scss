@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.tasks_404 {
+    width: 100%;
+    min-height: 100vh;
+    padding: 220px 0 0 0;
+    overflow: hidden;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    align-items: center;
+
+    .tasks_headtitle {
+        &:nth-child(2) {
+            margin: 20px;
+            font-size: 50px;
+        }
+    }
+}
+
+.tasks {
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    background: white;
+}

@@ -4,14 +4,16 @@ import { Header } from "../components/header/Header";
 import { Routes, Route } from 'react-router-dom'
 import { Root } from "../components/Root";
 import { Register } from "./register/Register";
+import { Tasks } from "./tasks/Tasks";
+import { Statistics } from "./statistics/Statistics";
 
 const StyledMain = styled.main `
   width: 100%;
   min-height: 100vh;
 
-  background-image: url(https://wallpaperaccess.com/full/2641092.gif);
+  // background-image: url(https://wallpaperaccess.com/full/2641092.gif);
 
-  // background-image: url(https://wallpaperaccess.com/full/2825704.gif);
+  background-image: url(https://wallpaperaccess.com/full/2825704.gif);
 
   // background-image: url(https://wallpaperaccess.com/full/8351227.gif);
 
@@ -36,6 +38,10 @@ export const Index = () => {
       <Routes>
         <Route index path="" element={<Root />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/tasks" element={<Tasks />} />
+        <Route path="/statistics" element={<Statistics />} />
+        <Route path="/information" element={''} />
+        <Route path="/contacts" element={''} />
       </Routes>
     </StyledMain>
   )

@@ -63,8 +63,8 @@ export const Header = () => {
           <IoGiftOutline className={cls.info_icon} />
           <IoNotificationsOutline className={cls.info_icon} />
           {
-              localStorage.getItem('registered') === true ? 
-            <span>Войдите в аккаунт!</span>
+              localStorage.getItem('registered') !== true ? 
+            <span className={cls.profil_text_404}>Войдите в аккаунт!</span>
             :
             <Link to={'/profile'} className={cls.header_profil}>
               <img className={cls.profil_img} src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80" alt="img" />
@@ -75,7 +75,7 @@ export const Header = () => {
   
         <div className={cls.header_register}>
           {
-            localStorage.getItem('registered') === true ?
+            localStorage.getItem('registered') !== true ?
             <Link className={cls.header__icon} to={'/register'}><IoLogInOutline /></Link>
             :
             <Link className={cls.header__icon} to={'/register'}><IoLogOutOutline /></Link>
