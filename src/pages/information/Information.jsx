@@ -12,29 +12,17 @@ import "./styles.css";
 SwiperCore.use([EffectCards, EffectCoverflow, Pagination]);
 
 export const Information = () => {
+  const slides_info = [
+    {
+      
+    },
+  ]
+  
   return (
     <div className={cls.information}>
       <div className="example">
-        <h1>Cards</h1>
         <Swiper
-          pagination={true}
-          grabCursor={true}
-          centeredSlides={true}
-          slidesPerView="3"
-          effect="cards"
-        >
-          {range(1, 10).map((n) => (
-            <SwiperSlide key={n}>
-              <div className="Card"></div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-
-      <div className="example">
-        <h1>Coverflow</h1>
-        <Swiper
-          pagination={true}
+          pagination={false}
           grabCursor={true}
           centeredSlides={true}
           slidesPerView="3"
@@ -47,9 +35,17 @@ export const Information = () => {
             slideShadows: true
           }}
         >
-          {range(1, 10).map((n) => (
+          {range(1, 8).map((n) => (
             <SwiperSlide key={n}>
-              <div className="Box"></div>
+              <div className="Box">
+                {
+                  slides_info.map(item => (
+                    <div>
+                      
+                    </div>
+                  ))
+                }
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
