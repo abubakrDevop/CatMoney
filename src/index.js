@@ -13,7 +13,7 @@ const Global = createGlobalStyle `
 
   body::-webkit-scrollbar {
     width: 10px;
-    background: rgb(0, 89, 255);
+    background: rgb(12, 54, 170);
   }
 
   body::-webkit-scrollbar-track {
@@ -23,7 +23,7 @@ const Global = createGlobalStyle `
   body::-webkit-scrollbar-thumb {
     width: 100%
     height: 1px;
-    background: aqua;
+    background: rgb(0, 100, 255);
   }
 `
 

@@ -14,7 +14,7 @@ SwiperCore.use([EffectCards, EffectCoverflow, Pagination]);
 export const Information = () => {
   const slides_info = [
     {
-      
+      id: 1,
     },
   ]
   
@@ -40,8 +40,8 @@ export const Information = () => {
               <div className="Box">
                 {
                   slides_info.map(item => (
-                    <div>
-                      
+                    <div key={item.id}>
+
                     </div>
                   ))
                 }
