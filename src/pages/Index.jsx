@@ -22,8 +22,6 @@ const StyledMain = styled.main `
 ` 
 
 export const Index = () => {
-  
-  
 
   return (
     <StyledMain>
