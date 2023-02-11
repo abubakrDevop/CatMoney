@@ -23,21 +23,26 @@ export const SignUp = () => {
 
   const onSubmit = (data) => {
     const body = {
-      login: data,
-      password: data,
+      login: data.login,
+      email: data.email,
+      password: data.password,
+      mode: 1,
     }
 
-    axios.post('', body)
+    axios.post('https://sitename.com/multipart/form-data/api/v2/register', body)
       .then(res => {
+        console.log(res)
         if (res.ok) {
           reset()
         }
       })
-      .catch(error => {})
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   return (
-      <form onSubmit={handleSubmit(onSubmit())} className={cls.root__form}>
+      <form onSubmit={handleSubmit(onSubmit)} className={cls.root__form}>
         <h1 className={cls.headtitle}>Регистрация</h1>
 
         {

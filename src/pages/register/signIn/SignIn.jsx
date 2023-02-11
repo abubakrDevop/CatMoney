@@ -22,21 +22,24 @@ export const SignIn = () => {
 
   const onSubmit = (data) => {
     const body = {
-      login: data,
-      password: data,
+      login: data.login,
+      password: data.password,
     }
 
-    axios.post('', body)
+    axios.post('multipart/form-data/api/v2/auth', body)
       .then(res => {
+        console.log(res)
         if (res.ok) {
           reset()
         }
       })
-      .catch(error => {})
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   return (
-      <form onSubmit={handleSubmit(onSubmit())} className={cls.root__form}>
+      <form onSubmit={handleSubmit(onSubmit)} className={cls.root__form}>
         <h1 className={cls.headtitle}>Вход</h1>
 
         {
