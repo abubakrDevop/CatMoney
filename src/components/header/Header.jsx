@@ -77,8 +77,8 @@ export const Header = () => {
           {
             localStorage.getItem('registered') !== 'ok' ?
             <Link className={cls.header__icon} to={'/register'}><IoLogInOutline onClick={() => {
-              // localStorage.setItem('registered', 'ok')
-              // window.location.reload()
+              localStorage.setItem('registered', 'ok')
+              window.location.reload()
             }}/></Link>
             :
             <IoLogOutOutline className={cls.header__icon} onClick={() => {

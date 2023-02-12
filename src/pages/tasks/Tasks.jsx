@@ -96,7 +96,7 @@ export const Tasks = () => {
                 </section>
 
                 <p className={cls.task_title}>{item.title}</p>
-                <div className={cls.task_price}>{item.price}₽уб</div>
+                <div className={cls.task_price}>{item.price} ₽уб</div>
 
                 <section className={cls.task_buttons}>
                   <a href={item.link} className={cls.task_button1}>Выполнить</a>

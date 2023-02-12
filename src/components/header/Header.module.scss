@@ -37,15 +37,15 @@
 
         .section__title__active {
             width: 110px;
-            height: 30px;
-            color: black;
-            background: white;
+            height: 35px;
+            color: white;
+            background: linear-gradient(to left, rgb(60, 0, 128), rgba(0, 89, 255, 0.5));
             font-weight: bold;
             text-decoration: none;
             display: flex;
             justify-content: center;
             align-items: center;
-            border-radius: 3px;
+            border-radius: 30px;
         }
     }
 
