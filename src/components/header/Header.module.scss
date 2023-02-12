@@ -79,6 +79,11 @@
             .info_icon {
                 font-size: 22px;
                 color: rgba(255, 255, 255, 0.7);
+                cursor: pointer;
+
+                &:hover {
+                    color: aqua;
+                }
             }
 
             .profil_text_404 {
@@ -110,6 +115,11 @@
                 top: 3px;
                 color: rgba(255, 255, 255, 0.7);
                 font-size: 24px;
+                cursor: pointer;
+
+                &:hover {
+                    color: aqua;
+                }
             }
         }
     }

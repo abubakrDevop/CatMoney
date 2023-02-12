@@ -2,8 +2,41 @@
 
 .profile {
     width: 100%;
-    min-height: 100vh;
+    min-height: 90vh;
     overflow: hidden;
     background: white;
     font-family: 'Roboto', sans-serif;
+    
+    .profile_menu {
+        position: relative;
+        width: 90px;
+        height: 38vh;
+        background: black;
+        border-bottom-left-radius: 20px;
+        float: right;
+        animation: apear 1s linear;
+        animation-fill-mode: forwards;
+        animation-delay: .5s;
+
+        .menu_items {
+            display: flex;
+            justify-content: center;
+
+            .menu_items_icon {
+                position: relative;
+                top: -12px;
+                color: white;
+                margin-top: 22px;
+                font-size: 22px;
+
+                &:hover {
+                    color: aqua;
+                }
+            }
+
+            .icon_active {
+                color: aqua;
+            }
+        }
+    }
 }

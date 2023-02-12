@@ -27,14 +27,14 @@ export const Index = () => {
     <StyledMain>
       <Header />
       <Routes>
-        <Route index path="" element={<Root />} />
+        <Route index element={<Root />} />
         <Route path="/register" element={<Register />} />
         <Route path="/tasks" element={<Tasks />} />
         <Route path="/statistics" element={<Statistics />} />
         <Route path="/information" element={<Information />} />
         <Route path="/about-us" element={<About />} />
         <Route path="/add-task" element={<AddTask />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile/*" element={<Profile />} />
       </Routes>
     </StyledMain>
   )

@@ -53,7 +53,7 @@
             padding: 5px 10px;
             margin: 0 5px 0 5px;
             background: black;
-            border-radius: 3px;
+            border-radius: 20px;
             color: white;
         }
     
@@ -61,7 +61,7 @@
             padding: 5px 5px;
             margin: 0 5px 0 5px;
             background: rgb(146, 128, 26);
-            border-radius: 3px;
+            border-radius: 20px;
             color: white;
         }
 
@@ -124,7 +124,7 @@
             transition: .5s;
 
             &:hover {
-                background: rgb(54, 54, 54);
+                background: rgb(0, 0, 0);
                 color: white;
             }
 
@@ -150,8 +150,8 @@
                 width: 600px;
                 height: 35px;
                 padding: 0 10px 0 10px;
-                border-left: solid 2px rgba(0, 0, 0, 0.6);
-                border-right: solid 2px rgba(0, 0, 0, 0.6);
+                border-left: solid 2px rgba(87, 85, 85, 0.8);
+                border-right: solid 2px rgba(87, 85, 85, 0.8);
                 border-radius: 20px;
                 font-weight: bold;
                 display: flex;
@@ -161,8 +161,8 @@
             .task_price {
                 width: 7%;
                 height: 35px;
-                border-left: solid 2px rgba(0, 0, 0, 0.6);
-                border-right: solid 2px rgba(0, 0, 0, 0.6);
+                border-left: solid 2px rgba(87, 85, 85, 0.8);
+                border-right: solid 2px rgba(87, 85, 85, 0.8);
                 border-radius: 20px;
                 font-weight: bold;
                 font-size: 15px;
