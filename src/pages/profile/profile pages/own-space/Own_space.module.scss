@@ -5,4 +5,60 @@
     height: 90vh;
     font-family: 'Roboto', sans-serif;
     background: white;
+
+    .ownspace_section {
+        display: flex;
+        align-items: center;
+        padding: 20px 0 0 20px;
+
+        .section_img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 3px solid transparent;
+            background: linear-gradient(#cfcfcf,#cfcfcf) 
+                        padding-box, 
+                        linear-gradient(to left, rgb(60, 0, 128), rgba(0, 89, 255, 0.5)) 
+                        border-box;
+            box-shadow: 0 0 10px black;
+        }  
+
+        .section_namebox {
+            margin: 0 0 0 20px;
+
+            .ownspace_namebox_in {
+                position: relative;
+                top: -10px;
+                margin: 15px 0 0 0;
+                font-weight: bold;
+
+                .section_name {
+                    width: 300px;
+                    height: 35px;
+                    margin: 10px 0 0 10px;
+                    padding: 0 0 0 10px;
+                    font-size: 18px;
+                    box-shadow: 0 0 5px black;
+                    border-radius: 20px;
+                    display: flex;
+                    align-items: center;
+                }
+            }
+        }
+
+        .section_aboutbox {
+            margin: 15px 0 0 0;
+            font-weight: bold;
+
+            .section_about {
+                width: 530px;
+                height: 150px;
+                padding: 10px 50px 0 50px;
+                font-size: 16px;
+                border-radius: 100px;
+                // background: rgb(231, 229, 229);
+                box-shadow: 0 0 5px black;
+            }
+        }
+    }
 }
