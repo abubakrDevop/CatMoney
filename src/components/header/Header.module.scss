@@ -27,6 +27,13 @@
         .logo_text {
             font-family: 'Teko', sans-serif;
             transform: scale(1.4) translateX(13px) translateY(3px);
+
+            .logo_text_in {              
+                background-color: #2AA5A0;
+                background-image: linear-gradient(to left, rgb(60, 0, 128), rgba(0, 89, 255, 0.5));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
         }
     }
 

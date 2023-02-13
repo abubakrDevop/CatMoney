@@ -14,11 +14,10 @@ import { Profile } from "./profile/Profile";
 const StyledMain = styled.main `
   width: 100%;
   min-height: 100vh;
-  background-image: url(https://wallpaperaccess.com/full/2825704.gif);
+  background-image: url(./city.gif);
   background-size: 100% 100%;
   background-attachment: fixed;
   overflow: hidden;
-  // padding: 0 80px;
 ` 
 
 export const Index = () => {

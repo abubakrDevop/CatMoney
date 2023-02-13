@@ -1,13 +1,11 @@
 import React from "react";
+import { Page_404 } from "../404-page/Page_404";
 import cls from '../statistics/Statistics.module.scss'
 
 export const Statistics = () => {
   if (localStorage.getItem('registered') !== 'ok') {
     return (
-      <div className={cls.statistics_404}>
-        <h1 className={cls.statistics_headtitle}>Войдите в аккаунт или зарегистрируйтесь!</h1>
-        <h1 className={cls.statistics_headtitle}>404 Not Found</h1>
-      </div>
+      <Page_404 />
     )
   }
 

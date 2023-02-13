@@ -44,7 +44,9 @@ export const Header = () => {
 
       <section className={cls.header_logo}>
         <img className={cls.logo_icon} src="./icon.png" alt="logo" />
-        <h1 className={cls.logo_text}>CatMoney</h1>
+        <h1 className={cls.logo_text}>
+          <span className={cls.logo_text_in}>Cat</span>Money
+        </h1>
       </section>
       
       <section className={cls.header_titles}>

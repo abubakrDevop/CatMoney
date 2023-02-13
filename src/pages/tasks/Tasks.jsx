@@ -2,6 +2,7 @@ import React from "react";
 import cls from '../tasks/Tasks.module.scss'
 import { Link } from "react-router-dom";
 import { IoTrashOutline } from 'react-icons/io5'
+import { Page_404 } from "../404-page/Page_404";
 
 export const Tasks = () => {
 
@@ -55,10 +56,7 @@ export const Tasks = () => {
   
   if (localStorage.getItem('registered') !== 'ok') {
     return (
-      <div className={cls.tasks_404}>
-        <h1 className={cls.tasks_headtitle}>Войдите в аккаунт или зарегистрируйтесь!</h1>
-        <h1 className={cls.tasks_headtitle}>404 Not Found</h1>
-      </div>
+      <Page_404 />
     )
   }
 

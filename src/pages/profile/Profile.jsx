@@ -8,6 +8,7 @@ import  {
           IoShareSocialOutline,
           IoChatbubblesOutline
         } from 'react-icons/io5'
+import { Ownspace } from "./profile pages/own-space/Own_space";
 
 export const Profile = () => {
 
@@ -60,7 +61,8 @@ export const Profile = () => {
       </div>
 
       <Routes>
-        <Route path="own-space" element={''} /> 
+        <Route index element={<Ownspace />} /> 
+        <Route path="own-space" element={<Ownspace />} /> 
         <Route path="settings" element={''} /> 
         <Route path="wallet" element={''} /> 
         <Route path="share" element={''} /> 
