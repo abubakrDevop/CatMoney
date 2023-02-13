@@ -42,7 +42,10 @@ export const Header = () => {
   return (
     <header className={cls.header}>
 
-      <img className={cls.header__logo} src="https://ja-africa.org/wp-content/uploads/2020/02/FedEx-Logo-PNG-Transparent.png" alt="logo" />
+      <section className={cls.header_logo}>
+        <img className={cls.logo_icon} src="./icon.png" alt="logo" />
+        <h1 className={cls.logo_text}>CatMoney</h1>
+      </section>
       
       <section className={cls.header_titles}>
         {

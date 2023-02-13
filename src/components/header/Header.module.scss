@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Teko:wght@500&display=swap');
+
 
 .header {
     width: 100%;
@@ -8,12 +10,24 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    overflow: hidden;
     font-family: 'Roboto', sans-serif;
     transition: .5s;
 
-    .header__logo {
-        width: 150px;
-        height: 40px;
+    .header_logo {
+        display: flex;
+        align-items: center;
+
+        .logo_icon {
+            width: 45px;
+            height: 40px;
+            transform: scale(0.9);
+        }
+
+        .logo_text {
+            font-family: 'Teko', sans-serif;
+            transform: scale(1.4) translateX(13px) translateY(3px);
+        }
     }
 
     .header_titles {
