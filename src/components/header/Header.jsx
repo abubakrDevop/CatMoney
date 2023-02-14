@@ -6,9 +6,12 @@ import  {
           IoLogOutOutline,
           IoGiftOutline,
           IoNotificationsOutline, 
+          IoMenuOutline,
+          IoCloseOutline,
         } from 'react-icons/io5'
 
 export const Header = () => {
+  const [active, setActive] = React.useState(false)
   const location = useLocation();
   
   const links = [
@@ -49,6 +52,7 @@ export const Header = () => {
         </h1>
       </section>
       
+      <section className={active === true ? `${cls.header_mobile} ${cls.header_mobile_active}` : cls.header_mobile}>
       <section className={cls.header_titles}>
         {
           links.map(item => (
@@ -86,13 +90,30 @@ export const Header = () => {
               window.location.reload()
             }}/></Link>
             :
-            <IoLogOutOutline className={cls.header__icon} onClick={() => {
-              localStorage.setItem('registered', 'error')
-              window.location.reload()
-            }} />
+            <div>
+              <span className={cls.register_mobile_out}>Выйти</span>
+              <IoLogOutOutline className={cls.header__icon} onClick={() => {
+                localStorage.setItem('registered', 'error')
+                window.location.reload()
+              }} />
+            </div>
           }
         </div>
       </section>
+      </section>
+
+      {
+        active === false ? 
+        <IoMenuOutline 
+          className={cls.heade_mobile_icon1} 
+          onClick={() => setActive(true)}
+        />
+        :
+        <IoCloseOutline 
+          className={cls.heade_mobile_icon2} 
+          onClick={() => setActive(false)}
+        />
+      }
 
     </header>
   )

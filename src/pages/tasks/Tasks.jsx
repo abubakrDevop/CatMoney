@@ -17,7 +17,7 @@ export const Tasks = () => {
       icon: <IoTrashOutline />,
     },
     {
-      id: 1,
+      id: 2,
       img: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80',
       name: 'Misha Kolins',
       price: '2.23',
@@ -26,7 +26,7 @@ export const Tasks = () => {
       icon: <IoTrashOutline />,
     },
     {
-      id: 1,
+      id: 3,
       img: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80',
       name: 'Jensen Ackels',
       price: '0.99',
@@ -35,7 +35,7 @@ export const Tasks = () => {
       icon: <IoTrashOutline />,
     },
     {
-      id: 1,
+      id: 4,
       img: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80',
       name: 'Sasha Gray',
       price: '1.59',
@@ -44,7 +44,7 @@ export const Tasks = () => {
       icon: <IoTrashOutline />,
     },
     {
-      id: 1,
+      id: 5,
       img: 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80',
       name: 'Jorge Bush',
       price: '0.66',
