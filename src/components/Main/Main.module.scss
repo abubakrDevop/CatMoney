@@ -203,13 +203,13 @@
         z-index: 1;
     
         .main__title {
-            margin-top: 8%;
+            margin-top: 20%;
             font-size: 16px;
             font-weight: bold;
             border-bottom: solid 5px white;
             text-align: center;
             width: 300px;
-            height: 55px;
+            height: 45px;
         }
     
         .main__headtitle {
@@ -219,7 +219,7 @@
         }
     
         .main__description {
-            width: 350px;
+            width: 320px;
             margin: 20px 0px 20px 0px;
             text-align: center;
     
@@ -243,7 +243,7 @@
             color: white;
             font-size: 16px;
             overflow: hidden;
-            z-index: 1;
+            z-index: 0;
     
             &::before {
                 content: '';
@@ -266,7 +266,7 @@
     
         .main__section {
             position: relative;
-            top: -20px;
+            top: 50px;
             display: flex;
             flex-direction: column;
             align-items: center;
