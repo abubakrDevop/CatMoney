@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 .main {
-    width: 100%;
+    min-width: 1480px;
     height: 70vh;
     padding: 0 80px;
     color: white;
@@ -111,7 +111,7 @@
         flex-direction: column;
         align-items: center;
         z-index: 1;
-    
+
         .main__title {
             margin-top: 8%;
             font-size: 20px;
@@ -121,18 +121,18 @@
             width: 500px;
             height: 55px;
         }
-    
+
         .main__headtitle {
             font-size: 50px;
             margin: 20px 0 0 0;
             text-align: center;
         }
-    
+
         .main__description {
             width: 515px;
             margin: 20px 0px 20px 0px;
             text-align: center;
-    
+
             .main__des_in {
                 color: white;
                 background: rgb(146, 128, 26);
@@ -140,7 +140,7 @@
                 margin: 0 5px 0 5px;
             }
         }
-    
+
         .main__button {
             position: relative;
             top: 10px;
@@ -154,7 +154,7 @@
             font-size: 16px;
             overflow: hidden;
             z-index: 1;
-    
+
             &::before {
                 content: '';
                 position: absolute;
@@ -168,18 +168,18 @@
                 border-bottom-right-radius: 50%;
                 z-index: -1;
             }
-    
+
             &:hover::before {
                 height: 180%;
             }
         }
-    
+
         .main__section {
             position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
-    
+
             .scroll_icon {
                 position: relative;
                 top: 0px;
@@ -201,7 +201,7 @@
         flex-direction: column;
         align-items: center;
         z-index: 1;
-    
+
         .main__title {
             margin-top: 20%;
             font-size: 16px;
@@ -211,18 +211,18 @@
             width: 300px;
             height: 45px;
         }
-    
+
         .main__headtitle {
             font-size: 25px;
             margin: 20px 0 0 0;
             text-align: center;
         }
-    
+
         .main__description {
             width: 320px;
             margin: 20px 0px 20px 0px;
             text-align: center;
-    
+
             .main__des_in {
                 color: white;
                 background: rgb(146, 128, 26);
@@ -230,7 +230,7 @@
                 margin: 0 5px 0 5px;
             }
         }
-    
+
         .main__button {
             position: relative;
             top: 10px;
@@ -244,7 +244,7 @@
             font-size: 16px;
             overflow: hidden;
             z-index: 0;
-    
+
             &::before {
                 content: '';
                 position: absolute;
@@ -258,19 +258,19 @@
                 border-bottom-right-radius: 50%;
                 z-index: -1;
             }
-    
+
             &:hover::before {
                 height: 180%;
             }
         }
-    
+
         .main__section {
             position: relative;
             top: 50px;
             display: flex;
             flex-direction: column;
             align-items: center;
-    
+
             .scroll_icon {
                 position: relative;
                 top: 0px;

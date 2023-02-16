@@ -11,14 +11,14 @@ import { About } from "./about-us/About";
 import { AddTask } from "./add-task/AddTask";
 import { Profile } from "./profile/Profile";
 
-const StyledMain = styled.main `
+const StyledMain = styled.main`
   width: 100%;
   min-height: 100vh;
   background-image: url(./city.gif);
   background-size: 100% 100%;
   background-attachment: fixed;
   overflow: hidden;
-` 
+`;
 
 export const Index = () => {
 
