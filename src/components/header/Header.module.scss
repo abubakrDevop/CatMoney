@@ -101,10 +101,6 @@ $mobileSmall: 479.98px; // телефоны s
           }
     }
 
-    .register_mobile_out {
-        display: none;
-    }
-
     .header_logo {
         width: 10%;
         display: inline-flex;
@@ -190,7 +186,7 @@ $mobileSmall: 479.98px; // телефоны s
         display: flex;
         justify-content: space-between;
         align-items: center;
-        z-index: 0;
+        z-index: 3;
 
 
         &::before {
@@ -248,7 +244,7 @@ $mobileSmall: 479.98px; // телефоны s
                 text-decoration: none;
                 color: white;
                   @media (max-width: $tablet) {
-                    position: relative;
+                    position: absolute;
                     height: 62px;
                     top: 5px;
                     left: -11px;
@@ -276,13 +272,23 @@ $mobileSmall: 479.98px; // телефоны s
           @media (max-width: $tablet) {
             position: absolute;
             top: 380px;
-            left: 70px;
+            left: 0;
             color: white;
           }
+          .header_register_block {
+            @media (max-width: $tablet) {
+              display: flex;
+              justify-content: space-between;
+              width: 100px;
+              height: 30px;
+            }
+
             .header__icon {
+                display: flex;
                 top: 3px;
                 color: rgba(255, 255, 255, 0.7);
                 font-size: 24px;
+                align-items: center;
                 cursor: pointer;
                   @media (max-width: $tablet) {
                     top: 16px;
@@ -292,19 +298,21 @@ $mobileSmall: 479.98px; // телефоны s
                 &:hover {
                     color: aqua;
                 }
-                .register_mobile_out {
-                  @media (max-width: $tablet) {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    display: flex;
-                    color: white;
-                    font-weight: bold;
-                    font-size: 16px;
-                  }
-                }
             }
-        }
+          .register_mobile_out {
+            display: none;
+            @media (max-width: $tablet) {
+              display: flex;
+              top: 16px;
+              left: -30px;
+              display: flex;
+              color: white;
+              font-weight: bold;
+              font-size: 16px;
+            }
+          }
+            }
+            }
     }
 }
 
