@@ -38,6 +38,7 @@
         background: rgb(218, 216, 216);
         border-radius: 5px;
         padding: 30px;
+        margin-top: 50px;
     }
 
     .tasks_header {
@@ -56,7 +57,7 @@
             border-radius: 20px;
             color: white;
         }
-    
+
         .tasks_premium {
             padding: 5px 5px;
             margin: 0 5px 0 5px;
@@ -100,11 +101,11 @@
 
             &:hover {
                 color: white;
-            } 
+            }
 
             &:hover::before {
                 height: 180%;
-            }    
+            }
         }
     }
 
@@ -157,7 +158,7 @@
                 display: flex;
                 align-items: center;
             }
-            
+
             .task_price {
                 width: 7%;
                 height: 35px;
@@ -196,7 +197,7 @@
                     text-decoration: none;
                     z-index: 0;
 
-                    &::before {        
+                    &::before {
                         content: '';
                         position: absolute;
                         top: 0;
@@ -212,11 +213,11 @@
 
                     &:hover {
                         color: white;
-                    } 
+                    }
 
                     &:hover::before {
                         height: 180%;
-                    }  
+                    }
                 }
 
                 .task_button2 {
@@ -237,7 +238,7 @@
                     align-items: center;
                     z-index: 0;
 
-                    &::before {        
+                    &::before {
                         content: '';
                         position: absolute;
                         top: 0;
@@ -253,11 +254,11 @@
 
                     &:hover {
                         color: red;
-                    } 
+                    }
 
                     &:hover::before {
                         height: 180%;
-                    }  
+                    }
                 }
             }
         }
