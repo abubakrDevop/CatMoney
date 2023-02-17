@@ -53,7 +53,7 @@ export const Tasks = () => {
       icon: <IoTrashOutline />,
     },
   ]
-  
+
   if (localStorage.getItem('registered') !== 'ok') {
     return (
       <Page_404 />
@@ -63,50 +63,49 @@ export const Tasks = () => {
   return (
     <div className={cls.tasks}>
       <div className={cls.tasks_container}>
-
         <section className={cls.tasks_header}>
-          {
-            localStorage.getItem('Premium') !== true ? 
+          {localStorage.getItem("Premium") !== true ? (
             <h1 className={cls.tasks_headtitle}>
               Тариф:
               <span className={cls.tasks_classic}> Classic </span>
               Купите премиум чтобы получать X2 монет!
             </h1>
-            :
+          ) : (
             <h1 className={cls.tasks_headtitle}>
               Тариф:
-              <span className={cls.tasks_premium}> Premium </span>
-              У вас режим X2 монет!
+              <span className={cls.tasks_premium}> Premium </span>У вас режим X2
+              монет!
             </h1>
-          }  
+          )}
 
-          <Link to={'/add-task'} className={cls.header_button}>Добавить задание</Link>
+          <Link to={"/add-task"} className={cls.header_button}>
+            Добавить задание
+          </Link>
         </section>
 
         <section className={cls.tasks_inner}>
-          {
-            tasks.map(item => (
-              <div key={item.id} className={cls.task}>
+          {tasks.map((item) => (
+            <div key={item.id} className={cls.task}>
+              <section className={cls.task_imgname}>
+                <img src={item.img} alt="img" className={cls.task_img} />
+                <p className={cls.task_name}>{item.name}</p>
+              </section>
 
-                <section className={cls.task_imgname}>
-                  <img src={item.img} alt="img" className={cls.task_img} />
-                  <p className={cls.task_name}>{item.name}</p>
-                </section>
-
+              <section className={cls.task_info}>
                 <p className={cls.task_title}>{item.title}</p>
                 <div className={cls.task_price}>{item.price} ₽уб</div>
+              </section>
 
-                <section className={cls.task_buttons}>
-                  <a href={item.link} className={cls.task_button1}>Выполнить</a>
-                  <button className={cls.task_button2}>{item.icon}</button>
-                </section>
-
-              </div>
-            ))
-          }
+              <section className={cls.task_buttons}>
+                <a href={item.link} className={cls.task_button1}>
+                  Выполнить
+                </a>
+                <button className={cls.task_button2}>{item.icon}</button>
+              </section>
+            </div>
+          ))}
         </section>
-
       </div>
     </div>
-  )
+  );
 }
