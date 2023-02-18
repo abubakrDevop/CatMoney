@@ -2,13 +2,15 @@
 
 .profile {
     width: 100%;
-    min-height: 90vh;
+    min-height: 100vh;
+    padding: 70px 0 0 0;
     overflow: hidden;
     background: white;
     font-family: 'Roboto', sans-serif;
     
     .profile_menu {
-        position: relative;
+        position: fixed;
+        right: 0;
         width: 90px;
         height: 38vh;
         background: black;

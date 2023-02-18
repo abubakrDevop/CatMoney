@@ -12,15 +12,6 @@ import  {
           IoPersonOutline,
         } from 'react-icons/io5'
 
-        // DISPATCH 
-
-        // const addUser = (data) => {
-        //   const users = {
-        //     
-        //   }
-        //   dispatch({type: 'ADD_USER', payload: users})
-        // }
-
 export const SignUp = () => {
   const [active, setActive] = React.useState(false)
   const [error, setError] = React.useState('')
