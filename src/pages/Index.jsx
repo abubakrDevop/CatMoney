@@ -18,6 +18,13 @@ const StyledMain = styled.main`
   background-size: 100% 100%;
   background-attachment: fixed;
   overflow: hidden;
+
+  @media (max-width: 820px) {
+    background-image: url(./tablet.gif);
+  }
+  @media (max-width: 414px) {
+    background-image: url(./mobile5city.gif);
+  }
 `;
 
 export const Index = () => {

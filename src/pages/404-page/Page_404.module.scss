@@ -25,6 +25,7 @@ $mobileSmall: 479.98px; // телефоны s
 
 
     .page_404_headtitle {
+      position: relative;
         font-size: 20px;
         color: white;
         animation: apear .5s linear;
@@ -32,10 +33,11 @@ $mobileSmall: 479.98px; // телефоны s
         animation-delay: .3s;
         transform: scale(0);
           @media (max-width: $mobile) {
+            top: 25%;
             font-size: 16px;
           }
           @media (max-width: $mobileSmall) {
-            font-size: 13px;
+            font-size: 16px;
           }
 
         &:nth-child(2) {
@@ -46,7 +48,7 @@ $mobileSmall: 479.98px; // телефоны s
                 font-size: 40px;
               }
               @media (max-width: $mobileSmall) {
-                font-size: 28px;
+                font-size: 30px;
               }
         }
 
