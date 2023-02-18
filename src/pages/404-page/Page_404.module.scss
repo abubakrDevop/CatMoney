@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Creepster&family=Roboto&display=swap');
 
+$pc: 1480px; // Пкб ноутбуки, некоторые планшеты в горизонтальном положении
+$tablet: 991.98px; // Планшеты, некоторые телефоны в горизонтальном положении
+$mobile: 767.98px; // телефоны L
+$mobileSmall: 479.98px; // телефоны s
+
 .page_404 {
     width: 100%;
     height: 90vh;
@@ -18,6 +23,7 @@
     animation-fill-mode: forwards;
     animation-delay: 5.6s;
 
+
     .page_404_headtitle {
         font-size: 20px;
         color: white;
@@ -25,11 +31,23 @@
         animation-fill-mode: forwards;
         animation-delay: .3s;
         transform: scale(0);
+          @media (max-width: $mobile) {
+            font-size: 15px;
+          }
+          @media (max-width: $mobileSmall) {
+            font-size: 10px;
+          }
 
         &:nth-child(2) {
             margin: 10px;
             font-size: 50px;
             font-family: 'Creepster', cursive;
+              @media (max-width: $mobile) {
+                font-size: 40px;
+              }
+              @media (max-width: $mobileSmall) {
+                font-size: 28px;
+              }
         }
 
         @keyframes apear {
