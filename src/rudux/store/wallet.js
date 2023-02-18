@@ -2,7 +2,7 @@ const defaultState = {
   wallets: [],
 }
 
-export const userReduser = (state = defaultState, action) => {
+export const walletReduser = (state = defaultState, action) => {
   switch (action.type) {
     case 'ADD_WALLET':
       return {...state, wallets: [...state.wallets, action.payload]}

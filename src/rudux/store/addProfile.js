@@ -2,7 +2,7 @@ const defaultState = {
     inputData: [],
 }
 
-export const cashReduser = (state = defaultState, action) => {
+export const userReduser = (state = defaultState, action) => {
   switch (action.type) {
     case 'ADD_USER':
       return {...state, inputData: [...state.inputData, action.payload]}

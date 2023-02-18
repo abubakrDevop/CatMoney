@@ -23,9 +23,10 @@ import  {
 
 export const SignUp = () => {
   const [active, setActive] = React.useState(false)
+  const [error, setError] = React.useState('')
   const dispatch = useDispatch()
-  const cash = useSelector(state => state.cash.cash)
-  const users = useSelector(state => state.users.users)
+  const inputData = useSelector(state => state.inputData.inputData)
+  const wallets = useSelector(state => state.wallets.wallets)
 
   const {
     formState,
@@ -33,13 +34,6 @@ export const SignUp = () => {
     register,
     handleSubmit,
   } = useForm()
-
-  // const addUser = (data) => {
-  //   const users = {
-      
-  //   }
-  //   dispatch({type: 'ADD_USER', payload: users})
-  // }
 
   const onSubmit = (data) => {
     const body = {
@@ -49,13 +43,16 @@ export const SignUp = () => {
       mode: 1,
     }
 
-    axios.post('https://sitename.com/multipart/form-data/api/v2/register', body)
+    axios.post('https://19c5-80-94-250-104.eu.ngrok.io/api/v2/register', body)
       .then(res => {
         console.log(res)
-        if (res.ok) {
+        if (res.data.status === '200') {
           reset()
-
           dispatch({type: 'ADD_USER', payload: body})
+          setTimeout(() => {window.location.reload()}, 3000)
+        } else if ('Такой пользователь уже зарегистрирован!') {
+          reset()
+          setError(res.data.status)
         }
       })
       .catch(error => {
@@ -69,6 +66,9 @@ export const SignUp = () => {
 
         {
           formState.errors.login && <span className={cls.root_error}> {formState.errors.login.message} </span>
+        }
+        {
+          error && <span className={cls.root_error}> {error} </span>
         }
 
         <div className={cls.form_inputbox}>

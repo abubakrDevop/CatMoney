@@ -4,7 +4,7 @@ import App from './App';
 import reportWebVitals from './start files/reportWebVitals';
 import { createGlobalStyle } from 'styled-components'
 import { Provider } from 'react-redux'
-import { store } from '../rudux/store/index.js'
+import { store } from './rudux/store/index.js'
 
 const Global = createGlobalStyle `
   * {

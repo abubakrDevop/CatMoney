@@ -12,6 +12,8 @@ import  {
 
 export const SignIn = () => {
   const [active, setActive] = React.useState(false)
+  const [loginError, setLoginError] = React.useState('')
+  const [passwordError, setPasswordError] = React.useState('')
 
   const {
     formState,
@@ -24,13 +26,22 @@ export const SignIn = () => {
     const body = {
       login: data.login,
       password: data.password,
+      mode: 1,
     }
 
-    axios.post('multipart/form-data/api/v2/auth', body)
+    axios.post('https://19c5-80-94-250-104.eu.ngrok.io/api/v2/auth', body)
       .then(res => {
         console.log(res)
-        if (res.ok) {
+        if (res.data.status === 'Логин введён неверно') {
           reset()
+          setLoginError(res.data.status)
+        } else if (res.data.status === 'Пароль неверный!') {
+          reset()
+          setPasswordError(res.data.status)
+        } else if (res.data.status === '200') {
+          reset()
+          localStorage.setItem("registered", "ok");
+          window.location.reload();
         }
       })
       .catch(error => {
@@ -45,6 +56,9 @@ export const SignIn = () => {
         {
           formState.errors.login && <span className={cls.root_error}> {formState.errors.login.message} </span>
         }
+        {
+          loginError && <span className={cls.root_error}> {loginError} </span>
+        }
 
         <div className={cls.form_inputbox}>
           <IoPersonOutline className={cls.input_icon} />
@@ -58,6 +72,9 @@ export const SignIn = () => {
 
         {
           formState.errors.password && <span className={cls.root_error}> {formState.errors.password.message} </span>
+        }
+        {
+          passwordError && <span className={cls.root_error}> {passwordError} </span>
         }
 
         <div className={cls.form_inputbox}>

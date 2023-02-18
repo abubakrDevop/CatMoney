@@ -1,10 +1,10 @@
 import { combineReducers, createStore } from 'redux'
-import { addProfile } from '../../rudux/store/addProfile'
-import { wallet } from '../../rudux/store/wallet'
+import { userReduser } from './addProfile'
+import { walletReduser } from './wallet'
 
 const rootRedusers = combineReducers({
-  inputData: addProfile, 
-  wallets: wallet,
+  inputData: userReduser, 
+  wallets: walletReduser,
 }) 
 
 export const store = createStore(rootRedusers)
