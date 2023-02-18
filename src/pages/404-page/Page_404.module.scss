@@ -8,7 +8,7 @@ $mobileSmall: 479.98px; // телефоны s
 
 .page_404 {
     width: 100%;
-    height: 90vh;
+    height: 100vh;
     padding: 220px 0 0 0;
     overflow: hidden;
     background: white;
@@ -32,10 +32,10 @@ $mobileSmall: 479.98px; // телефоны s
         animation-delay: .3s;
         transform: scale(0);
           @media (max-width: $mobile) {
-            font-size: 15px;
+            font-size: 16px;
           }
           @media (max-width: $mobileSmall) {
-            font-size: 10px;
+            font-size: 13px;
           }
 
         &:nth-child(2) {
