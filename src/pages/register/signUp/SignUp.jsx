@@ -2,6 +2,7 @@ import React from "react";
 import cls from '../signUp/SignUp.module.scss'
 import { useForm } from 'react-hook-form'
 import { Form } from '../../../helpers/form/index'
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import  { 
           IoAtOutline, 
@@ -11,8 +12,20 @@ import  {
           IoPersonOutline,
         } from 'react-icons/io5'
 
+        // DISPATCH 
+
+        // const addUser = (data) => {
+        //   const users = {
+        //     
+        //   }
+        //   dispatch({type: 'ADD_USER', payload: users})
+        // }
+
 export const SignUp = () => {
   const [active, setActive] = React.useState(false)
+  const dispatch = useDispatch()
+  const cash = useSelector(state => state.cash.cash)
+  const users = useSelector(state => state.users.users)
 
   const {
     formState,
@@ -20,6 +33,13 @@ export const SignUp = () => {
     register,
     handleSubmit,
   } = useForm()
+
+  // const addUser = (data) => {
+  //   const users = {
+      
+  //   }
+  //   dispatch({type: 'ADD_USER', payload: users})
+  // }
 
   const onSubmit = (data) => {
     const body = {
@@ -34,6 +54,8 @@ export const SignUp = () => {
         console.log(res)
         if (res.ok) {
           reset()
+
+          dispatch({type: 'ADD_USER', payload: body})
         }
       })
       .catch(error => {
