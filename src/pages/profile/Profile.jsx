@@ -1,8 +1,8 @@
 import React from "react";
 import cls from '../profile/Profile.module.scss'
 import { Routes, Route, NavLink } from 'react-router-dom'
-import  { 
-          IoPersonOutline, 
+import  {
+          IoPersonOutline,
           IoCogOutline,
           IoWalletOutline,
           IoShareSocialOutline,
@@ -46,14 +46,14 @@ export const Profile = () => {
         {
           items.map(item => (
             <div key={item.id} className={cls.menu_items}>
-              <NavLink 
-                to={item.to} 
-                className={({ isActive }) => isActive ? 
-                `${cls.menu_items_icon} ${cls.icon_active}` 
-                : 
-                cls.menu_items_icon} 
-              > 
-                {item.icon} 
+              <NavLink
+                to={item.to}
+                className={({ isActive }) => isActive ?
+                `${cls.menu_items_icon} ${cls.icon_active}`
+                :
+                cls.menu_items_icon}
+              >
+                {item.icon}
               </NavLink>
             </div>
           ))
@@ -61,11 +61,11 @@ export const Profile = () => {
       </div>
 
       <Routes>
-        <Route index element={<Ownspace />} /> 
-        <Route path="own-space" element={<Ownspace />} /> 
-        <Route path="settings" element={''} /> 
-        <Route path="wallet" element={''} /> 
-        <Route path="share" element={''} /> 
+        <Route index element={<Ownspace />} />
+        <Route path="own-space" element={<Ownspace />} />
+        <Route path="settings" element={''} />
+        <Route path="wallet" element={''} />
+        <Route path="share" element={''} />
       </Routes>
 
     </div>

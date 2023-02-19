@@ -183,7 +183,7 @@ $mobileSmall: 479.98px; // телефоны s
             align-items: center;
             border-radius: 30px;
               @media (max-width: $tablet) {
-                
+
               }
         }
     }
@@ -310,13 +310,15 @@ $mobileSmall: 479.98px; // телефоны s
                 font-size: 24px;
                 align-items: center;
                 cursor: pointer;
-                  @media (max-width: $tablet) {
+                  @media (max-width: $pc) {
                     display: flex;
+                    left: 17px;
+                  }
+                  @media (max-width: $tablet) {
                     top: 0px;
                     left: -10px;
                   }
                   @media (max-width: $mobileSmall) {
-                    display: flex;
                     top: 0px;
                     left: -10px;
                   }

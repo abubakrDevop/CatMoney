@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+$pc: 1480px; // Пкб ноутбуки, некоторые планшеты в горизонтальном положении
+$tablet: 991.98px; // Планшеты, некоторые телефоны в горизонтальном положении
+$mobile: 767.98px; // телефоны L
+$mobileSmall: 479.98px; // телефоны s
+
 .profile {
     width: 100%;
     min-height: 100vh;
@@ -7,18 +12,23 @@
     overflow: hidden;
     background: white;
     font-family: 'Roboto', sans-serif;
-    
+
     .profile_menu {
         position: fixed;
         right: 0;
         width: 90px;
-        height: 38vh;
         background: black;
         border-bottom-left-radius: 20px;
         float: right;
         animation: apear 1s linear;
         animation-fill-mode: forwards;
         animation-delay: .5s;
+          @media (max-width: $pc) {
+             width: 70px;
+          }
+          @media (max-width: $tablet) {
+             background: rgb(221, 218, 218);
+          }
 
         .menu_items {
             display: flex;
@@ -30,6 +40,12 @@
                 color: white;
                 margin-top: 22px;
                 font-size: 22px;
+                  @media (max-width: $tablet) {
+                    svg {
+                      fill: black;
+                      stroke: black;
+                    }
+                  }
 
                 &:hover {
                     color: aqua;
