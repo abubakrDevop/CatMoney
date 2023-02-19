@@ -137,7 +137,7 @@ $mobileSmall: 479.98px; // телефоны s
                 padding: 0 0 20px 0;
                 font-weight: bold;
                 @media (max-width: $mobileSmall) {
-                  width: 138%;
+                  width: 113%;
                 }
 
                 &:nth-child(5) {
@@ -171,7 +171,7 @@ $mobileSmall: 479.98px; // телефоны s
                 margin: 5px 0 5px 0;
                 @media (max-width: $mobileSmall) {
                   margin: 10px 0 10px 0;
-                }    
+                }
             }
 
             .ownspace_buttons {
@@ -239,7 +239,7 @@ $mobileSmall: 479.98px; // телефоны s
             z-index: 0;
               @media (max-width: $mobileSmall) {
                 font-size: 14px;
-                width: 138%;
+                width: 113%;
               }
 
             &::before {
