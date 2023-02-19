@@ -29,3 +29,9 @@ export const allInputs = {
         value: passwordReg,
     }
 }
+
+export const settings = {
+    pattern: {
+        value: false,
+    }
+}

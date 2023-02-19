@@ -98,7 +98,12 @@ export const Header = () => {
               <div className={cls.header_register_block}>
                 <span className={cls.register_mobile_out}>Войти</span>
                 <Link className={cls.header__icon} to={"/register"}>
-                  <IoLogInOutline />
+                  <IoLogInOutline 
+                    onClick={() => {
+                      localStorage.setItem("registered", "ok");
+                      window.location.reload();
+                    }}
+                  />
                 </Link>
               </div>
             ) : (

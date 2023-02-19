@@ -23,6 +23,7 @@ $mobileSmall: 479.98px; // телефоны s
         animation: apear 1s linear;
         animation-fill-mode: forwards;
         animation-delay: .5s;
+        z-index: 2;
           @media (max-width: $pc) {
              width: 70px;
           }
