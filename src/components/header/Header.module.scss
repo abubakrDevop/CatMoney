@@ -10,7 +10,7 @@ $mobileSmall: 479.98px; // телефоны s
 
 @mixin adaptive-value($property, $startSize, $minSize) {
   $addSize: $startSize - $minSize;
-    #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$pc - 320}))
+    #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{1480px - 320}))
   }
 
 .header {
@@ -146,14 +146,13 @@ $mobileSmall: 479.98px; // телефоны s
           @media (max-width: $tablet) {
             position: absolute;
             top: 100px;
-            left: 30px;
-            width: 200px;
+            width: 120px;
             height: 250px;
             flex-direction: column;
-            align-items: start;
+            align-items: center;
             gap: 10px;
             z-index: 5;
-            @include adaptive-value("left", 45, 20);
+            // @include adaptive-value("margin-left", 60, 20);
           }
 
         .section__title {
@@ -286,7 +285,7 @@ $mobileSmall: 479.98px; // телефоны s
           @media (max-width: $tablet) {
             position: absolute;
             top: 370px;
-            left: -40px;
+            left: -35px;
             color: white;
           }
           @media (max-width: $mobileSmall) {
