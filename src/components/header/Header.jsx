@@ -64,6 +64,7 @@ export const Header = () => {
             <Link
               key={item.id}
               to={item.to}
+              onClick={() => {setActive(false)}}
               className={
                 location.pathname === item.to
                   ? cls.section__title__active

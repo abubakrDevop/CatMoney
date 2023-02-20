@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Teko:wght@500&display=swap');
+
 .App {
   font-family: sans-serif;
   text-align: center;
@@ -31,13 +34,9 @@
 .Box {
   display: block;
   width: 100%;
-  width: 800px;
+  width: 1000px;
   height: 600px;
   background-color: #ccf;
-  /* background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(5px);
-  border-top: solid 1px rgba(255, 255, 255, 0.651);
-  border-left: solid 1px rgba(255, 255, 255, 0.651); */
 }
 
 .example {

@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.wallet {
+    width: 100%;
+    min-height: 95vh;
+    overflow: hidden;
+    background: white;
+    font-family: 'Roboto', sans-serif;
+    padding: 20px 70px 0 20px;
+    @media (max-width: 900px) {
+        padding: 20px 70px 0 0;
+    }
+
+    .wallet_headtitle {
+        font-size: 18px;
+        @media (max-width: 900px) {
+            text-align: center;
+        }
+    }
+
+    .wallet_cards {
+        width: 100%;
+        min-height: inherit;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .cards_card {
+            width: 250px;
+            height: 300px;
+            border: solid 2px black;
+            border-top: solid 6px rgb(0, 0, 0);
+            margin: 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: .5s;
+            background: white;
+
+            &:hover {
+                transform: translateY(-20px) scale(1.05);
+                box-shadow: 0 0 10px black;
+            }
+
+            .card_section {
+                width: 100%;
+                padding: 25px 0 0 20px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .card_logo {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    box-shadow: 0 0 5px rgb(0, 0, 0);
+                }
+
+                .card_title {
+                    width: 100%;
+                    font-size: 18px;
+                    padding: 0 0 0 10px;
+
+                    .card_titleinner {
+                        font-weight: 100;
+                        font-size: 15px;
+                    }
+                }
+            }
+
+            .card_walletNum {
+                width: 100%;
+                height: 35px;
+                margin: 15px 0;
+                border-top: solid 2px black;
+                border-bottom: solid 2px black;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .card_minmaxBox {
+                width: 100%;
+                padding: 0 20px 0 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .card_title {
+                    font-size: 14px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    .card_num {
+                        margin: 5px 0 0 0;
+                        font-weight: bold;
+                    }
+                }
+            }
+
+                .card_button1 {
+                    background: none;
+                    border: none;
+                    color: white;
+                    font-size: 16px;
+                    font-weight: bold;
+                    position: relative;
+                    margin: 50px 0 0 0;
+                    width: 80%;
+                    height: 35px;
+                    background: linear-gradient(to left, rgb(60, 0, 128), rgba(0, 89, 255, 0.5));
+                    border-radius: 30px;
+                    overflow: hidden;
+                    text-decoration: none;
+                    box-shadow: 0 0 5px black;
+                    z-index: 0;
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 0%;
+                        background: linear-gradient(to left, rgba(0, 89, 255, 0.5), rgb(60, 0, 128));
+                        transition: .5s;
+                        border-bottom-left-radius: 50%;
+                        border-bottom-right-radius: 50%;
+                        z-index: -1;
+                    }
+
+                    &:hover::before {
+                        height: 180%;
+                    }
+                }
+
+                .card_button2 {
+                    background: none;
+                    border: none;
+                    color: white;
+                    font-size: 16px;
+                    font-weight: bold;
+                    position: relative;
+                    margin: 50px 0 0 0;
+                    width: 80%;
+                    height: 35px;
+                    background: red;
+                    border-radius: 30px;
+                    overflow: hidden;
+                    text-decoration: none;
+                    box-shadow: 0 0 5px black;
+                    z-index: 0;
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 0%;
+                        background: rgb(163, 6, 6);
+                        transition: .5s;
+                        border-bottom-left-radius: 50%;
+                        border-bottom-right-radius: 50%;
+                        z-index: -1;
+                    }
+
+                    &:hover::before {
+                        height: 180%;
+                    }
+                }
+        }
+    }
+}

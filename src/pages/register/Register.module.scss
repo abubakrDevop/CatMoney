@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+$pc: 1480px; // Пкб ноутбуки, некоторые планшеты в горизонтальном положении
+$tablet: 991.98px; // Планшеты, некоторые телефоны в горизонтальном положении
+$mobile: 767.98px; // телефоны L
+$mobileSmall: 479.98px; // телефоны s
+
 .register {
     width: 100%;
     height: 100vh;
@@ -9,11 +14,37 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    @media (max-width: $mobileSmall) {
+        background: #222222;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 100px;
+            left: 0;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(aqua, blue);
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 400px;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(yellow, orangered);
+            z-index: 0;
+        }
+    }
 
     .register__label {
         display: flex;
         flex-direction: column;
         align-items: center;
+        z-index: 1;
     
         .label_checkbox {
             appearance: none;
@@ -88,6 +119,11 @@
         height: 450px;
         overflow: hidden;
         transform-style: preserve-3d;
+        @media (max-width: $mobileSmall) {
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
     }
 
     .register_face {

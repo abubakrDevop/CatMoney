@@ -10,6 +10,7 @@ import  {
         } from 'react-icons/io5'
 import { Ownspace } from "./profile pages/own-space/Own_space";
 import { Settings } from "./profile pages/settings/Settings";
+import { Wallet } from "./profile pages/wallet/Wallet";
 
 export const Profile = () => {
 
@@ -65,7 +66,7 @@ export const Profile = () => {
         <Route index element={<Ownspace />} />
         <Route path="own-space" element={<Ownspace />} />
         <Route path="settings" element={<Settings />} />
-        <Route path="wallet" element={''} />
+        <Route path="wallet" element={<Wallet />} />
         <Route path="share" element={''} />
       </Routes>
 

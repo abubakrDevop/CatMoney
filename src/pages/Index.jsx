@@ -22,7 +22,7 @@ const StyledMain = styled.main`
   @media (max-width: 820px) {
     background-image: url(./tablet.gif);
   }
-  @media (max-width: 414px) {
+  @media (max-width: 479px) {
     background-image: url(./mobile5city.gif);
   }
 `;

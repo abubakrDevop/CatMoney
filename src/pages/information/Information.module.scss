@@ -1,8 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+$pc: 1480px; // Пкб ноутбуки, некоторые планшеты в горизонтальном положении
+$tablet: 991.98px; // Планшеты, некоторые телефоны в горизонтальном положении
+$mobile: 767.98px; // телефоны L
+$mobileSmall: 479.98px; // телефоны s
+
 .information {
    width: 100%;
-   min-height: 90vh;
+   min-height: 100vh;
+   margin: 70px 0 0 0;
    overflow: hidden;
    background: white;
    background-image: url(https://art.pixilart.com/8b6698a852323f3.gif);

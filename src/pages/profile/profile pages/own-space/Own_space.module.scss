@@ -94,7 +94,7 @@ $mobileSmall: 479.98px; // телефоны s
                         padding: 0 0 0 10px;
                         font-size: 18px;
                         box-shadow: 0 0 5px black;
-                        border-radius: 20px;
+                        border-radius: 11px;
                         display: flex;
                         align-items: center;
                         @media (max-width: $mobileSmall) {
@@ -150,7 +150,7 @@ $mobileSmall: 479.98px; // телефоны s
             width: 100%;
             height: 120px;
             box-shadow: 0 0 5px black;
-            border-radius: 100px;
+            border-radius: 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -188,8 +188,8 @@ $mobileSmall: 479.98px; // телефоны s
 
                 .buttons_button {
                     position: relative;
-                    width: 49%;
-                    height: 35px;
+                    width: 48%;
+                    height: 40px;
                     font-weight: bold;
                     border: none;
                     background: linear-gradient(to left, rgb(60, 0, 128), rgba(0, 89, 255, 0.5));
