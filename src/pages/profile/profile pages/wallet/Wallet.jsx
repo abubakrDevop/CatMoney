@@ -80,16 +80,12 @@ export const Wallet = () => {
 								</p>
 							</section>
 
-							<Link
-								to={''}
-								className={cls.card_button}
-								onClick={() => handleChangeConnected(item.id)}
-							>
-								{
-									item.connected ? <button className={cls.card_button2}>Удалить</button> :
-										<button className={cls.card_button1}>Установить</button>
-								}
-							</Link>
+							{
+								item.connected ? 
+                <button onClick={() => handleChangeConnected(item.id)} className={cls.card_button2}>Удалить</button> 
+                :
+								<button onClick={() => handleChangeConnected(item.id)} className={cls.card_button1}>Установить</button>
+							}
 
 						</div>
 					))
