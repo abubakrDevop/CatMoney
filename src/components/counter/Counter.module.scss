@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.statistic {
+    position: relative;
+    top: 70px;
+    text-align: center;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+}
+
+.counter {
+    width: 100%;
+    min-height: 230px;
+    margin: 100px 0 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 0 120px;
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+
+    .counter__box {
+        width: 350px;
+        height: 230px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        background: rgba(0, 0, 0, 0.7);
+        border: solid 2px aqua;
+        border-radius: 5px;
+        margin: 15px;
+
+        .counter__box_icon {
+            font-size: 60px;
+        }
+
+        .counter__box_title {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    
+        .counter__box_num {
+            min-width: 60px;
+            height: 20px;
+            background: white;
+            border-radius: 5px;
+        }
+    }
+}

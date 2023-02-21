@@ -29,7 +29,7 @@ export const SignIn = () => {
       mode: 1,
     }
 
-    axios.post('https://19c5-80-94-250-104.eu.ngrok.io/api/v2/auth', body)
+    axios.post('https://8fdc-80-94-250-104.eu.ngrok.io/api/v2/auth', body)
       .then(res => {
         console.log(res)
         if (res.data.status === 'Логин введён неверно') {
