@@ -34,7 +34,7 @@ export const SignUp = () => {
       mode: 1,
     }
 
-    axios.post('https://19c5-80-94-250-104.eu.ngrok.io/api/v2/register', body)
+    axios.post('https://622d-80-94-250-104.eu.ngrok.io/api/v2/register', body)
       .then(res => {
         console.log(res)
         if (res.data.status === '200') {

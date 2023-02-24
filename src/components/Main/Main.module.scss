@@ -13,7 +13,6 @@ $mobileSmall: 479.98px; // телефоны s
     font-family: 'Roboto', sans-serif;
     z-index: 1;
       @media (max-width: $tablet) {
-        margin-top: 3%;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -25,12 +24,72 @@ $mobileSmall: 479.98px; // телефоны s
         margin-top: 15%;
       }
 
+     .main__block {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 90px;
+      width: 100%;
+      @media (max-width: $tablet) {
+        flex-direction: column;
+        align-items: center;
+      }
+     } 
+     .main__info {
+      width: 30%;
+      @media (max-width: $pc) {
+        width: 40%;
+      }
+      @media (max-width: $tablet) {
+        width: 70%;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+       
+      }
+     }
+     .main__statistics {
+      padding-top: 70px;
+      width: 50%;
+      height: 75vh;
+      background-color: rgba(0, 0, 0, 0.7);
+      @media (max-width: $pc) {
+        height: 60vh;
+      }
+      @media (max-width: $tablet) {
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 70%;
+        margin-top: 20px;
+      }
+      @media (max-width: $mobile) {
+        height: 100vh;
+        padding-top: 20px;
+      }
+     }
+     .main__statistics_block {
+      height: 25vh;
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 20px;
+      @media (max-width: $pc) {
+        height: 18vh;
+      }
+      @media (max-width: $mobile) {
+        grid-template-columns: auto;
+        justify-content: center;
+        height: 20vh;
+        gap: 30px;
+       
+      }
+      @media (max-width: $mobile) {
+      }
+     }
+
     .main__title {
         margin-top: 8%;
         font-size: 20px;
         font-weight: bold;
         border-bottom: solid 5px white;
-        width: 500px;
         height: 55px;
           @media (max-width: $tablet) {
             padding-bottom: 8%;
@@ -60,7 +119,6 @@ $mobileSmall: 479.98px; // телефоны s
     }
 
     .main__description {
-        width: 515px;
         margin: 20px 0px 20px 0px;
           @media (max-width: $tablet) {
             text-align: center;
@@ -79,6 +137,9 @@ $mobileSmall: 479.98px; // телефоны s
 
     .main__button {
         position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         top: 10px;
         width: 350px;
         height: 45px;
@@ -121,8 +182,14 @@ $mobileSmall: 479.98px; // телефоны s
         display: flex;
         flex-direction: column;
         align-items: center;
+        @media (max-width: $tablet) {
+          top: 20px;
+        }
             @media (max-width: $mobileSmall) {
               top: 50px;
+            }
+            @media (max-width: $mobile) {
+              padding-top: 80px;
             }
 
         .scroll_icon {

@@ -3,6 +3,7 @@ import cls from '../counter/Counter.module.scss'
 import axios from "axios";
 import { IoPeopleOutline, IoCardOutline, IoCalendarOutline, IoGlobeOutline } from 'react-icons/io5'
 
+
 export const Counter = () => {
   const [counterValues, setCounterValues] = React.useState([])
 
@@ -29,9 +30,10 @@ export const Counter = () => {
     },
   ]
 
-  axios.get('https://8fdc-80-94-250-104.eu.ngrok.io/api/v2/counter')
+
+  axios.get('https://622d-80-94-250-104.eu.ngrok.io/api/v2/users')
     .then(res => {
-      console.log(res)
+      console.log(res.data)
       setCounterValues(res)
     })
     .catch(error => console.log(error))

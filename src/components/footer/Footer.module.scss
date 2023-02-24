@@ -1,21 +1,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
+
+$pc: 1480px; // Пкб ноутбуки, некоторые планшеты в горизонтальном положении
+$tablet: 991.98px; // Планшеты, некоторые телефоны в горизонтальном положении
+$mobile: 767.98px; // телефоны L
+$mobileSmall: 479.98px; // телефоны s
+
 .footer {
     width: 100%;
     min-height: 80vh;
-    padding: 50px 80px;
+    padding: 200px 80px 50px 80px;
     font-family: 'Roboto', sans-serif;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     color: white;
+    @media (max-width: $tablet) {
+        padding-top: 350px;
+      }
+      @media (max-width: $mobile) {
+        padding-top: 780px;
+      }
 
     .footer__section {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+        @media (max-width: $tablet) {
+            padding-top: 180px;
+          }
+          @media (max-width: $mobile) {
+            padding-top: 100px;
+          }
 
         .section_block {
             position: relative;
