@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import cls from '../Main/Main.module.scss'
 import { IoChevronDownOutline } from 'react-icons/io5'
 import { Doughnut, Bar } from 'react-chartjs-2'
 import { Chart, registerables } from 'chart.js'
-import axios from "axios";
+// import axios from "axios";
 
 Chart.register(...registerables)
 
@@ -17,14 +17,14 @@ export const Main = () => {
   const countDay = usersValues.day ? usersValues.day : 10
   const countPayment = usersValues.payment ? usersValues.payment : 10
 
-  useEffect(() => {
-  axios.get('http://localhost:5000/api/v1/counter')
-    .then(res => {
-      console.log(res.data)
-      setUsersValues(res.data)
-    })
-    .catch(error => console.log(error))
-  }, [])
+  // useEffect(() => {
+  // axios.get('http://localhost:5000/api/v1/counter')
+  //   .then(res => {
+  //     console.log(res.data)
+  //     setUsersValues(res.data)
+  //   })
+  //   .catch(error => console.log(error))
+  // }, [])
 
 
   Chart.defaults.font.size = 16;

@@ -23,6 +23,11 @@ server.get('/api/v1/counter', async (req, res) => {
     console.log(err)
   }
 })
+server.post('/api/v1/visible', async (req, res) => {
+  const {boolean} = req.body
+  console.log('boolean', boolean)
+  res.json(boolean)
+})
 
 server.listen(PORT, () => {
   console.log(`Server starting on port ${PORT}`)

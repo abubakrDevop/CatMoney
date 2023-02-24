@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from 'styled-components'
+import axios from 'axios'
 import { Header } from "../components/header/Header";
 import { Routes, Route } from 'react-router-dom'
 import { Root } from "../components/Root";
@@ -28,6 +29,30 @@ const StyledMain = styled.main`
 `;
 
 export const Index = () => {
+  const [chatFocus, setChatFocus] = useState(true);
+  const DetectChatFocus = () => {
+    useEffect(() => {
+        const handleActivityFalse = () => {
+            setChatFocus(false);
+        };
+        const handleActivityTrue = () => {
+            setChatFocus(true);
+        };
+        window.addEventListener('focus', handleActivityTrue);
+        window.addEventListener('blur', handleActivityFalse);
+
+        return () => {
+            window.removeEventListener('focus', handleActivityTrue);
+            window.removeEventListener('blur', handleActivityFalse);
+        };
+    }, [chatFocus]);
+};
+DetectChatFocus();
+console.log('chatFocus', chatFocus)
+useEffect(() => {
+  axios.post('http://localhost:5000/api/v1/visible',{ boolean: chatFocus })
+    .then(res => console.log(res.data))
+}, [])
 
   return (
     <StyledMain>
