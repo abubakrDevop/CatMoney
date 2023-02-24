@@ -83,7 +83,7 @@ export const Main = () => {
   }
 
   const labelsLine = ['янв', 'фев', 'март']
-  const paymentDate = [countPayment]
+  const paymentDate = [`${countPayment} руб`]
   const dataLine = {
     labels: labelsLine,
     datasets: [
