@@ -17,16 +17,29 @@ middleware.forEach((it) => server.use(it));
 
 server.get('/api/v1/counter', async (req, res) => {
   try {
-    axios('https://3142-80-94-250-122.eu.ngrok.io/api/v2/counter')
+    axios('https://088a-80-94-250-40.eu.ngrok.io/api/v2/counter')
       .then((response) => res.json(response.data))
   } catch (err) {
     console.log(err)
   }
 })
+
+server.post('/api/v1/register', async (req, res) => {
+  try {
+    axios('https://088a-80-94-250-40.eu.ngrok.io/api/v2/register')
+      .then((response) => res.json(response.data))
+  } catch (err) {
+    console.log(err)
+  }
+})
+
 server.post('/api/v1/visible', async (req, res) => {
-  const {boolean} = req.body
-  console.log('boolean', boolean)
-  res.json(boolean)
+  try {
+    axios('https://088a-80-94-250-40.eu.ngrok.io/api/v2/exit')
+      .then((response) => res.json(response.data))
+  } catch (err) {
+    console.log(err)
+  }
 })
 
 server.listen(PORT, () => {

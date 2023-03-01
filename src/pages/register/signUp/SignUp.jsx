@@ -18,6 +18,7 @@ export const SignUp = () => {
   const dispatch = useDispatch()
   const inputData = useSelector(state => state.inputData.inputData)
   const wallets = useSelector(state => state.wallets.wallets)
+  console.log("inputData", inputData)
 
   const {
     formState,
@@ -34,11 +35,12 @@ export const SignUp = () => {
       mode: 1,
     }
 
-    axios.post('https://622d-80-94-250-104.eu.ngrok.io/api/v2/register', body)
+    axios.post('https://088a-80-94-250-40.eu.ngrok.io/api/v2/register', body)
       .then(res => {
         console.log(res)
         if (res.data.status === '200') {
           reset()
+          localStorage.setItem("regist", JSON.stringify(res.data))
           dispatch({type: 'ADD_USER', payload: body})
           setTimeout(() => {window.location.reload()}, 3000)
         } else if ('Такой пользователь уже зарегистрирован!') {

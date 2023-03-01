@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styled from 'styled-components'
 import axios from 'axios'
 import { Header } from "../components/header/Header";
@@ -29,30 +29,47 @@ const StyledMain = styled.main`
 `;
 
 export const Index = () => {
-  const [chatFocus, setChatFocus] = useState(true);
-  const DetectChatFocus = () => {
-    useEffect(() => {
-        const handleActivityFalse = () => {
-            setChatFocus(false);
-        };
-        const handleActivityTrue = () => {
-            setChatFocus(true);
-        };
-        window.addEventListener('focus', handleActivityTrue);
-        window.addEventListener('blur', handleActivityFalse);
+//   const [chatFocus, setChatFocus] = useState(true);
 
-        return () => {
-            window.removeEventListener('focus', handleActivityTrue);
-            window.removeEventListener('blur', handleActivityFalse);
-        };
-    }, [chatFocus]);
-};
-DetectChatFocus();
-console.log('chatFocus', chatFocus)
-useEffect(() => {
-  axios.post('http://localhost:5000/api/v1/visible',{ boolean: chatFocus })
-    .then(res => console.log(res.data))
-}, [])
+//   const idUser = JSON.parse(localStorage.getItem("regist"))
+//   const DetectChatFocus = () => {
+//     useEffect(() => {
+//         const handleActivityFalse = () => {
+//             setChatFocus(false);
+//         };
+//         const handleActivityTrue = () => {
+//             setChatFocus(true);
+//         };
+//         window.addEventListener('focus', handleActivityTrue);
+//         window.addEventListener('blur', handleActivityFalse);
+
+//         return () => {
+//             window.removeEventListener('focus', handleActivityTrue);
+//             window.removeEventListener('blur', handleActivityFalse);
+//         };
+//     }, [chatFocus]);
+// };
+// DetectChatFocus();
+// console.log('chatFocus', chatFocus)
+
+// useEffect(() => {
+//   axios.post('https://088a-80-94-250-40.eu.ngrok.io/api/v2/exit',{ id: idUser.id })
+//     .then(res => console.log(res.data))
+// }, [chatFocus === false])
+
+const idUser = JSON.parse(localStorage.getItem("regist"))
+
+  // window.addEventListener('beforeunload', function(event) {
+  //   // Отправляем POST запрос с помощью Axios
+  //   axios.post('https://088a-80-94-250-40.eu.ngrok.io/api/v2/exit',{ id: idUser.id })
+  //     .then(response => {
+  //       console.log(response.data);
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     });
+  // });
+
 
   return (
     <StyledMain>

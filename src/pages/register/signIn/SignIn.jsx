@@ -29,7 +29,7 @@ export const SignIn = () => {
       mode: 1,
     }
 
-    axios.post('https://8fdc-80-94-250-104.eu.ngrok.io/api/v2/auth', body)
+    axios.post('https://088a-80-94-250-40.eu.ngrok.io/api/v2/auth', body)
       .then(res => {
         console.log(res)
         if (res.data.status === 'Логин введён неверно') {
@@ -40,7 +40,7 @@ export const SignIn = () => {
           setPasswordError(res.data.status)
         } else if (res.data.status === '200') {
           reset()
-          localStorage.setItem("registered", "ok");
+          localStorage.setItem("auth", JSON.stringify(res.data));
           window.location.reload();
         }
       })
@@ -48,6 +48,14 @@ export const SignIn = () => {
         console.log(error)
       })
   }
+
+  // useEffect(() => {
+  //   axios.get('http://localhost:5000/api/v1/counter')
+  //    .then((res) => console.log(res) )
+  //    .catch(error => {
+  //     console.log(error)
+  //   })
+  // }, [])
 
   return (
       <form onSubmit={handleSubmit(onSubmit)} className={cls.root__form}>
