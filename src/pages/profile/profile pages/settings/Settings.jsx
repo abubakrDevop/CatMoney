@@ -15,11 +15,11 @@ export const Settings = () => {
   } = useForm()
 
   const idUser = JSON.parse(localStorage.getItem("regist"))
-  console.log('idUser', idUser.id)
+  console.log('idUser', idUser)
 
   const onSubmit = (data) => {
     const body = {
-      id: idUser.id,
+      id: idUser,
       image: imageUrl,
       name: data.name,
       lastname: data.lastname,

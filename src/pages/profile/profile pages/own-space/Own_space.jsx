@@ -13,7 +13,7 @@ export const Ownspace = () => {
 
     const onSubmit = (data) => {
       const body = {
-        id: idUser.id,
+        id: idUser,
         // image: imageUrl,
         name: data.name,
         lastname: data.lastname,
