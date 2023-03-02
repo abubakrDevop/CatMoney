@@ -89,7 +89,6 @@ export const Ownspace = () => {
           <h1 className={cls.balance_title}>0 ₽</h1>
           <section className={cls.ownspace_buttons}>
             <button className={cls.buttons_button}>Пополнить</button>
-            <input className={cls.buttons_button_input} type="number" />
             <button className={cls.buttons_button}>Вывести</button>
           </section>
         </section>
