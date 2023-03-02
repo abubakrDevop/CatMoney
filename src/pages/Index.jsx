@@ -57,7 +57,7 @@ export const Index = () => {
 //     .then(res => console.log(res.data))
 // }, [chatFocus === false])
 
-const idUser = JSON.parse(localStorage.getItem("regist"))
+// const idUser = JSON.parse(localStorage.getItem("regist"))
 
   // window.addEventListener('beforeunload', function(event) {
   //   // Отправляем POST запрос с помощью Axios
