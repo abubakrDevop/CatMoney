@@ -103,28 +103,54 @@ export const Main = () => {
   return (
     <main className={cls.main}>
       <section className={cls.main__block}>
-      <div className={cls.main__info}>
-      <p className={cls.main__title}>Начните зарабатывать вместе с нами!</p>
-      <h1 className={cls.main__headtitle}>Выполняйте задания <br /> Выводите деньги</h1>
-      <p className={cls.main__description}>Быстрый доход, мгновеные выплаты. Мы стараемся помочь людям как второ источник пасивного дохода, на нашем сайте ежедневно обновляються задания что дает быстро заработать первые деньги. Покупая 
-        <span className={cls.main__des_in}> премиум </span> 
-      вы получаете дополнительные x2 монет, плюшки и бонусы :D
-      </p>
-      <button className={cls.main__button}>Перейти к заданиям</button>
-      </div>
+        <div className={cls.main__info}>
+          <p className={cls.main__title}>Начните зарабатывать вместе с нами!</p>
+          <h1 className={cls.main__headtitle}>
+            Выполняйте задания <br /> Выводите деньги
+          </h1>
+          <p className={cls.main__description}>
+            Быстрый доход, мгновеные выплаты. Мы стараемся помочь людям как
+            второ источник пасивного дохода, на нашем сайте ежедневно
+            обновляються задания что дает быстро заработать первые деньги.
+            Покупая
+            <span className={cls.main__des_in}> премиум </span>
+            вы получаете дополнительные x2 монет, плюшки и бонусы :D
+          </p>
+          <button className={cls.main__button}>Перейти к заданиям</button>
+        </div>
 
-      <div className={cls.main__statistics}>  
-      <div className={cls.main__statistics_block}>
-            <Doughnut data={data} options={{
-              responsive: true,
-              cutout:"50%"}} 
+        <div className={cls.main__statistics}>
+          <div className={cls.main__statistics_block}>
+            <div className={cls.main__statistics_block_1}>
+              <Doughnut
+                data={data}
+                options={{
+                  responsive: true,
+                  cutout: "50%",
+                }}
               />
-            <Bar  data={dataLine}  />
-            <Doughnut  data={onlineData} options={{responsive: true, cutout:"50%"}} />
-            <Doughnut  data={dataDay} options={{responsive: true, cutout:"50%"}} />
-        </div>                
-
-      </div>
+              <Doughnut
+                data={data}
+                options={{
+                  responsive: true,
+                  cutout: "50%",
+                }}
+              />
+              {/* <Bar data={dataLine} /> */}
+            </div>
+            <div className={cls.main__statistics_block_2}>
+              <Doughnut
+                data={onlineData}
+                options={{ responsive: true, cutout: "50%" }}
+              />
+              <Doughnut
+                data={onlineData}
+                options={{ responsive: true, cutout: "50%" }}
+              />
+              {/* <Bar data={onlineData} /> */}
+            </div>
+          </div>
+        </div>
       </section>
 
       <section className={cls.main__section}>
@@ -132,5 +158,5 @@ export const Main = () => {
         <IoChevronDownOutline className={cls.scroll_icon} />
       </section>
     </main>
-  )
+  );
 }
