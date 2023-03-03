@@ -67,7 +67,7 @@ export const Ownspace = () => {
     console.log("popapMoney", popapMoney)
 
     const handlerWithdrawMoney = () => {
-      alert(`Счёт пополнен на ${withdrawMoney ? withdrawMoney : 0} рублей`)
+      alert(`Вывод ${withdrawMoney ? withdrawMoney : 0} рублей`)
       setPopapMoneyWithdraw(!popapMoneyWithdraw)
       setWithdrawMoney('')
       // axios
