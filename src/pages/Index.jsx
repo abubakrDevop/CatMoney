@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from 'styled-components'
 import axios from 'axios'
 import { Header } from "../components/header/Header";
@@ -29,6 +29,11 @@ const StyledMain = styled.main`
 `;
 
 export const Index = () => {
+
+useEffect(() => {
+  localStorage.setItem("regist", JSON.stringify({"id": 11}));
+}, [])
+
 //   const [chatFocus, setChatFocus] = useState(true);
 
 //   const idUser = JSON.parse(localStorage.getItem("regist"))
