@@ -1,19 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import cls from '../own-space/Own_space.module.scss'
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { Form } from "../../../../helpers/form/index";
 
 export const Ownspace = () => {
+  const [money, setMoney] = useState('')
+  const [withdrawMoney, setWithdrawMoney] = useState('')
+  const [popapMoney, setPopapMoney] = useState(false)
+  const [popapMoneyWithdraw, setPopapMoneyWithdraw] = useState(false)
 
-  const { reset, register, handleSubmit } = useForm();
+  const { reset, register, handleSubmit } = useForm()
 
-    const idUser = localStorage.getItem("regist");
-    console.log("idUserrrrrr",typeof idUser);
+    const idUser = JSON.parse(localStorage.getItem("regist"));
+    console.log("idUserrrrrr", idUser.id);
 
     const onSubmit = (data) => {
       const body = {
-        id: idUser,
+        id: idUser.id,
         // image: imageUrl,
         name: data.name,
         lastname: data.lastname,
@@ -22,6 +26,7 @@ export const Ownspace = () => {
         password: data.password,
         mode: 1,
         wallet: data.wallet
+
       };
 
       axios
@@ -42,6 +47,68 @@ export const Ownspace = () => {
         });
     };
 
+    const onChangeSumMoney = (e) => {
+      setMoney(e.target.value)
+      
+    }
+    const onChangeWithdrawMoney = (e) => {
+      setWithdrawMoney(e.target.value)
+     
+    }
+
+    console.log("money", money)
+
+    const onAddMoney = () => {
+      setPopapMoney(!popapMoney)
+    }
+    const onWithdrawMoney = () => {
+      setPopapMoneyWithdraw(!popapMoneyWithdraw)
+    }
+    console.log("popapMoney", popapMoney)
+
+    const handlerWithdrawMoney = () => {
+      alert(`Счёт пополнен на ${withdrawMoney ? withdrawMoney : 0} рублей`)
+      setPopapMoneyWithdraw(!popapMoneyWithdraw)
+      setWithdrawMoney('')
+      // axios
+      // .post("https://088a-80-94-250-40.eu.ngrok.io/api/v2/settings", {money: money})
+      // .then((res) => {
+      //   console.log(res);
+      //   if (res.data.status === "200") {
+      //     reset();
+      //      alert(`Счёт пополнен на ${money} рублей`)
+      //   } else if (res.data.status === "") {
+      //     reset();
+      //   } else if (res.data.status === "") {
+      //     reset();
+      //   }
+      // })
+      // .catch((error) => {
+      //   console.log(error);
+      // });
+  };
+    const onSendMoney = () => {
+      alert(`Счёт пополнен на ${money ? money : 0} рублей`)
+      setPopapMoney(!popapMoney)
+      setMoney('')
+      // axios
+      // .post("https://088a-80-94-250-40.eu.ngrok.io/api/v2/settings", {money: money})
+      // .then((res) => {
+      //   console.log(res);
+      //   if (res.data.status === "200") {
+      //     reset();
+      //      alert(`Счёт пополнен на ${money} рублей`)
+      //   } else if (res.data.status === "") {
+      //     reset();
+      //   } else if (res.data.status === "") {
+      //     reset();
+      //   }
+      // })
+      // .catch((error) => {
+      //   console.log(error);
+      // });
+  };
+    
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={cls.ownspace}>
       <section className={cls.ownspace_headsection}>
@@ -88,8 +155,16 @@ export const Ownspace = () => {
           <h1 className={cls.balance_headtitle}>Баланс</h1>
           <h1 className={cls.balance_title}>0 ₽</h1>
           <section className={cls.ownspace_buttons}>
-            <button className={cls.buttons_button}>Пополнить</button>
-            <button className={cls.buttons_button}>Вывести</button>
+            <button onClick={onAddMoney} className={cls.buttons_button}>Пополнить</button>
+            {popapMoney && <div className={cls.buttons_popap}>
+              <input placeholder="Введите сумму" className={cls.buttons_popap_input} type="text" onChange={onChangeSumMoney} value={money}/>
+                <button className={cls.buttons_popap_button} onClick={onSendMoney}>Подтвердите</button>
+            </div>}
+            <button onClick={onWithdrawMoney} className={cls.buttons_button}>Вывести</button>
+            {popapMoneyWithdraw && <div className={cls.buttons_popap_right}>
+              <input placeholder="Введите сумму" className={cls.buttons_popap_right_input} type="text" onChange={onChangeWithdrawMoney} value={withdrawMoney}/>
+                <button className={cls.buttons_popap_right_button} onClick={handlerWithdrawMoney}>Подтвердите</button>
+            </div>}
           </section>
         </section>
 
@@ -121,14 +196,13 @@ export const Ownspace = () => {
           <p className={cls.info_text}>
             Ваш кошелёк:
             <input
-              type="number"
               className={cls.info_text_input}
               // value={'Не доступно!'}
-              {...register("wallet", Form.Options.wallet)}
+              {...register("wallet", Form.Options.settings)}
             />
           </p>
           <p className={cls.info_text}>
-            Ваш id пользователя: <span>{idUser ? idUser : "Ваш id"}</span>
+            Ваш id пользователя: <span>{idUser.id ? idUser.id : "Ваш 22222"}</span>
           </p>
         </section>
 

@@ -35,11 +35,3 @@ export const settings = {
         value: false,
     }
 }
-
-export const wallet = {
-  required,
-  pattern: {
-    message: "Только цифры!",
-    value: passwordReg,
-  },
-};

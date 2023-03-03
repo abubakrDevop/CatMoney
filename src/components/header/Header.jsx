@@ -102,6 +102,7 @@ export const Header = () => {
                   <IoLogInOutline 
                     onClick={() => {
                       localStorage.setItem("registered", "ok");
+                      localStorage.setItem("regist", JSON.stringify({"id": 11}));
                       window.location.reload();
                     }}
                   />
