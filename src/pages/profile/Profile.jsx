@@ -12,6 +12,7 @@ import { Ownspace } from "./profile pages/own-space/Own_space";
 import { Settings } from "./profile pages/settings/Settings";
 import { Wallet } from "./profile pages/wallet/Wallet";
 import { Chat } from "./profile pages/chat/Chat";
+import { Share } from "./profile pages/share/Share";
 
 export const Profile = () => {
 
@@ -69,7 +70,7 @@ export const Profile = () => {
         <Route path="settings" element={<Settings />} />
         <Route path="wallet" element={<Wallet />} />
         <Route path="chat" element={<Chat />} />
-        <Route path="share" element={''} />
+        <Route path="share" element={<Share />} />
       </Routes>
 
     </div>
