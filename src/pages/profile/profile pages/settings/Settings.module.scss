@@ -107,7 +107,10 @@ $mobileSmall: 479.98px; // телефоны s
           }
 
             .section_namebox {
-                width: 100%;
+                width: 90%;
+                @media (max-width: $mobileSmall) {
+                  width: 100%;
+                }
 
                 .ownspace_namebox_in {
                     position: relative;

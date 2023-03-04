@@ -58,10 +58,12 @@ export const Ownspace = () => {
 
     console.log("money", money)
 
-    const onAddMoney = () => {
+    const onAddMoney = (event) => {
+      event. preventDefault()
       setPopapMoney(!popapMoney)
     }
-    const onWithdrawMoney = () => {
+    const onWithdrawMoney = (event) => {
+      event. preventDefault()
       setPopapMoneyWithdraw(!popapMoneyWithdraw)
     }
     console.log("popapMoney", popapMoney)
@@ -132,7 +134,6 @@ export const Ownspace = () => {
               Фамилия:
               <input
                 className={cls.section_name}
-                // value={'Не доступно!'}
                 {...register("lastname", Form.Options.settings)}
               />
             </div>
@@ -143,7 +144,6 @@ export const Ownspace = () => {
           <div className={cls.section_aboutbox}>
             <textarea
               className={cls.section_about}
-              // value={'Не доступно!'}
               {...register("about", Form.Options.settings)}
             />
           </div>
@@ -157,12 +157,12 @@ export const Ownspace = () => {
           <section className={cls.ownspace_buttons}>
             <button onClick={onAddMoney} className={cls.buttons_button}>Пополнить</button>
             {popapMoney && <div className={cls.buttons_popap}>
-              <input placeholder="Введите сумму" className={cls.buttons_popap_input} type="text" onChange={onChangeSumMoney} value={money}/>
+              <input autoFocus placeholder="Введите сумму" className={cls.buttons_popap_input} type="text" onChange={onChangeSumMoney} value={money}/>
                 <button className={cls.buttons_popap_button} onClick={onSendMoney}>Подтвердите</button>
             </div>}
             <button onClick={onWithdrawMoney} className={cls.buttons_button}>Вывести</button>
             {popapMoneyWithdraw && <div className={cls.buttons_popap_right}>
-              <input placeholder="Введите сумму" className={cls.buttons_popap_right_input} type="text" onChange={onChangeWithdrawMoney} value={withdrawMoney}/>
+              <input autoFocus={true} placeholder="Введите сумму" className={cls.buttons_popap_right_input} type="text" onChange={onChangeWithdrawMoney} value={withdrawMoney}/>
                 <button className={cls.buttons_popap_right_button} onClick={handlerWithdrawMoney}>Подтвердите</button>
             </div>}
           </section>
@@ -173,7 +173,6 @@ export const Ownspace = () => {
             Ваш логин:
             <input
               className={cls.info_text_input}
-              // value={'Не доступно!'}
               {...register("login", Form.Options.settings)}
             />
           </p>
@@ -181,7 +180,6 @@ export const Ownspace = () => {
             Ваш email:
             <input
               className={cls.info_text_input}
-              // value={'Не доступно!'}
               {...register("email", Form.Options.email)}
             />
           </p>
@@ -189,7 +187,6 @@ export const Ownspace = () => {
             Ваш пароль:
             <input
               className={cls.info_text_input}
-              // value={'Не доступно!'}
               {...register("password", Form.Options.password)}
             />
           </p>
@@ -197,7 +194,6 @@ export const Ownspace = () => {
             Ваш кошелёк:
             <input
               className={cls.info_text_input}
-              // value={'Не доступно!'}
               {...register("wallet", Form.Options.settings)}
             />
           </p>

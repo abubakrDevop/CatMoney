@@ -42,10 +42,10 @@ $mobileSmall: 479.98px; // телефоны s
         justify-content: center;
         align-items: center;
         @media (max-width: $tablet) {
-            padding-top: 80px;
+            // padding-top: 80px;
           }
           @media (max-width: $mobile) {
-            padding-top: 40px;
+            // padding-top: 40px;
           }
 
         .section_block {
@@ -106,7 +106,7 @@ $mobileSmall: 479.98px; // телефоны s
     .footer {
         width: 100%;
         min-height: 70vh;
-        padding: 0px 80px;
+        // padding: 0px 80px;
         font-family: 'Roboto', sans-serif;
         text-align: center;
         display: flex;

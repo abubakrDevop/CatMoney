@@ -71,14 +71,14 @@ export const Settings = () => {
             <div className={cls.ownspace_namebox_in}> Имя:
               <input
                 className={cls.section_name}
-                // value={'Не доступно!'}
+  
                 {...register('name', Form.Options.settings)}
               />
             </div>
             <div className={cls.ownspace_namebox_in}> Фамилия:
               <input
                 className={cls.section_name}
-                // value={'Не доступно!'}
+  
                 {...register('lastname', Form.Options.settings)}
               />
             </div>
@@ -90,7 +90,6 @@ export const Settings = () => {
         <div className={cls.section_aboutbox}>
           <textarea
             className={cls.section_about}
-            // value={'Не доступно!'}
             {...register('about', Form.Options.settings)}
           />
         </div>
@@ -100,7 +99,7 @@ export const Settings = () => {
             Введите логин:
             <input
               className={cls.info_text_input}
-              // value={'Не доступно!'}
+
               {...register('login', Form.Options.settings)}
             />
           </p>
@@ -108,7 +107,7 @@ export const Settings = () => {
             Введите email:
             <input
               className={cls.info_text_input}
-              // value={'Не доступно!'}
+
               {...register('email', Form.Options.settings)}
             />
           </p>
@@ -116,7 +115,7 @@ export const Settings = () => {
             Введите пароль:
             <input
               className={cls.info_text_input}
-              // value={'Не доступно!'}
+
               {...register('password', Form.Options.settings)}
             />
           </p>

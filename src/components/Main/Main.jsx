@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import cls from '../Main/Main.module.scss'
 import { IoChevronDownOutline } from 'react-icons/io5'
-import { Doughnut, Bar } from 'react-chartjs-2'
+import { Doughnut } from 'react-chartjs-2'
 import { Chart, registerables } from 'chart.js'
 // import axios from "axios";
 
@@ -30,7 +30,7 @@ export const Main = () => {
   Chart.defaults.font.size = 16;
   Chart.defaults.font.weight = '500';
   Chart.defaults.color = '#9BD0F5';
-  const labels = [`Нас уже: ${users}`]
+  const labels = [`Нас уже: ${users} чел.`]
   const arrayUsers = [users, 100]
   // const dataArrayNoWrite = [1,2,2,2]
 
@@ -65,7 +65,7 @@ export const Main = () => {
       },
     ]
   }
-  const labelsDay = [`Раб.: ${countDay} дней`]
+  const labelsDay = [`Работаем.: ${countDay} дней`]
   const arrayDay = [countDay, 100]
   const dataDay = {
     labels: labelsDay,
@@ -82,15 +82,15 @@ export const Main = () => {
     ]
   }
 
-  const labelsLine = ['янв', 'фев', 'март']
-  const paymentDate = [`${countPayment} руб`]
-  const dataLine = {
-    labels: labelsLine,
+  const labelsPayment = [`Выплачено: ${countPayment} руб.`]
+  const paymentDate = [countPayment, 100]
+  const dataPayment = {
+    labels: labelsPayment,
     datasets: [
       {
         label: 'Выплачено',
         data: paymentDate,
-        backgroundColor: ['#dc3545','#dc3545', '#dc3545'],
+        backgroundColor: ['#dc3545','rgba(255,0,255, 0.4)'],
         borderColor: 'rgba(75,192,192,1)',
         fill: true,
         borderWidth: 3,
@@ -130,13 +130,12 @@ export const Main = () => {
                 }}
               />
               <Doughnut
-                data={data}
+                data={dataDay}
                 options={{
                   responsive: true,
                   cutout: "50%",
                 }}
               />
-              {/* <Bar data={dataLine} /> */}
             </div>
             <div className={cls.main__statistics_block_2}>
               <Doughnut
@@ -144,10 +143,9 @@ export const Main = () => {
                 options={{ responsive: true, cutout: "50%" }}
               />
               <Doughnut
-                data={onlineData}
+                data={dataPayment}
                 options={{ responsive: true, cutout: "50%" }}
               />
-              {/* <Bar data={onlineData} /> */}
             </div>
           </div>
         </div>
