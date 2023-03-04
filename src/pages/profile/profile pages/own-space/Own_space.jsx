@@ -1,118 +1,49 @@
-import React, { useState } from "react";
+import React from "react";
 import cls from '../own-space/Own_space.module.scss'
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { Form } from "../../../../helpers/form/index";
+import { Form } from '../../../../helpers/form/index'
 
 export const Ownspace = () => {
-  const [money, setMoney] = useState('')
-  const [withdrawMoney, setWithdrawMoney] = useState('')
-  const [popapMoney, setPopapMoney] = useState(false)
-  const [popapMoneyWithdraw, setPopapMoneyWithdraw] = useState(false)
+  const {
+    reset,
+    register,
+    handleSubmit,
+  } = useForm()
 
-  const { reset, register, handleSubmit } = useForm()
+  const [active, setActive] = React.useState()
 
-    const idUser = JSON.parse(localStorage.getItem("regist"));
-    console.log("idUserrrrrr", idUser.id);
+  // const userData = localStorage.getItem('userData')
+  
+  // let [
+  //   {
+  //     login,
+  //     email,
+  //     password,
+  //     wallet,
+  //     userId,
+  //   }
+  // ] = userData
 
-    const onSubmit = (data) => {
-      const body = {
-        id: idUser.id,
-        // image: imageUrl,
-        name: data.name,
-        lastname: data.lastname,
-        login: data.login,
-        email: data.email,
-        password: data.password,
-        mode: 1,
-        wallet: data.wallet
+  // axios.get('')
+  //   .then(data => {localStorage.setItem('userData', data)})
 
-      };
+  const setMoney = (data) => {
+    axios.post('', { set: data.setmoney } )
+    .then(res => {
+      res.status === 200 ? alert('Успешно :D') : alert('Ошибка :(')
+    })
+  }
 
-      axios
-        .post("https://088a-80-94-250-40.eu.ngrok.io/api/v2/settings", body)
-        .then((res) => {
-          console.log(res);
-          if (res.data.status === "200") {
-            reset();
-             alert("Данные успешно обновлены")
-          } else if (res.data.status === "") {
-            reset();
-          } else if (res.data.status === "") {
-            reset();
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
+  const getMoney = (data) => {
+    axios.post('', { get: data.getmoney } )
+    .then(res => {
+      res.status === 200 ? alert('Успешно :D') : alert('Ошибка :(')
+    })
+  }
 
-    const onChangeSumMoney = (e) => {
-      setMoney(e.target.value)
-      
-    }
-    const onChangeWithdrawMoney = (e) => {
-      setWithdrawMoney(e.target.value)
-     
-    }
-
-    console.log("money", money)
-
-    const onAddMoney = (event) => {
-      event. preventDefault()
-      setPopapMoney(!popapMoney)
-    }
-    const onWithdrawMoney = (event) => {
-      event. preventDefault()
-      setPopapMoneyWithdraw(!popapMoneyWithdraw)
-    }
-    console.log("popapMoney", popapMoney)
-
-    const handlerWithdrawMoney = () => {
-      alert(`Вывод ${withdrawMoney ? withdrawMoney : 0} рублей`)
-      setPopapMoneyWithdraw(!popapMoneyWithdraw)
-      setWithdrawMoney('')
-      // axios
-      // .post("https://088a-80-94-250-40.eu.ngrok.io/api/v2/settings", {money: money})
-      // .then((res) => {
-      //   console.log(res);
-      //   if (res.data.status === "200") {
-      //     reset();
-      //      alert(`Счёт пополнен на ${money} рублей`)
-      //   } else if (res.data.status === "") {
-      //     reset();
-      //   } else if (res.data.status === "") {
-      //     reset();
-      //   }
-      // })
-      // .catch((error) => {
-      //   console.log(error);
-      // });
-  };
-    const onSendMoney = () => {
-      alert(`Счёт пополнен на ${money ? money : 0} рублей`)
-      setPopapMoney(!popapMoney)
-      setMoney('')
-      // axios
-      // .post("https://088a-80-94-250-40.eu.ngrok.io/api/v2/settings", {money: money})
-      // .then((res) => {
-      //   console.log(res);
-      //   if (res.data.status === "200") {
-      //     reset();
-      //      alert(`Счёт пополнен на ${money} рублей`)
-      //   } else if (res.data.status === "") {
-      //     reset();
-      //   } else if (res.data.status === "") {
-      //     reset();
-      //   }
-      // })
-      // .catch((error) => {
-      //   console.log(error);
-      // });
-  };
-    
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={cls.ownspace}>
+    <div className={cls.ownspace}>
       <section className={cls.ownspace_headsection}>
         <section className={cls.ownspace_section}>
           <img
@@ -122,30 +53,19 @@ export const Ownspace = () => {
           />
           <section className={cls.section_namebox}>
             <div className={cls.ownspace_namebox_in}>
-              {" "}
               Имя:
-              <input
-                className={cls.section_name}
-                {...register("name", Form.Options.settings)}
-              />
+              <p className={cls.section_name}> {} </p>
             </div>
             <div className={cls.ownspace_namebox_in}>
-              {" "}
               Фамилия:
-              <input
-                className={cls.section_name}
-                {...register("lastname", Form.Options.settings)}
-              />
+              <p className={cls.section_name}> {} </p>
             </div>
           </section>
         </section>
 
         <section className={cls.ownspace_section}>
           <div className={cls.section_aboutbox}>
-            <textarea
-              className={cls.section_about}
-              {...register("about", Form.Options.settings)}
-            />
+            <p className={cls.section_about}> {} </p>
           </div>
         </section>
       </section>
@@ -155,57 +75,62 @@ export const Ownspace = () => {
           <h1 className={cls.balance_headtitle}>Баланс</h1>
           <h1 className={cls.balance_title}>0 ₽</h1>
           <section className={cls.ownspace_buttons}>
-            <button onClick={onAddMoney} className={cls.buttons_button}>Пополнить</button>
-            {popapMoney && <div className={cls.buttons_popap}>
-              <input autoFocus placeholder="Введите сумму" className={cls.buttons_popap_input} type="text" onChange={onChangeSumMoney} value={money}/>
-                <button className={cls.buttons_popap_button} onClick={onSendMoney}>Подтвердите</button>
-            </div>}
-            <button onClick={onWithdrawMoney} className={cls.buttons_button}>Вывести</button>
-            {popapMoneyWithdraw && <div className={cls.buttons_popap_right}>
-              <input autoFocus={true} placeholder="Введите сумму" className={cls.buttons_popap_right_input} type="text" onChange={onChangeWithdrawMoney} value={withdrawMoney}/>
-                <button className={cls.buttons_popap_right_button} onClick={handlerWithdrawMoney}>Подтвердите</button>
-            </div>}
+
+            <button className={cls.buttons_button}>Пополнить</button>
+
+            {
+              active && 
+              <form onSubmit={handleSubmit(setMoney)} className={cls.buttons_popap}>
+                <input 
+                  autoFocus 
+                  placeholder="Введите сумму" 
+                  className={cls.buttons_popap_input} 
+                  type="text" 
+                  {...register('setmoney', Form.Options.moneyInputs)}
+                />
+                <button type="submit" className={cls.buttons_popap_button}> Подтвердите </button>
+              </form>
+            }
+
+            <button className={cls.buttons_button}>Вывести</button>
+
+            {
+              !active && 
+              <form onSubmit={handleSubmit(getMoney)} className={cls.buttons_popap}>
+                <input 
+                  autoFocus 
+                  placeholder="Введите сумму" 
+                  className={cls.buttons_popap_input} 
+                  type="text" 
+                  {...register('getmoney', Form.Options.moneyInputs)}
+                />
+                <button type="submit" className={cls.buttons_popap_button}> Подтвердите </button>
+              </form>
+            }
+
           </section>
         </section>
 
         <section className={cls.ownspace_info}>
           <p className={cls.info_text}>
             Ваш логин:
-            <input
-              className={cls.info_text_input}
-              {...register("login", Form.Options.settings)}
-            />
           </p>
           <p className={cls.info_text}>
             Ваш email:
-            <input
-              className={cls.info_text_input}
-              {...register("email", Form.Options.email)}
-            />
           </p>
           <p className={cls.info_text}>
             Ваш пароль:
-            <input
-              className={cls.info_text_input}
-              {...register("password", Form.Options.password)}
-            />
           </p>
           <p className={cls.info_text}>
             Ваш кошелёк:
-            <input
-              className={cls.info_text_input}
-              {...register("wallet", Form.Options.settings)}
-            />
           </p>
           <p className={cls.info_text}>
-            Ваш id пользователя: <span>{idUser.id ? idUser.id : "Ваш 22222"}</span>
+            Ваш id пользователя: <span> {} </span>
           </p>
         </section>
 
-        <button type="submit" className={cls.ownspace_changeinfo}>
-          Редактировать профиль
-        </button>
+        <button className={cls.ownspace_changeinfo}> Редактировать профиль </button>
       </section>
-    </form>
+    </div>
   );
 }

@@ -323,88 +323,8 @@ $mobileSmall: 479.98px; // телефоны s
                     }
                   }
                 }
-                .buttons_popap_right {
-                  position: absolute;
-                  background-color: rgba(54, 53, 66, 0.4);
-                  border-radius: 5px;
-                  box-shadow: 0 0 5px black;
-                  width: 48%;
-                  height: 150px;
-                  top: 100%;
-                  right: 0;
-                  display: flex;
-                  flex-direction: column;
-                  align-items: center;
-                  justify-content: center;
-                  gap: 20px;
-
-                  .buttons_popap_right_input {
-                    display: flex;
-                    width: 80%;
-                    height: 35px;
-                    font-size: 16px;
-                    border: none;
-                    outline: none;
-                    padding: 0 10px;
-                    box-shadow: 0 0 5px black;
-                    border-radius: 11px;
-                  }
-                  @media (max-width: $pc) {
-                    ::-webkit-input-placeholder { font-size: 13px; color:#f00;}
-                    ::-moz-placeholder { font-size: 13px; color:#f00;}
-                    :-ms-input-placeholder { font-size: 13px; color:#f00;}
-                    :-moz-placeholder { font-size: 13px; color:#f00;}
-                  }
-                  @media (max-width: 1100px) {
-                    ::-webkit-input-placeholder { font-size: 11px; color:#f00;}
-                    ::-moz-placeholder { font-size: 11px; color:#f00;}
-                    :-ms-input-placeholder { font-size: 11px; color:#f00;}
-                    :-moz-placeholder { font-size: 11px; color:#f00;}
-                  }
-                  @media (max-width: $tablet) {
-                    ::-webkit-input-placeholder { font-size: 17px; color:#f00;}
-                    ::-moz-placeholder { font-size: 17px; color:#f00;}
-                    :-ms-input-placeholder { font-size: 17px; color:#f00;}
-                    :-moz-placeholder { font-size: 17px; color:#f00;}
-                  }
-                  @media (max-width: $mobile) {
-                    ::-webkit-input-placeholder { font-size: 11px; color:#f00;}
-                    ::-moz-placeholder { font-size: 11px; color:#f00;}
-                    :-ms-input-placeholder { font-size: 11px; color:#f00;}
-                    :-moz-placeholder { font-size: 11px; color:#f00;}
-                  }
-                  @media (max-width: $mobileSmall) {
-                    ::-webkit-input-placeholder { font-size: 9px; color:#f00;}
-                    ::-moz-placeholder { font-size: 9px; color:#f00;}
-                    :-ms-input-placeholder { font-size: 9px; color:#f00;}
-                    :-moz-placeholder { font-size: 9px; color:#f00;}
-                  }
-                  @media (max-width: 400px) {
-                    ::-webkit-input-placeholder { font-size: 6px; color:#f00;}
-                    ::-moz-placeholder { font-size: 6px; color:#f00;}
-                    :-ms-input-placeholder { font-size: 6px; color:#f00;}
-                    :-moz-placeholder { font-size: 6px; color:#f00;}
-                  }
-
-                  .buttons_popap_right_button {
-                    display: flex;
-                    font-weight: bold;
-                    padding: 6px 15.5px;
-                    border: none;
-                    background: linear-gradient(to left, rgb(60, 0, 128), rgba(0, 89, 255, 0.5));
-                    border-radius: 30px;
-                    color: white;
-                    font-size: 15px;
-                    overflow: hidden;
-                    box-shadow: 0 0 5px black;
-                    @media (max-width: $mobileSmall) {
-                      font-size: 9px;
-                      padding: 6px 12px;
-                    }
-                  }
-                }
+              }
             }
-        }
 
         .ownspace_changeinfo {
             position: relative;

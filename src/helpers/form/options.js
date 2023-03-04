@@ -35,3 +35,9 @@ export const settings = {
         value: false,
     }
 }
+
+export const moneyInputs = {
+    pattern: {
+        value: true,
+    }
+}

@@ -1,129 +1,83 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-$pc: 1480px; // Пкб ноутбуки, некоторые планшеты в горизонтальном положении
-$tablet: 991.98px; // Планшеты, некоторые телефоны в горизонтальном положении
-$mobile: 767.98px; // телефоны L
-$mobileSmall: 479.98px; // телефоны s
+.chat {
+  width: 100%;
+  height: 90vh;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-.ownspace {
-    width: 96%;
-    height: 100%;
-    padding: 30px;
-    gap: 50px;
-    justify-content: space-around;
-    font-family: 'Roboto', sans-serif;
-    background: white;
+  .chat_block {
+    width: 300px;
+    height: 300px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px black;
     display: flex;
-      @media (max-width: $tablet) {
-        flex-direction: column;
-        align-items: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .icon_box {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      box-shadow: 0 0 5px black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgb(21, 79, 238);
+
+      .icon {
+        position: relative;
+        top: 4px;
+        left: -2px;
+        font-size: 50px;
+        color: white;
+      } 
+    }
+
+    .chat_title {
+      font-size: 20px;
+      margin: 20px 0 20px 0;
+    }
+
+    .chat_button {
+      position: relative;
+      width: 85%;
+      height: 40px;
+      font-weight: bold;
+      border: none;
+      background: linear-gradient(to left, rgb(60, 0, 128), rgba(0, 89, 255, 0.5));
+      border-radius: 30px;
+      color: white;
+      font-size: 16px;
+      overflow: hidden;
+      box-shadow: 0 0 5px black;
+      z-index: 0;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 0%;
+          background: linear-gradient(to left, rgba(0, 89, 255, 0.5), rgb(60, 0, 128));
+          transition: .5s;
+          border-bottom-left-radius: 50%;
+          border-bottom-right-radius: 50%;
+          z-index: -1;
       }
-      @media (max-width: $mobileSmall) {
-        padding-left: 0px;
+
+      &:hover::before {
+          height: 180%;
       }
-
-
-        .ownspace_section {
-            display: flex;
-            align-items: center;
-
-             @media (max-width: $mobileSmall) {
-              flex-direction: column;
-              align-items: center;
-            }
-
-            .section_img {
-                width: 200px;
-                height: 200px;
-                border-radius: 50%;
-                border: 3px solid transparent;
-                background: linear-gradient(#cfcfcf,#cfcfcf)
-                            padding-box,
-                            linear-gradient(to left, rgb(60, 0, 128), rgba(0, 89, 255, 0.5))
-                            border-box;
-                box-shadow: 0 0 10px black;
-                @media (max-width: $mobileSmall) {
-
-                }
-            }
-            }
-            .ownspace_telegramBot {
-              width: 50%;
-              height: 500px;
-              padding: 15px 20px 0 20px;
-              border-radius: 20px;
-              box-shadow: 0 0 5px black;
-              outline: none;
-              border: none;
-              resize: none;
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              @media (max-width: $tablet) {
-                width: 90%;
-                
-              }
-              @media (max-width: $mobile) {
-                width: 80%;
-                
-              }
-              @media (max-width: $mobileSmall) {
-                width: 75%;
-                
-              }
-             
-
-              .telegramBot_block {
-                width: 100%;
-                height: 60px;
-                display: flex;
-                align-items: center;
-                gap: 50px;
-                @media (max-width: $tablet) {
-                 justify-content: space-between;
-                  
-                }
-                @media (max-width: $mobile) {
-                 flex-direction: column;
-                 gap: 10px;
-                  height: 100px;
-                }
-                .telegramBot_title {
-                  font-size: 30px;
-                  font-weight: bold;
-                  @media (max-width: $mobile) {
-                    font-size: 25px;
-                    font-weight: bold;
-                   }
-                   @media (max-width: $mobileSmall) {
-                    font-weight: 800;
-                    font-size: 18px;
-                  }
-                }
-                .telegramBot_link {
-                  background: #229ED9;
-                  width: 200px;
-                  height: 50px;
-                  border-radius: 10px;
-                  color: white;
-                  display: flex;
-                  gap: 10px;
-                  justify-content: center;
-                  align-items: center;
-                  text-decoration: none;
-                  @media (max-width: $mobileSmall) {
-                    width: 180px;
-                  }
-                  .telegramBot_icon {
-                    font-size: 30px;
-                  }
-                  .telegramBot_text {
-                    font-size: 20px;
-                    font-weight: bold;
-                  }
-                }
-              }
-
-                }
+    }
+  }
 }
 

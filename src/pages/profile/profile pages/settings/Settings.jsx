@@ -71,14 +71,12 @@ export const Settings = () => {
             <div className={cls.ownspace_namebox_in}> Имя:
               <input
                 className={cls.section_name}
-  
                 {...register('name', Form.Options.settings)}
               />
             </div>
             <div className={cls.ownspace_namebox_in}> Фамилия:
               <input
                 className={cls.section_name}
-  
                 {...register('lastname', Form.Options.settings)}
               />
             </div>
