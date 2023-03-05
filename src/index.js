@@ -4,7 +4,7 @@ import App from './App';
 import reportWebVitals from './start files/reportWebVitals';
 import { createGlobalStyle } from 'styled-components'
 import { Provider } from 'react-redux'
-import { store } from './rudux/store/index.js'
+import {store} from './store'
 
 const Global = createGlobalStyle `
   * {
@@ -23,7 +23,7 @@ const Global = createGlobalStyle `
   }
 
   body::-webkit-scrollbar-thumb {
-    width: 100%
+    width: 100%;
     height: 1px;
     background: rgb(0, 100, 255);
   }
