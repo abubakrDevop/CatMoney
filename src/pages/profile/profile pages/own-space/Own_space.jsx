@@ -11,10 +11,13 @@ export const Ownspace = () => {
     handleSubmit,
   } = useForm()
 
-  const [active, setActive] = React.useState()
+  const [active, setActive] = React.useState(false)
+  const [getActive, setGetActive] = React.useState(false)
+  const [addAmount, setAddAmount] = React.useState('')
+  const [getAmount, setGetAmount] = React.useState('')
 
   // const userData = localStorage.getItem('userData')
-  
+
   // let [
   //   {
   //     login,
@@ -28,19 +31,55 @@ export const Ownspace = () => {
   // axios.get('')
   //   .then(data => {localStorage.setItem('userData', data)})
 
-  const setMoney = (data) => {
-    axios.post('', { set: data.setmoney } )
-    .then(res => {
-      res.status === 200 ? alert('Успешно :D') : alert('Ошибка :(')
-    })
+  const handlerAddConfirm = () => {
+    setActive(!active);
+    alert(`Пополнено на ${addAmount ? addAmount : 0} рублей`);
+    console.log(addAmount)
+    // axios.post("", { set: addAmount }).then((res) => {
+    //   res.status === 200 ? alert("Успешно :D") : alert("Ошибка :(");
+    // });
+  }
+  const handlerTopUP = () => {
+    setActive(!active);
+  };
+
+  const changeAddAmount = (e) => {
+   setAddAmount(e.target.value);
   }
 
-  const getMoney = (data) => {
-    axios.post('', { get: data.getmoney } )
-    .then(res => {
-      res.status === 200 ? alert('Успешно :D') : alert('Ошибка :(')
-    })
-  }
+
+  const handlerGetConfirm = () => {
+    setGetActive(!getActive);
+    alert(`Пополнено на ${getAmount ? getAmount : 0} рублей`);
+    console.log(getAmount);
+    // axios.post("", { set: addAmount }).then((res) => {
+    //   res.status === 200 ? alert("Успешно :D") : alert("Ошибка :(");
+    // });
+  };
+  const handlerGetSum = () => {
+    setGetActive(!getActive);
+  };
+
+  const changeGetAmount = (e) => {
+    setGetAmount(e.target.value);
+  };
+
+  // const setMoney = (data) => {
+  //   alert(`Пополнено на ${data.setmoney ? data.setmoney : 0} рублей`);
+  //   console.log("data.setmoney", data.setmoney)
+    // axios.post('', { set: data.setmoney } )
+    // .then(res => {
+    //   res.status === 200 ? alert('Успешно :D') : alert('Ошибка :(')
+    // })
+  // }
+
+  // const getMoney = (data) => {
+  //   alert(`Выведено ${data.getmoney ? data.getmoney : 0} рублей`);
+    // axios.post('', { get: data.getmoney } )
+    // .then(res => {
+    //   res.status === 200 ? alert('Успешно :D') : alert('Ошибка :(')
+    // })
+  // }
 
   return (
     <div className={cls.ownspace}>
@@ -75,61 +114,100 @@ export const Ownspace = () => {
           <h1 className={cls.balance_headtitle}>Баланс</h1>
           <h1 className={cls.balance_title}>0 ₽</h1>
           <section className={cls.ownspace_buttons}>
+            <button
+              type="button"
+              onClick={handlerTopUP}
+              className={cls.buttons_button}
+            >
+              Пополнить
+            </button>
 
-            <button className={cls.buttons_button}>Пополнить</button>
-
-            {
-              active && 
-              <form onSubmit={handleSubmit(setMoney)} className={cls.buttons_popap}>
-                <input 
-                  autoFocus 
-                  placeholder="Введите сумму" 
-                  className={cls.buttons_popap_input} 
-                  type="text" 
-                  {...register('setmoney', Form.Options.moneyInputs)}
+            {active && (
+              <div className={cls.buttons_popap}>
+                <input
+                  autoFocus
+                  placeholder="Введите сумму"
+                  className={cls.buttons_popap_input}
+                  type="text"
+                  onChange={changeAddAmount}
+                  value={addAmount}
                 />
-                <button type="submit" className={cls.buttons_popap_button}> Подтвердите </button>
-              </form>
-            }
+                <button
+                  type="button"
+                  onClick={handlerAddConfirm}
+                  className={cls.buttons_popap_button}
+                >
+                  {" "}
+                  Подтвердите{" "}
+                </button>
+              </div>
+            )}
 
-            <button className={cls.buttons_button}>Вывести</button>
+            <button
+              type="button"
+              onClick={handlerGetSum}
+              className={cls.buttons_button}
+            >
+              Вывести
+            </button>
 
-            {
-              !active && 
-              <form onSubmit={handleSubmit(getMoney)} className={cls.buttons_popap}>
-                <input 
-                  autoFocus 
-                  placeholder="Введите сумму" 
-                  className={cls.buttons_popap_input} 
-                  type="text" 
-                  {...register('getmoney', Form.Options.moneyInputs)}
+            {getActive && (
+              <div className={cls.buttons_popap_right}>
+                <input
+                  autoFocus
+                  placeholder="Введите сумму"
+                  className={cls.buttons_popap_right_input}
+                  type="text"
+                  onChange={changeGetAmount}
+                  value={getAmount}
                 />
-                <button type="submit" className={cls.buttons_popap_button}> Подтвердите </button>
-              </form>
-            }
+                <button
+                  type="button"
+                  onClick={handlerGetConfirm}
+                  className={cls.buttons_popap_right_button}
+                >
+                  {" "}
+                  Подтвердите{" "}
+                </button>
+              </div>
+            )}
 
+            {/* <button className={cls.buttons_button}>Вывести</button> */}
+            {/*
+            {!active && (
+              <form
+                onSubmit={handleSubmit(getMoney)}
+                className={cls.buttons_popap}
+              >
+                <input
+                  autoFocus
+                  placeholder="Введите сумму"
+                  className={cls.buttons_popap_input}
+                  type="text"
+                  {...register("getmoney", Form.Options.moneyInputs)}
+                />
+                <button type="submit" className={cls.buttons_popap_button}>
+                  {" "}
+                  Подтвердите{" "}
+                </button>
+              </form>
+            )} */}
           </section>
         </section>
 
         <section className={cls.ownspace_info}>
-          <p className={cls.info_text}>
-            Ваш логин:
-          </p>
-          <p className={cls.info_text}>
-            Ваш email:
-          </p>
-          <p className={cls.info_text}>
-            Ваш пароль:
-          </p>
-          <p className={cls.info_text}>
-            Ваш кошелёк:
-          </p>
+          <p className={cls.info_text}>Ваш логин:</p>
+          <p className={cls.info_text}>Ваш email:</p>
+          <p className={cls.info_text}>Ваш пароль:</p>
+          <p className={cls.info_text}>Ваш кошелёк:</p>
           <p className={cls.info_text}>
             Ваш id пользователя: <span> {} </span>
           </p>
         </section>
 
-        <button className={cls.ownspace_changeinfo}> Редактировать профиль </button>
+        <button className={cls.ownspace_changeinfo}>
+          Редактировать профиль
+        </button>
       </section>
     </div>
   );

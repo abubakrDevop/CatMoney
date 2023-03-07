@@ -1,6 +1,7 @@
 import React from "react";
 import cls from './Header.module.scss'
 import { Link, useLocation } from 'react-router-dom'
+import icon from '../../assets/img/icon.png'
 import  {
           IoLogInOutline,
           IoLogOutOutline,
@@ -45,7 +46,7 @@ export const Header = () => {
   return (
     <header className={cls.header}>
       <section className={cls.header_logo}>
-        <img className={cls.logo_icon} src="./icon.png" alt="logo" />
+        <img className={cls.logo_icon} src={icon} alt="logo" />
         <h1 className={cls.logo_text}>
           <span className={cls.logo_text_in}>Cat</span>
           <span>Money</span>
@@ -64,7 +65,9 @@ export const Header = () => {
             <Link
               key={item.id}
               to={item.to}
-              onClick={() => {setActive(false)}}
+              onClick={() => {
+                setActive(false);
+              }}
               className={
                 location.pathname === item.to
                   ? cls.section__title__active
@@ -99,7 +102,7 @@ export const Header = () => {
               <div className={cls.header_register_block}>
                 <span className={cls.register_mobile_out}>Войти</span>
                 <Link className={cls.header__icon} to={"/register"}>
-                  <IoLogInOutline 
+                  <IoLogInOutline
                     onClick={() => {
                       localStorage.setItem("registered", "ok");
                       window.location.reload();

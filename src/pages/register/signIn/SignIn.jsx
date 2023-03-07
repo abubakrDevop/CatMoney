@@ -3,7 +3,7 @@ import cls from '../signIn/SignIn.module.scss'
 import { useForm } from 'react-hook-form'
 import { Form } from '../../../helpers/form/index'
 import axios from "axios";
-import  {  
+import  {
           IoEyeOffOutline,
           IoEyeOutline,
           IoLockClosedOutline,
@@ -29,24 +29,25 @@ export const SignIn = () => {
       mode: 1,
     }
 
-    axios.post('https://088a-80-94-250-40.eu.ngrok.io/api/v2/auth', body)
-      .then(res => {
-        console.log(res)
-        if (res.data.status === 'Логин введён неверно') {
-          reset()
-          setLoginError(res.data.status)
-        } else if (res.data.status === 'Пароль неверный!') {
-          reset()
-          setPasswordError(res.data.status)
-        } else if (res.data.status === '200') {
-          reset()
+    axios
+      .post("https://bf34-80-94-.io/api/v2/auth", body)
+      .then((res) => {
+        console.log(res);
+        if (res.data.status === "Логин введён неверно") {
+          reset();
+          setLoginError(res.data.status);
+        } else if (res.data.status === "Пароль неверный!") {
+          reset();
+          setPasswordError(res.data.status);
+        } else if (res.data.status === "200") {
+          reset();
           localStorage.setItem("auth", JSON.stringify(res.data));
           window.location.reload();
         }
       })
-      .catch(error => {
-        console.log(error)
-      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   // useEffect(() => {
@@ -70,9 +71,9 @@ export const SignIn = () => {
 
         <div className={cls.form_inputbox}>
           <IoPersonOutline className={cls.input_icon} />
-          <input 
-            className={cls.form_input} 
-            type="text" 
+          <input
+            className={cls.form_input}
+            type="text"
             placeholder="Введите логин..."
             {...register('login', Form.Options.allInputs)}
           />
@@ -87,21 +88,21 @@ export const SignIn = () => {
 
         <div className={cls.form_inputbox}>
           <IoLockClosedOutline className={cls.input_icon} />
-          <input 
-            className={cls.form_input} 
-            type={active === false ? 'password' : 'text'} 
+          <input
+            className={cls.form_input}
+            type={active === false ? 'password' : 'text'}
             placeholder="Введите пароль..."
             {...register('password', Form.Options.password)}
           />
           {
-            active === false ? 
-            <IoEyeOffOutline 
-              className={cls.input_eye} 
+            active === false ?
+            <IoEyeOffOutline
+              className={cls.input_eye}
               onClick={() => setActive(true)}
             />
             :
-            <IoEyeOutline 
-              className={cls.input_eye} 
+            <IoEyeOutline
+              className={cls.input_eye}
               onClick={() => setActive(false)}
             />
           }

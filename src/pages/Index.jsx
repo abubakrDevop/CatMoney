@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import styled from 'styled-components'
 import axios from 'axios'
+import { useParams, useNavigate } from "react-router";
+
 import { Header } from "../components/header/Header";
 import { Routes, Route } from 'react-router-dom'
 import { Root } from "../components/Root";
@@ -13,56 +15,73 @@ import { AddTask } from "./add-task/AddTask";
 import { Profile } from "./profile/Profile";
 
 const StyledMain = styled.main`
-  width: 100%;
-  min-height: 100vh;
-  background-image: url(./city.gif);
-  background-size: 100% 100%;
-  background-attachment: fixed;
-  overflow: hidden;
+  // width: 100%;
+  // min-height: 100vh;
+  // background-image: url("../assets/img/city.gif");
+  // background-size: 100% 100%;
+  // background-attachment: fixed;
+  // overflow: hidden;
 
-  @media (max-width: 820px) {
-    background-image: url(./tablet.gif);
-  }
-  @media (max-width: 479px) {
-    background-image: url(./mobile5city.gif);
-  }
+  // @media (max-width: 820px) {
+  //   background-image: url("../assets/img/tablet.gif");
+  // }
+  // @media (max-width: 479px) {
+  //   background-image: url("../assets/img");
+  // }
 `;
 
 export const Index = () => {
+  let navigate = useNavigate();
+  const params = useParams();
+  console.log('typeofParams', params?.id)
 
-useEffect(() => {
-  localStorage.setItem("regist", JSON.stringify({"id": 11}));
-}, [])
+  useEffect(() => {
+    localStorage.setItem("regist", JSON.stringify({ id: 11 }));
+  }, []);
 
-//   const [chatFocus, setChatFocus] = useState(true);
 
-//   const idUser = JSON.parse(localStorage.getItem("regist"))
-//   const DetectChatFocus = () => {
-//     useEffect(() => {
-//         const handleActivityFalse = () => {
-//             setChatFocus(false);
-//         };
-//         const handleActivityTrue = () => {
-//             setChatFocus(true);
-//         };
-//         window.addEventListener('focus', handleActivityTrue);
-//         window.addEventListener('blur', handleActivityFalse);
+    const userId = JSON.parse(localStorage.getItem("regist"));
 
-//         return () => {
-//             window.removeEventListener('focus', handleActivityTrue);
-//             window.removeEventListener('blur', handleActivityFalse);
-//         };
-//     }, [chatFocus]);
-// };
-// DetectChatFocus();
-// console.log('chatFocus', chatFocus)
+  useEffect(() => {
+    if (params?.id) {
+      navigate("/");
+    }
+  }, [params?.id])
 
-// useEffect(() => {
-//   axios.post('https://088a-80-94-250-40.eu.ngrok.io/api/v2/exit',{ id: idUser.id })
-//     .then(res => console.log(res.data))
-// }, [chatFocus === false])
+    if (Number(params?.id) === userId?.id) {
+      localStorage.setItem("userLink", params?.id);
+      console.log("params", params?.id);
+    }
 
-// const idUser = JSON.parse(localStorage.getItem("regist"))
+  //   const [chatFocus, setChatFocus] = useState(true);
+
+  //   const idUser = JSON.parse(localStorage.getItem("regist"))
+  //   const DetectChatFocus = () => {
+  //     useEffect(() => {
+  //         const handleActivityFalse = () => {
+  //             setChatFocus(false);
+  //         };
+  //         const handleActivityTrue = () => {
+  //             setChatFocus(true);
+  //         };
+  //         window.addEventListener('focus', handleActivityTrue);
+  //         window.addEventListener('blur', handleActivityFalse);
+
+  //         return () => {
+  //             window.removeEventListener('focus', handleActivityTrue);
+  //             window.removeEventListener('blur', handleActivityFalse);
+  //         };
+  //     }, [chatFocus]);
+  // };
+  // DetectChatFocus();
+  // console.log('chatFocus', chatFocus)
+
+  // useEffect(() => {
+  //   axios.post('https://088a-80-94-250-40.eu.ngrok.io/api/v2/exit',{ id: idUser.id })
+  //     .then(res => console.log(res.data))
+  // }, [chatFocus === false])
+
+  // const idUser = JSON.parse(localStorage.getItem("regist"))
 
   // window.addEventListener('beforeunload', function(event) {
   //   // Отправляем POST запрос с помощью Axios
@@ -74,7 +93,6 @@ useEffect(() => {
   //       console.log(error);
   //     });
   // });
-
 
   return (
     <StyledMain>
@@ -90,5 +108,5 @@ useEffect(() => {
         <Route path="/profile/*" element={<Profile />} />
       </Routes>
     </StyledMain>
-  )
+  );
 }

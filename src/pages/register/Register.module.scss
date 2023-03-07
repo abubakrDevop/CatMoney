@@ -14,6 +14,7 @@ $mobileSmall: 479.98px; // телефоны s
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: #222222;
     @media (max-width: $mobileSmall) {
         background: #222222;
 
@@ -45,7 +46,7 @@ $mobileSmall: 479.98px; // телефоны s
         flex-direction: column;
         align-items: center;
         z-index: 1;
-    
+
         .label_checkbox {
             appearance: none;
         }
@@ -53,7 +54,7 @@ $mobileSmall: 479.98px; // телефоны s
         .label_checkbox:checked ~ .label_navigator .register_item {
             transform: translateX(99px);
         }
-    
+
         .label_navigator {
             position: relative;
             margin-top: 10px;
