@@ -19,6 +19,9 @@ $mobileSmall: 479.98px; // телефоны s
     .add_task_form {
         margin-top: 100px;
         width: 40%;
+          @media (max-width: $tablet) {
+           width: 70%;
+         }
 
             .add_task_form_info {
                 width: 100%;
@@ -60,6 +63,9 @@ $mobileSmall: 479.98px; // телефоны s
                       top: 42%;
                       left: 2%;
                       font-size: 18px;
+                        @media (max-width: $mobileSmall) {
+                          left: 5%;
+                        }
                     }
                 }
                     .info_select {
@@ -122,6 +128,9 @@ $mobileSmall: 479.98px; // телефоны s
                           top: 53%;
                           left: 2%;
                           font-size: 18px;
+                            @media (max-width: $mobileSmall) {
+                              left: 5%;
+                            }
                         }
                     }
                     .info_price {
@@ -146,8 +155,8 @@ $mobileSmall: 479.98px; // телефоны s
                             font-size: 12px;
                           }
                           @media (max-width: $tablet) {
-                            flex-direction: column;
-                            gap: 0px;
+                            // flex-direction: column;
+                            // gap: 0px;
                             width: 100%;
                           }
                           .info_price_size {
@@ -159,6 +168,9 @@ $mobileSmall: 479.98px; // телефоны s
                             top: 20%;
                             left: 2%;
                             font-size: 18px;
+                              @media (max-width: $mobileSmall) {
+                                left: 5%;
+                              }
                           }
                     }
             }
