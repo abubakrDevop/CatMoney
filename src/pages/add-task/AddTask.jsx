@@ -81,23 +81,29 @@ export const AddTask = () => {
       <form onSubmit={handleSubmit(onSubmit)} className={cls.add_task_form}>
         <section className={cls.add_task_form_info}>
           <p className={cls.info_text}>
-            Название вашей ссылки:
-            <input
-              className={cls.info_text_input}
-              {...register("title", Form.Options.settings)}
-            />
-            <FaEdit className={cls.info_icon} />
+            Опишите задачу:
+            <span className={cls.info_text_box}>
+              <FaEdit className={cls.info_icon} />
+              <input
+                className={cls.info_text_input}
+                {...register("title", Form.Options.settings)}
+              />
+            </span>
           </p>
           <p className={cls.info_text}>
-            Ваша ссылка:
-            <input
-              className={cls.info_text_input}
-              {...register("url", Form.Options.settings)}
-            />
-            <FaLink className={cls.info_icon} />
+            Ваша ссылка для перехода:
+            <span className={cls.info_text_box}>
+              <FaLink className={cls.info_icon} />
+              <input
+                className={cls.info_text_input}
+                {...register("url", Form.Options.settings)}
+              />
+            </span>
           </p>
+
+          <section className={cls.info_select_section}>
           <div className={cls.info_select}>
-            Выбор таймера:
+            Выбрать таймер:
             <button onClick={visiblePopap} className={cls.select_button}>
               {activeLabel}
             </button>
@@ -128,8 +134,10 @@ export const AddTask = () => {
             </span>
             <FaRubleSign className={cls.info_price_icon} />
           </div>
+          </section>
+          
           <button type="submit" className={cls.add_task_form_changeinfo}>
-            Добавить ссылку
+            Добавить задание
           </button>
         </section>
       </form>
