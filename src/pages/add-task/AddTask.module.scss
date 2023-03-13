@@ -130,8 +130,11 @@ $mobileSmall: 479.98px; // телефоны s
                            background: white;
                           box-shadow: 0 0 5px black;
                           border-radius: 11px;
+                          padding: 10px 0;
                            cursor: pointer;
-
+                          .popap_link {
+                            color: black;
+                          }
                           .popap_link_active {
                             color: #fc00ff;
                           }
@@ -141,6 +144,7 @@ $mobileSmall: 479.98px; // телефоны s
                           top: 57%;
                           left: 2%;
                           font-size: 18px;
+                          color: black;
                             @media (max-width: $mobileSmall) {
                               left: 5%;
                             }
