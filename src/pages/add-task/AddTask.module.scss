@@ -19,7 +19,7 @@ $mobileSmall: 479.98px; // телефоны s
 
     .add_task_form {
         margin-top: 100px;
-        width: 95%;
+        width: 55%;
           @media (max-width: $tablet) {
            width: 100%;
            padding: 0 20px;
@@ -83,7 +83,7 @@ $mobileSmall: 479.98px; // телефоны s
                     .info_select {
                     margin: 0px 0 0 0;
                     padding: 0 0 3px 0;
-                    width: 56%;
+                    width: 100%;
                     font-weight: bold;
                     z-index: 2;
                     position: relative;
@@ -152,7 +152,7 @@ $mobileSmall: 479.98px; // телефоны s
                     }
                     .info_price {
                         margin: 40px 0 0 0;
-                        width: 56%;
+                        width: 100%;
                         height: 35px;
                         font-size: 16px;
                         padding: 0 10px;
@@ -195,7 +195,7 @@ $mobileSmall: 479.98px; // телефоны s
             .add_task_form_changeinfo {
                 position: relative;
                 top: 25px;
-                width: 56%;
+                width: 100%;
                 height: 40px;
                 font-weight: bold;
                 border: none;

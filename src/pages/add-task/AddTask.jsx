@@ -16,41 +16,6 @@ export const AddTask = () => {
     setVisible(!visible)
   }
 
-  const {
-    reset,
-    register,
-    handleSubmit,
-  } = useForm()
-
-
-  const onSubmit = (data) => {
-    const body = {
-      description: data.title,
-      url: data.url,
-      timer: activeLabel,
-      price: activePrice,
-      id: userId.id
-    };
-
-    console.log('bodyyyyyy', body)
-
-    axios
-      .post("https://a413-80-94-250-38.eu.ngrok.io/v2/addTask", body)
-      .then((res) => {
-        console.log(res);
-        if (res.data.status === "") {
-          reset();
-        } else if (res.data.status === "") {
-          reset();
-        } else if (res.data.status === "") {
-          reset();
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
   const taimer = [
     {
       title: "Таймер: 5 секунд",
@@ -73,9 +38,46 @@ export const AddTask = () => {
       price: 0.11
     },
   ]
-
-  const activeLabel = taimer[activeItem].title;
+  
+  const activeLabel = taimer[activeItem].title
+  const taimerNumber = taimer[activeItem].title.split(' ')[1];
   const activePrice = taimer[activeItem].price;
+
+  const {
+    reset,
+    register,
+    handleSubmit,
+  } = useForm()
+
+
+  const onSubmit = (data) => {
+    const body = {
+      description: data.title,
+      url: data.url,
+      timer: +taimerNumber,
+      price: activePrice,
+      id: userId.id
+    };
+
+    console.log('body', body)
+
+    axios
+      .post("https://8262-80-94-250-38.eu.ngrok.io/api/v2/addTask", body)
+      .then((res) => {
+        console.log(res.data);
+        if (res.data.status === "200") {
+          reset();
+          alert("Задание получено")
+        } else if (res.data.status === "") {
+          reset();
+        } else if (res.data.status === "") {
+          reset();
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   const onSelectItem = (index) => {
     setActiveItem(index)
