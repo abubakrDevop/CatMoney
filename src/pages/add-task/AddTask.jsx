@@ -10,6 +10,7 @@ export const AddTask = () => {
   const [activeItem, setActiveItem] = useState(0)
   const [visible, setVisible] = useState(false);
 
+  const userId = JSON.parse(localStorage.getItem("regist"))
 
   const visiblePopap = () => {
     setVisible(!visible)
@@ -24,25 +25,30 @@ export const AddTask = () => {
 
   const onSubmit = (data) => {
     const body = {
-      title: data.title,
+      description: data.title,
       url: data.url,
-      price: data.activePrice,
+      timer: activeLabel,
+      price: activePrice,
+      id: userId.id
     };
 
-    axios.post('https://088a-80-94-250-40.eu.ngrok.io/api/v2/settings', body)
-      .then(res => {
-        console.log(res)
-        if (res.data.status === '') {
-          reset()
-        } else if (res.data.status === '') {
-          reset()
-        } else if (res.data.status === '') {
-          reset()
+    console.log('bodyyyyyy', body)
+
+    axios
+      .post("https://a413-80-94-250-38.eu.ngrok.io/v2/addTask", body)
+      .then((res) => {
+        console.log(res);
+        if (res.data.status === "") {
+          reset();
+        } else if (res.data.status === "") {
+          reset();
+        } else if (res.data.status === "") {
+          reset();
         }
       })
-      .catch(error => {
-        console.log(error)
-      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   const taimer = [
@@ -135,7 +141,7 @@ export const AddTask = () => {
             <FaRubleSign className={cls.info_price_icon} />
           </div>
           </section>
-          
+
           <button type="submit" className={cls.add_task_form_changeinfo}>
             Добавить задание
           </button>
