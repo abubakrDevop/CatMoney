@@ -38,7 +38,7 @@ export const AddTask = () => {
       price: 0.11
     },
   ]
-  
+
   const activeLabel = taimer[activeItem].title
   const taimerNumber = taimer[activeItem].title.split(' ')[1];
   const activePrice = taimer[activeItem].price;
@@ -62,12 +62,12 @@ export const AddTask = () => {
     console.log('body', body)
 
     axios
-      .post("https://8262-80-94-250-38.eu.ngrok.io/api/v2/addTask", body)
+      .post("https://3cb4-80-94-250-38.eu.ngrok.io/api/v2/addTask", body)
       .then((res) => {
         console.log(res.data);
         if (res.data.status === "200") {
           reset();
-          alert("Задание получено")
+          alert("Задание получено");
         } else if (res.data.status === "") {
           reset();
         } else if (res.data.status === "") {

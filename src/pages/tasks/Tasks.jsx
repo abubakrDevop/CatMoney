@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import cls from '../tasks/Tasks.module.scss'
 import { Link } from "react-router-dom";
 import { IoTrashOutline } from 'react-icons/io5'
 import { Page_404 } from "../404-page/Page_404";
+import { PageTasks } from "./PageTasks"
 
 export const Tasks = () => {
+  const [items, setItems] = useState([])
+  console.log("items", items)
+
 
   let tasks = [
     {
@@ -54,11 +59,34 @@ export const Tasks = () => {
     },
   ]
 
+ const data = items.length > 0 ? items : tasks
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/v1/tasks")
+      .then((res) => {
+        console.log(res.data);
+        setItems(res.data.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
   if (localStorage.getItem('registered') !== 'ok') {
     return (
       <Page_404 />
     )
   }
+
+  // Description: "Description";
+  // Price: 0.07;
+  // Timer: 5;
+  // URL: "testURL";
+  // Users_id: 2;
+  // created_at: "2023-03-18T20:07:17.000000Z";
+  // id: 1;
+  // updated_at: "2023-03-18T20:07:17.000000Z";
 
   return (
     <div className={cls.tasks}>
@@ -84,20 +112,20 @@ export const Tasks = () => {
         </section>
 
         <section className={cls.tasks_inner}>
-          {tasks.map((item) => (
+          {data.map((item) => (
             <div key={item.id} className={cls.task}>
               <section className={cls.task_imgname}>
-                <img src={item.img} alt="img" className={cls.task_img} />
+                {/* <img src={item.img} alt="img" className={cls.task_img} /> */}
                 <p className={cls.task_name}>{item.name}</p>
               </section>
 
               <section className={cls.task_info}>
-                <p className={cls.task_title}>{item.title}</p>
-                <div className={cls.task_price}>{item.price} ₽уб</div>
+                <p className={cls.task_title}>{item.Description}</p>
+                <div className={cls.task_price}>{item.Price} ₽уб</div>
               </section>
 
               <section className={cls.task_buttons}>
-                <a href={item.link} className={cls.task_button1}>
+                <a href={item.URL} className={cls.task_button1}>
                   Выполнить
                 </a>
                 <button className={cls.task_button2}>{item.icon}</button>
@@ -105,6 +133,7 @@ export const Tasks = () => {
             </div>
           ))}
         </section>
+        <PageTasks />
       </div>
     </div>
   );

@@ -24,6 +24,16 @@ server.get('/api/v1/counter', async (req, res) => {
   }
 })
 
+server.get('/api/v1/tasks/:page', async (req, res) => {
+  try {
+    axios(`https://3cb4-80-94-250-38.eu.ngrok.io/api/v2/paginate`).then(
+      (response) => res.json(response.data)
+    );
+  } catch (err) {
+    console.log(err)
+  }
+})
+
 server.post('/api/v1/register', async (req, res) => {
   try {
     axios('https://088a-80-94-250-40.eu.ngrok.io/api/v2/register')
