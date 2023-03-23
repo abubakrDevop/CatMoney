@@ -8,13 +8,18 @@ import cls from '../add-task/AddTask.module.scss'
 
 export const AddTask = () => {
   const [activeItem, setActiveItem] = useState(0)
-  const [visible, setVisible] = useState(false);
+    const [visible, setVisible] = useState(false);
+  // const [activeAmount, setActiveAmount] = useState(0);
+  // const [visibleAmount, setVisibleAmount] = useState(false);
 
   const userId = JSON.parse(localStorage.getItem("regist"))
 
   const visiblePopap = () => {
     setVisible(!visible)
   }
+  // const visiblePopapAmount = () => {
+  //   setVisibleAmount(!visible);
+  // }
 
   const taimer = [
     {
@@ -39,8 +44,28 @@ export const AddTask = () => {
     },
   ]
 
+  // const amount = [
+  //   {
+  //     title: "20 раз",
+  //   },
+  //   {
+  //     title: "50 раз",
+  //   },
+  //   {
+  //     title: "70 раз",
+  //   },
+  //   {
+  //     title: "80 раз",
+  //   },
+  //   {
+  //     title: "90 раз",
+  //   },
+  // ];
+
   const activeLabel = taimer[activeItem].title
-  const taimerNumber = taimer[activeItem].title.split(' ')[1];
+  // const activeLabelAmonut = amount[activeAmount].title;
+  // const amountNumber = amount[activeAmount].title.split(" ")[1];
+    const taimerNumber = taimer[activeItem].title.split(" ")[1];
   const activePrice = taimer[activeItem].price;
 
   const {
@@ -83,6 +108,10 @@ export const AddTask = () => {
     setActiveItem(index)
     setVisible(!visible);
   }
+  // const onSelectAmount = (index) => {
+  //   setActiveAmount(index);
+  //   setVisibleAmount(!visibleAmount);
+  // };
 
   return (
     <div className={cls.add_task}>
@@ -110,39 +139,66 @@ export const AddTask = () => {
           </p>
 
           <section className={cls.info_select_section}>
-          <div className={cls.info_select}>
-            Выбрать таймер:
-            <button onClick={visiblePopap} className={cls.select_button}>
-              {activeLabel}
-            </button>
-            <FaClock className={cls.info_select_icon} />
-            {visible && (
-              <div className={cls.select_popap}>
-                {taimer.map((item, index) => (
-                  <span
-                    onClick={() => onSelectItem(index)}
-                    key={index}
-                    className={
-                      activeItem === index
-                        ? cls.popap_link_active
-                        : cls.popap_link
-                    }
-                  >
-                    {item.title}
-                  </span>
-                ))}
-              </div>
-            )}
-          </div>
+            <div className={cls.info_select}>
+              Выбрать таймер:
+              <button onClick={visiblePopap} className={cls.select_button}>
+                {activeLabel}
+              </button>
+              <FaClock className={cls.info_select_icon} />
+              {visible && (
+                <div className={cls.select_popap}>
+                  {taimer.map((item, index) => (
+                    <span
+                      onClick={() => onSelectItem(index)}
+                      key={index}
+                      className={
+                        activeItem === index
+                          ? cls.popap_link_active
+                          : cls.popap_link
+                      }
+                    >
+                      {item.title}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
 
-          <div className={cls.info_price}>
-            Цена 1 перехода:
-            <span>
-              <span className={cls.info_price_size}>{activePrice}</span> ₽уб
-            </span>
-            <FaRubleSign className={cls.info_price_icon} />
-          </div>
+            <div className={cls.info_price}>
+              Цена 1 перехода:
+              <span>
+                <span className={cls.info_price_size}>{activePrice}</span> ₽уб
+              </span>
+              <FaRubleSign className={cls.info_price_icon} />
+            </div>
           </section>
+            {/* <div className={cls.info_select}>
+              Нужное колличество просмотров:
+              <button
+                onClick={visiblePopapAmount}
+                className={cls.select_button}
+              >
+                {activeLabelAmonut}
+              </button>
+              <FaClock className={cls.info_select_icon} />
+              {visibleAmount && (
+                <div className={cls.select_popap}>
+                  {amount.map((item, index) => (
+                    <span
+                      onClick={() => onSelectAmount(index)}
+                      key={index}
+                      className={
+                        activeAmount === index
+                          ? cls.popap_link_active
+                          : cls.popap_link
+                      }
+                    >
+                      {item.title}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div> */}
 
           <button type="submit" className={cls.add_task_form_changeinfo}>
             Добавить задание

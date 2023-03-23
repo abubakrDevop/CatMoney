@@ -87,11 +87,6 @@ export const Header = () => {
               <span className={cls.profil_text_404}>Войдите в аккаунт!</span>
             ) : (
               <Link to={"/profile"} className={cls.header_profil}>
-                <img
-                  className={cls.profil_img}
-                  src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80"
-                  alt="img"
-                />
                 <span className={cls.profil_text}>Alex Kendal</span>
               </Link>
             )}

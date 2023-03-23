@@ -24,15 +24,27 @@ server.get('/api/v1/counter', async (req, res) => {
   }
 })
 
-server.get('/api/v1/tasks/:page', async (req, res) => {
+server.get('/api/v1/tasks', async (req, res) => {
   try {
-    axios(`https://3cb4-80-94-250-38.eu.ngrok.io/api/v2/paginate`).then(
+    axios(`https://69e9-80-94-250-38.eu.ngrok.io/api/tasks/v2/paginate`).then(
       (response) => res.json(response.data)
     );
   } catch (err) {
     console.log(err)
   }
 })
+
+server.get('/api/v1/userTasks/:id', async (req, res) => {
+  const { id } = req.params
+
+  try {
+    axios(
+      `https://69e9-80-94-250-38.eu.ngrok.io/api/tasks/v2/userTasks?id=${id}`
+    ).then((response) => res.json(response.data));
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 server.post('/api/v1/register', async (req, res) => {
   try {

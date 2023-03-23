@@ -58,7 +58,7 @@ export const Settings = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={cls.ownspace}>
-      <section className={cls.ownspace_headsection}>
+      {/* <section className={cls.ownspace_headsection}>
         <section className={cls.ownspace_section}>
           <div className={cls.section_imgbox}>
             <img src={imageUrl} alt="" className={cls.section_img} />
@@ -82,15 +82,15 @@ export const Settings = () => {
             </div>
           </section>
         </section>
-      </section>
+      </section> */}
 
       <section className={cls.ownspace_headsection}>
-        <div className={cls.section_aboutbox}>
+        {/* <div className={cls.section_aboutbox}>
           <textarea
             className={cls.section_about}
             {...register('about', Form.Options.settings)}
           />
-        </div>
+        </div> */}
 
         <section className={cls.ownspace_info}>
           <p className={cls.info_text}>

@@ -46,7 +46,7 @@ export const PageTasks = () => {
 
   const onClick = (pageNumber) => {
     console.log('pageNumber', pageNumber)
-       setData({ ...data, current_page: pageNumber});
+    setData({ ...data, current_page: pageNumber});
     console.log('data.current_page', data.current_page)
   };
 

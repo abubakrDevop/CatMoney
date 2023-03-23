@@ -11,9 +11,12 @@ $mobileSmall: 479.98px; // телефоны s
     font-family: 'Roboto', sans-serif;
     background: white;
 
+
     .ownspace_headsection {
         position: relative;
         width: 100%;
+        display: flex;
+        justify-content: center;
 
         &:nth-child(1) {
             padding: 30px 100px 0 20px;

@@ -8,7 +8,7 @@ import { PageTasks } from "./PageTasks"
 
 export const Tasks = () => {
   const [items, setItems] = useState([])
-  console.log("items", items)
+  console.log("itemssssss", items)
 
 
   let tasks = [

@@ -48,7 +48,7 @@ $mobileSmall: 479.98px; // телефоны s
 
                 .info_text {
                     margin: 0px 0 0 0;
-                    padding: 0 0 20px 0;
+                    padding: 0 0 35px 0;
                     font-weight: bold;
                     color: white;
                      position: relative;
@@ -80,12 +80,13 @@ $mobileSmall: 479.98px; // телефоны s
                         }
                     }
                 }
+                .info_select_section {
+                  padding-bottom: 35px;
+                }
                     .info_select {
-                    margin: 0px 0 0 0;
                     padding: 0 0 3px 0;
                     width: 100%;
                     font-weight: bold;
-                    z-index: 2;
                     position: relative;
                     color: white;
                       @media (max-width: $tablet) {
@@ -126,11 +127,12 @@ $mobileSmall: 479.98px; // телефоны s
                            width: 100%;
                            flex-direction: column;
                            align-items: center;
-                           gap: 10px;
+                           gap: 7px;
                            background: white;
                           box-shadow: 0 0 5px black;
                           border-radius: 11px;
                           padding: 10px 0;
+                          z-index: 5;
                            cursor: pointer;
                           .popap_link {
                             color: black;
@@ -151,7 +153,7 @@ $mobileSmall: 479.98px; // телефоны s
                         }
                     }
                     .info_price {
-                        margin: 40px 0 0 0;
+                        margin: 45px 0 0 0;
                         width: 100%;
                         height: 35px;
                         font-size: 16px;
