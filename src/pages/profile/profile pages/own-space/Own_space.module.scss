@@ -119,14 +119,14 @@ $mobileSmall: 479.98px; // телефоны s
                                   padding: 15px;
                                 }
 
-                              &:hover {
-                                  background: rgb(0, 0, 0);
-                                  color: white;
-                                   @media (max-width: $tablet) {
-                                    background: none;
-                                    color: #000;
-                                  }
-                              }
+                              // &:hover {
+                              //     background: rgb(0, 0, 0);
+                              //     color: white;
+                              //      @media (max-width: $tablet) {
+                              //       background: none;
+                              //       color: #000;
+                              //     }
+                              // }
                               .task_data {
                                 width: 100%;
                                 display: flex;

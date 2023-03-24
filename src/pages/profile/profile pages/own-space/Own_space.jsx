@@ -4,6 +4,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import { Form } from '../../../../helpers/form/index'
 import { IoTrashOutline } from "react-icons/io5";
+import { AddTask } from "../../../add-task/AddTask"
 
 export const Ownspace = () => {
   const {
@@ -14,6 +15,7 @@ export const Ownspace = () => {
 
   const [active, setActive] = React.useState(false)
   const [activeTasksUser, setActiveTasksUser] = React.useState(false);
+  const [visible, setVisible] = React.useState(false);
   const [activeItem, setActiveItem] = React.useState(0);
   const [addAmountTasksUser, setAddAmountTasksUser] = React.useState('')
   const [getActive, setGetActive] = React.useState(false)
@@ -164,6 +166,35 @@ export const Ownspace = () => {
         });
     }, []);
 
+    const deleteTask = () => {
+      axios
+      .delete("https://69e9-80-94-250-38.eu.ngrok.io/api/tasks/v2/taskDel")
+      .then((res) => {
+        console.log(res.data);
+        setItems(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }
+
+    const stopTask = () => {
+      axios
+      .get("https://69e9-80-94-250-38.eu.ngrok.io/api/tasks/v2/taskDel")
+      .then((res) => {
+        console.log(res.data);
+        setItems(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }
+
+    const editTask = (index) => {
+      setActiveItem(index)
+      setVisible(!visible)
+    }
+
   return (
     <div className={cls.ownspace}>
       <section className={cls.ownspace_headsection}>
@@ -309,12 +340,13 @@ export const Ownspace = () => {
                         </div>
                       )}
                       </div>
-                      <button className={cls.task_button1}>Остановить</button>
-                      <button className={cls.task_button1}>
+                      <button onClick={stopTask} className={cls.task_button1}>Остановить</button>
+                      <button onClick={() => editTask(index)} className={cls.task_button1}>
                         Редактировать
-                      </button>
-                      <button className={cls.task_button1}>Удалить</button>
+                      </button>                     
+                      <button onClick={deleteTask} className={cls.task_button1}>Удалить</button>
                     </section>
+                    {visible && activeItem === index && <AddTask text="Активировать изменения" onClick={setVisible} />}
                   </div>
                 })}
               </section>
