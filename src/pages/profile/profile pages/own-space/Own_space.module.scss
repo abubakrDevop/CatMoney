@@ -85,7 +85,7 @@ $mobileSmall: 479.98px; // телефоны s
                     flex-direction: column;
                     align-items: center;
                     gap: 20px;
-                    overflow-x: scroll;
+                    overflow-y: scroll;
                    @media (max-width: $tablet) {
                        padding: 15px 20px 0 20px;
                       }
@@ -240,9 +240,150 @@ $mobileSmall: 479.98px; // телефоны s
                                       flex-direction: column;
                                       align-items: center;
                                     }
+                                  .task_buttons_tasksBlock {
+                                    position: relative;
+                                    width: 20%;
+                                    height: 35px;
+                                    @media (max-width: $mobileSmall) {
+                                      width: 100%;
+                                    }
 
+                                    .task_button2 {
+                                      width: 100%;
+                                      height: 100%;
+                                      font-weight: bold;
+                                      border: none;
+                                      background: linear-gradient(to left, rgb(60, 0, 128), rgba(0, 89, 255, 0.5));
+                                      border-radius: 20px;
+                                      color: white;
+                                      font-size: 16px;
+                                      overflow: hidden;
+                                      transition: .5s;
+                                      box-shadow: 0 0 5px black;
+                                      display: flex;
+                                      justify-content: center;
+                                      align-items: center;
+                                      text-decoration: none;
+                                      z-index: 0;
+                                        @media (max-width: 1600px) {
+                                          font-size: 13px;
+                                        }
+                                        @media (max-width: $pc) {
+                                          font-size: 9px;
+                                        }
+                                        @media (max-width: $mobileSmall) {
+                                          font-size: 13px;
+                                        }
+
+                                      &::before {
+                                          content: '';
+                                          position: absolute;
+                                          top: 0;
+                                          left: 0;
+                                          width: 100%;
+                                          height: 0%;
+                                          background: linear-gradient(to left, rgba(0, 89, 255, 0.5), rgb(60, 0, 128));
+                                          transition: .5s;
+                                          border-bottom-left-radius: 50%;
+                                          border-bottom-right-radius: 50%;
+                                          z-index: -1;
+                                      }
+
+                                      &:hover {
+                                          color: white;
+                                      }
+
+                                      &:hover::before {
+                                          height: 180%;
+                                      }
+                                  }
+                                  .buttons_popap_tasks {
+                                    position: absolute;
+                                    // background-color: rgba(54, 53, 66, 0.8);
+                                    background: white;
+                                    border-radius: 5px;
+                                    box-shadow: 0 0 5px black;
+                                    width: 150%;
+                                    height: 120px;
+                                    top: 110%;
+                                    left: -30px;
+                                    display: flex;
+                                    flex-direction: column;
+                                    align-items: center;
+                                    justify-content: center;
+                                    gap: 20px;
+                                    @media (max-width: 640px) {
+                                      left: -20px;
+                                    }
+                                    @media (max-width: $mobileSmall) {
+                                      z-index: 5;
+                                      width: 100%;
+                                      left: 0;
+                                    }
+                  
+                                    .buttons_popap_input_tasks {
+                                      display: flex;
+                                      width: 80%;
+                                      height: 35px;
+                                      font-size: 14px;
+                                      border: none;
+                                      outline: none;
+                                      padding: 0 10px;
+                                      box-shadow: 0 0 5px black;
+                                      border-radius: 11px;
+                                    }
+                                    @media (max-width: $pc) {
+                                      ::-webkit-input-placeholder { font-size: 10px; color:#f00;}
+                                      ::-moz-placeholder { font-size: 10px; color:#f00;}
+                                      :-ms-input-placeholder { font-size: 10px; color:#f00;}
+                                      :-moz-placeholder { font-size: 10px; color:#f00;}
+                                    }
+                                    @media (max-width: 1170px) {
+                                      ::-webkit-input-placeholder { font-size: 7px; color:#f00;}
+                                      ::-moz-placeholder { font-size: 7px; color:#f00;}
+                                      :-ms-input-placeholder { font-size: 7px; color:#f00;}
+                                      :-moz-placeholder { font-size: 7px; color:#f00;}
+                                    }
+                                    @media (max-width: $tablet) {
+                                      ::-webkit-input-placeholder { font-size: 17px; color:#f00;}
+                                      ::-moz-placeholder { font-size: 17px; color:#f00;}
+                                      :-ms-input-placeholder { font-size: 17px; color:#f00;}
+                                      :-moz-placeholder { font-size: 17px; color:#f00;}
+                                    }
+                                    @media (max-width: $mobile) {
+                                      ::-webkit-input-placeholder { font-size: 7px; color:#f00;}
+                                      ::-moz-placeholder { font-size: 7px; color:#f00;}
+                                      :-ms-input-placeholder { font-size: 7px; color:#f00;}
+                                      :-moz-placeholder { font-size: 7px; color:#f00;}
+                                    }
+                                    @media (max-width: $mobileSmall) {
+                                      ::-webkit-input-placeholder { font-size: 10px; color:#f00;}
+                                      ::-moz-placeholder { font-size: 10px; color:#f00;}
+                                      :-ms-input-placeholder { font-size: 10px; color:#f00;}
+                                      :-moz-placeholder { font-size: 10px; color:#f00;}
+                                    }
+                  
+                                    .buttons_popap_button_tasks {
+                                      display: flex;
+                                      font-weight: bold;
+                                      padding: 6px 10px;
+                                      border: none;
+                                      background: linear-gradient(to left, rgb(60, 0, 128), rgba(0, 89, 255, 0.5));
+                                      border-radius: 30px;
+                                      color: white;
+                                      font-size: 12px;
+                                      overflow: hidden;
+                                      box-shadow: 0 0 5px black;
+                                      @media (max-width: $pc) {
+                                        font-size: 9px;
+                                      }
+                                      @media (max-width: $mobileSmall) {
+                                        padding: 6px 12px;
+                                      }
+                                    }
+                                  }
+                                  }
                                   .task_button1 {
-                                      position: relative;
                                       width: 20%;
                                       height: 35px;
                                       font-weight: bold;
@@ -285,54 +426,13 @@ $mobileSmall: 479.98px; // телефоны s
                                           z-index: -1;
                                       }
 
-                                      &:hover {
-                                          color: white;
-                                      }
+                                      // &:hover {
+                                      //     color: white;
+                                      // }
 
-                                      &:hover::before {
-                                          height: 180%;
-                                      }
-                                  }
-
-                                  .task_button2 {
-                                      position: relative;
-                                      width: 30%;
-                                      height: 35px;
-                                      margin: 0 0 0 7px;
-                                      border: none;
-                                      background: linear-gradient(to left, rgb(60, 0, 128), rgba(0, 89, 255, 0.5));
-                                      border-radius: 10px;
-                                      color: white;
-                                      font-size: 20px;
-                                      overflow: hidden;
-                                      transition: .5s;
-                                      box-shadow: 0 0 5px black;
-                                      display: flex;
-                                      justify-content: center;
-                                      align-items: center;
-                                      z-index: 0;
-
-                                      &::before {
-                                          content: '';
-                                          position: absolute;
-                                          top: 0;
-                                          left: 0;
-                                          width: 100%;
-                                          height: 0%;
-                                          background: linear-gradient(to left, rgba(0, 89, 255, 0.5), rgb(60, 0, 128));
-                                          transition: .5s;
-                                          border-bottom-left-radius: 50%;
-                                          border-bottom-right-radius: 50%;
-                                          z-index: -1;
-                                      }
-
-                                      &:hover {
-                                          color: red;
-                                      }
-
-                                      &:hover::before {
-                                          height: 180%;
-                                      }
+                                      // &:hover::before {
+                                      //     height: 180%;
+                                      // }
                                   }
                               }
                           }
