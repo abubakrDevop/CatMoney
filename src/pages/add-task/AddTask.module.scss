@@ -114,7 +114,7 @@ $mobileSmall: 479.98px; // телефоны s
                         color: #fc00ff;
                          cursor: pointer;
                           @media (max-width: $mobileSmall) {
-                            font-size: 12px;
+                            font-size: 9px;
                           }
 
                       }
@@ -148,6 +148,8 @@ $mobileSmall: 479.98px; // телефоны s
                           color: black;
                             @media (max-width: $mobileSmall) {
                               left: 5%;
+                              font-size: 12px;
+                              top: 65%;
                             }
                         }
                     }
@@ -169,8 +171,9 @@ $mobileSmall: 479.98px; // телефоны s
                         gap: 7px;
                         position: relative;
 
+
                           @media (max-width: $mobileSmall) {
-                            font-size: 12px;
+                            font-size: 10px;
                           }
                           @media (max-width: $tablet) {
                             // flex-direction: column;
@@ -180,6 +183,9 @@ $mobileSmall: 479.98px; // телефоны s
                           .info_price_size {
                             font-size: 20px;
                             color: #fc00ff;
+                            @media (max-width: $mobileSmall) {
+                              font-size: 8px;
+                            }
                           }
                           .info_price_icon {
                             position: absolute;
@@ -188,6 +194,9 @@ $mobileSmall: 479.98px; // телефоны s
                             font-size: 18px;
                               @media (max-width: $mobileSmall) {
                                 left: 5%;
+                                font-size: 12px;
+                                top: 35%;
+                                display: none;
                               }
                           }
                     }
