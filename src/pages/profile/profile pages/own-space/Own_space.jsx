@@ -289,7 +289,7 @@ export const Ownspace = () => {
           <p className={cls.info_text}>Ваш пароль:</p>
           <p className={cls.info_text}>Ваш кошелёк:</p>
           <p className={cls.info_text}>
-            Ваш id пользователя: <span> {} </span>
+            Ваш id : <span> {} </span>
           </p>
         </section>
 
@@ -303,17 +303,15 @@ export const Ownspace = () => {
             <div className={cls.section_about}>
               <div className={cls.about_title}>Мои задания</div>
               <section className={cls.tasks_inner}>
-                {data.map((item, index) => {   
-                  const taskId = data.find((elem) => elem.id === item.id)  
-                  console.log('taskIddddd',taskId)            
+                {data.map((item, index) => {            
                   return <div key={item.id} className={cls.task}>                   
                     <div className={cls.task_data}>
                       <section className={cls.task_id}>#{item.id}</section>
-                      <p className={cls.task_title}>{item.title}</p>
-                      <p className={cls.task_title}>Баланс: {item.price} ₽уб</p>
-                      <div className={cls.task_price}>
-                        Цена: {item.price} ₽уб
-                      </div>
+                        <p className={cls.task_title}>{item.title}</p>
+                        <p className={cls.task_title}>Баланс: {item.price} ₽уб</p>
+                        <div className={cls.task_price}>
+                          Цена: {item.price} ₽уб
+                        </div>
                     </div>
 
                     <section className={cls.task_buttons}>
