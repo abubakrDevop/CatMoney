@@ -6,7 +6,7 @@ import { Form } from '../../../../helpers/form/index'
 import { IoDownloadOutline } from "react-icons/io5";
 
 export const Settings = () => {
-  const [imageUrl, setImageUrl] = React.useState("")
+  // const [imageUrl, setImageUrl] = React.useState("")
 
   const {
     reset,
@@ -20,13 +20,14 @@ export const Settings = () => {
   const onSubmit = (data) => {
     const body = {
       id: idUser.id,
-      image: imageUrl,
-      name: data.name,
-      lastname: data.lastname,
+      // image: imageUrl,
+      // name: data.name,
+      // lastname: data.lastname,
       login: data.login,
       email: data.email,
       password: data.password,
       mode: 1,
+      wallet: data.wallet
     }
 
     axios.post('https://088a-80-94-250-40.eu.ngrok.io/api/v2/settings', body)
@@ -45,16 +46,16 @@ export const Settings = () => {
       })
   }
 
-  const fileReader = new FileReader()
-  fileReader.onloadend = () => {
-    setImageUrl(fileReader.result)
-  }
+  // const fileReader = new FileReader()
+  // fileReader.onloadend = () => {
+  //   setImageUrl(fileReader.result)
+  // }
 
-  function handleFiles(e) {
-    e.preventDefault()
-    const file = e.target.files[0]
-    fileReader.readAsDataURL(file)
-  }
+  // function handleFiles(e) {
+  //   e.preventDefault()
+  //   const file = e.target.files[0]
+  //   fileReader.readAsDataURL(file)
+  // }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={cls.ownspace}>
@@ -115,6 +116,14 @@ export const Settings = () => {
               className={cls.info_text_input}
 
               {...register('password', Form.Options.settings)}
+            />
+          </p>
+          <p className={cls.info_text}>
+            Введите кошелёк:
+            <input
+              className={cls.info_text_input}
+
+              {...register('wallet', Form.Options.settings)}
             />
           </p>
           <button type="submit" className={cls.ownspace_changeinfo}>Применить изменения</button>

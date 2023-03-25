@@ -35,6 +35,15 @@ export const Share = () => {
         },
       ];
 
+      const sumInput = data.map((item) => item.price1).reduce((acc, rec) => {
+        return acc + rec
+      } , 0)
+      const sumOutput = data.map((item) => item.price2).reduce((acc, rec) => {
+        return acc + rec
+      } , 0)
+      
+      const allRef = data.length
+
   return (
     <div className={cls.share}>
       <div className={cls.share_block}>
@@ -63,11 +72,16 @@ export const Share = () => {
           <tbody className={cls.ref_body}>
             {data.map((item) => (
               <tr key={item.id} className={cls.ref_body_title}>
-                <td className={cls.ref_body_item}>{item.id}</td>
-                <td className={cls.ref_body_item}>{item.price1} ₽уб</td>
+                <td className={cls.ref_body_item}># {item.id}</td>
+                <td className={cls.ref_body_item}>( {item.price1} ₽уб )</td>
                 <td className={cls.ref_body_item}>{item.price2} ₽уб</td>
               </tr>
             ))}
+            <tr className={cls.ref_total}>
+              <td className={cls.ref_total_item}>{allRef} чел</td>
+              <td className={cls.ref_total_item}>{sumInput} ₽уб</td>
+              <td className={cls.ref_total_item}>{sumOutput} ₽уб</td>
+            </tr>
           </tbody>
         </table>
       </div>
