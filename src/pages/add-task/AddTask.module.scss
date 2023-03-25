@@ -246,3 +246,251 @@ $mobileSmall: 479.98px; // телефоны s
             }
     }
 }
+
+
+
+
+// ---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+.add_task_edit {
+    width: 100%;
+    height: 65vh;
+    overflow: hidden;
+    background: white;
+    font-family: 'Roboto', sans-serif;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    background-image: linear-gradient(90deg, #00dbde 0%, #fc00ff 100%);
+    background-size: 100% 100%;
+
+    .add_task_form {
+        margin-top: 100px;
+        width: 55%;
+          @media (max-width: $tablet) {
+           width: 100%;
+           padding: 0 20px;
+         }
+
+            .add_task_form_info {
+                width: 100%;
+                  @media (max-width: $mobileSmall) {
+                    width: 100%;
+                  }
+
+                .info_text_box {
+                  width: 100%;
+                  height: 35px;
+                  border-radius: 10px;
+                  background: white;
+                  overflow: hidden;
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  padding: 0 0 0 17px;
+                  box-shadow: 0 0 5px black;
+                  margin: 8px 0 0 0;
+                }
+
+                .info_text {
+                    margin: 0px 0 0 0;
+                    padding: 0 0 35px 0;
+                    font-weight: bold;
+                    color: white;
+                     position: relative;
+                      @media (max-width: $mobileSmall) {
+                        font-size: 12px;
+                      }
+
+                    &:nth-child(3) {
+                        border-bottom: none;
+                    }
+
+                    .info_text_input {
+                      width: 100%;
+                      height: 100%;
+                      font-size: 16px;
+                      padding: 0 10px;
+                      border: none;
+                      outline: none;
+                      @media (max-width: $mobileSmall) {
+                        width: 104%;
+                      }
+                    }
+                    .info_icon {
+                      left: 0;
+                      font-size: 18px;
+                      color: black;
+                        @media (max-width: $mobileSmall) {
+                          left: 5%;
+                        }
+                    }
+                }
+                .info_select_section {
+                  padding-bottom: 35px;
+                }
+                    .info_select {
+                    padding: 0 0 3px 0;
+                    width: 100%;
+                    font-weight: bold;
+                    position: relative;
+                    color: white;
+                      @media (max-width: $tablet) {
+                        width: 100%;
+                      }
+                     @media (max-width: $mobileSmall) {
+                        font-size: 12px;
+                      }
+
+
+                      .select_button {
+                        margin: 10px 0 0 0;
+                        width: 100%;
+                        height: 35px;
+                        font-size: 16px;
+                        padding: 0 10px;
+                        border: none;
+                        outline: none;
+                        box-shadow: 0 0 5px black;
+                        border-radius: 11px;
+                        background: white;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-weight: bold;
+                        color: #fc00ff;
+                         cursor: pointer;
+                          @media (max-width: $mobileSmall) {
+                            font-size: 9px;
+                          }
+
+                      }
+                        .select_popap {
+                           position: absolute;
+                           display: flex;
+                           top: 100%;
+                           left: 0;
+                           width: 100%;
+                           flex-direction: column;
+                           align-items: center;
+                           gap: 7px;
+                           background: white;
+                          box-shadow: 0 0 5px black;
+                          border-radius: 11px;
+                          padding: 10px 0;
+                          z-index: 5;
+                           cursor: pointer;
+                          .popap_link {
+                            color: black;
+                          }
+                          .popap_link_active {
+                            color: #fc00ff;
+                          }
+                        }
+                        .info_select_icon {
+                          position: absolute;
+                          top: 57%;
+                          left: 2%;
+                          font-size: 18px;
+                          color: black;
+                            @media (max-width: $mobileSmall) {
+                              left: 5%;
+                              font-size: 12px;
+                              top: 65%;
+                            }
+                        }
+                    }
+                    .info_price {
+                        margin: 45px 0 0 0;
+                        width: 100%;
+                        height: 35px;
+                        font-size: 16px;
+                        padding: 0 10px;
+                        border: none;
+                        outline: none;
+                        box-shadow: 0 0 5px black;
+                        border-radius: 11px;
+                        background: white;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-weight: bold;
+                        gap: 7px;
+                        position: relative;
+
+
+                          @media (max-width: $mobileSmall) {
+                            font-size: 10px;
+                          }
+                          @media (max-width: $tablet) {
+                            // flex-direction: column;
+                            // gap: 0px;
+                            width: 100%;
+                          }
+                          .info_price_size {
+                            font-size: 20px;
+                            color: #fc00ff;
+                            @media (max-width: $mobileSmall) {
+                              font-size: 8px;
+                            }
+                          }
+                          .info_price_icon {
+                            position: absolute;
+                            top: 23%;
+                            left: 2%;
+                            font-size: 18px;
+                              @media (max-width: $mobileSmall) {
+                                left: 5%;
+                                font-size: 12px;
+                                top: 35%;
+                                display: none;
+                              }
+                          }
+                    }
+            }
+
+            .add_task_form_changeinfo {
+                position: relative;
+                top: 25px;
+                width: 100%;
+                height: 40px;
+                font-weight: bold;
+                border: none;
+                background: linear-gradient(to left, rgb(60, 0, 128), rgba(0, 89, 255, 0.5));
+                border-radius: 30px;
+                color: white;
+                font-size: 16px;
+                overflow: hidden;
+                box-shadow: 0 0 5px black;
+                z-index: 0;
+                margin-bottom: 50px;
+                margin-top: 15px;
+                  @media (max-width: $tablet) {
+                    width: 100%;
+                  }
+                @media (max-width: $mobileSmall) {
+                  width: 104%;
+                  font-size: 14px;
+                }
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 0%;
+                    background: linear-gradient(to left, rgba(0, 89, 255, 0.5), rgb(60, 0, 128));
+                    transition: .5s;
+                    border-bottom-left-radius: 50%;
+                    border-bottom-right-radius: 50%;
+                    z-index: -1;
+                }
+
+                &:hover::before {
+                    height: 180%;
+                }
+            }
+    }
+}

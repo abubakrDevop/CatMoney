@@ -303,49 +303,74 @@ export const Ownspace = () => {
             <div className={cls.section_about}>
               <div className={cls.about_title}>Мои задания</div>
               <section className={cls.tasks_inner}>
-                {data.map((item, index) => {            
-                  return <div key={item.id} className={cls.task}>                   
-                    <div className={cls.task_data}>
-                      <section className={cls.task_id}>#{item.id}</section>
+                {data.map((item, index) => {
+                  return (
+                    <div key={item.id} className={cls.task}>
+                      <div className={cls.task_data}>
+                        <section className={cls.task_id}>#{item.id}</section>
                         <p className={cls.task_title}>{item.title}</p>
-                        <p className={cls.task_title}>Баланс: {item.price} ₽уб</p>
+                        <p className={cls.task_title}>
+                          Баланс: {item.price} ₽уб
+                        </p>
                         <div className={cls.task_price}>
                           Цена: {item.price} ₽уб
                         </div>
-                    </div>
-
-                    <section className={cls.task_buttons}>
-                      <div className={cls.task_buttons_tasksBlock}>
-                      <button onClick={() => handlerTopUPTasksUser(index)} className={cls.task_button2}>Пополнить</button>
-                      {activeItem === index && activeTasksUser && (
-                        <div className={cls.buttons_popap_tasks}>
-                          <input
-                            autoFocus
-                            placeholder="Введите сумму"
-                            className={cls.buttons_popap_input_tasks}
-                            type="text"
-                            onChange={changeAddAmountTasksUser}
-                            value={addAmountTasksUser}
-                          />
-                          <button
-                            type="button"
-                            onClick={handlerAddConfirmTasksUser}
-                            className={cls.buttons_popap_button_tasks}
-                          >
-                            {" "}
-                            Подтвердите{" "}
-                          </button>
-                        </div>
-                      )}
                       </div>
-                      <button onClick={stopTask} className={cls.task_button1}>Остановить</button>
-                      <button onClick={() => editTask(index)} className={cls.task_button1}>
-                        Редактировать
-                      </button>                     
-                      <button onClick={deleteTask} className={cls.task_button1}>Удалить</button>
-                    </section>
-                    {visible && activeItem === index && <AddTask text="Активировать изменения" onClick={setVisible} />}
-                  </div>
+
+                      <section className={cls.task_buttons}>
+                        <div className={cls.task_buttons_tasksBlock}>
+                          <button
+                            onClick={() => handlerTopUPTasksUser(index)}
+                            className={cls.task_button2}
+                          >
+                            Пополнить
+                          </button>
+                          {activeItem === index && activeTasksUser && (
+                            <div className={cls.buttons_popap_tasks}>
+                              <input
+                                autoFocus
+                                placeholder="Введите сумму"
+                                className={cls.buttons_popap_input_tasks}
+                                type="text"
+                                onChange={changeAddAmountTasksUser}
+                                value={addAmountTasksUser}
+                              />
+                              <button
+                                type="button"
+                                onClick={handlerAddConfirmTasksUser}
+                                className={cls.buttons_popap_button_tasks}
+                              >
+                                {" "}
+                                Подтвердите{" "}
+                              </button>
+                            </div>
+                          )}
+                        </div>
+                        <button onClick={stopTask} className={cls.task_button1}>
+                          Остановить
+                        </button>
+                        <button
+                          onClick={() => editTask(index)}
+                          className={cls.task_button1}
+                        >
+                          Редактировать
+                        </button>
+                        <button
+                          onClick={deleteTask}
+                          className={cls.task_button1}
+                        >
+                          Удалить
+                        </button>
+                      </section>
+                      {visible && activeItem === index && (
+                        <AddTask
+                          text="Активировать изменения"
+                          onClick={setVisible}
+                          id={activeItem + 1}
+                        />
+                      )}
+                    </div>
+                  );
                 })}
               </section>
             </div>

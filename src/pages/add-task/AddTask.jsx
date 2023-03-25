@@ -6,9 +6,10 @@ import { FaEdit, FaLink, FaClock, FaRubleSign } from "react-icons/fa";
 import { Form } from '../../helpers/form/index'
 import cls from '../add-task/AddTask.module.scss'
 
-export const AddTask = ({ text, onClick }) => {
+export const AddTask = ({ text, onClick, id }) => {
   const [activeItem, setActiveItem] = useState(0)
     const [visible, setVisible] = useState(false);
+    console.log('idddddd', id)
 
   const userId = JSON.parse(localStorage.getItem("regist"))
 
@@ -51,16 +52,46 @@ export const AddTask = ({ text, onClick }) => {
 
 
   const onSubmit = (data) => {
-    onClick(false)
+    if (id) {
+        onClick(false);
+          const body = {
+            description: data.title,
+            url: data.url,
+            timer: +taimerNumber,
+            price: activePrice,
+            id: userId.id,
+          };
+
+          console.log("body", body);
+
+          axios
+            .put("https://3cb4-80-94-250-38.eu.ngrok.io/api/v2/addTask", body)
+            .then((res) => {
+              console.log(res.data);
+              if (res.data.status === "200") {
+                reset();
+                alert("Задание получено");
+              } else if (res.data.status === "") {
+                reset();
+              } else if (res.data.status === "") {
+                reset();
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+    }
+
+    if (!id) {
     const body = {
       description: data.title,
       url: data.url,
       timer: +taimerNumber,
       price: activePrice,
-      id: userId.id
+      id: userId.id,
     };
 
-    console.log('body', body)
+    console.log("body", body);
 
     axios
       .post("https://3cb4-80-94-250-38.eu.ngrok.io/api/v2/addTask", body)
@@ -78,6 +109,7 @@ export const AddTask = ({ text, onClick }) => {
       .catch((error) => {
         console.log(error);
       });
+    }
   }
 
   const onSelectItem = (index) => {
@@ -86,7 +118,7 @@ export const AddTask = ({ text, onClick }) => {
   }
 
   return (
-    <div className={cls.add_task}>
+    <div className={id ? `${cls.add_task_edit}` : `${cls.add_task}`}>
       <form onSubmit={handleSubmit(onSubmit)} className={cls.add_task_form}>
         <section className={cls.add_task_form_info}>
           <p className={cls.info_text}>
