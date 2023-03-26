@@ -2,7 +2,7 @@
 import cls from '../signUp/SignUp.module.scss'
 import { useForm } from 'react-hook-form'
 import { Form } from '../../../helpers/form/index'
-import { useDispatch, useSelector } from "react-redux";
+// import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import  {
           IoAtOutline,
@@ -11,14 +11,14 @@ import  {
           IoLockClosedOutline,
           IoPersonOutline,
         } from 'react-icons/io5'
-import {addUser} from "../../../store/userSlice";
+// import {addUser} from "../../../store/userSlice";
 import {useState} from "react";
 
 export const SignUp = () => {
   const [active, setActive] = useState(false)
   const [error, setError] = useState('')
-  const dispatch = useDispatch()
-  const {inputData} = useSelector(state => state.user)
+  // const dispatch = useDispatch()
+  // const {inputData} = useSelector(state => state.user)
   // console.log("inputData", inputData)
 
   const {
@@ -37,13 +37,13 @@ export const SignUp = () => {
     }
     console.log('noneRefBody', body)
     axios
-      .post("https://bf34-80-94-250-80./api/v2/register", body)
+      .post("https://7bd1-80-94-250-65.eu.ngrok.io/api/users/v2/register", body)
       .then((res) => {
         console.log(res);
         if (res.data.status === "200") {
           reset();
           localStorage.setItem("regist", JSON.stringify(res.data));
-          dispatch(addUser(body));
+          // dispatch(addUser(body));
           setTimeout(() => {
             window.location.reload();
           }, 3000);

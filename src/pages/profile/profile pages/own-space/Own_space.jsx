@@ -24,46 +24,52 @@ export const Ownspace = () => {
 
   const [items, setItems] = useState([])
   console.log("items", items)
+  console.log("activeItem", activeItem)
 
     let data = [
       {
         id: 1,
         img: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80",
-        price: "1.40",
-        title: "Зарегистрироваться на сайте",
+        Timer: "1.40",
+        Balance: 100,
+        Description: "Зарегистрироваться на сайте",
         link: "",
         icon: <IoTrashOutline />,
       },
       {
         id: 2,
         img: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80",
-        price: "2.23",
-        title: "Поставить лайк и оставить коментарии",
+        Timer: "2.23",
+        Description: "Поставить лайк и оставить коментарии",
         link: "",
+        Balance: 100,
         icon: <IoTrashOutline />,
       },
       {
         id: 3,
         img: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80",
-        price: "0.99",
-        title: "Зарегистрироваться на сайте",
+        Timer: "0.99",
+        Description: "Зарегистрироваться на сайте",
         link: "",
+        Balance: 100,
         icon: <IoTrashOutline />,
       },
       {
         id: 4,
         img: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80",
-        price: "1.59",
-        title: "Поставить лайк и оставить коментарии",
+        Timer: "1.59",
+        Description: "Поставить лайк и оставить коментарии",
         link: "",
+        Balance: 100,
         icon: <IoTrashOutline />,
       },
       {
         id: 5,
         img: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80",
-        price: "0.66",
-        title: "Зарегистрироваться на сайте",
+        Timer: "0.66",
+        Description: "Зарегистрироваться на сайте",
         link: "",
+        Balance: 100,
         icon: <IoTrashOutline />,
       },
     ];
@@ -156,7 +162,7 @@ export const Ownspace = () => {
 
     useEffect(() => {
       axios
-        .get(`http://localhost:5000/api/v1/userTasks/${2}`)
+        .get(`http://localhost:5000/api/v1/userTasks/${11}`)
         .then((res) => {
           console.log(res.data);
           setItems(res.data);
@@ -166,9 +172,11 @@ export const Ownspace = () => {
         });
     }, []);
 
+    const userTasks = items.length > 0 ? items : data
+
     const deleteTask = () => {
       axios
-      .delete("https://69e9-80-94-250-38.eu.ngrok.io/api/tasks/v2/taskDel")
+      .delete("https://7bd1-80-94-250-65.eu.ngrok.io/api/tasks/v2/taskDel")
       .then((res) => {
         console.log(res.data);
         setItems(res.data);
@@ -178,16 +186,30 @@ export const Ownspace = () => {
       });
     }
 
-    const stopTask = () => {
+    const stopTask = (index) => {
+      setActiveItem(index);
       axios
-      .get("https://69e9-80-94-250-38.eu.ngrok.io/api/tasks/v2/taskDel")
-      .then((res) => {
-        console.log(res.data);
-        setItems(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        .post("https://7bd1-80-94-250-65.eu.ngrok.io/api/tasks/v2/stopTask", {
+          id: activeItem + 1,
+        })
+        .then((res) => {
+          console.log(res.data);
+          setItems(res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    const startTask = () => {
+      axios
+        .post("https://7bd1-80-94-250-65.eu.ngrok.io/api/tasks/v2/startTask")
+        .then((res) => {
+          console.log(res.data);
+          setItems(res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
 
     const editTask = (index) => {
@@ -303,17 +325,17 @@ export const Ownspace = () => {
             <div className={cls.section_about}>
               <div className={cls.about_title}>Мои задания</div>
               <section className={cls.tasks_inner}>
-                {data.map((item, index) => {
+                {items.map((item, index) => {
                   return (
                     <div key={item.id} className={cls.task}>
                       <div className={cls.task_data}>
                         <section className={cls.task_id}>#{item.id}</section>
-                        <p className={cls.task_title}>{item.title}</p>
+                        <p className={cls.task_title}>{item.Description}</p>
                         <p className={cls.task_title}>
-                          Баланс: {item.price} ₽уб
+                          Баланс: {item.Balance} ₽уб
                         </p>
                         <div className={cls.task_price}>
-                          Цена: {item.price} ₽уб
+                          Цена: {item.Timer} ₽уб
                         </div>
                       </div>
 
@@ -346,7 +368,7 @@ export const Ownspace = () => {
                             </div>
                           )}
                         </div>
-                        <button onClick={stopTask} className={cls.task_button1}>
+                        <button onClick={() => stopTask(index)} className={cls.task_button1}>
                           Остановить
                         </button>
                         <button

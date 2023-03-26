@@ -94,7 +94,7 @@ export const AddTask = ({ text, onClick, id }) => {
     console.log("body", body);
 
     axios
-      .post("https://3cb4-80-94-250-38.eu.ngrok.io/api/v2/addTask", body)
+      .post("https://7bd1-80-94-250-65.eu.ngrok.io/api/tasks/v2/addTask", body)
       .then((res) => {
         console.log(res.data);
         if (res.data.status === "200") {

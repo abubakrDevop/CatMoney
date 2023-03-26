@@ -271,6 +271,7 @@ $mobileSmall: 479.98px; // телефоны s
                                       align-items: center;
                                       text-decoration: none;
                                       z-index: 0;
+                                      cursor: pointer;
                                       @media (max-width: 1150px) {
                                         font-size: 13px;
                                       }
@@ -322,7 +323,7 @@ $mobileSmall: 479.98px; // телефоны s
                                       width: 100%;
                                       left: 0;
                                     }
-                  
+
                                     .buttons_popap_input_tasks {
                                       display: flex;
                                       width: 80%;
@@ -364,7 +365,7 @@ $mobileSmall: 479.98px; // телефоны s
                                       :-ms-input-placeholder { font-size: 10px; color:#f00;}
                                       :-moz-placeholder { font-size: 10px; color:#f00;}
                                     }
-                  
+
                                     .buttons_popap_button_tasks {
                                       display: flex;
                                       font-weight: bold;
@@ -402,6 +403,7 @@ $mobileSmall: 479.98px; // телефоны s
                                       align-items: center;
                                       text-decoration: none;
                                       z-index: 0;
+                                      cursor: pointer;
                                       @media (max-width: 1150px) {
                                         font-size: 13px;
                                       }

@@ -26,7 +26,7 @@ server.get('/api/v1/counter', async (req, res) => {
 
 server.get('/api/v1/tasks', async (req, res) => {
   try {
-    axios(`https://69e9-80-94-250-38.eu.ngrok.io/api/tasks/v2/paginate`).then(
+    axios(`https://7bd1-80-94-250-65.eu.ngrok.io/api/tasks/v2/paginate`).then(
       (response) => res.json(response.data)
     );
   } catch (err) {
@@ -39,7 +39,7 @@ server.get('/api/v1/userTasks/:id', async (req, res) => {
 
   try {
     axios(
-      `https://69e9-80-94-250-38.eu.ngrok.io/api/tasks/v2/userTasks?id=${id}`
+      `https://7bd1-80-94-250-65.eu.ngrok.io/api/tasks/v2/userTasks?id=${id}`
     ).then((response) => res.json(response.data));
   } catch (err) {
     console.log(err);

@@ -112,7 +112,7 @@ export const Tasks = () => {
         </section>
 
         <section className={cls.tasks_inner}>
-          {data.map((item) => (
+          {items.map((item) => (
             <div key={item.id} className={cls.task}>
               <section className={cls.task_imgname}>
                 {/* <img src={item.img} alt="img" className={cls.task_img} /> */}
