@@ -81,8 +81,8 @@ export const Wallet = () => {
 							</section>
 
 							{
-								item.connected ? 
-                <button onClick={() => handleChangeConnected(item.id)} className={cls.card_button2}>Удалить</button> 
+								item.connected ?
+                <button onClick={() => handleChangeConnected(item.id)} className={cls.card_button2}>Удалить</button>
                 :
 								<button onClick={() => handleChangeConnected(item.id)} className={cls.card_button1}>Установить</button>
 							}

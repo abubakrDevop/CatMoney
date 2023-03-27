@@ -35,9 +35,9 @@ export const Index = () => {
   const params = useParams();
   console.log('typeofParams', params?.id)
 
-  useEffect(() => {
-    localStorage.setItem("regist", JSON.stringify({ id: 11 }));
-  }, []);
+  // useEffect(() => {
+  //   localStorage.setItem("regist", JSON.stringify({ id: 11 }));
+  // }, []);
 
 
     const userId = JSON.parse(localStorage.getItem("regist"));

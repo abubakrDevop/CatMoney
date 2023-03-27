@@ -6,10 +6,10 @@ import { FaEdit, FaLink, FaClock, FaRubleSign } from "react-icons/fa";
 import { Form } from '../../helpers/form/index'
 import cls from '../add-task/AddTask.module.scss'
 
-export const AddTask = ({ text, onClick, id }) => {
+export const AddTask = ({ text, onClick, taskId }) => {
   const [activeItem, setActiveItem] = useState(0)
     const [visible, setVisible] = useState(false);
-    console.log('idddddd', id)
+    console.log("idddddd", taskId);
 
   const userId = JSON.parse(localStorage.getItem("regist"))
 
@@ -50,65 +50,69 @@ export const AddTask = ({ text, onClick, id }) => {
     handleSubmit,
   } = useForm()
 
-
+// ["description"] - описание
+// ["url"] - урл
+// ["timer"] - время просмотра
+// ["price"] - обновленная цена
   const onSubmit = (data) => {
-    if (id) {
-        onClick(false);
-          const body = {
-            description: data.title,
-            url: data.url,
-            timer: +taimerNumber,
-            price: activePrice,
-            id: userId.id,
-          };
+    if (taskId) {
+      onClick(false);
+      const body = {
+        description: data.title,
+        url: data.url,
+        timer: +taimerNumber,
+        price: activePrice,
+        id: userId.id,
+        taskId: taskId,
+      };
 
-          console.log("body", body);
-
-          axios
-            .put("https://3cb4-80-94-250-38.eu.ngrok.io/api/v2/addTask", body)
-            .then((res) => {
-              console.log(res.data);
-              if (res.data.status === "200") {
-                reset();
-                alert("Задание получено");
-              } else if (res.data.status === "") {
-                reset();
-              } else if (res.data.status === "") {
-                reset();
-              }
-            })
-            .catch((error) => {
-              console.log(error);
-            });
+      axios
+        .put("https://3cb4-80-94-250-38.eu.ngrok.io/api/v2/addTask", body)
+        .then((res) => {
+          console.log(res.data);
+          if (res.data.status === "200") {
+            reset();
+            alert("Задание получено");
+          } else if (res.data.status === "") {
+            reset();
+          } else if (res.data.status === "") {
+            reset();
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
 
-    if (!id) {
-    const body = {
-      description: data.title,
-      url: data.url,
-      timer: +taimerNumber,
-      price: activePrice,
-      id: userId.id,
-    };
+    if (!taskId) {
+      const body = {
+        description: data.title,
+        url: data.url,
+        timer: +taimerNumber,
+        price: activePrice,
+        id: userId.id,
+        taskId: taskId,
+      };
 
-    console.log("body", body);
-
-    axios
-      .post("https://7bd1-80-94-250-65.eu.ngrok.io/api/tasks/v2/addTask", body)
-      .then((res) => {
-        console.log(res.data);
-        if (res.data.status === "200") {
-          reset();
-          alert("Задание получено");
-        } else if (res.data.status === "") {
-          reset();
-        } else if (res.data.status === "") {
-          reset();
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      axios
+        .post(
+          "https://5160-80-94-250-65.eu.ngrok.io/api/tasks/v2/addTask",
+          body
+        )
+        .then((res) => {
+          console.log(res.data);
+          if (res.data.status === "200") {
+            reset();
+            alert("Задание получено");
+          } else if (res.data.status === "") {
+            reset();
+          } else if (res.data.status === "") {
+            reset();
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
   }
 
@@ -118,7 +122,7 @@ export const AddTask = ({ text, onClick, id }) => {
   }
 
   return (
-    <div className={id ? `${cls.add_task_edit}` : `${cls.add_task}`}>
+    <div className={taskId ? `${cls.add_task_edit}` : `${cls.add_task}`}>
       <form onSubmit={handleSubmit(onSubmit)} className={cls.add_task_form}>
         <section className={cls.add_task_form_info}>
           <p className={cls.info_text}>

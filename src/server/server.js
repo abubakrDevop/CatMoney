@@ -17,8 +17,9 @@ middleware.forEach((it) => server.use(it));
 
 server.get('/api/v1/counter', async (req, res) => {
   try {
-    axios('https://088a-80-94-250-40.eu.ngrok.io/api/v2/counter')
-      .then((response) => res.json(response.data))
+    axios("https://5160-80-94-250-65.eu.ngrok.io/api/v2/counter").then(
+      (response) => res.json(response.data)
+    );
   } catch (err) {
     console.log(err)
   }
@@ -26,7 +27,7 @@ server.get('/api/v1/counter', async (req, res) => {
 
 server.get('/api/v1/tasks', async (req, res) => {
   try {
-    axios(`https://7bd1-80-94-250-65.eu.ngrok.io/api/tasks/v2/paginate`).then(
+    axios(`https://5160-80-94-250-65.eu.ngrok.io/api/tasks/v2/paginate`).then(
       (response) => res.json(response.data)
     );
   } catch (err) {
@@ -39,7 +40,7 @@ server.get('/api/v1/userTasks/:id', async (req, res) => {
 
   try {
     axios(
-      `https://7bd1-80-94-250-65.eu.ngrok.io/api/tasks/v2/userTasks?id=${id}`
+      `https://5160-80-94-250-65.eu.ngrok.io/api/tasks/v2/userTasks?id=${id}`
     ).then((response) => res.json(response.data));
   } catch (err) {
     console.log(err);
@@ -48,8 +49,9 @@ server.get('/api/v1/userTasks/:id', async (req, res) => {
 
 server.post('/api/v1/register', async (req, res) => {
   try {
-    axios('https://088a-80-94-250-40.eu.ngrok.io/api/v2/register')
-      .then((response) => res.json(response.data))
+    axios("https://5160-80-94-250-65.eu.ngrok.io/api/v2/register").then(
+      (response) => res.json(response.data)
+    );
   } catch (err) {
     console.log(err)
   }
@@ -57,8 +59,9 @@ server.post('/api/v1/register', async (req, res) => {
 
 server.post('/api/v1/visible', async (req, res) => {
   try {
-    axios('https://088a-80-94-250-40.eu.ngrok.io/api/v2/exit')
-      .then((response) => res.json(response.data))
+    axios("https://5160-80-94-250-65.eu.ngrok.io/api/v2/exit").then(
+      (response) => res.json(response.data)
+    );
   } catch (err) {
     console.log(err)
   }

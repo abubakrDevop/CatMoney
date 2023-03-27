@@ -13,66 +13,71 @@ export const Ownspace = () => {
     handleSubmit,
   } = useForm()
 
-  const [active, setActive] = React.useState(false)
-  const [activeTasksUser, setActiveTasksUser] = React.useState(false);
-  const [visible, setVisible] = React.useState(false);
-  const [activeItem, setActiveItem] = React.useState(0);
-  const [addAmountTasksUser, setAddAmountTasksUser] = React.useState('')
-  const [getActive, setGetActive] = React.useState(false)
-  const [addAmount, setAddAmount] = React.useState('')
-  const [getAmount, setGetAmount] = React.useState('')
+      let data = [
+        {
+          id: 1,
+          Timer: "1.40",
+          Balance: 100,
+          Description: "Зарегистрироваться на сайте",
+          link: "",
+          start: 0,
+        },
+        {
+          id: 11,
+          Timer: "2.23",
+          Description: "Поставить лайк и оставить коментарии",
+          link: "",
+          Balance: 100,
+          start: 0,
+        },
+        {
+          id: 3,
+          Timer: "0.99",
+          Description: "Зарегистрироваться на сайте",
+          link: "",
+          Balance: 100,
+          start: 0,
+        },
+        {
+          id: 4,
+          Timer: "1.59",
+          Description: "Поставить лайк и оставить коментарии",
+          link: "",
+          Balance: 100,
+          start: 0,
+        },
+        {
+          id: 5,
+          Timer: "0.66",
+          Description: "Зарегистрироваться на сайте",
+          link: "",
+          Balance: 100,
+          start: 0,
+        },
+      ];
+
+  const [active, setActive] = useState(false)
+  const [activeTasksUser, setActiveTasksUser] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const [startEndStopTask, setStartEndStopTask] = useState(false);
+  const [activeItem, setActiveItem] = useState(0);
+  const [addAmountTasksUser, setAddAmountTasksUser] = useState('')
+  const [getActive, setGetActive] = useState(false)
+  const [addAmount, setAddAmount] = useState('')
+  const [getAmount, setGetAmount] = useState('')
+  	const [tasks, setTasks] = useState(data);
 
   const [items, setItems] = useState([])
   console.log("items", items)
-  console.log("activeItem", activeItem)
+  console.log(
+    "items.start",
+    items.map((elem) => elem.start)
+  );
 
-    let data = [
-      {
-        id: 1,
-        img: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80",
-        Timer: "1.40",
-        Balance: 100,
-        Description: "Зарегистрироваться на сайте",
-        link: "",
-        icon: <IoTrashOutline />,
-      },
-      {
-        id: 2,
-        img: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80",
-        Timer: "2.23",
-        Description: "Поставить лайк и оставить коментарии",
-        link: "",
-        Balance: 100,
-        icon: <IoTrashOutline />,
-      },
-      {
-        id: 3,
-        img: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80",
-        Timer: "0.99",
-        Description: "Зарегистрироваться на сайте",
-        link: "",
-        Balance: 100,
-        icon: <IoTrashOutline />,
-      },
-      {
-        id: 4,
-        img: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80",
-        Timer: "1.59",
-        Description: "Поставить лайк и оставить коментарии",
-        link: "",
-        Balance: 100,
-        icon: <IoTrashOutline />,
-      },
-      {
-        id: 5,
-        img: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWFufGVufDB8fDB8fA%3D%3D&w=1000&q=80",
-        Timer: "0.66",
-        Description: "Зарегистрироваться на сайте",
-        link: "",
-        Balance: 100,
-        icon: <IoTrashOutline />,
-      },
-    ];
+
+
+    // console.log("data", data.map((elem) => elem.start));
+    // console.log("tasks", tasks.map((elem) => elem.start));
 
   // const userData = localStorage.getItem('userData')
 
@@ -160,9 +165,11 @@ export const Ownspace = () => {
     // })
   // }
 
+   const userId = JSON.parse(localStorage.getItem("regist"));
+
     useEffect(() => {
       axios
-        .get(`http://localhost:5000/api/v1/userTasks/${11}`)
+        .get(`http://localhost:5000/api/v1/userTasks/${userId.id}`)
         .then((res) => {
           console.log(res.data);
           setItems(res.data);
@@ -172,25 +179,79 @@ export const Ownspace = () => {
         });
     }, []);
 
-    const userTasks = items.length > 0 ? items : data
+    const userTasks = items.length > 0 ? items : tasks
 
-    const deleteTask = () => {
+    const deleteTask = (index) => {
+      const taskId = userTasks[index].id;
       axios
-      .delete("https://7bd1-80-94-250-65.eu.ngrok.io/api/tasks/v2/taskDel")
-      .then((res) => {
-        console.log(res.data);
-        setItems(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+        .delete(
+          `https://5160-80-94-250-65.eu.ngrok.io/api/tasks/v2/taskDel/${taskId}`
+        )
+        .then((res) => {
+          console.log(res.data);
+          setItems(res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     }
 
-    const stopTask = (index) => {
-      setActiveItem(index);
+    const stopTask = (index, id) => {
+      const taskId = userTasks[index].id;
+      console.log("taskId", taskId);
+      console.log("activeItem", activeItem);
+      console.log("index", index);
+      console.log("id", id);
+
+      if (startEndStopTask) {
+        console.log("stop");
+        axios
+          .post("https://7bd1-80-94-250-65.eu.ngrok.io/api/tasks/v2/stopTask", {
+            id: taskId,
+          })
+          .then((res) => {
+            console.log(res.data);
+            setItems(res.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else {
+        console.log("start");
+        console.log("userTasks[taskId]", userTasks[taskId]);
+        axios
+          .post(
+            "https://7bd1-80-94-250-65.eu.ngrok.io/api/tasks/v2/startTask",
+            {
+              id: taskId,
+            }
+          )
+          .then((res) => {
+            console.log(res.data);
+            setItems(res.data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+        setStartEndStopTask(!startEndStopTask);
+    };
+
+	const handleChangeConnected = (id, start) => {
+    setTasks(
+      tasks.map((item) =>
+        item.id === id && item.start === 0
+          ? { ...item, start: 1 }
+          : { ...item, start: 0 }
+      )
+    );
+
+    if (start === 1) {
+      console.log("stop");
       axios
-        .post("https://7bd1-80-94-250-65.eu.ngrok.io/api/tasks/v2/stopTask", {
-          id: activeItem + 1,
+        .post("https://5160-80-94-250-65.eu.ngrok.io/api/tasks/v2/stopTask", {
+          userId: userId.id,
+          id: id,
         })
         .then((res) => {
           console.log(res.data);
@@ -200,9 +261,13 @@ export const Ownspace = () => {
           console.log(error);
         });
     }
-    const startTask = () => {
+    if (start === 0) {
+      console.log("start");
       axios
-        .post("https://7bd1-80-94-250-65.eu.ngrok.io/api/tasks/v2/startTask")
+        .post("https://5160-80-94-250-65.eu.ngrok.io/api/tasks/v2/startTask", {
+          userId: userId.id,
+          id: id,
+        })
         .then((res) => {
           console.log(res.data);
           setItems(res.data);
@@ -211,6 +276,7 @@ export const Ownspace = () => {
           console.log(error);
         });
     }
+  };
 
     const editTask = (index) => {
       setActiveItem(index)
@@ -325,7 +391,8 @@ export const Ownspace = () => {
             <div className={cls.section_about}>
               <div className={cls.about_title}>Мои задания</div>
               <section className={cls.tasks_inner}>
-                {items.map((item, index) => {
+                {userTasks.map((item, index) => {
+                  // console.log("item.id", item.id);
                   return (
                     <div key={item.id} className={cls.task}>
                       <div className={cls.task_data}>
@@ -368,9 +435,33 @@ export const Ownspace = () => {
                             </div>
                           )}
                         </div>
-                        <button onClick={() => stopTask(index)} className={cls.task_button1}>
-                          Остановить
-                        </button>
+                        {/* <button
+                          onClick={() => stopTask(index, item.id)}
+                          className={cls.task_button1}
+                        >
+                          {!startEndStopTask
+                            ? "Остановить"
+                            : "Запустить"}
+                        </button> */}
+                        {item.start === 0 ? (
+                          <button
+                            onClick={() =>
+                              handleChangeConnected(item.id, item.start)
+                            }
+                            className={cls.task_button1}
+                          >
+                            Запустить
+                          </button>
+                        ) : (
+                          <button
+                            onClick={() =>
+                              handleChangeConnected(item.id, item.start)
+                            }
+                            className={cls.task_button1}
+                          >
+                            Остановить
+                          </button>
+                        )}
                         <button
                           onClick={() => editTask(index)}
                           className={cls.task_button1}
@@ -378,7 +469,7 @@ export const Ownspace = () => {
                           Редактировать
                         </button>
                         <button
-                          onClick={deleteTask}
+                          onClick={() => deleteTask(index)}
                           className={cls.task_button1}
                         >
                           Удалить
@@ -388,7 +479,7 @@ export const Ownspace = () => {
                         <AddTask
                           text="Активировать изменения"
                           onClick={setVisible}
-                          id={activeItem + 1}
+                          taskId={userTasks[index].id}
                         />
                       )}
                     </div>
