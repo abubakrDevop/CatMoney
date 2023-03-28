@@ -1,5 +1,6 @@
 import cls from "./SignRefUp.module.scss";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
 import { Form } from "../../../helpers/form/index";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
@@ -10,15 +11,12 @@ import {
   IoLockClosedOutline,
   IoPersonOutline,
 } from "react-icons/io5";
-import { addUser } from "../../../store/userSlice";
 import { useState } from "react";
 
 export const SignRefUp = () => {
   const [active, setActive] = useState(false);
   const [error, setError] = useState("");
-  const dispatch = useDispatch();
-  const { inputData } = useSelector((state) => state.user);
-  // console.log("inputData", inputData);
+  let navigate = useNavigate();
 
   const { formState, reset, register, handleSubmit } = useForm();
 
@@ -45,7 +43,7 @@ export const SignRefUp = () => {
           reset();
           localStorage.setItem("regist", JSON.stringify(res.data));
           localStorage.removeItem("userLink", JSON.stringify(res.data));
-          dispatch(addUser(body));
+          navigate("/profile/own-space");
           setTimeout(() => {
             window.location.reload();
           }, 3000);

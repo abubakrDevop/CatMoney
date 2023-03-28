@@ -59,22 +59,21 @@ export const Ownspace = () => {
   const [active, setActive] = useState(false)
   const [activeTasksUser, setActiveTasksUser] = useState(false);
   const [visible, setVisible] = useState(false);
-  const [startEndStopTask, setStartEndStopTask] = useState(false);
   const [activeItem, setActiveItem] = useState(0);
   const [addAmountTasksUser, setAddAmountTasksUser] = useState('')
   const [getActive, setGetActive] = useState(false)
   const [addAmount, setAddAmount] = useState('')
   const [getAmount, setGetAmount] = useState('')
-  	const [tasks, setTasks] = useState(data);
-
   const [items, setItems] = useState([])
+  const [tasks, setTasks] = useState(items.length > 0 ? items : data);
+
   console.log("items", items)
   console.log(
     "items.start",
     items.map((elem) => elem.start)
   );
 
-
+  const userTasks = items.length > 0 ? items : tasks
 
     // console.log("data", data.map((elem) => elem.start));
     // console.log("tasks", tasks.map((elem) => elem.start));
@@ -179,13 +178,12 @@ export const Ownspace = () => {
         });
     }, []);
 
-    const userTasks = items.length > 0 ? items : tasks
 
     const deleteTask = (index) => {
       const taskId = userTasks[index].id;
       axios
         .delete(
-          `https://5160-80-94-250-65.eu.ngrok.io/api/tasks/v2/taskDel/${taskId}`
+          `https://2a60-80-94-250-65.eu.ngrok.io/api/tasks/v2/taskDel?id=${taskId}&userId=${userId.id}`
         )
         .then((res) => {
           console.log(res.data);
@@ -195,47 +193,6 @@ export const Ownspace = () => {
           console.log(error);
         });
     }
-
-    const stopTask = (index, id) => {
-      const taskId = userTasks[index].id;
-      console.log("taskId", taskId);
-      console.log("activeItem", activeItem);
-      console.log("index", index);
-      console.log("id", id);
-
-      if (startEndStopTask) {
-        console.log("stop");
-        axios
-          .post("https://7bd1-80-94-250-65.eu.ngrok.io/api/tasks/v2/stopTask", {
-            id: taskId,
-          })
-          .then((res) => {
-            console.log(res.data);
-            setItems(res.data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      } else {
-        console.log("start");
-        console.log("userTasks[taskId]", userTasks[taskId]);
-        axios
-          .post(
-            "https://7bd1-80-94-250-65.eu.ngrok.io/api/tasks/v2/startTask",
-            {
-              id: taskId,
-            }
-          )
-          .then((res) => {
-            console.log(res.data);
-            setItems(res.data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
-      }
-        setStartEndStopTask(!startEndStopTask);
-    };
 
 	const handleChangeConnected = (id, start) => {
     setTasks(
@@ -249,7 +206,7 @@ export const Ownspace = () => {
     if (start === 1) {
       console.log("stop");
       axios
-        .post("https://5160-80-94-250-65.eu.ngrok.io/api/tasks/v2/stopTask", {
+        .post("https://2a60-80-94-250-65.eu.ngrok.io/api/tasks/v2/stopTask", {
           userId: userId.id,
           id: id,
         })
@@ -264,7 +221,7 @@ export const Ownspace = () => {
     if (start === 0) {
       console.log("start");
       axios
-        .post("https://5160-80-94-250-65.eu.ngrok.io/api/tasks/v2/startTask", {
+        .post("https://2a60-80-94-250-65.eu.ngrok.io/api/tasks/v2/startTask", {
           userId: userId.id,
           id: id,
         })
@@ -278,9 +235,10 @@ export const Ownspace = () => {
     }
   };
 
-    const editTask = (index) => {
-      setActiveItem(index)
-      setVisible(!visible)
+    const editTask = (index, id) => {
+      console.log('index', index)
+        setVisible(!visible)
+        setActiveItem(index)
     }
 
   return (
@@ -435,14 +393,6 @@ export const Ownspace = () => {
                             </div>
                           )}
                         </div>
-                        {/* <button
-                          onClick={() => stopTask(index, item.id)}
-                          className={cls.task_button1}
-                        >
-                          {!startEndStopTask
-                            ? "Остановить"
-                            : "Запустить"}
-                        </button> */}
                         {item.start === 0 ? (
                           <button
                             onClick={() =>
@@ -463,7 +413,7 @@ export const Ownspace = () => {
                           </button>
                         )}
                         <button
-                          onClick={() => editTask(index)}
+                          onClick={() => editTask(index, item.id)}
                           className={cls.task_button1}
                         >
                           Редактировать

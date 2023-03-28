@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import cls from '../signIn/SignIn.module.scss'
 import { useForm } from 'react-hook-form'
 import { Form } from '../../../helpers/form/index'
@@ -14,6 +15,7 @@ export const SignIn = () => {
   const [active, setActive] = React.useState(false)
   const [loginError, setLoginError] = React.useState('')
   const [passwordError, setPasswordError] = React.useState('')
+  let navigate = useNavigate();
 
   const {
     formState,
@@ -31,7 +33,7 @@ export const SignIn = () => {
 
     axios
       .post(
-        "https://7bd1-80-94-250-65.eu.ngrok.io/api/users/v2/auth",
+        "https://2a60-80-94-250-65.eu.ngrok.io/api/users/v2/auth",
         body
       )
       .then((res) => {
@@ -45,7 +47,9 @@ export const SignIn = () => {
         } else if (res.data.status === "200") {
           reset();
           localStorage.setItem("auth", JSON.stringify(res.data));
+          localStorage.setItem("regist", JSON.stringify(res.data))
           window.location.reload();
+          navigate("/profile/own-space");
         }
       })
       .catch((error) => {

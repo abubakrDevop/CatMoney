@@ -8,14 +8,10 @@ import cls from '../add-task/AddTask.module.scss'
 
 export const AddTask = ({ text, onClick, taskId }) => {
   const [activeItem, setActiveItem] = useState(0)
-    const [visible, setVisible] = useState(false);
+    const [value, setValue] = useState("");
     console.log("idddddd", taskId);
 
   const userId = JSON.parse(localStorage.getItem("regist"))
-
-  const visiblePopap = () => {
-    setVisible(!visible)
-  }
 
   const taimer = [
     {
@@ -40,9 +36,10 @@ export const AddTask = ({ text, onClick, taskId }) => {
     },
   ]
 
-  const activeLabel = taimer[activeItem].title
-    const taimerNumber = taimer[activeItem].title.split(" ")[1];
+  const taimerValue = taimer[activeItem].title.split(" ")[1];
   const activePrice = taimer[activeItem].price;
+
+  console.log('taimerValue', taimerValue, activePrice)
 
   const {
     reset,
@@ -50,24 +47,21 @@ export const AddTask = ({ text, onClick, taskId }) => {
     handleSubmit,
   } = useForm()
 
-// ["description"] - описание
-// ["url"] - урл
-// ["timer"] - время просмотра
-// ["price"] - обновленная цена
   const onSubmit = (data) => {
+    console.log('userId', userId.id)
     if (taskId) {
       onClick(false);
       const body = {
         description: data.title,
         url: data.url,
-        timer: +taimerNumber,
+        timer: +taimerValue,
         price: activePrice,
-        id: userId.id,
-        taskId: taskId,
+        userId : userId.id,
+        id: taskId,
       };
 
       axios
-        .put("https://3cb4-80-94-250-38.eu.ngrok.io/api/v2/addTask", body)
+        .post("https://2a60-80-94-250-65.eu.ngrok.io/api/tasks/v2/update", body)
         .then((res) => {
           console.log(res.data);
           if (res.data.status === "200") {
@@ -88,7 +82,7 @@ export const AddTask = ({ text, onClick, taskId }) => {
       const body = {
         description: data.title,
         url: data.url,
-        timer: +taimerNumber,
+        timer: +taimerValue,
         price: activePrice,
         id: userId.id,
         taskId: taskId,
@@ -96,7 +90,7 @@ export const AddTask = ({ text, onClick, taskId }) => {
 
       axios
         .post(
-          "https://5160-80-94-250-65.eu.ngrok.io/api/tasks/v2/addTask",
+          "https://2a60-80-94-250-65.eu.ngrok.io/api/tasks/v2/addTask",
           body
         )
         .then((res) => {
@@ -116,10 +110,12 @@ export const AddTask = ({ text, onClick, taskId }) => {
     }
   }
 
-  const onSelectItem = (index) => {
-    setActiveItem(index)
-    setVisible(!visible);
-  }
+  const handleSelectChange = (event) => {
+    const selectedIndex = event.target.selectedIndex;
+    setActiveItem(selectedIndex);
+    setValue(event.target.value);
+  };
+
 
   return (
     <div className={taskId ? `${cls.add_task_edit}` : `${cls.add_task}`}>
@@ -149,27 +145,22 @@ export const AddTask = ({ text, onClick, taskId }) => {
           <section className={cls.info_select_section}>
             <div className={cls.info_select}>
               Выбрать таймер:
-              <button onClick={visiblePopap} className={cls.select_button}>
-                {activeLabel}
-              </button>
+              <div className={cls.select_block}>
               <FaClock className={cls.info_select_icon} />
-              {visible && (
-                <div className={cls.select_popap}>
-                  {taimer.map((item, index) => (
-                    <span
-                      onClick={() => onSelectItem(index)}
-                      key={index}
+                <select className={cls.select_popap} onChange={handleSelectChange}>
+                  {taimer.map((item) => (
+                    <option
                       className={
-                        activeItem === index
-                          ? cls.popap_link_active
-                          : cls.popap_link
+                        cls.popap_link
                       }
+                      key={item.price}
+                      value={item.price}
                     >
                       {item.title}
-                    </span>
+                    </option>
                   ))}
-                </div>
-              )}
+                </select>
+              </div>
             </div>
 
             <div className={cls.info_price}>
