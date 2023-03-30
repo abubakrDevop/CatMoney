@@ -194,9 +194,9 @@ export const Ownspace = () => {
 
     const deleteTask = (index) => {
       const taskId = userTasks[index].id;
-      axios
+      $api
         .delete(
-          `https://3673-80-94-250-65.eu.ngrok.io/api/tasks/v2/taskDel?id=${taskId}&userId=${userId.id}`
+          `/api/tasks/v2/taskDel?id=${taskId}&userId=${userId.id}`
         )
         .then((res) => {
           console.log(res.data);
@@ -218,8 +218,8 @@ export const Ownspace = () => {
 
     if (start === 1) {
       console.log("stop");
-      axios
-        .post("https://3673-80-94-250-65.eu.ngrok.io/api/tasks/v2/stopTask", {
+      $api
+        .post("/api/tasks/v2/stopTask", {
           userId: userId.id,
           id: id,
         })
@@ -233,8 +233,8 @@ export const Ownspace = () => {
     }
     if (start === 0) {
       console.log("start");
-      axios
-        .post("https://3673-80-94-250-65.eu.ngrok.io/api/tasks/v2/startTask", {
+      $api
+        .post("/api/tasks/v2/startTask", {
           userId: userId.id,
           id: id,
         })

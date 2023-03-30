@@ -72,8 +72,8 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
       console.log("userId", userId.id);
       console.log("id", taskId);
 
-      axios
-        .post("https://3673-80-94-250-65.eu.ngrok.io/api/tasks/v2/update", body)
+      $api
+        .post("/api/tasks/v2/update", body)
         .then((res) => {
           console.log("addTask", res.data);
           setUpdateTask(res.data);
@@ -102,11 +102,8 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
         balance: data.balance < 0 ? 5 : data.balance,
       };
 
-      axios
-        .post(
-          "https://3673-80-94-250-65.eu.ngrok.io/api/tasks/v2/addTask",
-          body
-        )
+      $api
+        .post("/api/tasks/v2/addTask", body)
         .then((res) => {
           console.log(res.data);
           if (res.data.status === "200") {

@@ -31,8 +31,8 @@ export const Settings = () => {
       wallet: data.wallet
     }
 
-    axios
-      .post("https://04f9-80-94-250-65.eu.ngrok.io/api/v2/settings", body)
+    $api
+      .post("/api/v2/settings", body)
       .then((res) => {
         console.log(res);
         if (res.data.status === "") {
