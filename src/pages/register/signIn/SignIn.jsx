@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import cls from '../signIn/SignIn.module.scss'
 import { useForm } from 'react-hook-form'
 import { Form } from '../../../helpers/form/index'
-import axios from "axios";
+import { $api } from "../../../helpers/constant/index";
 import  {
           IoEyeOffOutline,
           IoEyeOutline,
@@ -31,11 +31,8 @@ export const SignIn = () => {
       mode: 1,
     }
 
-    axios
-      .post(
-        "https://2a60-80-94-250-65.eu.ngrok.io/api/users/v2/auth",
-        body
-      )
+    $api
+      .post("/api/users/v2/auth", body)
       .then((res) => {
         console.log(res);
         if (res.data.status === "Логин введён неверно") {
@@ -47,7 +44,7 @@ export const SignIn = () => {
         } else if (res.data.status === "200") {
           reset();
           localStorage.setItem("auth", JSON.stringify(res.data));
-          localStorage.setItem("regist", JSON.stringify(res.data))
+          localStorage.setItem("regist", JSON.stringify(res.data));
           window.location.reload();
           navigate("/profile/own-space");
         }

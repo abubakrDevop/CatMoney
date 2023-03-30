@@ -5,65 +5,78 @@ import { FaEdit, FaLink, FaClock, FaRubleSign } from "react-icons/fa";
 
 import { Form } from '../../helpers/form/index'
 import cls from '../add-task/AddTask.module.scss'
+import { $api } from "../../helpers/constant/index";
 
-export const AddTask = ({ text, onClick, taskId }) => {
-  const [activeItem, setActiveItem] = useState(0)
-    const [value, setValue] = useState("");
-    console.log("idddddd", taskId);
+export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
+  const [activeItem, setActiveItem] = useState(0);
+  const [value, setValue] = useState("");
+  // console.log("idddddd", taskId);
 
-  const userId = JSON.parse(localStorage.getItem("regist"))
+  const userId = JSON.parse(localStorage.getItem("regist"));
 
   const taimer = [
     {
       title: "Таймер: 5 секунд",
-      price: 0.07
+      price: 0.07,
     },
     {
       title: "Таймер: 10 секунд",
-      price: 0.08
+      price: 0.08,
     },
     {
       title: "Таймер: 15 секунд",
-      price: 0.09
+      price: 0.09,
     },
     {
       title: "Таймер: 20 секунд",
-      price: 0.10
+      price: 0.1,
     },
     {
       title: "Таймер: 25 секунд",
-      price: 0.11
+      price: 0.11,
     },
-  ]
+  ];
 
   const taimerValue = taimer[activeItem].title.split(" ")[1];
   const activePrice = taimer[activeItem].price;
 
   console.log('taimerValue', taimerValue, activePrice)
 
-  const {
-    reset,
-    register,
-    handleSubmit,
-  } = useForm()
+  const { reset, register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
-    console.log('userId', userId.id)
+    console.log("userId", userId.id);
     if (taskId) {
       onClick(false);
       const body = {
         description: data.title,
         url: data.url,
         timer: +taimerValue,
-        price: activePrice,
-        userId : userId.id,
+        price: +activePrice,
+        userId: userId.id,
         id: taskId,
+        balance: data.balance < 0 ? 5 : data.balance
       };
 
+          // const formData = new FormData();
+          // formData.append("description", data.title);
+          // formData.append("url", data.url);
+          // formData.append("Timer", +taimerValue);
+          // formData.append("Price", +activePrice);
+
+
+      console.log("description", data.title);
+      console.log("url", data.url);
+      console.log("timer", +taimerValue);
+      console.log("price", +activePrice);
+      console.log("userId", userId.id);
+      console.log("id", taskId);
+
       axios
-        .post("https://2a60-80-94-250-65.eu.ngrok.io/api/tasks/v2/update", body)
+        .post("https://3673-80-94-250-65.eu.ngrok.io/api/tasks/v2/update", body)
         .then((res) => {
-          console.log(res.data);
+          console.log("addTask", res.data);
+          setUpdateTask(res.data);
           if (res.data.status === "200") {
             reset();
             alert("Задание получено");
@@ -83,14 +96,15 @@ export const AddTask = ({ text, onClick, taskId }) => {
         description: data.title,
         url: data.url,
         timer: +taimerValue,
-        price: activePrice,
-        id: userId.id,
-        taskId: taskId,
+        price: +activePrice,
+        userId: userId.id,
+        id: taskId,
+        balance: data.balance < 0 ? 5 : data.balance,
       };
 
       axios
         .post(
-          "https://2a60-80-94-250-65.eu.ngrok.io/api/tasks/v2/addTask",
+          "https://3673-80-94-250-65.eu.ngrok.io/api/tasks/v2/addTask",
           body
         )
         .then((res) => {
@@ -108,14 +122,13 @@ export const AddTask = ({ text, onClick, taskId }) => {
           console.log(error);
         });
     }
-  }
+  };
 
   const handleSelectChange = (event) => {
     const selectedIndex = event.target.selectedIndex;
     setActiveItem(selectedIndex);
     setValue(event.target.value);
   };
-
 
   return (
     <div className={taskId ? `${cls.add_task_edit}` : `${cls.add_task}`}>
@@ -142,17 +155,30 @@ export const AddTask = ({ text, onClick, taskId }) => {
             </span>
           </p>
 
+          <p className={cls.info_text}>
+            На сколько вы хотите пополнить баланс таска:
+            <span className={cls.info_text_box}>
+              <FaRubleSign className={cls.info_icon} />
+              <input
+                className={cls.info_text_input}
+                placeholder="5 рублей"
+                {...register("balance", Form.Options.settings)}
+              />
+            </span>
+          </p>
+
           <section className={cls.info_select_section}>
             <div className={cls.info_select}>
               Выбрать таймер:
               <div className={cls.select_block}>
-              <FaClock className={cls.info_select_icon} />
-                <select className={cls.select_popap} onChange={handleSelectChange}>
+                <FaClock className={cls.info_select_icon} />
+                <select
+                  className={cls.select_popap}
+                  onChange={handleSelectChange}
+                >
                   {taimer.map((item) => (
                     <option
-                      className={
-                        cls.popap_link
-                      }
+                      className={cls.popap_link}
                       key={item.price}
                       value={item.price}
                     >
@@ -178,4 +204,4 @@ export const AddTask = ({ text, onClick, taskId }) => {
       </form>
     </div>
   );
-}
+};

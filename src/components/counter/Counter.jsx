@@ -2,6 +2,7 @@ import React from "react";
 import cls from '../counter/Counter.module.scss'
 import axios from "axios";
 import { IoPeopleOutline, IoCardOutline, IoCalendarOutline, IoGlobeOutline } from 'react-icons/io5'
+import { $api } from "../../helpers/constant/index";
 
 
 export const Counter = () => {
@@ -31,12 +32,13 @@ export const Counter = () => {
   ]
 
 
-  axios.get('https://622d-80-94-250-104.eu.ngrok.io/api/v2/users')
-    .then(res => {
-      console.log(res.data)
-      setCounterValues(res)
+  axios
+    .get("https://04f9-80-94-250-65.eu.ngrok.io/api/v2/users")
+    .then((res) => {
+      console.log(res.data);
+      setCounterValues(res);
     })
-    .catch(error => console.log(error))
+    .catch((error) => console.log(error));
 
   return (
     <>

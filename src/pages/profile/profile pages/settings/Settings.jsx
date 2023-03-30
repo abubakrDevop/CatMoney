@@ -4,6 +4,7 @@ import axios from "axios";
 import { useForm } from 'react-hook-form'
 import { Form } from '../../../../helpers/form/index'
 import { IoDownloadOutline } from "react-icons/io5";
+import { $api } from "../../../../helpers/constant/index";
 
 export const Settings = () => {
   // const [imageUrl, setImageUrl] = React.useState("")
@@ -30,20 +31,21 @@ export const Settings = () => {
       wallet: data.wallet
     }
 
-    axios.post('https://088a-80-94-250-40.eu.ngrok.io/api/v2/settings', body)
-      .then(res => {
-        console.log(res)
-        if (res.data.status === '') {
-          reset()
-        } else if (res.data.status === '') {
-          reset()
-        } else if (res.data.status === '') {
-          reset()
+    axios
+      .post("https://04f9-80-94-250-65.eu.ngrok.io/api/v2/settings", body)
+      .then((res) => {
+        console.log(res);
+        if (res.data.status === "") {
+          reset();
+        } else if (res.data.status === "") {
+          reset();
+        } else if (res.data.status === "") {
+          reset();
         }
       })
-      .catch(error => {
-        console.log(error)
-      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   // const fileReader = new FileReader()

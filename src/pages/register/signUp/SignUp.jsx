@@ -3,7 +3,7 @@ import cls from "../signUp/SignUp.module.scss";
 import { useForm } from "react-hook-form";
 import { Form } from "../../../helpers/form/index";
 // import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
+import { $api } from "../../../helpers/constant/index";
 import {
   IoAtOutline,
   IoEyeOffOutline,
@@ -33,8 +33,8 @@ export const SignUp = () => {
     };
     console.log("noneRefBody", body);
 
-    axios
-      .post("https://5160-80-94-250-65.eu.ngrok.io/api/users/v2/register", body)
+    $api
+      .post("/api/users/v2/register", body)
       .then((res) => {
         console.log(res);
         if (res.data.status === "200") {

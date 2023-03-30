@@ -13,51 +13,56 @@ export const Tasks = () => {
 
   let tasks = [
     {
-      id: 1,
-      name: 'Alex Kendal',
-      price: '1.40',
-      title: 'Зарегистрироваться на сайте',
-      link: '',
+      Users_id: 1,
+      name: "Alex Kendal",
+      Price: "1.40",
+      Description: "Зарегистрироваться на сайте",
+      URL: "",
       icon: <FaRegClock />,
-      timer: 20
+      Timer: 20,
+      id: 11,
     },
     {
-      id: 2,
-      name: 'Misha Kolins',
-      price: '2.23',
-      title: 'Поставить лайк и оставить коментарии',
-      link: '',
+      Users_id: 2,
+      name: "Misha Kolins",
+      Price: "2.23",
+      Description: "Поставить лайк и оставить коментарии",
+      URL: "",
       icon: <FaRegClock />,
-      timer: 10
+      Timer: 10,
+      id: 12,
     },
     {
-      id: 3,
-      name: 'Jensen Ackels',
-      price: '0.99',
-      title: 'Зарегистрироваться на сайте',
-      link: '',
+      Users_id: 3,
+      name: "Jensen Ackels",
+      Price: "0.99",
+      Description: "Зарегистрироваться на сайте",
+      URL: "",
       icon: <FaRegClock />,
-      timer: 20
+      Timer: 20,
+      id: 13,
     },
     {
-      id: 4,
-      name: 'Sasha Gray',
-      price: '1.59',
-      title: 'Поставить лайк и оставить коментарии',
-      link: '',
+      Users_id: 4,
+      name: "Sasha Gray",
+      Price: "1.59",
+      Description: "Поставить лайк и оставить коментарии",
+      URL: "",
       icon: <FaRegClock />,
-      timer: 10
+      Timer: 10,
+      id: 14,
     },
     {
-      id: 5,
-      name: 'Jorge Bush',
-      price: '0.66',
-      title: 'Зарегистрироваться на сайте',
-      link: '',
+      Users_id: 5,
+      name: "Jorge Bush",
+      Price: "0.66",
+      Description: "Зарегистрироваться на сайте",
+      URL: "",
       icon: <FaRegClock />,
-      timer: 15
+      Timer: 15,
+      id: 15,
     },
-  ]
+  ];
 
  const data = items.length > 0 ? items : tasks
 
@@ -128,7 +133,7 @@ export const Tasks = () => {
                 <a href={item.URL} className={cls.task_button1}>
                   Выполнить
                 </a>
-                <div className={cls.task_clock_icon}>{item.icon} {item.timer} сек</div>
+                <div className={cls.task_clock_icon}>{item.icon} {item.Timer} сек</div>
               </section>
             </div>
           ))}

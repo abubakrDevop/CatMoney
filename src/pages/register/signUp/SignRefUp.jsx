@@ -2,8 +2,7 @@ import cls from "./SignRefUp.module.scss";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
 import { Form } from "../../../helpers/form/index";
-import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
+import { $api } from "../../../helpers/constant/index";
 import {
   IoAtOutline,
   IoEyeOffOutline,
@@ -35,8 +34,8 @@ export const SignRefUp = () => {
 
     console.log("refBody", body)
 
-    axios
-      .post("https://bf34-80-94-250-/api/v2/register", body)
+    $api
+      .post("/api/users/v2/register", body)
       .then((res) => {
         console.log(res);
         if (res.data.status === "200") {

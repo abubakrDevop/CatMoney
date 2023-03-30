@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { Form } from '../../../../helpers/form/index'
 import { IoTrashOutline } from "react-icons/io5";
 import { AddTask } from "../../../add-task/AddTask"
+import { $api } from "../../../../helpers/constant/index";
 
 export const Ownspace = () => {
   const {
@@ -75,8 +76,8 @@ export const Ownspace = () => {
 
   const userTasks = items.length > 0 ? items : tasks
 
-    // console.log("data", data.map((elem) => elem.start));
-    // console.log("tasks", tasks.map((elem) => elem.start));
+ console.log("userTasks", items);
+
 
   // const userData = localStorage.getItem('userData')
 
@@ -166,24 +167,36 @@ export const Ownspace = () => {
 
    const userId = JSON.parse(localStorage.getItem("regist"));
 
+   const [updateTask, setUpdateTask] = useState([]);
+   const [updateTaskId, setUpdateTaskId] = useState(0);
+
+   const updateTasks = updateTask.find((item) => item.id === updateTaskId);
+   console.log("updateTask", updateTasks);
+
     useEffect(() => {
       axios
         .get(`http://localhost:5000/api/v1/userTasks/${userId.id}`)
         .then((res) => {
-          console.log(res.data);
+          console.log('res.dataфффффффффффф', res.data);
           setItems(res.data);
         })
         .catch((error) => {
           console.log(error);
         });
-    }, []);
-
+    }, [
+      updateTasks?.Description,
+      updateTasks?.Price,
+      updateTasks?.Timer,
+      updateTasks?.URL,
+      updateTasks?.start,
+      updateTasks?.Balance,
+    ]);
 
     const deleteTask = (index) => {
       const taskId = userTasks[index].id;
       axios
         .delete(
-          `https://2a60-80-94-250-65.eu.ngrok.io/api/tasks/v2/taskDel?id=${taskId}&userId=${userId.id}`
+          `https://3673-80-94-250-65.eu.ngrok.io/api/tasks/v2/taskDel?id=${taskId}&userId=${userId.id}`
         )
         .then((res) => {
           console.log(res.data);
@@ -206,7 +219,7 @@ export const Ownspace = () => {
     if (start === 1) {
       console.log("stop");
       axios
-        .post("https://2a60-80-94-250-65.eu.ngrok.io/api/tasks/v2/stopTask", {
+        .post("https://3673-80-94-250-65.eu.ngrok.io/api/tasks/v2/stopTask", {
           userId: userId.id,
           id: id,
         })
@@ -221,7 +234,7 @@ export const Ownspace = () => {
     if (start === 0) {
       console.log("start");
       axios
-        .post("https://2a60-80-94-250-65.eu.ngrok.io/api/tasks/v2/startTask", {
+        .post("https://3673-80-94-250-65.eu.ngrok.io/api/tasks/v2/startTask", {
           userId: userId.id,
           id: id,
         })
@@ -236,9 +249,10 @@ export const Ownspace = () => {
   };
 
     const editTask = (index, id) => {
-      console.log('index', index)
+      // console.log('index', index)
         setVisible(!visible)
         setActiveItem(index)
+        setUpdateTaskId(id);
     }
 
   return (
@@ -407,7 +421,7 @@ export const Ownspace = () => {
                             onClick={() =>
                               handleChangeConnected(item.id, item.start)
                             }
-                            className={cls.task_button1}
+                            className={cls.task_button_delete}
                           >
                             Остановить
                           </button>
@@ -420,7 +434,7 @@ export const Ownspace = () => {
                         </button>
                         <button
                           onClick={() => deleteTask(index)}
-                          className={cls.task_button1}
+                          className={cls.task_button_delete}
                         >
                           Удалить
                         </button>
@@ -430,6 +444,7 @@ export const Ownspace = () => {
                           text="Активировать изменения"
                           onClick={setVisible}
                           taskId={userTasks[index].id}
+                          setUpdateTask={setUpdateTask}
                         />
                       )}
                     </div>
