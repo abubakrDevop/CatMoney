@@ -1,61 +1,11 @@
 import React, { useEffect, useState } from "react";
 import cls from '../own-space/Own_space.module.scss'
 import axios from "axios";
-import { useForm } from "react-hook-form";
-import { Form } from '../../../../helpers/form/index'
-import { IoTrashOutline } from "react-icons/io5";
 import { AddTask } from "../../../add-task/AddTask"
 import { $api } from "../../../../helpers/constant/index";
+import { data, userId } from '../own-space/helpers'
 
 export const Ownspace = () => {
-  const {
-    reset,
-    register,
-    handleSubmit,
-  } = useForm()
-
-      let data = [
-        {
-          id: 1,
-          Timer: "1.40",
-          Balance: 100,
-          Description: "Зарегистрироваться на сайте",
-          link: "",
-          start: 0,
-        },
-        {
-          id: 11,
-          Timer: "2.23",
-          Description: "Поставить лайк и оставить коментарии",
-          link: "",
-          Balance: 100,
-          start: 0,
-        },
-        {
-          id: 3,
-          Timer: "0.99",
-          Description: "Зарегистрироваться на сайте",
-          link: "",
-          Balance: 100,
-          start: 0,
-        },
-        {
-          id: 4,
-          Timer: "1.59",
-          Description: "Поставить лайк и оставить коментарии",
-          link: "",
-          Balance: 100,
-          start: 0,
-        },
-        {
-          id: 5,
-          Timer: "0.66",
-          Description: "Зарегистрироваться на сайте",
-          link: "",
-          Balance: 100,
-          start: 0,
-        },
-      ];
 
   const [active, setActive] = useState(false)
   const [activeTasksUser, setActiveTasksUser] = useState(false);
@@ -70,31 +20,7 @@ export const Ownspace = () => {
   const [updateTask, setUpdateTask] = useState([]);
   const [updateTaskId, setUpdateTaskId] = useState(0);
 
-  const userId = JSON.parse(localStorage.getItem("regist"));
-
-  console.log("items", items)
-  console.log(
-    "items.start",
-    items.map((elem) => elem.start)
-  );
-
   const userTasks = items.length > 0 ? items : tasks
-
-
-  // const userData = localStorage.getItem('userData')
-
-  // let [
-  //   {
-  //     login,
-  //     email,
-  //     password,
-  //     wallet,
-  //     userId,
-  //   }
-  // ] = userData
-
-  // axios.get('')
-  //   .then(data => {localStorage.setItem('userData', data)})
 
   const handlerAddConfirmTasksUser = (taskId) => {
     setActiveTasksUser(!activeTasksUser);
@@ -107,13 +33,12 @@ export const Ownspace = () => {
       balance: +addAmountTasksUser  //баланс на сколько пополняется таск
     }
 
-    $api.post("/api/tasks/v2/replenish", body).then((res) => {
-      console.log('res.status', res.status)
-      console.log('res.data.status', res.data.status)
-      console.log('res.data', res.data)
-      console.log('res', res.data)
+    $api.post("/api/tasks/v2/replenish", body)
+    .then(res => {
       if (res.data.status === 'На вашем балансе недостаточно средств') {
         alert('На вашем балансе недостаточно средств')
+      } else if (res.data === '') {
+        setItems(res.data)
       }
     })
   }
@@ -128,7 +53,7 @@ export const Ownspace = () => {
     setAddAmountTasksUser(e.target.value);
   }
 
-  const handlerAddConfirm = () => {
+  const handlerGetConfirm = () => {
     setActive(!active);
     alert(`Пополнено на ${addAmount ? addAmount : 0} рублей`)
     setAddAmount('')
@@ -141,11 +66,11 @@ export const Ownspace = () => {
   };
 
   const changeAddAmount = (e) => {
-   setAddAmount(e.target.value);
+    setAddAmount(e.target.value);
   }
 
 
-  const handlerGetConfirm = () => {
+  const handlerAddConfirm = () => {
     setGetActive(!getActive);
     alert(`Пополнено на ${getAmount ? getAmount : 0} рублей`);
     setGetAmount('')
@@ -155,8 +80,9 @@ export const Ownspace = () => {
       balance: getAmount,  //баланс на который он хочет пополнить
       walletName: ''  //название его кошелька
     }
-    $api.post("/api/users/v2/replenish", body).then((res) => {
-      res.status === 200 ? alert(`Новый баланс пользователя${res.data}`) : alert("Ошибка :(");
+    $api.post("/api/users/v2/replenish", body)
+    .then(res => {
+      console.log(res)
     });
   };
   const handlerGetSum = () => {
@@ -167,25 +93,7 @@ export const Ownspace = () => {
     setGetAmount(e.target.value);
   };
 
-
-  // const setMoney = (data) => {
-  //   alert(`Пополнено на ${data.setmoney ? data.setmoney : 0} рублей`);
-  //   console.log("data.setmoney", data.setmoney)
-    // axios.post('', { set: data.setmoney } )
-    // .then(res => {
-    //   res.status === 200 ? alert('Успешно :D') : alert('Ошибка :(')
-    // })
-  // }
-
-  // const getMoney = (data) => {
-  //   alert(`Выведено ${data.getmoney ? data.getmoney : 0} рублей`);
-    // axios.post('', { get: data.getmoney } )
-    // .then(res => {
-    //   res.status === 200 ? alert('Успешно :D') : alert('Ошибка :(')
-    // })
-  // }
-
-   const updateTasks = updateTask.find((item) => item.id === updateTaskId);
+  const updateTasks = updateTask.find((item) => item.id === updateTaskId);
 
     useEffect(() => {
       axios
@@ -295,7 +203,7 @@ export const Ownspace = () => {
                   className={cls.buttons_popap_button}
                 >
                   {" "}
-                  Подтвердите{" "}
+                  Подтвердить{" "}
                 </button>
               </div>
             )}
@@ -324,7 +232,7 @@ export const Ownspace = () => {
                   className={cls.buttons_popap_right_button}
                 >
                   {" "}
-                  Подтвердите{" "}
+                  Подтвердить{" "}
                 </button>
               </div>
             )}
@@ -373,7 +281,6 @@ export const Ownspace = () => {
               <div className={cls.about_title}>Мои задания</div>
               <section className={cls.tasks_inner}>
                 {userTasks.map((item, index) => {
-                  // console.log("item.id", item.id);
                   return (
                     <div key={item.id} className={cls.task}>
                       <div className={cls.task_data}>

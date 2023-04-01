@@ -99,8 +99,8 @@ export const Header = () => {
                 <Link className={cls.header__icon} to={"/register"}>
                   <IoLogInOutline
                     onClick={() => {
-                      localStorage.setItem("registered", "ok");
-                      window.location.reload();
+                      // localStorage.setItem("registered", "ok");
+                      // window.location.reload();
                     }}
                   />
                 </Link>

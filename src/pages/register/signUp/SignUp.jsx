@@ -40,8 +40,8 @@ export const SignUp = () => {
         if (res.data.status === "200") {
           reset();
           localStorage.setItem("regist", JSON.stringify(res.data));
+          localStorage.setItem("registered", 'ok');
           navigate("/profile/own-space");
-          // dispatch(addUser(body));
           setTimeout(() => {
             window.location.reload();
           }, 3000);
