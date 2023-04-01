@@ -80,8 +80,6 @@ export const Ownspace = () => {
 
   const userTasks = items.length > 0 ? items : tasks
 
- console.log("userTasks", items);
-
 
   // const userData = localStorage.getItem('userData')
 
@@ -102,32 +100,25 @@ export const Ownspace = () => {
     setActiveTasksUser(!activeTasksUser);
     alert(`Пополнено на ${addAmountTasksUser ? addAmountTasksUser : 0} рублей`);
     setAddAmountTasksUser('')
-    console.log(addAmountTasksUser)
+
     const body = {
       id: taskId,   //айди таска
       userId: userId.id,   //айди пользователя
-      balance: addAmountTasksUser  //баланс на сколько пополняется таск
+      balance: +addAmountTasksUser  //баланс на сколько пополняется таск
     }
+
     $api.post("/api/tasks/v2/replenish", body).then((res) => {
-      console.log('replenish', res.data)
-      console.log('replenish.status', res.status)
-      if (res.status === "На вашем балансе недостаточно средств") {
-        alert("На вашем балансе недостаточно средств")
-        setItems(items)
+      console.log('res.status', res.status)
+      console.log('res.data.status', res.data.status)
+      console.log('res.data', res.data)
+      console.log('res', res.data)
+      if (res.data.status === 'На вашем балансе недостаточно средств') {
+        alert('На вашем балансе недостаточно средств')
       }
-      if (res.status === 200) {
-        setItems(res.data)
-      }
-      // res.status === 200 ? setItems(res.data) : alert("На вашем балансе недостаточно средств")
     })
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       setItems(res.data);
-  //     })
-  //     .catch(() => {
-  //       alert("На вашем балансе недостаточно средств");
-  //     });
   }
+
+
   const handlerTopUPTasksUser = (index) => {
     setActiveItem(index)
     setActiveTasksUser(!activeTasksUser);
@@ -141,7 +132,6 @@ export const Ownspace = () => {
     setActive(!active);
     alert(`Пополнено на ${addAmount ? addAmount : 0} рублей`)
     setAddAmount('')
-    console.log(addAmount)
     // axios.post("", { set: addAmount }).then((res) => {
     //   res.status === 200 ? alert("Успешно :D") : alert("Ошибка :(");
     // });
@@ -159,7 +149,7 @@ export const Ownspace = () => {
     setGetActive(!getActive);
     alert(`Пополнено на ${getAmount ? getAmount : 0} рублей`);
     setGetAmount('')
-    console.log(getAmount);
+
     const body = {
       id: userId.id,  // айди пользователя
       balance: getAmount,  //баланс на который он хочет пополнить
@@ -196,13 +186,11 @@ export const Ownspace = () => {
   // }
 
    const updateTasks = updateTask.find((item) => item.id === updateTaskId);
-   console.log("updateTask", updateTasks);
 
     useEffect(() => {
       axios
         .get(`http://localhost:5000/api/v1/userTasks/${userId.id}`)
         .then((res) => {
-          console.log('res.dataфффффффффффф', res.data);
           setItems(res.data);
         })
         .catch((error) => {
@@ -224,7 +212,6 @@ export const Ownspace = () => {
           `/api/tasks/v2/taskDel?id=${taskId}&userId=${userId.id}`
         )
         .then((res) => {
-          console.log(res.data);
           setItems(res.data);
         })
         .catch((error) => {
@@ -242,7 +229,6 @@ export const Ownspace = () => {
     );
 
     if (start === 1) {
-      console.log("stop");
       $api
         .post("/api/tasks/v2/stopTask", {
           userId: userId.id,
@@ -257,7 +243,6 @@ export const Ownspace = () => {
         });
     }
     if (start === 0) {
-      console.log("start");
       $api
         .post("/api/tasks/v2/startTask", {
           userId: userId.id,
@@ -274,7 +259,6 @@ export const Ownspace = () => {
   };
 
     const editTask = (index, id) => {
-      // console.log('index', index)
         setVisible(!visible)
         setActiveItem(index)
         setUpdateTaskId(id);
@@ -427,7 +411,7 @@ export const Ownspace = () => {
                                 className={cls.buttons_popap_button_tasks}
                               >
                                 {" "}
-                                Подтвердите{" "}
+                                Подтвердить{" "}
                               </button>
                             </div>
                           )}
