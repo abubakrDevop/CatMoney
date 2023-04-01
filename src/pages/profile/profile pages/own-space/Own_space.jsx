@@ -67,6 +67,10 @@ export const Ownspace = () => {
   const [getAmount, setGetAmount] = useState('')
   const [items, setItems] = useState([])
   const [tasks, setTasks] = useState(items.length > 0 ? items : data);
+  const [updateTask, setUpdateTask] = useState([]);
+  const [updateTaskId, setUpdateTaskId] = useState(0);
+
+  const userId = JSON.parse(localStorage.getItem("regist"));
 
   console.log("items", items)
   console.log(
@@ -94,14 +98,35 @@ export const Ownspace = () => {
   // axios.get('')
   //   .then(data => {localStorage.setItem('userData', data)})
 
-  const handlerAddConfirmTasksUser = () => {
+  const handlerAddConfirmTasksUser = (taskId) => {
     setActiveTasksUser(!activeTasksUser);
     alert(`Пополнено на ${addAmountTasksUser ? addAmountTasksUser : 0} рублей`);
     setAddAmountTasksUser('')
     console.log(addAmountTasksUser)
-    // axios.post("", { set: addAmountTasksUser }).then((res) => {
-    //   res.status === 200 ? alert("Успешно :D") : alert("Ошибка :(");
-    // });
+    const body = {
+      id: taskId,   //айди таска
+      userId: userId.id,   //айди пользователя
+      balance: addAmountTasksUser  //баланс на сколько пополняется таск
+    }
+    $api.post("/api/tasks/v2/replenish", body).then((res) => {
+      console.log('replenish', res.data)
+      console.log('replenish.status', res.status)
+      if (res.status === "На вашем балансе недостаточно средств") {
+        alert("На вашем балансе недостаточно средств")
+        setItems(items)
+      }
+      if (res.status === 200) {
+        setItems(res.data)
+      }
+      // res.status === 200 ? setItems(res.data) : alert("На вашем балансе недостаточно средств")
+    })
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       setItems(res.data);
+  //     })
+  //     .catch(() => {
+  //       alert("На вашем балансе недостаточно средств");
+  //     });
   }
   const handlerTopUPTasksUser = (index) => {
     setActiveItem(index)
@@ -114,7 +139,7 @@ export const Ownspace = () => {
 
   const handlerAddConfirm = () => {
     setActive(!active);
-    alert(`Пополнено на ${addAmount ? addAmount : 0} рублей`);
+    alert(`Пополнено на ${addAmount ? addAmount : 0} рублей`)
     setAddAmount('')
     console.log(addAmount)
     // axios.post("", { set: addAmount }).then((res) => {
@@ -135,9 +160,14 @@ export const Ownspace = () => {
     alert(`Пополнено на ${getAmount ? getAmount : 0} рублей`);
     setGetAmount('')
     console.log(getAmount);
-    // axios.post("", { set: addAmount }).then((res) => {
-    //   res.status === 200 ? alert("Успешно :D") : alert("Ошибка :(");
-    // });
+    const body = {
+      id: userId.id,  // айди пользователя
+      balance: getAmount,  //баланс на который он хочет пополнить
+      walletName: ''  //название его кошелька
+    }
+    $api.post("/api/users/v2/replenish", body).then((res) => {
+      res.status === 200 ? alert(`Новый баланс пользователя${res.data}`) : alert("Ошибка :(");
+    });
   };
   const handlerGetSum = () => {
     setGetActive(!getActive);
@@ -164,11 +194,6 @@ export const Ownspace = () => {
     //   res.status === 200 ? alert('Успешно :D') : alert('Ошибка :(')
     // })
   // }
-
-   const userId = JSON.parse(localStorage.getItem("regist"));
-
-   const [updateTask, setUpdateTask] = useState([]);
-   const [updateTaskId, setUpdateTaskId] = useState(0);
 
    const updateTasks = updateTask.find((item) => item.id === updateTaskId);
    console.log("updateTask", updateTasks);
@@ -398,7 +423,7 @@ export const Ownspace = () => {
                               />
                               <button
                                 type="button"
-                                onClick={handlerAddConfirmTasksUser}
+                                onClick={() => handlerAddConfirmTasksUser(item.id)}
                                 className={cls.buttons_popap_button_tasks}
                               >
                                 {" "}

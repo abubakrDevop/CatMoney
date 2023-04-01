@@ -55,22 +55,16 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
         price: +activePrice,
         userId: userId.id,
         id: taskId,
-        balance: data.balance < 0 ? 5 : data.balance
+        balance: data.balance.length === '' ? 5 : data.balance
       };
-
-          // const formData = new FormData();
-          // formData.append("description", data.title);
-          // formData.append("url", data.url);
-          // formData.append("Timer", +taimerValue);
-          // formData.append("Price", +activePrice);
-
-
+      
       console.log("description", data.title);
       console.log("url", data.url);
       console.log("timer", +taimerValue);
       console.log("price", +activePrice);
       console.log("userId", userId.id);
       console.log("id", taskId);
+      console.log("balance", body.balance);
 
       $api
         .post("/api/tasks/v2/update", body)
@@ -99,7 +93,7 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
         price: +activePrice,
         userId: userId.id,
         id: taskId,
-        balance: data.balance < 0 ? 5 : data.balance,
+        balance: data.balance === '' ? 5 : data.balance,
       };
 
       $api

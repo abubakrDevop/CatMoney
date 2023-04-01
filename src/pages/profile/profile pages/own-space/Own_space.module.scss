@@ -272,6 +272,7 @@ $mobileSmall: 479.98px; // телефоны s
                                       text-decoration: none;
                                       z-index: 0;
                                       cursor: pointer;
+                                      position: relative;
                                       @media (max-width: 1150px) {
                                         font-size: 13px;
                                       }
@@ -403,6 +404,7 @@ $mobileSmall: 479.98px; // телефоны s
                                       align-items: center;
                                       text-decoration: none;
                                       z-index: 0;
+                                      position: relative;
                                       cursor: pointer;
                                       @media (max-width: 1150px) {
                                         font-size: 13px;
@@ -429,13 +431,13 @@ $mobileSmall: 479.98px; // телефоны s
                                           z-index: -1;
                                       }
 
-                                      // &:hover {
-                                      //     color: white;
-                                      // }
+                                      &:hover {
+                                          color: white;
+                                      }
 
-                                      // &:hover::before {
-                                      //     height: 180%;
-                                      // }
+                                      &:hover::before {
+                                          height: 180%;
+                                      }
                                   }
                                   .task_button_delete {
                                       width: 23%;
@@ -455,6 +457,7 @@ $mobileSmall: 479.98px; // телефоны s
                                       text-decoration: none;
                                       z-index: 0;
                                       cursor: pointer;
+                                      position: relative;
                                       @media (max-width: 1150px) {
                                         font-size: 13px;
                                       }
@@ -480,9 +483,9 @@ $mobileSmall: 479.98px; // телефоны s
                                           z-index: -1;
                                       }
 
-                                        // &:hover::before {
-                                        //     height: 180%;
-                                        // }
+                                        &:hover::before {
+                                            height: 180%;
+                                        }
                                   }
                               }
                           }
@@ -580,6 +583,7 @@ $mobileSmall: 479.98px; // телефоны s
                     overflow: hidden;
                     box-shadow: 0 0 5px black;
                     z-index: 0;
+                    cursor: pointer;
                     @media (max-width: 1150px) {
                       font-size: 13px;
                     }
@@ -678,6 +682,7 @@ $mobileSmall: 479.98px; // телефоны s
                     font-size: 15px;
                     overflow: hidden;
                     box-shadow: 0 0 5px black;
+                    cursor: pointer;
                     @media (max-width: $mobileSmall) {
                       font-size: 9px;
                       padding: 6px 12px;
@@ -698,6 +703,7 @@ $mobileSmall: 479.98px; // телефоны s
                   align-items: center;
                   justify-content: center;
                   gap: 20px;
+                  cursor: pointer;
 
                   .buttons_popap_right_input {
                     display: flex;
@@ -758,6 +764,8 @@ $mobileSmall: 479.98px; // телефоны s
                     font-size: 15px;
                     overflow: hidden;
                     box-shadow: 0 0 5px black;
+                    cursor: pointer;
+                    position: relative;
                     @media (max-width: $mobileSmall) {
                       font-size: 9px;
                       padding: 6px 12px;

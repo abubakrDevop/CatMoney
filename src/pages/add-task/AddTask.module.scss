@@ -244,7 +244,7 @@ $mobileSmall: 479.98px; // телефоны s
 
 .add_task_edit {
   width: 100%;
-  height: 630px;
+  height: 670px;
   overflow: hidden;
   background: white;
   font-family: 'Roboto', sans-serif;
@@ -255,7 +255,7 @@ $mobileSmall: 479.98px; // телефоны s
   background-size: 100% 100%;
 
   .add_task_form {
-      margin-top: 100px;
+      margin-top: 80px;
       width: 55%;
         @media (max-width: $tablet) {
          width: 100%;
