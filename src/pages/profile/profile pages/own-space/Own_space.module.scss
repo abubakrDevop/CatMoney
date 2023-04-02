@@ -336,17 +336,17 @@ $mobileSmall: 479.98px; // телефоны s
                                       box-shadow: 0 0 5px black;
                                       border-radius: 11px;
                                     }
-                                    @media (max-width: $pc) {
-                                      ::-webkit-input-placeholder { font-size: 10px; color:#f00;}
-                                      ::-moz-placeholder { font-size: 10px; color:#f00;}
-                                      :-ms-input-placeholder { font-size: 10px; color:#f00;}
-                                      :-moz-placeholder { font-size: 10px; color:#f00;}
-                                    }
+                                    // @media (max-width: $pc) {
+                                    //   ::-webkit-input-placeholder { font-size: 10px; color:#f00;}
+                                    //   ::-moz-placeholder { font-size: 10px; color:#f00;}
+                                    //   :-ms-input-placeholder { font-size: 10px; color:#f00;}
+                                    //   :-moz-placeholder { font-size: 10px; color:#f00;}
+                                    // }
                                     @media (max-width: 1170px) {
-                                      ::-webkit-input-placeholder { font-size: 7px; color:#f00;}
-                                      ::-moz-placeholder { font-size: 7px; color:#f00;}
-                                      :-ms-input-placeholder { font-size: 7px; color:#f00;}
-                                      :-moz-placeholder { font-size: 7px; color:#f00;}
+                                      ::-webkit-input-placeholder { font-size: 12px; color:#f00;}
+                                      ::-moz-placeholder { font-size: 12px; color:#f00;}
+                                      :-ms-input-placeholder { font-size: 12px; color:#f00;}
+                                      :-moz-placeholder { font-size: 12px; color:#f00;}
                                     }
                                     @media (max-width: $tablet) {
                                       ::-webkit-input-placeholder { font-size: 17px; color:#f00;}
@@ -369,17 +369,20 @@ $mobileSmall: 479.98px; // телефоны s
 
                                     .buttons_popap_button_tasks {
                                       display: flex;
+                                      align-items: center;
+                                      justify-content: center;
                                       font-weight: bold;
-                                      padding: 6px 10px;
+                                      width: 63%;
+                                      height: 40px;
                                       border: none;
                                       background: linear-gradient(to left, rgb(60, 0, 128), rgba(0, 89, 255, 0.5));
                                       border-radius: 30px;
                                       color: white;
-                                      font-size: 12px;
+                                      font-size: 14px;
                                       overflow: hidden;
                                       box-shadow: 0 0 5px black;
                                       @media (max-width: $pc) {
-                                        font-size: 9px;
+                                        font-size: 13px;
                                       }
                                       @media (max-width: $mobileSmall) {
                                         padding: 6px 12px;

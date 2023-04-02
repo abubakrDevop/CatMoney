@@ -308,13 +308,15 @@ export const Ownspace = () => {
                                 autoFocus
                                 placeholder="Введите сумму"
                                 className={cls.buttons_popap_input_tasks}
-                                type="text"
+                                type="number"
                                 onChange={changeAddAmountTasksUser}
                                 value={addAmountTasksUser}
                               />
                               <button
                                 type="button"
-                                onClick={() => handlerAddConfirmTasksUser(item.id)}
+                                onClick={() =>
+                                  handlerAddConfirmTasksUser(item.id)
+                                }
                                 className={cls.buttons_popap_button_tasks}
                               >
                                 {" "}
