@@ -4,7 +4,7 @@ import { IoCopyOutline } from "react-icons/io5";
 
 export const Share = () => {
   const userId = JSON.parse(localStorage.getItem("regist"))
-  const userLink = `http://localhost:3000/v1/${userId.id}`;
+  const userLink = `http://localhost:3000/1/${userId.id}`;
   console.log('link', userLink)
 
       let data = [
@@ -41,7 +41,7 @@ export const Share = () => {
       const sumOutput = data.map((item) => item.price2).reduce((acc, rec) => {
         return acc + rec
       } , 0)
-      
+
       const allRef = data.length
 
   return (

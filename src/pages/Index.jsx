@@ -35,6 +35,8 @@ export const Index = () => {
   const params = useParams();
 
     const userId = JSON.parse(localStorage.getItem("regist"));
+    console.log('params.id', params?.id)
+    console.log('userId.id', userId?.id)
 
   useEffect(() => {
     if (params?.id) {
@@ -42,7 +44,7 @@ export const Index = () => {
     }
   }, [params?.id])
 
-    if (Number(params?.id) === userId?.id) {
+    if (params?.id === userId?.id) {
       localStorage.setItem("userLink", params?.id);
       console.log("params", params?.id);
     }

@@ -55,9 +55,9 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
         price: +activePrice,
         userId: userId.id,
         taskId: +taskId,
-        balance: +data.balance.length === '' ? 5 : data.balance
+        balance: data.balance.length === '' ? 5 : data.balance
       };
-      
+
       console.log("description", data.title);
       console.log("url", data.url);
       console.log("timer", +taimerValue);
@@ -93,7 +93,7 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
         price: +activePrice,
         userId: userId.id,
         taskId: +taskId,
-        balance: +data.balance === '' ? 5 : data.balance,
+        balance: data.balance === '' ? 5 : data.balance,
       };
 
       $api

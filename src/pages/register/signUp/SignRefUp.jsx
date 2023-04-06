@@ -28,14 +28,13 @@ export const SignRefUp = () => {
       login: data.login,
       email: data.email,
       password: data.password,
-      mode: 1,
-      ref: Number(refUserId),
+      userId: refUserId,
     };
 
     console.log("refBody", body)
 
     $api
-      .post("/Referals/register", body)
+      .post("/User/register", body)
       .then((res) => {
         console.log(res);
         if (res.status === 200) {
