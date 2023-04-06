@@ -29,15 +29,13 @@ export const SignUp = () => {
       login: data.login,
       email: data.email,
       password: data.password,
-      mode: 1,
     };
     console.log("noneRefBody", body);
 
     $api
-      .post("/api/users/v2/register", body)
+      .post("/User/register", body)
       .then((res) => {
-        console.log(res);
-        if (res.data.status === "200") {
+        if (res.status === 200) {
           reset();
           localStorage.setItem("regist", JSON.stringify(res.data));
           localStorage.setItem("registered", 'ok');

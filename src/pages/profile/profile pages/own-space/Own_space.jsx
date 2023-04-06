@@ -96,8 +96,19 @@ export const Ownspace = () => {
   const updateTasks = updateTask.find((item) => item.id === updateTaskId);
 
     useEffect(() => {
-      axios
-        .get(`http://localhost:5000/api/v1/userTasks/${userId.id}`)
+      $api
+        .get(`/Task/user?userId=${userId.id}`
+        // , {
+        //   headers: { 
+        //     'Access-Control-Allow-Origin': '*',
+        //     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        //     'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+        //     'Access-Control-Expose-Headers': 'Authorization',
+        //     'Access-Control-Allow-Credentials': true,
+        //     'withCredentials': true,
+        //   },
+        // }
+        )
         .then((res) => {
           setItems(res.data);
         })
@@ -117,7 +128,7 @@ export const Ownspace = () => {
       const taskId = userTasks[index].id;
       $api
         .delete(
-          `/api/tasks/v2/taskDel?id=${taskId}&userId=${userId.id}`
+          `/Task/delete?taskId=${taskId}&userId=${userId.id}`
         )
         .then((res) => {
           setItems(res.data);

@@ -27,12 +27,12 @@ export const Settings = () => {
       login: data.login,
       email: data.email,
       password: data.password,
-      mode: 1,
-      wallet: data.wallet
+      // mode: 1,
+      walletName: data.wallet
     }
 
     $api
-      .post("/api/v2/settings", body)
+      .put("/User/update", body)
       .then((res) => {
         console.log(res);
         if (res.data.status === "") {

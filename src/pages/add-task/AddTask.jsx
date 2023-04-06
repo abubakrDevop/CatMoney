@@ -54,8 +54,8 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
         timer: +taimerValue,
         price: +activePrice,
         userId: userId.id,
-        id: taskId,
-        balance: data.balance.length === '' ? 5 : data.balance
+        taskId: +taskId,
+        balance: +data.balance.length === '' ? 5 : data.balance
       };
       
       console.log("description", data.title);
@@ -67,11 +67,11 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
       console.log("balance", body.balance);
 
       $api
-        .post("/api/tasks/v2/update", body)
+        .put("/Task/update", body)
         .then((res) => {
-          console.log("addTask", res.data);
+          console.log("updateTask", res.data);
           setUpdateTask(res.data);
-          if (res.data.status === "200") {
+          if (res.status === 200) {
             reset();
             alert("Задание получено");
           } else if (res.data.status === "") {
@@ -92,15 +92,15 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
         timer: +taimerValue,
         price: +activePrice,
         userId: userId.id,
-        id: taskId,
-        balance: data.balance === '' ? 5 : data.balance,
+        taskId: +taskId,
+        balance: +data.balance === '' ? 5 : data.balance,
       };
 
       $api
-        .post("/api/tasks/v2/addTask", body)
+        .post("/Task/add", body)
         .then((res) => {
           console.log(res.data);
-          if (res.data.status === "200") {
+          if (res.status === 200) {
             reset();
             alert("Задание получено");
           } else if (res.data.status === "") {
@@ -151,6 +151,7 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
             <span className={cls.info_text_box}>
               <FaRubleSign className={cls.info_icon} />
               <input
+                type="number"
                 className={cls.info_text_input}
                 placeholder="5 рублей"
                 {...register("balance", Form.Options.settings)}

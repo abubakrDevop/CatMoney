@@ -35,10 +35,10 @@ export const SignRefUp = () => {
     console.log("refBody", body)
 
     $api
-      .post("/api/users/v2/register", body)
+      .post("/Referals/register", body)
       .then((res) => {
         console.log(res);
-        if (res.data.status === "200") {
+        if (res.status === 200) {
           reset();
           localStorage.setItem("regist", JSON.stringify(res.data));
           localStorage.removeItem("userLink", JSON.stringify(res.data));
