@@ -108,7 +108,7 @@ $mobileSmall: 479.98px; // телефоны s
                 width: 50%;
               }
               @media (max-width: $mobileSmall) {
-                width: 75%;
+                width: 100%;
               }
 
             &::before {
@@ -140,7 +140,7 @@ $mobileSmall: 479.98px; // телефоны s
             width: 100%;
             background: white;
             padding: 0px 10px;
-            border-radius: 10px;
+            border-radius: 5px;
             margin: 10px 0;
             padding: 10px;
             display: flex;

@@ -44,7 +44,7 @@ $mobileSmall: 479.98px; // телефоны s
             @media (max-width: $mobileSmall) {
               display: flex;
               flex-direction: column;
-              padding: 20px 90px 0px 20px;
+              padding: 15px 85px 0px 15px;
             }
         }
         &:nth-child(2) {
@@ -58,7 +58,7 @@ $mobileSmall: 479.98px; // телефоны s
               padding: 40px 105px 40px 40px;
             }
             @media (max-width: $mobileSmall) {
-              padding: 20px 90px 20px 20px;
+              padding: 15px 85px 15px 15px;
             }
         }
 
@@ -80,10 +80,10 @@ $mobileSmall: 479.98px; // телефоны s
                 .section_about {
                     width: 100%;
                     height: 520px;
-                    padding: 30px 20px 40px 20px;
+                    padding: 20px 20px 40px 20px;
                     font-size: 16px;
-                    border-radius: 20px;
-                    box-shadow: 0 0 5px black;
+                    border-radius: 5px;
+                    background: rgb(218, 216, 216);
                     outline: none;
                     border: none;
                     resize: none;
@@ -93,10 +93,10 @@ $mobileSmall: 479.98px; // телефоны s
                     gap: 20px;
                     overflow-y: scroll;
                     @media (max-width: $tablet) {
-                      padding: 30px 20px 0 20px;
+                      padding: 20px 20px 0 20px;
                       }
                     @media (max-width: $mobileSmall) {
-                      padding: 30px 0px 5px 0px;
+                      padding: 20px 15px 15px 15px;
                     }
                       .about_title {
                         font-size: 25px;
@@ -113,19 +113,16 @@ $mobileSmall: 479.98px; // телефоны s
                               width: 100%;
                               background: white;
                               padding: 20px 10px;
-                              border-radius: 20px;
+                              border-radius: 5px;
                               display: flex;
                               flex-direction: column;
                               align-items: center;
                               gap: 20px;
                               transition: .5s;
-                              border: 1px solid gray;
                                 @media (max-width: $tablet) {
                                   flex-direction: column;
                                   gap: 20px;
                                   padding: 15px;
-                                  border-top: 2px solid gray;
-                                  border-bottom: 2px solid gray;
                                 }
 
                               .task_data {
@@ -537,7 +534,7 @@ $mobileSmall: 479.98px; // телефоны s
 
             @media (max-width: $mobileSmall) {
               height: 150px;
-              border-radius: 25px;
+              border-radius: 5px;
             }
 
             .balance_headtitle {
