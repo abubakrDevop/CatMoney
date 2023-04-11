@@ -15,7 +15,7 @@ $mobileSmall: 479.98px; // телефоны s
         flex-direction: column;
       }
       @media (max-width: $mobileSmall) {
-        padding: 0 0 20px 0;
+        // padding: 0 0 20px 0;
       }
 
     .ownspace_headsection {
@@ -32,31 +32,34 @@ $mobileSmall: 479.98px; // телефоны s
           }
 
         &:nth-child(1) {
-            padding: 80px 20px 40px 20px;
+            padding: 40px 0px 0px 40px;
             width: 35%;
             @media (max-width: $tablet) {
-              width: 92%;
+              width: 89%;
             }
-              @media (max-width: $mobile) {
-                 padding: 80px 40px 40px 40px;
-              }
+            @media (max-width: $mobile) {
+              width: 100%;
+              padding: 40px 110px 0px 40px;
+            }
             @media (max-width: $mobileSmall) {
               display: flex;
               flex-direction: column;
+              padding: 20px 90px 0px 20px;
             }
         }
         &:nth-child(2) {
-            padding: 80px 110px 40px 20px;
+            padding: 40px 105px 40px 20px;
             width: 65%;
             @media (max-width: $tablet) {
-              width: 92%;
+              width: 100%;
+              padding: 40px 105px 40px 40px;
             }
-              @media (max-width: $tablet) {
-                padding-right: 20px;
-              }
-              @media (max-width: $mobileSmall) {
-                padding: 25px 30px 0 40px;
-              }
+            @media (max-width: $mobile) {
+              padding: 40px 105px 40px 40px;
+            }
+            @media (max-width: $mobileSmall) {
+              padding: 20px 90px 20px 20px;
+            }
         }
 
         .ownspace_section {
@@ -69,20 +72,15 @@ $mobileSmall: 479.98px; // телефоны s
 
             .section_aboutbox {
                 width: 100%;
-                // margin: 20px 0 0 0;
                 font-weight: bold;
-                 @media (max-width: $mobile) {
-                  width: 97%;
-                }
                 @media (max-width: $mobileSmall) {
-                  // width: 105%;
                   align-self: flex-start;
                 }
 
                 .section_about {
                     width: 100%;
-                    height: 700px;
-                    padding: 15px 20px 40px 20px;
+                    height: 520px;
+                    padding: 30px 20px 40px 20px;
                     font-size: 16px;
                     border-radius: 20px;
                     box-shadow: 0 0 5px black;
@@ -94,14 +92,17 @@ $mobileSmall: 479.98px; // телефоны s
                     align-items: center;
                     gap: 20px;
                     overflow-y: scroll;
-                   @media (max-width: $tablet) {
-                       padding: 15px 20px 0 20px;
+                    @media (max-width: $tablet) {
+                      padding: 30px 20px 0 20px;
                       }
-                   @media (max-width: $mobileSmall) {
-                       padding: 15px 20px 0 20px;
-                      }
+                    @media (max-width: $mobileSmall) {
+                      padding: 30px 0px 5px 0px;
+                    }
                       .about_title {
                         font-size: 25px;
+                        @media (max-width: $mobileSmall) {
+                          font-size: 20px;
+                        }
                       }
                         .tasks_inner {
                           width: 100%;
@@ -112,29 +113,21 @@ $mobileSmall: 479.98px; // телефоны s
                               width: 100%;
                               background: white;
                               padding: 20px 10px;
-                              border-radius: 10px;
-                              margin: 10px 0;
+                              border-radius: 20px;
                               display: flex;
                               flex-direction: column;
                               align-items: center;
                               gap: 20px;
                               transition: .5s;
                               border: 1px solid gray;
-                              box-shadow: 0 0 5px black;
                                 @media (max-width: $tablet) {
                                   flex-direction: column;
                                   gap: 20px;
                                   padding: 15px;
+                                  border-top: 2px solid gray;
+                                  border-bottom: 2px solid gray;
                                 }
 
-                              // &:hover {
-                              //     background: rgb(0, 0, 0);
-                              //     color: white;
-                              //      @media (max-width: $tablet) {
-                              //       background: none;
-                              //       color: #000;
-                              //     }
-                              // }
                               .task_data {
                                 width: 100%;
                                 display: flex;
@@ -227,7 +220,6 @@ $mobileSmall: 479.98px; // телефоны s
 
                                     }
                               }
-                            // }
 
                               .task_buttons {
                                   width: 100%;
@@ -498,9 +490,9 @@ $mobileSmall: 479.98px; // телефоны s
         }
 
         .ownspace_info {
-            margin: 50px 0 0 0;
+            margin: 30px 0 0 0;
             @media (max-width: $mobileSmall) {
-              margin: 30px 0 15px 0;
+              margin: 10px 0 15px 0;
             }
 
             .info_text {
@@ -535,7 +527,7 @@ $mobileSmall: 479.98px; // телефоны s
 
         .ownspace_balance {
             width: 100%;
-            height: 140px;
+            height: 210px;
             box-shadow: 0 0 5px black;
             border-radius: 20px;
             display: flex;
@@ -550,13 +542,18 @@ $mobileSmall: 479.98px; // телефоны s
 
             .balance_headtitle {
                 color: black;
+                font-size: 30px;
+                @media (max-width: $mobileSmall) {
+                  font-size: 20px;
+                }
             }
 
             .balance_title {
-                font-size: 30px;
+                font-size: 50px;
                 margin: 5px 0 5px 0;
                 @media (max-width: $mobileSmall) {
                   margin: 10px 0 10px 0;
+                  font-size: 30px;
                 }
             }
 

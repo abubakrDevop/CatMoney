@@ -19,7 +19,7 @@ $mobileSmall: 479.98px; // телефоны s
         justify-content: center;
 
         &:nth-child(1) {
-            padding: 30px 100px 0 20px;
+            padding: 20px 100px 0 20px;
         }
         &:nth-child(2) {
             padding: 10px 100px 0 20px;
@@ -171,9 +171,13 @@ $mobileSmall: 479.98px; // телефоны s
               }
 
             .info_text {
+                position: relative;
                 margin: 0px 0 0 0;
                 padding: 0 0 20px 0;
                 font-weight: bold;
+                @media (max-width: $mobileSmall) {
+                  top: -20px;
+                }
 
                 &:nth-child(3) {
                     border-bottom: none;
@@ -212,6 +216,7 @@ $mobileSmall: 479.98px; // телефоны s
             z-index: 0;
             margin-bottom: 50px;
             @media (max-width: $mobileSmall) {
+              top: 0px;
               width: 104%;
             }
 

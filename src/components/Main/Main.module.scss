@@ -160,6 +160,7 @@ $mobileSmall: 479.98px; // телефоны s
         color: white;
         font-size: 16px;
         overflow: hidden;
+        text-decoration: none;
         z-index: 0;
           @media (max-width: $tablet) {
             z-index: 1;

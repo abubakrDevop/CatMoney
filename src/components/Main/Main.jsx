@@ -3,6 +3,7 @@ import cls from '../Main/Main.module.scss'
 import { IoChevronDownOutline } from 'react-icons/io5'
 import { Doughnut } from 'react-chartjs-2'
 import { Chart, registerables } from 'chart.js'
+import { Link } from 'react-router-dom'
 // import axios from "axios";
 
 Chart.register(...registerables)
@@ -116,7 +117,7 @@ export const Main = () => {
             <span className={cls.main__des_in}> премиум </span>
             вы получаете дополнительные x2 монет, плюшки и бонусы :D
           </p>
-          <button className={cls.main__button}>Перейти к заданиям</button>
+          <Link to={'/tasks'} className={cls.main__button}>Перейти к заданиям</Link>
         </div>
 
         <div className={cls.main__statistics}>
