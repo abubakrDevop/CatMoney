@@ -1,22 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import cls from '../Main/Main.module.scss'
 import { IoChevronDownOutline } from 'react-icons/io5'
-import { Doughnut } from 'react-chartjs-2'
-import { Chart, registerables } from 'chart.js'
 import { Link } from 'react-router-dom'
 // import axios from "axios";
 
-Chart.register(...registerables)
-
 export const Main = () => {
-  const [usersValues, setUsersValues] = useState([])
-  // const [onlineValues, setOnlineValues] = useState([])
-  // const [countDayValues, setCountDayValues] = useState([])
-
-  const users = usersValues.users ? usersValues.users : 5
-  const onlineUsers = usersValues.online ? usersValues.online : 10
-  const countDay = usersValues.day ? usersValues.day : 10
-  const countPayment = usersValues.payment ? usersValues.payment : 10
 
   // useEffect(() => {
   // axios.get('http://localhost:5000/api/v1/counter')
@@ -26,80 +14,6 @@ export const Main = () => {
   //   })
   //   .catch(error => console.log(error))
   // }, [])
-
-
-  Chart.defaults.font.size = 16;
-  Chart.defaults.font.weight = '500';
-  Chart.defaults.color = '#9BD0F5';
-  const labels = [`Нас уже: ${users} чел.`]
-  const arrayUsers = [users, 100]
-  // const dataArrayNoWrite = [1,2,2,2]
-
-  const data = {
-    labels,
-    datasets: [
-      {
-        label: '',
-        data: arrayUsers,
-        backgroundColor: ['#dc3545','rgba(75,192,192,0.2)'],
-        borderColor: 'rgba(75,192,192,1)',
-        fill: true,
-        borderWidth: 3,
-        // lineTension: 0.5
-      },
-    ]
-  }
-
-  const labelsOnline = [`В сети: ${onlineUsers} чел.`]
-  const arrayOnlineUsers = [onlineUsers, 100]
-  const onlineData = {
-    labels: labelsOnline,
-    datasets: [
-      {
-        label: '',
-        data: arrayOnlineUsers,
-        backgroundColor: ['#dc3545','rgba(0, 0, 255, 0.3)'],
-        borderColor: 'rgba(75,192,192,1)',
-        fill: true,
-        borderWidth: 3,
-        // lineTension: 0.5
-      },
-    ]
-  }
-  const labelsDay = [`Работаем.: ${countDay} дней`]
-  const arrayDay = [countDay, 100]
-  const dataDay = {
-    labels: labelsDay,
-    datasets: [
-      {
-        label: '',
-        data: arrayDay,
-        backgroundColor: ['#dc3545','rgba(0, 255, 0, 0.4)'],
-        borderColor: 'rgba(75,192,192,1)',
-        fill: true,
-        borderWidth: 3,
-        // lineTension: 0.5
-      },
-    ]
-  }
-
-  const labelsPayment = [`Выплачено: ${countPayment} руб.`]
-  const paymentDate = [countPayment, 100]
-  const dataPayment = {
-    labels: labelsPayment,
-    datasets: [
-      {
-        label: 'Выплачено',
-        data: paymentDate,
-        backgroundColor: ['#dc3545','rgba(255,0,255, 0.4)'],
-        borderColor: 'rgba(75,192,192,1)',
-        fill: true,
-        borderWidth: 3,
-        // lineTension: 0.5
-      },
-    ]
-  }
-
 
   return (
     <main className={cls.main}>
@@ -121,34 +35,7 @@ export const Main = () => {
         </div>
 
         <div className={cls.main__statistics}>
-          <div className={cls.main__statistics_block}>
-            <div className={cls.main__statistics_block_1}>
-              <Doughnut
-                data={data}
-                options={{
-                  responsive: true,
-                  cutout: "50%",
-                }}
-              />
-              <Doughnut
-                data={dataDay}
-                options={{
-                  responsive: true,
-                  cutout: "50%",
-                }}
-              />
-            </div>
-            <div className={cls.main__statistics_block_2}>
-              <Doughnut
-                data={onlineData}
-                options={{ responsive: true, cutout: "50%" }}
-              />
-              <Doughnut
-                data={dataPayment}
-                options={{ responsive: true, cutout: "50%" }}
-              />
-            </div>
-          </div>
+          
         </div>
       </section>
 

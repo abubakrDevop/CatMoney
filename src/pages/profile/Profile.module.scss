@@ -31,6 +31,7 @@ $mobileSmall: 479.98px; // телефоны s
             border-bottom-left-radius: 0;
             animation: apear 1.5s linear;
             animation-fill-mode: forwards;
+            animation-delay: .6s;
             overflow: hidden;
 
             @keyframes apear {
@@ -48,7 +49,7 @@ $mobileSmall: 479.98px; // телефоны s
             justify-content: center;
             animation: show .5s linear;
             animation-fill-mode: forwards;
-            animation-delay: 1.5s;
+            animation-delay: 1.6s;
             opacity: 0;
 
             @keyframes show {

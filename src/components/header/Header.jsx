@@ -9,6 +9,7 @@ import  {
           IoNotificationsOutline,
           IoMenuOutline,
           IoCloseOutline,
+          IoPersonOutline
         } from 'react-icons/io5'
 
 export const Header = () => {
@@ -86,7 +87,12 @@ export const Header = () => {
             {localStorage.getItem("registered") !== "ok" ? (
               <span className={cls.profil_text_404}>Войдите в аккаунт!</span>
             ) : (
-              <Link to={"/profile"} className={cls.header_profil}>
+              <Link 
+                to={"/profile"} 
+                className={cls.header_profil}
+                onClick={() => {setActive(false)}}
+              >
+                <IoPersonOutline className={cls.profil_icon} />
                 <span className={cls.profil_text}>Alex Kendal</span>
               </Link>
             )}

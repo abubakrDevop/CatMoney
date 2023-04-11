@@ -51,49 +51,6 @@ $mobileSmall: 479.98px; // телефоны s
 
       }
      }
-     .main__statistics {
-      padding-top: 70px;
-      width: 50%;
-      height: 480px;
-      @media (max-width: $pc) {
-
-      }
-      @media (max-width: $tablet) {
-        width: 70%;
-        margin-top: 20px;
-      }
-      @media (max-width: $mobile) {
-        padding-top: 200px;
-      }
-     }
-     .main__statistics_block {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-      width: 100%;
-      .main__statistics_block_1 {
-        display: flex;
-        justify-content: space-around;
-        // @include adaptive-value("gap", 50, 10);
-        height: 200px;
-      }
-      .main__statistics_block_2 {
-        display: flex;
-       justify-content: space-around;
-        height: 200px;
-      }
-      @media (max-width: $pc) {
-      }
-      @media (max-width: $mobile) {
-        grid-template-columns: auto;
-        justify-content: center;
-        height: 20vh;
-        gap: 30px;
-
-      }
-      @media (max-width: $mobile) {
-      }
-     }
 
     .main__title {
         margin-top: 8%;
