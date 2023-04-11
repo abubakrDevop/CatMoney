@@ -16,24 +16,49 @@ $mobileSmall: 479.98px; // телефоны s
     .profile_menu {
         position: fixed;
         right: 0;
-        width: 90px;
+        width: 70px;
         background: black;
         border-bottom-left-radius: 20px;
         float: right;
         animation: apear 1s linear;
         animation-fill-mode: forwards;
-        animation-delay: .5s;
         z-index: 2;
-          @media (max-width: $pc) {
-             width: 70px;
-          }
           @media (max-width: $tablet) {
-             background: rgb(221, 218, 218);
+            background: rgb(221, 218, 218);
+          }
+          @media (max-width: $mobileSmall) {
+            height: 0;
+            border-bottom-left-radius: 0;
+            animation: apear 1.5s linear;
+            animation-fill-mode: forwards;
+            overflow: hidden;
+
+            @keyframes apear {
+              from {
+                height: 0;
+              }
+              to {
+                height: 100%;
+              }
+            }
           }
 
         .menu_items {
             display: flex;
             justify-content: center;
+            animation: show .5s linear;
+            animation-fill-mode: forwards;
+            animation-delay: 1.5s;
+            opacity: 0;
+
+            @keyframes show {
+              from {
+                opacity: 0;
+              }
+              to {
+                opacity: 1;
+              }
+            }
 
             .menu_items_icon {
                 position: relative;
