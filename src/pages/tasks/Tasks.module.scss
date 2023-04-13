@@ -86,7 +86,16 @@ $mobileSmall: 479.98px; // телефоны s
             color: white;
         }
 
-        .header_button {
+        .tasks_header_box {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          @media (max-width: $mobileSmall) {
+            width: 100%;
+            flex-direction: column;
+          }
+
+          .header_button {
             position: relative;
             width: 200px;
             height: 35px;
@@ -132,6 +141,35 @@ $mobileSmall: 479.98px; // телефоны s
             &:hover::before {
                 height: 180%;
             }
+          }
+
+          .search_box {
+            width: 400px;
+            height: 35px;
+            border: solid 2px black;
+            border-radius: 20px;
+            overflow: hidden;
+            margin-right: 10px;
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            @media (max-width: $mobileSmall) {
+              width: 100%;
+              margin: 0 0 10px 0;
+            }
+
+            .search_input {
+              width: 90%;
+              height: 100%;
+              background: none;
+              border: none;
+            }
+
+            .search_icon {
+              font-size: 20px;
+            }
+          }
         }
     }
 

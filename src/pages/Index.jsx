@@ -15,20 +15,20 @@ import { AddTask } from "./add-task/AddTask";
 import { Profile } from "./profile/Profile";
 
 const StyledMain = styled.main`
-  // width: 100%;
-  // min-height: 100vh;
-  // background-image: url("../assets/img/city.gif");
-  // background-size: 100% 100%;
-  // background-attachment: fixed;
-  // overflow: hidden;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("../assets/img/city.gif");
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  overflow: hidden;
 
-  // @media (max-width: 820px) {
-  //   background-image: url("../assets/img/tablet.gif");
-  // }
-  // @media (max-width: 479px) {
-  //   background-image: url("../assets/img");
-  // }
-`;
+  @media (max-width: 820px) {
+    background-image: url("../assets/img/tablet.gif");
+  }
+  @media (max-width: 479px) {
+    background-image: url("../assets/img");
+  }
+`
 
 export const Index = () => {
   let navigate = useNavigate();

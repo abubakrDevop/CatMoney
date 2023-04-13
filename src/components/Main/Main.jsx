@@ -6,6 +6,33 @@ import { Link } from 'react-router-dom'
 
 export const Main = () => {
 
+  const data = [
+    {
+      id: 1,
+      icon: '',
+      text: '',
+      number: '',
+    },
+    {
+      id: 2,
+      icon: '',
+      text: '',
+      number: '',
+    },
+    {
+      id: 3,
+      icon: '',
+      text: '',
+      number: '',
+    },
+    {
+      id: 4,
+      icon: '',
+      text: '',
+      number: '',
+    },
+  ]
+
   // useEffect(() => {
   // axios.get('http://localhost:5000/api/v1/counter')
   //   .then(res => {
@@ -35,7 +62,13 @@ export const Main = () => {
         </div>
 
         <div className={cls.main__statistics}>
-          
+          {
+            data.map(item => (
+              <div key={item.id} className={cls.statistics_card}>
+                
+              </div>
+            ))
+          }
         </div>
       </section>
 

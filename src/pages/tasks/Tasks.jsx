@@ -3,6 +3,7 @@ import axios from "axios";
 import cls from '../tasks/Tasks.module.scss'
 import { Link } from "react-router-dom";
 import { FaRegClock } from "react-icons/fa";
+import { IoSearchOutline } from "react-icons/io5";
 import { Page_404 } from "../404-page/Page_404";
 import { PageTasks } from "./PageTasks"
 
@@ -64,7 +65,7 @@ export const Tasks = () => {
     },
   ];
 
- const data = items.length > 0 ? items : tasks
+  const data = items.length > 0 ? items : tasks
 
   useEffect(() => {
     axios
@@ -111,9 +112,15 @@ export const Tasks = () => {
             </h1>
           )}
 
-          <Link to={"/add-task"} className={cls.header_button}>
-            Добавить задание
-          </Link>
+          <section className={cls.tasks_header_box}>
+            <div className={cls.search_box}>
+              <input className={cls.search_input} type="text" placeholder="Поиск задании..." />
+              <IoSearchOutline className={cls.search_icon} />
+            </div>
+            <Link to={"/add-task"} className={cls.header_button}>
+              Добавить задание
+            </Link>
+          </section>
         </section>
 
         <section className={cls.tasks_inner}>

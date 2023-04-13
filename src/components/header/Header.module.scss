@@ -255,7 +255,7 @@ $mobileSmall: 479.98px; // телефоны s
                 color: white;
                   @media (max-width: $tablet) {
                     position: absolute;
-                    width: 125px;
+                    width: 110px;
                     height: 62px;
                     top: 10px;
                     left: -40px;
@@ -282,7 +282,12 @@ $mobileSmall: 479.98px; // телефоны s
                 }
 
                 .profil_icon {
+                  position: relative;
                   font-size: 20px;
+                  @media (max-width: $mobileSmall) {
+                    top: 8px;
+                    left: 0px;
+                  }
                 }
             }
         }
