@@ -82,7 +82,7 @@ $mobileSmall: 479.98px; // телефоны s
       }
 
       @media (max-width: $mobileSmall) {
-        padding: 20px;
+        padding: 15px;
         border-radius: 5px;
         background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(5px);
@@ -225,7 +225,7 @@ $mobileSmall: 479.98px; // телефоны s
           height: 50px;
         }
 
-        
+
       }
     }
 

@@ -48,7 +48,7 @@ export const Main = () => {
     <main className={cls.main}>
       <section className={cls.main__block}>
         <AnimItem className={cls.main__info} noHide={true} >
-          <p className={cls.main__title}>Начните зарабатывать вместе с нами!</p>
+          <p className={cls.main__title}>Начните зарабатывать легко!</p>
           <h1 className={cls.main__headtitle}>
             Выполняйте задания <br /> Выводите деньги
           </h1>
