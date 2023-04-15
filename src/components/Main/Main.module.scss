@@ -37,8 +37,12 @@ $mobileSmall: 479.98px; // телефоны s
         align-items: center;
       }
      }
+
      .main__info {
       width: 30%;
+      transform: translate(-100%, 0px);
+      opacity: 0;
+      transition: all 0.8s ease 0.2s;
       @media (max-width: $pc) {
         width: 40%;
       }
@@ -152,6 +156,10 @@ $mobileSmall: 479.98px; // телефоны s
       display: flex;
       flex-wrap: wrap;
       align-items: center;
+      justify-content: center;
+      transform: translate(100%, 0px);
+      opacity: 0;
+      transition: all 0.8s ease 0s;
       @media (max-width: $mobileSmall) {
         width: 100%;
       }

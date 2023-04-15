@@ -41,6 +41,9 @@ $mobileSmall: 479.98px; // телефоны s
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+        transform: translate(0px, 100%);
+        opacity: 0;
+        transition: all 0.8s ease 0s;
         @media (max-width: $tablet) {
             // padding-top: 80px;
           }

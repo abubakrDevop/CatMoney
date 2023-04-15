@@ -4,6 +4,8 @@ import { IoChevronDownOutline } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 // import axios from "axios";
 
+import AnimItem from "../AnimItem";
+
 export const Main = () => {
 
   const data = [
@@ -45,7 +47,7 @@ export const Main = () => {
   return (
     <main className={cls.main}>
       <section className={cls.main__block}>
-        <div className={cls.main__info}>
+        <AnimItem className={cls.main__info} noHide={true} >
           <p className={cls.main__title}>Начните зарабатывать вместе с нами!</p>
           <h1 className={cls.main__headtitle}>
             Выполняйте задания <br /> Выводите деньги
@@ -59,9 +61,8 @@ export const Main = () => {
             вы получаете дополнительные x2 монет, плюшки и бонусы :D
           </p>
           <Link to={'/tasks'} className={cls.main__button}>Перейти к заданиям</Link>
-        </div>
-
-        <div className={cls.main__statistics}>
+        </AnimItem>
+        <AnimItem className={cls.main__statistics} noHide={true} >
           {
             data.map(item => (
               <div key={item.id} className={cls.statistics_card}>
@@ -69,7 +70,7 @@ export const Main = () => {
               </div>
             ))
           }
-        </div>
+        </AnimItem>
       </section>
 
       <section className={cls.main__section}>

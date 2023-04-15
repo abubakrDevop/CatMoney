@@ -25,9 +25,9 @@ const StyledMain = styled.main`
   @media (max-width: 820px) {
     background-image: url("../assets/img/tablet.gif");
   }
-  @media (max-width: 479px) {
-    background-image: url("../assets/img");
-  }
+  // @media (max-width: 479px) {
+  //   background-image: url("../assets/img");
+  // }
 `
 
 export const Index = () => {

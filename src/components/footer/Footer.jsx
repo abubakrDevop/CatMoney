@@ -1,5 +1,7 @@
 import React from "react";
 import cls from "../footer/Footer.module.scss"
+import AnimItem from "../AnimItem";
+
 import  {
           IoChatbubblesOutline, 
           IoDiamondOutline, 
@@ -40,7 +42,7 @@ export const Footer = () => {
       <h1 className={cls.headtitle}>НАВЕДИТЕСЬ НА КАРТОЧКИ</h1>
       <p className={cls.title}>ДЛЯ БОЛЬШЕЙ ИНФОРМАЦИИ</p>
 
-      <section className={cls.footer__section}>
+      <AnimItem className={cls.footer__section} noHide={true} >
         {
           blocks.map(item => (
             <div key={item.id} className={cls.section_block}>
@@ -50,7 +52,7 @@ export const Footer = () => {
             </div>
           ))
         }
-      </section>
+      </AnimItem>
     </footer>
   )
 }
