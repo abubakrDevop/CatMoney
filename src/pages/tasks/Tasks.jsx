@@ -17,9 +17,9 @@ export const Tasks = () => {
       name: "Alex Kendal",
       price: "1.40",
       description: "Зарегистрироваться на сайте",
-      url: "",
+      url: "https://github.com",
       icon: <FaRegClock />,
-      timer: 20,
+      timer: 15000,
       id: 11,
     },
     {
@@ -27,9 +27,9 @@ export const Tasks = () => {
       name: "Misha Kolins",
       price: "2.23",
       description: "Поставить лайк и оставить коментарии",
-      url: "",
+      url: "https://github.com",
       icon: <FaRegClock />,
-      timer: 10,
+      timer: 15000,
       id: 12,
     },
     {
@@ -37,9 +37,9 @@ export const Tasks = () => {
       name: "Jensen Ackels",
       price: "0.99",
       description: "Зарегистрироваться на сайте",
-      url: "",
+      url: "https://github.com",
       icon: <FaRegClock />,
-      timer: 20,
+      timer: 15000,
       id: 13,
     },
     {
@@ -47,9 +47,9 @@ export const Tasks = () => {
       name: "Sasha Gray",
       price: "1.59",
       description: "Поставить лайк и оставить коментарии",
-      url: "",
+      url: "https://github.com",
       icon: <FaRegClock />,
-      timer: 10,
+      timer: 15000,
       id: 14,
     },
     {
@@ -57,9 +57,9 @@ export const Tasks = () => {
       name: "Jorge Bush",
       price: "0.66",
       description: "Зарегистрироваться на сайте",
-      url: "",
+      url: "https://github.com",
       icon: <FaRegClock />,
-      timer: 15,
+      timer: 15000,
       id: 15,
     },
   ];
@@ -94,11 +94,11 @@ export const Tasks = () => {
   // updated_at: "2023-03-18T20:07:17.000000Z";
 
   const handleIframe = (data) => {
-    setIframe(data)
+    setIframe(`${data.link}/&output=embed`)
     setTimeout(() => {
       setIframe('')
       alert('Открывается источник в новом окно!')
-      window.open(data.url)
+      window.open(data.link)
     }, data.timer)
   }
 
