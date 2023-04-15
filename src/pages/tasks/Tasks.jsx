@@ -17,9 +17,9 @@ export const Tasks = () => {
       name: "Alex Kendal",
       price: "1.40",
       description: "Зарегистрироваться на сайте",
-      url: "https://github.com",
+      url: "https://www.youtube.com/",
       icon: <FaRegClock />,
-      timer: 15000,
+      timer: 5000,
       id: 11,
     },
     {
@@ -27,9 +27,9 @@ export const Tasks = () => {
       name: "Misha Kolins",
       price: "2.23",
       description: "Поставить лайк и оставить коментарии",
-      url: "https://github.com",
+      url: "https://www.youtube.com/",
       icon: <FaRegClock />,
-      timer: 15000,
+      timer: 5000,
       id: 12,
     },
     {
@@ -37,9 +37,9 @@ export const Tasks = () => {
       name: "Jensen Ackels",
       price: "0.99",
       description: "Зарегистрироваться на сайте",
-      url: "https://github.com",
+      url: "https://www.youtube.com/",
       icon: <FaRegClock />,
-      timer: 15000,
+      timer: 5000,
       id: 13,
     },
     {
@@ -47,9 +47,9 @@ export const Tasks = () => {
       name: "Sasha Gray",
       price: "1.59",
       description: "Поставить лайк и оставить коментарии",
-      url: "https://github.com",
+      url: "https://www.youtube.com/",
       icon: <FaRegClock />,
-      timer: 15000,
+      timer: 5000,
       id: 14,
     },
     {
@@ -57,9 +57,9 @@ export const Tasks = () => {
       name: "Jorge Bush",
       price: "0.66",
       description: "Зарегистрироваться на сайте",
-      url: "https://github.com",
+      url: "https://www.youtube.com/",
       icon: <FaRegClock />,
-      timer: 15000,
+      timer: 5000,
       id: 15,
     },
   ];
@@ -78,12 +78,6 @@ export const Tasks = () => {
   //     });
   // }, []);
 
-  if (localStorage.getItem('registered') !== 'ok') {
-    return (
-      <Page_404 />
-    )
-  }
-
   // Description: "Description";
   // Price: 0.07;
   // Timer: 5;
@@ -94,15 +88,21 @@ export const Tasks = () => {
   // updated_at: "2023-03-18T20:07:17.000000Z";
 
   const handleIframe = (data) => {
-    setIframe(`${data.link}/&output=embed`)
+    setIframe(data.link)
     setTimeout(() => {
       setIframe('')
-      alert('Открывается источник в новом окно!')
       window.open(data.link)
     }, data.timer)
+
   }
 
-  return (
+  if (localStorage.getItem('registered') !== 'ok') {
+    return (
+      <Page_404 />
+    )
+  }
+
+  return (                                                                                                                                                                                                                                                                                                        
     <div className={cls.tasks}>
       <iframe src={iframe} className={iframe > '' ? cls.iframe_active : cls.iframe}></iframe>
       <div className={cls.tasks_container}>
@@ -111,7 +111,7 @@ export const Tasks = () => {
             <h1 className={cls.tasks_headtitle}>
               Тариф:
               <span className={cls.tasks_classic}> Classic </span>
-              Купите премиум чтобы получать X2 монет!
+              Купите премиум чтобы получать X2 монет!                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
             </h1>
           ) : (
             <h1 className={cls.tasks_headtitle}>
@@ -119,7 +119,7 @@ export const Tasks = () => {
               <span className={cls.tasks_premium}> Premium </span>У вас режим X2
               монет!
             </h1>
-          )}
+          )}                                                                                                                       
 
           <section className={cls.tasks_header_box}>
             <div className={cls.search_box}>
