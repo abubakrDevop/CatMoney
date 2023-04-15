@@ -13,7 +13,7 @@ $mobileSmall: 479.98px; // телефоны s
   align-items: center;
   justify-content: center;
   @media (max-width: $mobileSmall) {
-    padding: 15px 85px 15px 15px;
+    padding: 15px;
     align-items: flex-start;
   }
 

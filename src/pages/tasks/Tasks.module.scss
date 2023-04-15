@@ -27,6 +27,7 @@ $mobileSmall: 479.98px; // телефоны s
 }
 
 .tasks {
+    position: relative;
     width: 100%;
     min-height: 100vh;
     overflow: hidden;
@@ -38,6 +39,28 @@ $mobileSmall: 479.98px; // телефоны s
 
     @media (max-width: $mobileSmall) {
       padding: 15px;
+    }
+
+    .iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.555);
+      z-index: 1;
+      display: none;
+    }
+
+    .iframe_active {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.555);
+      z-index: 1;
+      display: flex;
     }
 
     .tasks_container {
@@ -310,6 +333,7 @@ $mobileSmall: 479.98px; // телефоны s
                     align-items: center;
                     text-decoration: none;
                     z-index: 0;
+                    cursor: pointer;
 
                     &::before {
                         content: '';

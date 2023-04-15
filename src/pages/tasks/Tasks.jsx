@@ -9,75 +9,74 @@ import { PageTasks } from "./PageTasks"
 
 export const Tasks = () => {
   const [items, setItems] = useState([])
-  console.log("itemssssss", items)
-
+  const [iframe, setIframe] = useState()
 
   let tasks = [
     {
-      Users_id: 1,
+      users_id: 1,
       name: "Alex Kendal",
-      Price: "1.40",
-      Description: "Зарегистрироваться на сайте",
-      URL: "",
+      price: "1.40",
+      description: "Зарегистрироваться на сайте",
+      url: "",
       icon: <FaRegClock />,
-      Timer: 20,
+      timer: 20,
       id: 11,
     },
     {
-      Users_id: 2,
+      users_id: 2,
       name: "Misha Kolins",
-      Price: "2.23",
-      Description: "Поставить лайк и оставить коментарии",
-      URL: "",
+      price: "2.23",
+      description: "Поставить лайк и оставить коментарии",
+      url: "",
       icon: <FaRegClock />,
-      Timer: 10,
+      timer: 10,
       id: 12,
     },
     {
-      Users_id: 3,
+      users_id: 3,
       name: "Jensen Ackels",
-      Price: "0.99",
-      Description: "Зарегистрироваться на сайте",
-      URL: "",
+      price: "0.99",
+      description: "Зарегистрироваться на сайте",
+      url: "",
       icon: <FaRegClock />,
-      Timer: 20,
+      timer: 20,
       id: 13,
     },
     {
-      Users_id: 4,
+      users_id: 4,
       name: "Sasha Gray",
-      Price: "1.59",
-      Description: "Поставить лайк и оставить коментарии",
-      URL: "",
+      price: "1.59",
+      description: "Поставить лайк и оставить коментарии",
+      url: "",
       icon: <FaRegClock />,
-      Timer: 10,
+      timer: 10,
       id: 14,
     },
     {
-      Users_id: 5,
+      users_id: 5,
       name: "Jorge Bush",
-      Price: "0.66",
-      Description: "Зарегистрироваться на сайте",
-      URL: "",
+      price: "0.66",
+      description: "Зарегистрироваться на сайте",
+      url: "",
       icon: <FaRegClock />,
-      Timer: 15,
+      timer: 15,
       id: 15,
     },
   ];
 
   const data = items.length > 0 ? items : tasks
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/v1/tasks")
-      .then((res) => {
-        console.log(res.data);
-        setItems(res.data.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:5000/api/v1/tasks")
+  //     .then((res) => {
+  //       console.log(res.data);
+  //       setItems(res.data.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // }, []);
 
   if (localStorage.getItem('registered') !== 'ok') {
     return (
@@ -94,8 +93,18 @@ export const Tasks = () => {
   // id: 1;
   // updated_at: "2023-03-18T20:07:17.000000Z";
 
+  const handleIframe = (data) => {
+    setIframe(data)
+    setTimeout(() => {
+      setIframe('')
+      alert('Открывается источник в новом окно!')
+      window.open(data.url)
+    }, data.timer)
+  }
+
   return (
     <div className={cls.tasks}>
+      <iframe src={iframe} className={iframe > '' ? cls.iframe_active : cls.iframe}></iframe>
       <div className={cls.tasks_container}>
         <section className={cls.tasks_header}>
           {localStorage.getItem("Premium") !== true ? (
@@ -132,15 +141,20 @@ export const Tasks = () => {
               </section>
 
               <section className={cls.task_info}>
-                <p className={cls.task_title}>{item.Description}</p>
-                <div className={cls.task_price}>{item.Price} ₽уб</div>
+                <p className={cls.task_title}>{item.description}</p>
+                <div className={cls.task_price}>{item.price} ₽уб</div>
               </section>
 
-              <section className={cls.task_buttons}>
-                <a href={item.URL} className={cls.task_button1}>
+              <section className={cls.task_buttons} onClick={() => {
+                handleIframe({
+                  link: item.url,
+                  timer: item.timer
+                })
+              }}>
+                <p className={cls.task_button1}>
                   Выполнить
-                </a>
-                <div className={cls.task_clock_icon}>{item.icon} {item.Timer} сек</div>
+                </p>
+                <div className={cls.task_clock_icon}>{item.icon} {item.timer} сек</div>
               </section>
             </div>
           ))}

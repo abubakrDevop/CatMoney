@@ -32,7 +32,7 @@ $mobileSmall: 479.98px; // телефоны s
           }
 
           @media (max-width: $mobileSmall) {
-            padding: 0 10px;
+            padding: 0 15px;
           }
 
     .header_mobile {
@@ -74,7 +74,7 @@ $mobileSmall: 479.98px; // телефоны s
        display: none;
         @media (max-width: $tablet) {
           position: absolute;
-          right: 20px;
+          right: 13px;
           display: inline;
           font-size: 30px;
           transition: .5s;
@@ -112,13 +112,16 @@ $mobileSmall: 479.98px; // телефоны s
         width: 10%;
         display: inline-flex;
         align-items: center;
+        @media (max-width: $mobileSmall) {
+          left: -4px;
+        }
 
         .logo_icon {
             width: 45px;
             height: 40px;
             transform: scale(0.9);
               @media (max-width: $tablet) {
-                 transform: scale(0.7);
+                transform: scale(0.7);
               }
         }
 
@@ -126,7 +129,7 @@ $mobileSmall: 479.98px; // телефоны s
             font-family: 'Teko', sans-serif;
             transform: scale(1.4) translateX(13px) translateY(3px);
               @media (max-width: $tablet) {
-                 transform: scale(1.1) translateX(5px) translateY(3px);
+                transform: scale(1.1) translateX(5px) translateY(3px);
               }
             .logo_text_in {
                 background-color: #2AA5A0;

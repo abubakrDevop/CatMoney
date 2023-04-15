@@ -19,10 +19,10 @@ $mobileSmall: 479.98px; // телефоны s
         justify-content: center;
 
         &:nth-child(1) {
-            padding: 20px 100px 0 20px;
+            padding: 15px;
         }
         &:nth-child(2) {
-            padding: 10px 100px 0 20px;
+            padding: 15px;
             display: flex;
             justify-content: space-between;
               @media (max-width: $mobileSmall) {
@@ -135,7 +135,7 @@ $mobileSmall: 479.98px; // телефоны s
                         align-items: center;
                         @media (max-width: $mobileSmall) {
                           margin: 10px 0 0 0;
-                          width: 104%;
+                          width: 100%;
                         }
                     }
                 }
@@ -147,7 +147,7 @@ $mobileSmall: 479.98px; // телефоны s
           margin: 20px 0 0 0;
           font-weight: bold;
               @media (max-width: $mobileSmall) {
-                width: 104%;
+                width: 100%;
               }
 
           .section_about {
@@ -194,7 +194,7 @@ $mobileSmall: 479.98px; // телефоны s
                   box-shadow: 0 0 5px black;
                   border-radius: 11px;
                   @media (max-width: $mobileSmall) {
-                    width: 104%;
+                    width: 100%;
                   }
                 }
             }
@@ -217,7 +217,7 @@ $mobileSmall: 479.98px; // телефоны s
             margin-bottom: 50px;
             @media (max-width: $mobileSmall) {
               top: 0px;
-              width: 104%;
+              width: 100%;
             }
 
             &::before {

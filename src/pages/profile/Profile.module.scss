@@ -27,19 +27,30 @@ $mobileSmall: 479.98px; // телефоны s
             background: rgb(221, 218, 218);
           }
           @media (max-width: $mobileSmall) {
+            position: relative;
+            width: 100%;
             height: 0;
             border-bottom-left-radius: 0;
-            animation: apear 1.5s linear;
+            animation: apear .5s linear;
             animation-fill-mode: forwards;
             animation-delay: .6s;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-top: solid 1px rgba(0, 0, 0, 0.5);
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            box-shadow:  0 0 5px black;
+            padding: 0 15px;
+            float: none;
 
             @keyframes apear {
               from {
                 height: 0;
               }
               to {
-                height: 100%;
+                height: 50px;
               }
             }
           }
@@ -49,7 +60,7 @@ $mobileSmall: 479.98px; // телефоны s
             justify-content: center;
             animation: show .5s linear;
             animation-fill-mode: forwards;
-            animation-delay: 1.6s;
+            animation-delay: 1s;
             opacity: 0;
 
             @keyframes show {
@@ -63,7 +74,7 @@ $mobileSmall: 479.98px; // телефоны s
 
             .menu_items_icon {
                 position: relative;
-                top: -12px;
+                top: -10px;
                 color: white;
                 margin-top: 22px;
                 font-size: 22px;
