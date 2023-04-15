@@ -21,13 +21,6 @@ const StyledMain = styled.main`
   background-size: 100% 100%;
   background-attachment: fixed;
   overflow: hidden;
-
-  @media (max-width: 820px) {
-    background-image: url("../assets/img/tablet.gif");
-  }
-  // @media (max-width: 479px) {
-  //   background-image: url("../assets/img");
-  // }
 `
 
 export const Index = () => {
