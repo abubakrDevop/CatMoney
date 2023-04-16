@@ -31,7 +31,7 @@ export const Tasks = () => {
       description: "Поставить лайк и оставить коментарии",
       url: "https://www.youtube.com/",
       icon: <FaRegClock />,
-      timer: 10000,
+      timer: 15000,
       id: 12,
     },
     {
@@ -41,7 +41,7 @@ export const Tasks = () => {
       description: "Зарегистрироваться на сайте",
       url: "https://www.youtube.com/",
       icon: <FaRegClock />,
-      timer: 10000,
+      timer: 7000,
       id: 13,
     },
     {
@@ -51,7 +51,7 @@ export const Tasks = () => {
       description: "Поставить лайк и оставить коментарии",
       url: "https://www.youtube.com/",
       icon: <FaRegClock />,
-      timer: 10000,
+      timer: 8000,
       id: 14,
     },
     {
@@ -61,7 +61,7 @@ export const Tasks = () => {
       description: "Зарегистрироваться на сайте",
       url: "https://www.youtube.com/",
       icon: <FaRegClock />,
-      timer: 10000,
+      timer: 6000,
       id: 15,
     },
   ];
