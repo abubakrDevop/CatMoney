@@ -10,6 +10,8 @@ import { PageTasks } from "./PageTasks"
 export const Tasks = () => {
   const [items, setItems] = useState([])
   const [iframe, setIframe] = useState()
+  const [timeLeft, setTimeLeft] = useState(0);
+
 
   let tasks = [
     {
@@ -19,7 +21,7 @@ export const Tasks = () => {
       description: "Зарегистрироваться на сайте",
       url: "https://www.youtube.com/",
       icon: <FaRegClock />,
-      timer: 5000,
+      timer: 10000,
       id: 11,
     },
     {
@@ -29,7 +31,7 @@ export const Tasks = () => {
       description: "Поставить лайк и оставить коментарии",
       url: "https://www.youtube.com/",
       icon: <FaRegClock />,
-      timer: 5000,
+      timer: 10000,
       id: 12,
     },
     {
@@ -39,7 +41,7 @@ export const Tasks = () => {
       description: "Зарегистрироваться на сайте",
       url: "https://www.youtube.com/",
       icon: <FaRegClock />,
-      timer: 5000,
+      timer: 10000,
       id: 13,
     },
     {
@@ -49,7 +51,7 @@ export const Tasks = () => {
       description: "Поставить лайк и оставить коментарии",
       url: "https://www.youtube.com/",
       icon: <FaRegClock />,
-      timer: 5000,
+      timer: 10000,
       id: 14,
     },
     {
@@ -59,7 +61,7 @@ export const Tasks = () => {
       description: "Зарегистрироваться на сайте",
       url: "https://www.youtube.com/",
       icon: <FaRegClock />,
-      timer: 5000,
+      timer: 10000,
       id: 15,
     },
   ];
@@ -89,22 +91,38 @@ export const Tasks = () => {
 
   const handleIframe = (data) => {
     setIframe(data.link)
+    setTimeLeft(data.timer / 1000);
     setTimeout(() => {
       setIframe('')
-      window.open(data.link)
+      if (data.link) {
+        window.open(data.link);
+      }
     }, data.timer)
-
   }
+ 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (timeLeft > 0) {
+        setTimeLeft(timeLeft - 1);
+      }
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [timeLeft]);
 
   if (localStorage.getItem('registered') !== 'ok') {
     return (
       <Page_404 />
     )
   }
-
+ 
+  // target="_parent"
   return (                                                                                                                                                                                                                                                                                                        
     <div className={cls.tasks}>
       <iframe src={iframe} className={iframe > '' ? cls.iframe_active : cls.iframe}></iframe>
+      {iframe > '' && <div className={cls.timer}>
+          {timeLeft}
+        </div>}
       <div className={cls.tasks_container}>
         <section className={cls.tasks_header}>
           {localStorage.getItem("Premium") !== true ? (
@@ -154,7 +172,7 @@ export const Tasks = () => {
                 <p className={cls.task_button1}>
                   Выполнить
                 </p>
-                <div className={cls.task_clock_icon}>{item.icon} {item.timer} сек</div>
+                <div className={cls.task_clock_icon}>{item.icon} {item.timer / 1000} сек</div>
               </section>
             </div>
           ))}

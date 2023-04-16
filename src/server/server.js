@@ -2,6 +2,7 @@ import express from 'express'
 import cookieParser from "cookie-parser";
 import cors from 'cors'
 import axios from 'axios'
+import helmet from 'helmet';
 
 const PORT = 5000
 
@@ -11,9 +12,11 @@ const middleware = [
   cors(),
   cookieParser(),
   express.json({ limit: "50kb" }),
+  helmet()
+  // helmet.frameguard({ action: "SAMEORIGIN" })
 ];
 
-middleware.forEach((it) => server.use(it));
+middleware.forEach((it) => server.use(it))
 
 server.get('/api/v1/counter', async (req, res) => {
   try {
@@ -27,7 +30,7 @@ server.get('/api/v1/counter', async (req, res) => {
 
 server.get('/api/v1/tasks', async (req, res) => {
   try {
-    axios(`https://efd6-80-94-250-80.eu.ngrok.io/api/tasks/v2/paginate`).then(
+    axios(`https://efd6-80-94-250-80.eu.ngrok.io/api/v2/counter`).then(
       (response) => res.json(response.data)
     );
   } catch (err) {
@@ -45,7 +48,7 @@ server.get('/api/v1/userTasks/:id', async (req, res) => {
   } catch (err) {
     console.log(err)
   }
-});
+})
 
 server.post('/api/v1/register', async (req, res) => {
   try {
