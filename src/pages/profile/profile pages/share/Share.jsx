@@ -18,15 +18,13 @@ export const Share = () => {
 
   return (
     <div className={cls.share}>
-      <div className={active === false ? cls.share_copied : cls.share_copied_active}>
-        <h1 className={cls.copied_text}>Скопировано в Буфер обмена!</h1>
-      </div>
       <div className={cls.share_block}>
         <h1 className={cls.share_title}>Приглашай друзей</h1>
         <p className={cls.share_subtitle}>
           При переходе друга по данной ссылке и регистрации ты получаешь
           проценты от его выполненных задач также другие гарантированные призы!
         </p>
+
         <div className={cls.share_link}>
           <p>{userLink}</p>
           <button onClick={() => {
