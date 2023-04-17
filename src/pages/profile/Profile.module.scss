@@ -22,7 +22,7 @@ $mobileSmall: 479.98px; // телефоны s
         float: right;
         animation: apear 1s linear;
         animation-fill-mode: forwards;
-        z-index: 3;
+        z-index: 5;
           @media (max-width: $tablet) {
             background: rgb(221, 218, 218);
           }

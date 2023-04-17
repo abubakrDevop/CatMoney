@@ -13,6 +13,7 @@ import { Settings } from "./profile pages/settings/Settings";
 import { Wallet } from "./profile pages/wallet/Wallet";
 import { Chat } from "./profile pages/chat/Chat";
 import { Share } from "./profile pages/share/Share";
+import { Refs } from "./profile pages/refs statistics/Refs";
 
 export const Profile = () => {
 
@@ -71,6 +72,7 @@ export const Profile = () => {
         <Route path="wallet" element={<Wallet />} />
         <Route path="chat" element={<Chat />} />
         <Route path="share" element={<Share />} />
+        <Route path="refs" element={<Refs />} />
       </Routes>
 
     </div>

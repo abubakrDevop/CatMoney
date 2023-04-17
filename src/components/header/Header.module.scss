@@ -25,7 +25,7 @@ $mobileSmall: 479.98px; // телефоны s
     overflow: hidden;
     font-family: 'Roboto', sans-serif;
     transition: .5s;
-    z-index: 4;
+    z-index: 6;
 
           @media (max-width: $tablet) {
             overflow: visible;

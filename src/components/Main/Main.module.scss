@@ -196,7 +196,7 @@ $mobileSmall: 479.98px; // телефоны s
 
     .main__statistics {
       width: 50%;
-      padding: 10px 0 0 0;
+      padding: 50px 0 0 0 ;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -206,6 +206,7 @@ $mobileSmall: 479.98px; // телефоны s
       @media (max-width: $mobileSmall) {
         width: 100%;
         z-index: 1;
+        padding: 15px 0 0 0 ;
       }
 
       .statistics_card {
@@ -213,7 +214,7 @@ $mobileSmall: 479.98px; // телефоны s
         top: -10px;
         width: 250px;
         height: 180px;
-        margin: 20px 0 0 0;
+        margin: 10px;
         border-radius: 5px;
         background: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(5px);
@@ -223,6 +224,7 @@ $mobileSmall: 479.98px; // телефоны s
         @media (max-width: $mobileSmall) {
           width: 100%;
           height: 50px;
+          margin: 20px 0 0 0;
         }
 
 
