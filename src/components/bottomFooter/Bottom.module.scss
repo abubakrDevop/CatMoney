@@ -72,6 +72,15 @@ $mobileSmall: 479.98px; // телефоны s
                 &:hover {
                     color: aqua;
                 }
+                &:nth-child(1) {
+                    color: rgb(0, 119, 255);
+                }
+                &:nth-child(3) {
+                    color: aqua;
+                }
+                &:nth-child(5) {
+                    color: rgb(3, 202, 3);
+                }
             }
         }
         
