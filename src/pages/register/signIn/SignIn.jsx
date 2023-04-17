@@ -34,7 +34,6 @@ export const SignIn = () => {
     $api
       .post("/api/users/v2/auth", body)
       .then((res) => {
-        console.log(res);
         if (res.data.status === "Логин введён неверно") {
           reset();
           setLoginError(res.data.status);

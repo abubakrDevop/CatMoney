@@ -159,9 +159,8 @@ $mobileSmall: 479.98px; // телефоны s
                 width: 100%;
                 height: 100%;
                 font-size: 16px;
-                border: none;
-                outline: none;
-                background: none;
+                display: flex;
+                align-items: center;
             }
 
             .share_button {
