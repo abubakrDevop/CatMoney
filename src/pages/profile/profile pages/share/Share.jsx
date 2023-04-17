@@ -6,6 +6,7 @@ import Refs from "../refs statistics/Refs";
 
 export const Share = () => {
   const [active, setActive] = React.useState(false)
+  const [activeBtn, setActiveBtn] = React.useState(false)
   const ref = useRef(null)
 
   const userId = JSON.parse(localStorage.getItem("regist"))
@@ -43,7 +44,18 @@ export const Share = () => {
             <IoCopyOutline className={cls.share_icon} />
           </button>
         </div>
-        <Link to={'refs'} onClick={handleScroll} className={cls.share_refs} >Мои рефералы</Link>
+        {
+          activeBtn !== true ? 
+          <Link to={'refs'} onClick={() => {
+            handleScroll()
+            setActiveBtn(true)
+          }} className={cls.share_refs1} >Мои рефералы</Link>
+          :
+          <Link to={'share'} onClick={() => {
+            handleScroll()
+            setActiveBtn(false)
+          }} className={cls.share_refs2} >Скрыть рефералы</Link>
+        }
       </div>
     </div>
     <Routes>

@@ -13,6 +13,7 @@ import { Information } from "./information/Information";
 import { About } from "./about-us/About";
 import { AddTask } from "./add-task/AddTask";
 import { Profile } from "./profile/Profile";
+import { Bottom } from "../components/bottomFooter/Bottom";
 
 const StyledMain = styled.main`
   width: 100%;
@@ -96,6 +97,7 @@ export const Index = () => {
         <Route path="/add-task" element={<AddTask />} />
         <Route path="/profile/*" element={<Profile />} />
       </Routes>
+      <Bottom />
     </StyledMain>
   );
 }

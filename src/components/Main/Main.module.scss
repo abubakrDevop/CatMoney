@@ -18,6 +18,7 @@ $mobileSmall: 479.98px; // телефоны s
     z-index: 1;
     display: flex;
     flex-direction: column;
+    z-index: 0;
       @media (max-width: $tablet) {
         align-items: center;
       }
@@ -36,6 +37,7 @@ $mobileSmall: 479.98px; // телефоны s
           height: 300px;
           border-radius: 50%;
           background: linear-gradient(to left, rgb(60, 0, 128), rgba(0, 89, 255,));
+          z-index: -1;
         }
         &::after {
           content: '';
@@ -46,7 +48,7 @@ $mobileSmall: 479.98px; // телефоны s
           height: 300px;
           border-radius: 50%;
           background: linear-gradient(to left, orange, orangered);
-          z-index: 0;
+          z-index: -1;
         }
       }
 

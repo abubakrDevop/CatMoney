@@ -205,7 +205,8 @@ $mobileSmall: 479.98px; // телефоны s
         }
     }
 
-    .share_refs {
+    .share_refs1,
+    .share_refs2 {
         position: relative;
         width: 85%;
         height: 35px;
@@ -240,6 +241,13 @@ $mobileSmall: 479.98px; // телефоны s
 
         &:hover::before {
             height: 180%;
+        }
+    }
+
+    .share_refs2 {
+        background: red;
+        &::before {
+            background: linear-gradient(to left, rgba(255, 0, 0, 0.5), rgb(128, 47, 0));
         }
     }
 }
