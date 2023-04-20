@@ -20,7 +20,7 @@ middleware.forEach((it) => server.use(it))
 
 server.get('/api/v1/counter', async (req, res) => {
   try {
-    axios("https://efd6-80-94-250-80.eu.ngrok.io/api/v2/counter").then(
+    axios("https://2c6b-80-94-250-125.ngrok-free.app/api/v2/counter").then(
       (response) => res.json(response.data)
     );
   } catch (err) {
@@ -28,9 +28,10 @@ server.get('/api/v1/counter', async (req, res) => {
   }
 })
 
-server.get('/api/v1/tasks', async (req, res) => {
+server.get('/api/v1/tasks/:pageNumber', async (req, res) => {
+  const { pageNumber } = req.params;
   try {
-    axios(`https://efd6-80-94-250-80.eu.ngrok.io/api/v2/counter`).then(
+    axios(`https://2c6b-80-94-250-125.ngrok-free.app/Task/tasks?pageNumber=${pageNumber}`).then(
       (response) => res.json(response.data)
     );
   } catch (err) {
@@ -39,11 +40,11 @@ server.get('/api/v1/tasks', async (req, res) => {
 })
 
 server.get('/api/v1/userTasks/:id', async (req, res) => {
-  const { iserId } = req.params;
+  const { userId } = req.params
 
   try {
     axios(
-      `https://efd6-80-94-250-80.eu.ngrok.io/Task/user?userId=${iserId}`
+      `https://2c6b-80-94-250-125.ngrok-free.app/Task/user?userId=${userId}`
     ).then((response) => res.json(response.data));
   } catch (err) {
     console.log(err)
@@ -52,7 +53,7 @@ server.get('/api/v1/userTasks/:id', async (req, res) => {
 
 server.post('/api/v1/register', async (req, res) => {
   try {
-    axios("https://efd6-80-94-250-80.eu.ngrok.io/api/v2/register").then(
+    axios("https://2c6b-80-94-250-125.ngrok-free.app/api/v2/register").then(
       (response) => res.json(response.data)
     );
   } catch (err) {
@@ -62,7 +63,7 @@ server.post('/api/v1/register', async (req, res) => {
 
 server.post('/api/v1/visible', async (req, res) => {
   try {
-    axios("https://efd6-80-94-250-80.eu.ngrok.io/api/v2/exit").then(
+    axios("https://2c6b-80-94-250-125.ngrok-free.app/api/v2/exit").then(
       (response) => res.json(response.data)
     );
   } catch (err) {
