@@ -28,28 +28,27 @@ export const SignIn = () => {
     const body = {
       login: data.login,
       password: data.password,
-      mode: 1,
     }
 
     $api
-      .post("/api/users/v2/auth", body)
+      .post("/User/auth", body)
       .then((res) => {
-        if (res.data.status === "Логин введён неверно") {
-          reset();
-          setLoginError(res.data.status);
-        } else if (res.data.status === "Пароль неверный!") {
-          reset();
-          setPasswordError(res.data.status);
-        } else if (res.data.status === "200") {
+        console.log(res)
+        if (res.status === 200) {
           reset();
           localStorage.setItem("auth", JSON.stringify(res.data));
           localStorage.setItem("regist", JSON.stringify(res.data));
-          window.location.reload();
+          localStorage.setItem("registered", 'ok');
           navigate("/profile/own-space");
+          window.location.reload();
         }
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((res) => {
+        console.log(res.data)
+        if (res.response.status === 400) {
+          reset();
+          setLoginError(res.response.data);
+        }
       });
   }
 

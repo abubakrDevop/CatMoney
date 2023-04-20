@@ -97,7 +97,7 @@ export const Index = () => {
         <Route path="/add-task" element={<AddTask />} />
         <Route path="/profile/*" element={<Profile />} />
       </Routes>
-      <Bottom />
+      
     </StyledMain>
   );
 }

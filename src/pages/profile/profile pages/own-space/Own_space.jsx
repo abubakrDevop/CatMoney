@@ -33,7 +33,7 @@ export const Ownspace = () => {
       balance: +addAmountTasksUser  //баланс на сколько пополняется таск
     }
 
-    $api.post("/api/tasks/v2/replenish", body)
+    $api.post("", body)
     .then(res => {
       if (res.data.status === 'На вашем балансе недостаточно средств') {
         alert('На вашем балансе недостаточно средств')

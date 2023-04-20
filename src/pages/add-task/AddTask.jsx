@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from 'react-hook-form'
-import axios from "axios";
 import { FaEdit, FaLink, FaClock, FaRubleSign } from "react-icons/fa";
-
 import { Form } from '../../helpers/form/index'
 import cls from '../add-task/AddTask.module.scss'
 import { $api } from "../../helpers/constant/index";
@@ -10,7 +8,6 @@ import { $api } from "../../helpers/constant/index";
 export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
   const [activeItem, setActiveItem] = useState(0);
   const [value, setValue] = useState("");
-  // console.log("idddddd", taskId);
 
   const userId = JSON.parse(localStorage.getItem("regist"));
 
@@ -92,14 +89,13 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
         timer: +taimerValue,
         price: +activePrice,
         userId: userId.id,
-        taskId: +taskId,
         balance: data.balance === '' ? 5 : data.balance,
       };
 
       $api
         .post("/Task/add", body)
         .then((res) => {
-          console.log(res.data);
+          console.log(res);
           if (res.status === 200) {
             reset();
             alert("Задание получено");

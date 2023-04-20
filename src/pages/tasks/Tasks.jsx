@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { $api } from '../../helpers/constant/index'
 import cls from '../tasks/Tasks.module.scss'
 import { Link } from "react-router-dom";
 import { FaRegClock } from "react-icons/fa";
@@ -68,17 +68,16 @@ export const Tasks = () => {
 
   const data = items.length > 0 ? items : tasks
 
-  // useEffect(() => {
-  //   axios
-  //     .get("http://localhost:5000/api/v1/tasks")
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       setItems(res.data.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
+  $api
+    .get("/Task/tasks")
+    .then((res) => {
+      console.log(res);
+      // setItems(res.data.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+
 
   // Description: "Description";
   // Price: 0.07;
@@ -99,7 +98,7 @@ export const Tasks = () => {
       }
     }, data.timer)
   }
- 
+
   useEffect(() => {
     const timer = setTimeout(() => {
       if (timeLeft > 0) {
@@ -115,7 +114,7 @@ export const Tasks = () => {
       <Page_404 />
     )
   }
- 
+
   // target="_parent"
   return (                                                                                                                                                                                                                                                                                                        
     <div className={cls.tasks}>

@@ -110,17 +110,17 @@ export const PageTasks = () => {
 
     const items = data.length > 0 ? data : tasks;
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`http://localhost:5000/api/v1/tasks`)
-  //     .then((res) => {
-  //       console.log(res.data);
-  //       setData(res.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // }, []);
+  useEffect(() => {
+    axios
+      .get(`/Task/tasks`)
+      .then((res) => {
+        console.log(res.data);
+        setData(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
 
   const pagesCount = Math.ceil(items?.total / items?.per_page);
   const pages = [];

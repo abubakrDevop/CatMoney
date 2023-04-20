@@ -35,6 +35,7 @@ export const SignUp = () => {
     $api
       .post("/User/register", body)
       .then((res) => {
+        console.log(res)
         if (res.status === 200) {
           reset();
           localStorage.setItem("regist", JSON.stringify(res.data));
