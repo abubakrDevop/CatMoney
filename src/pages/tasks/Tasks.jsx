@@ -1,19 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { $api } from '../../helpers/constant/index'
+import { $api, baseURL } from '../../helpers/constant/index'
 import cls from '../tasks/Tasks.module.scss'
 import { Link } from "react-router-dom";
 import { FaRegClock } from "react-icons/fa";
 import { IoSearchOutline } from "react-icons/io5";
 import { Page_404 } from "../404-page/Page_404";
-import { PageTasks } from "./PageTasks"
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 
 export const Tasks = () => {
-  const [items, setItems] = useState([])
-  const [iframe, setIframe] = useState()
-  const [timeLeft, setTimeLeft] = useState(0);
-
-
-  let tasks = [
+  const tasks = [
     {
       users_id: 1,
       name: "Alex Kendal",
@@ -66,27 +62,35 @@ export const Tasks = () => {
     },
   ];
 
-  const data = items.length > 0 ? items : tasks
+  const dispatch = useDispatch()
+  const pages = useSelector(state => state.pages.pages)
+
+  const [iframe, setIframe] = useState()
+  const [timeLeft, setTimeLeft] = useState(0);
+  const [data, setData] = useState(tasks)
 
   $api
-    .get("/Task/tasks")
+    .get(`/Task/tasks`)
     .then((res) => {
       console.log(res);
-      // setItems(res.data.data);
+      axios
+        .get(`${baseURL}/Task/tasks?pageNumber=${pages}`)
+        .then((res) => {
+        console.log(res);
+      
+      })
     })
     .catch((error) => {
       console.log(error);
     });
 
-
-  // Description: "Description";
-  // Price: 0.07;
-  // Timer: 5;
-  // URL: "testURL";
-  // Users_id: 2;
-  // created_at: "2023-03-18T20:07:17.000000Z";
-  // id: 1;
-  // updated_at: "2023-03-18T20:07:17.000000Z";
+    const nextPage = () => {
+      dispatch({type: 'Next_Page', payload: 1})
+    }
+  
+    const prevPage = () => {
+      dispatch({type: 'Prev_Page', payload: -1})
+    }
 
   const handleIframe = (data) => {
     setIframe(data.link)
@@ -115,7 +119,6 @@ export const Tasks = () => {
     )
   }
 
-  // target="_parent"
   return (                                                                                                                                                                                                                                                                                                        
     <div className={cls.tasks}>
       <iframe src={iframe} className={iframe > '' ? cls.iframe_active : cls.iframe}></iframe>
@@ -176,7 +179,6 @@ export const Tasks = () => {
             </div>
           ))}
         </section>
-        <PageTasks />
       </div>
     </div>
   );
