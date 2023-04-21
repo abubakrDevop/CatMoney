@@ -8,7 +8,9 @@ export const pagesReduser = (state = defaultState, action) => {
     case 'Next_Page':
       return {...state, pages: state.pages + action.payload}
     case 'Prev_Page':
-      return {...state, pages: state.pages - action.payload}
+      return {
+        ...state, 
+        pages: state.pages - action.payload}
     default: 
       return state
   }

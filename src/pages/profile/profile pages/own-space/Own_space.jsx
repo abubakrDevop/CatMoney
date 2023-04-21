@@ -22,6 +22,8 @@ export const Ownspace = () => {
 
   const userTasks = items.length > 0 ? items : tasks
 
+console.log('items', items)
+
   const userId = JSON.parse(localStorage.getItem("regist"));
 
   const handlerAddConfirmTasksUser = (taskId) => {
@@ -30,16 +32,20 @@ export const Ownspace = () => {
     setAddAmountTasksUser('')
 
     const body = {
-      id: taskId,   //айди таска
-      userId: userId.id,   //айди пользователя
-      balance: +addAmountTasksUser  //баланс на сколько пополняется таск
+        taskId: taskId,
+        userId: userId.id,
+        description: items.description,
+        url: items.url,
+        timer: 0,
+        price: 0,
+        balance: items?.balance + addAmountTasksUser
     }
 
-    $api.post("", body)
+    $api.put("/Task/update", body)
     .then(res => {
       if (res.data.status === 'На вашем балансе недостаточно средств') {
         alert('На вашем балансе недостаточно средств')
-      } else if (res.data === '') {
+      } else if (res.data === 200) {
         setItems(res.data)
       }
     })
@@ -100,7 +106,7 @@ export const Ownspace = () => {
     useEffect(() => {
       axios
         .get(
-          `http://localhost:5000/api/v1/userTasks?userId=${userId.id}`)
+          `http://localhost:5000/Task/user/${userId.id}`)
         .then((res) => {
           setItems(res.data);
         })
@@ -114,6 +120,7 @@ export const Ownspace = () => {
       updateTasks?.URL,
       updateTasks?.start,
       updateTasks?.balance,
+      items?.balance
     ]);
 
     const deleteTask = (index) => {
@@ -288,12 +295,12 @@ export const Ownspace = () => {
                     <div key={item.id} className={cls.task}>
                       <div className={cls.task_data}>
                         <section className={cls.task_id}>#{item.id}</section>
-                        <p className={cls.task_title}>{item.Description}</p>
+                        <p className={cls.task_title}>{item.description}</p>
                         <p className={cls.task_title}>
-                          Баланс: {item.Balance} ₽уб
+                          Баланс: {item.balance} ₽уб
                         </p>
                         <div className={cls.task_price}>
-                          Цена: {item.Timer} ₽уб
+                          Цена: {item.timer} ₽уб
                         </div>
                       </div>
 

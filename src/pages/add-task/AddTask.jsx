@@ -51,8 +51,8 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
         timer: +taimerValue,
         price: +activePrice,
         userId: userId.id,
-        taskId: +taskId,
-        balance: data.balance.length === '' ? 5 : data.balance
+        taskId: taskId,
+        balance: data.balance.length === '' ? 5 : +data.balance
       };
 
       $api

@@ -5,11 +5,11 @@ import { Link } from "react-router-dom";
 import { FaRegClock } from "react-icons/fa";
 import { IoSearchOutline } from "react-icons/io5";
 import { Page_404 } from "../404-page/Page_404";
-import { useDispatch, useSelector } from "react-redux";
-
 import axios from "axios";
 
 export const Tasks = () => {
+   const [count, setCount] = useState(1)
+
   const tasks = [
     {
       users_id: 1,
@@ -63,8 +63,8 @@ export const Tasks = () => {
     },
   ];
 
-  const dispatch = useDispatch()
-  const pages = useSelector(state => state.pages.pages)
+
+  console.log('count', count)
 
   const [iframe, setIframe] = useState()
   const [timeLeft, setTimeLeft] = useState(0);
@@ -72,23 +72,21 @@ export const Tasks = () => {
 
     useEffect(() => {
       axios
-        .get(`http://localhost:5000/api/v1/tasks/${1}`)
+        .get(`http://localhost:5000/Task/tasks/${count}`)
         .then((res) => {
           console.log(res.data);
-          setItems(res.data);
+          setData(res.data);
         })
         .catch((error) => {
           console.log(error);
         });
-    }, []);
+    }, [count]);
 
-
-    const nextPage = () => {
-      dispatch({type: 'Next_Page', payload: 1})
+    function increment() {
+      setCount(count + 1);
     }
-  
-    const prevPage = () => {
-      dispatch({type: 'Prev_Page', payload: -1})
+    function decrement() {
+      setCount(count - 1);
     }
 
   const handleIframe = (data) => {
@@ -178,6 +176,8 @@ export const Tasks = () => {
             </div>
           ))}
         </section>
+        <button onClick={decrement}>назад</button>
+      <button onClick={increment}>вперёд</button>
       </div>
     </div>
   );
