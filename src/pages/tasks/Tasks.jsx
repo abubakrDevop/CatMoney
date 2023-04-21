@@ -6,6 +6,7 @@ import { FaRegClock } from "react-icons/fa";
 import { IoSearchOutline } from "react-icons/io5";
 import { Page_404 } from "../404-page/Page_404";
 import { PageTasks } from "./PageTasks"
+import axios from "axios";
 
 export const Tasks = () => {
   const [items, setItems] = useState([])
@@ -68,15 +69,17 @@ export const Tasks = () => {
 
   const data = items.length > 0 ? items : tasks
 
-  $api
-    .get("/Task/tasks")
-    .then((res) => {
-      console.log(res);
-      // setItems(res.data.data);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+    useEffect(() => {
+      axios
+        .get(`http://localhost:5000/api/v1/tasks/${1}`)
+        .then((res) => {
+          console.log(res.data);
+          setItems(res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }, []);
 
 
   // Description: "Description";
@@ -171,7 +174,7 @@ export const Tasks = () => {
                 <p className={cls.task_button1}>
                   Выполнить
                 </p>
-                <div className={cls.task_clock_icon}>{item.icon} {item.timer / 1000} сек</div>
+                <div className={cls.task_clock_icon}>{item.icon} {item.timer} сек</div>
               </section>
             </div>
           ))}

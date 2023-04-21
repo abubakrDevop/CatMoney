@@ -3,7 +3,7 @@ import cls from '../own-space/Own_space.module.scss'
 import axios from "axios";
 import { AddTask } from "../../../add-task/AddTask"
 import { $api } from "../../../../helpers/constant/index";
-import { data, userId } from '../own-space/helpers'
+import { data } from '../own-space/helpers'
 
 export const Ownspace = () => {
 
@@ -21,6 +21,8 @@ export const Ownspace = () => {
   const [updateTaskId, setUpdateTaskId] = useState(0);
 
   const userTasks = items.length > 0 ? items : tasks
+
+  const userId = JSON.parse(localStorage.getItem("regist"));
 
   const handlerAddConfirmTasksUser = (taskId) => {
     setActiveTasksUser(!activeTasksUser);

@@ -128,8 +128,16 @@ export const PageTasks = () => {
     pages.push(i);
   }
 
-  const onClick = (pageNumber) => {
-    setData((prevData) => ({ ...prevData, current_page: pageNumber - 1 }));
+  const onClick = () => {
+    axios
+    .get(`http://localhost:5000/api/v1/tasks/${2}`)
+    .then((res) => {
+      console.log(res.data);
+      setData(res.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
   };
 
   return (

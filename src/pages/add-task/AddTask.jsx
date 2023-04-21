@@ -55,14 +55,6 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
         balance: data.balance.length === '' ? 5 : data.balance
       };
 
-      console.log("description", data.title);
-      console.log("url", data.url);
-      console.log("timer", +taimerValue);
-      console.log("price", +activePrice);
-      console.log("userId", userId.id);
-      console.log("id", taskId);
-      console.log("balance", body.balance);
-
       $api
         .put("/Task/update", body)
         .then((res) => {

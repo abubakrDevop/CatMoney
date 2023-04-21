@@ -41,4 +41,3 @@ export let data = [
     },
 ];
 
-export const userId = JSON.parse(localStorage.getItem("regist"));
