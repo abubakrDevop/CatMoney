@@ -1,10 +1,8 @@
-// import {configureStore} from "@reduxjs/toolkit";
-// import user from "./userSlice";
-// import wallets from "./walletSlice";
+import { combineReducers, createStore } from 'redux'
+import { pagesReduser } from './pages'
 
-// export const store = configureStore({
-// 	reducer:{
-// 		user,
-// 		wallets
-// 	}
-// })
+const rootRedusers = combineReducers({
+  pages: pagesReduser
+}) 
+
+export const store = createStore(rootRedusers)
