@@ -11,7 +11,7 @@ import {
   IoLockClosedOutline,
   IoPersonOutline,
 } from "react-icons/io5";
-// import {addUser} from "../../../store/userSlice";
+// import {addUser} from "../../../store/userSlice"; 
 import { useState } from "react";
 
 export const SignUp = () => {

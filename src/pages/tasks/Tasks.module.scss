@@ -113,7 +113,7 @@ $mobileSmall: 479.98px; // телефоны s
 
     .tasks_container {
         width: 100%;
-        min-height: 100vh;
+        min-height: 0vh;
         background: rgb(218, 216, 216);
         border-radius: 5px;
         padding: 30px;
@@ -453,5 +453,66 @@ $mobileSmall: 479.98px; // телефоны s
                 }
             }
         }
+    }
+
+    .navigator_btn_box {
+      width: 100%;
+      padding: 25px 0 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .navigator_icon1,
+      .navigator_icon2 {
+        font-size: 20px;
+      }
+
+      .navigator_icon1 {
+        transform: rotate(180deg);
+      }
+    }
+
+    .navigator_btn {
+      position: relative;
+      padding: 0 20px;
+                    min-width: 0px;
+                    height: 35px;
+                    font-weight: bold;
+                    border: none;
+                    background: white;
+                    border-radius: 20px;
+                    color: black;
+                    font-size: 16px;
+                    overflow: hidden;
+                    transition: .5s;
+                    box-shadow: 0 0 5px black;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-decoration: none;
+                    z-index: 0;
+                    cursor: pointer;
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 0%;
+                        background: linear-gradient(to left, rgba(0, 89, 255, 0.5), rgb(60, 0, 128));
+                        transition: .5s;
+                        border-bottom-left-radius: 50%;
+                        border-bottom-right-radius: 50%;
+                        z-index: -1;
+                    }
+
+                    &:hover {
+                        color: white;
+                    }
+
+                    &:hover::before {
+                        height: 180%;
+                    }
     }
 }

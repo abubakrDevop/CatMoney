@@ -5,10 +5,11 @@ import { Link } from "react-router-dom";
 import { FaRegClock } from "react-icons/fa";
 import { IoSearchOutline } from "react-icons/io5";
 import { Page_404 } from "../404-page/Page_404";
+import { IoChevronForwardOutline } from 'react-icons/io5'
 import axios from "axios";
 
 export const Tasks = () => {
-   const [count, setCount] = useState(1)
+  const [count, setCount] = useState(1)
 
   const tasks = [
     {
@@ -62,9 +63,6 @@ export const Tasks = () => {
       id: 15,
     },
   ];
-
-
-  console.log('count', count)
 
   const [iframe, setIframe] = useState()
   const [timeLeft, setTimeLeft] = useState(0);
@@ -176,8 +174,14 @@ export const Tasks = () => {
             </div>
           ))}
         </section>
-        <button onClick={decrement}>назад</button>
-      <button onClick={increment}>вперёд</button>
+        <section className={cls.navigator_btn_box}>
+          <button  className={cls.navigator_btn} onClick={() => count !== 0 ? decrement : null}>
+            <IoChevronForwardOutline className={cls.navigator_icon1} />
+          </button>
+          <button className={cls.navigator_btn} onClick={increment}>
+            <IoChevronForwardOutline className={cls.navigator_icon2} />
+          </button>
+        </section>
       </div>
     </div>
   );
