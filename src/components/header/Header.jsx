@@ -87,8 +87,8 @@ export const Header = () => {
             {localStorage.getItem("registered") !== "ok" ? (
               <span className={cls.profil_text_404}>Войдите в аккаунт!</span>
             ) : (
-              <Link 
-                to={"/profile"} 
+              <Link
+                to={"/profile"}
                 className={cls.header_profil}
                 onClick={() => {setActive(false)}}
               >
@@ -105,8 +105,8 @@ export const Header = () => {
                 <Link className={cls.header__icon} to={"/register"}>
                   <IoLogInOutline
                     onClick={() => {
-                      // localStorage.setItem("registered", "ok");
-                      // window.location.reload();
+                      localStorage.setItem("registered", "ok");
+                      window.location.reload();
                     }}
                   />
                 </Link>
