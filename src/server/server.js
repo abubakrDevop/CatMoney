@@ -50,6 +50,17 @@ server.get('/Task/user/:userId', async (req, res) => {
   }
 })
 
+server.get('/Referals/user', async (req, res) => {
+  const { userId } = req.params;
+  try {
+    axios(`https://3303-80-94-250-125.ngrok-free.app/Referals/user?userId=${userId}`).then(
+      (response) => res.json(response.data)
+    );
+  } catch (err) {
+    console.log(err)
+  }
+})
+
 
 
 server.post('/api/v1/register', async (req, res) => {

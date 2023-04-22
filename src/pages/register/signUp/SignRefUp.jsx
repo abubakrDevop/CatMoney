@@ -28,7 +28,7 @@ export const SignRefUp = () => {
       login: data.login,
       email: data.email,
       password: data.password,
-      userId: refUserId,
+      userInviteId: refUserId,
     };
 
     console.log("refBody", body)

@@ -1,6 +1,7 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useEffect } from "react";
 import cls from '../refs statistics/Refs.module.scss'
 import { $api } from '../../../../helpers/constant/index'
+import axios from "axios";
 
 function Refs({text}, ref) {
   const refs = [
@@ -38,17 +39,23 @@ function Refs({text}, ref) {
   const [users, setUsers] = React.useState(refs)
   const [header, setHeader] = React.useState(headerData)
 
-  // $api
-  //   .get('')
-  //   .then(res => {
-  //     if (res.status === '') {
-  //       setUsers('')
-  //       headerData('')
-  //     } else if (res.status === 200) {
-  //       setUsers(res.data)
-  //       headerData(res.data)
-  //     }
-  //   })
+  const userId = JSON.parse(localStorage.getItem("regist"))
+
+  useEffect(() => {
+    axios
+    .get(`http://localhost:5000/Referals/user/${userId.id}`)
+    .then(res => {
+      console.log(res.data)
+      if (res.status === '') {
+        setUsers('')
+        headerData('')
+      } else if (res.status === 200) {
+        setUsers(res.data)
+        headerData(res.data)
+      }
+    })
+  }, [])
+
 
   return (
     <div className={cls.refs}>

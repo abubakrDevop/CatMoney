@@ -62,12 +62,16 @@ console.log('items', items)
   }
 
   const handlerGetConfirm = () => {
-    setActive(!active);
-    alert(`Пополнено на ${addAmount ? addAmount : 0} рублей`)
-    setAddAmount('')
-    // axios.post("", { set: addAmount }).then((res) => {
-    //   res.status === 200 ? alert("Успешно :D") : alert("Ошибка :(");
-    // });
+    setGetActive(!getActive);
+    alert(`Вывести ${getAmount ? getAmount : 0} рублей`)
+    setGetAmount('')
+    const body = {
+      id: userId.id,
+      money: +getAmount
+    }
+    $api.post("/User/withdrawal", body).then((res) => {
+      res.status === 200 ? alert("Успешно :D") : alert("Ошибка :(");
+    });
   }
   const handlerTopUP = () => {
     setActive(!active);
@@ -79,16 +83,16 @@ console.log('items', items)
 
 
   const handlerAddConfirm = () => {
-    setGetActive(!getActive);
-    alert(`Пополнено на ${getAmount ? getAmount : 0} рублей`);
-    setGetAmount('')
+    setActive(!active);
+    alert(`Пополнено на ${addAmount ? addAmount : 0} рублей`);
+    setAddAmount('')
 
     const body = {
       id: userId.id,  // айди пользователя
-      balance: getAmount,  //баланс на который он хочет пополнить
-      walletName: ''  //название его кошелька
+      balance: addAmount,  //баланс на который он хочет пополнить
+      // walletName: '',  //название его кошелька
     }
-    $api.post("/api/users/v2/replenish", body)
+    $api.post("/User/replenish", body)
     .then(res => {
       console.log(res)
     });

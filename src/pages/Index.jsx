@@ -29,7 +29,6 @@ export const Index = () => {
   const params = useParams();
 
     const userId = JSON.parse(localStorage.getItem("regist"));
-    console.log('params.id', params?.id)
     console.log('userId.id', userId?.id)
 
   useEffect(() => {
