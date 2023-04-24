@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import { FaRegClock } from "react-icons/fa";
 import { IoSearchOutline } from "react-icons/io5";
 import { Page_404 } from "../404-page/Page_404";
+import { Button } from '../../components/small components/button/Button'
+import { Section } from "../../components/small components/section/Section";
 import { IoChevronForwardOutline } from 'react-icons/io5'
 import axios from "axios";
 
@@ -117,11 +119,9 @@ export const Tasks = () => {
   return (                                                                                                                                                                                                                                                                                                        
     <div className={cls.tasks}>
       <iframe src={iframe} className={iframe > '' ? cls.iframe_active : cls.iframe}></iframe>
-      {iframe > '' && <div className={cls.timer}>
-          {timeLeft}
-        </div>}
+      {iframe > '' && <div className={cls.timer}> {timeLeft} </div>}
       <div className={cls.tasks_container}>
-        <section className={cls.tasks_header}>
+        <Section display='flex' justify='space-between' padding='0 0 10px 0' className={cls.tasks_header}>
           {localStorage.getItem("Premium") !== true ? (
             <h1 className={cls.tasks_headtitle}>
               Тариф:
@@ -136,7 +136,7 @@ export const Tasks = () => {
             </h1>
           )}                                                                                                                       
 
-          <section className={cls.tasks_header_box}>
+          <Section display='flex' justify='space-between' align='center' className={cls.tasks_header_box}>
             <div className={cls.search_box}>
               <input className={cls.search_input} type="text" placeholder="Поиск задании..." />
               <IoSearchOutline className={cls.search_icon} />
@@ -144,44 +144,42 @@ export const Tasks = () => {
             <Link to={"/add-task"} className={cls.header_button}>
               Добавить задание
             </Link>
-          </section>
-        </section>
+          </Section>
+        </Section>
 
-        <section className={cls.tasks_inner}>
+        <Section className={cls.tasks_inner}>
           {data.map((item) => (
             <div key={item.id} className={cls.task}>
-              <section className={cls.task_imgname}>
+              <Section display='flex' align='center' overflow='hidden' className={cls.task_imgname}>
                 {/* <img src={item.img} alt="img" className={cls.task_img} /> */}
                 <p className={cls.task_name}>{item.name}</p>
-              </section>
+              </Section>
 
-              <section className={cls.task_info}>
+              <Section display='flex' width='70%' gap='10px' className={cls.task_info}>
                 <p className={cls.task_title}>{item.description}</p>
                 <div className={cls.task_price}>{item.price} ₽уб</div>
-              </section>
+              </Section>
 
-              <section className={cls.task_buttons} onClick={() => {
+              <Section width='25%' display='flex' align='center' justify='space-between' className={cls.task_buttons} onClick={() => {
                 handleIframe({
                   link: item.url,
                   timer: item.timer
                 })
               }}>
-                <p className={cls.task_button1}>
-                  Выполнить
-                </p>
+                <Button width='70%' height='35px'>Выполнить</Button>
                 <div className={cls.task_clock_icon}>{item.icon} {item.timer} сек</div>
-              </section>
+              </Section>
             </div>
           ))}
-        </section>
-        <section className={cls.navigator_btn_box}>
-          <button  className={cls.navigator_btn} onClick={() => count !== 0 ? decrement : null}>
+        </Section>
+        <Section width='100%' padding='25px 0 0 0' display='flex' align='center' justify='space-between' className={cls.navigator_btn_box}>
+          <Button padding='0 20px' color='black' height='35px' back='white' className={cls.navigator_btn} onClick={() => count !== 0 ? decrement : null}>
             <IoChevronForwardOutline className={cls.navigator_icon1} />
-          </button>
-          <button className={cls.navigator_btn} onClick={increment}>
+          </Button>
+          <Button padding='0 20px' color='black' height='35px' back='white' className={cls.navigator_btn} onClick={increment}>
             <IoChevronForwardOutline className={cls.navigator_icon2} />
-          </button>
-        </section>
+          </Button>
+        </Section>
       </div>
     </div>
   );
