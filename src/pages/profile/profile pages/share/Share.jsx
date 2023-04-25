@@ -10,7 +10,7 @@ export const Share = () => {
   const ref = useRef(null)
 
   const userId = JSON.parse(localStorage.getItem("regist"))
-  const userLink = `http://localhost:3000/1/${userId.id}`;
+  const userLink = `http://localhost:3000/1/${userId?.id}`;
 
   const handleClipboard = (copied) => {
     navigator.clipboard.writeText(copied)
@@ -31,8 +31,8 @@ export const Share = () => {
       <div className={cls.share_block}>
         <h1 className={cls.share_title}>Приглашай друзей</h1>
         <p className={cls.share_subtitle}>
-          При переходе друга по данной ссылке и регистрации ты получаешь
-          проценты от его выполненных задач также другие бонусы!
+           При регистрации друга по данной ниже ссылке, вы получаете 10% от 
+           каждого вывода денежных средств вашего реферала
         </p>
 
         <div className={cls.share_link}>

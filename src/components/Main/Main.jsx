@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import cls from '../Main/Main.module.scss'
 import { IoChevronDownOutline } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
-// import axios from "axios";
+import axios from "axios";
 
 import AnimItem from "../AnimItem";
 
 export const Main = () => {
+  const [userValues, setUsersValues] = useState([])
 
   const data = [
     {
@@ -35,14 +36,14 @@ export const Main = () => {
     },
   ]
 
-  // useEffect(() => {
-  // axios.get('http://localhost:5000/api/v1/counter')
-  //   .then(res => {
-  //     console.log(res.data)
-  //     setUsersValues(res.data)
-  //   })
-  //   .catch(error => console.log(error))
-  // }, [])
+  useEffect(() => {
+  axios.get('http://localhost:5000/Counter/count')
+    .then(res => {
+      console.log(res.data)
+      setUsersValues(res.data)
+    })
+    .catch(error => console.log(error))
+  }, [])
 
   return (
     <main className={cls.main}>
@@ -63,13 +64,22 @@ export const Main = () => {
           <Link to={'/tasks'} className={cls.main__button}>Перейти к заданиям</Link>
         </AnimItem>
         <AnimItem className={cls.main__statistics} noHide={true} >
-          {
-            data.map(item => (
-              <div key={item.id} className={cls.statistics_card}>
-                
+          {/* {
+            userValues.map(item => ( */}
+              <div className={cls.statistics_card}>
+                  <span>Пользователей онлайн:{userValues.usersOnline}</span>
+              </div>
+              <div className={cls.statistics_card}>
+                  <span>Пользователей:{userValues.allUsers}</span>
+              </div>
+              <div className={cls.statistics_card}>
+                  <span>Выплаты:{userValues.allPayments}</span>
+              </div>
+              <div className={cls.statistics_card}>
+                  <span>Работаем:{userValues.workingDays} день(ей)</span>
               </div>
             ))
-          }
+          {/* } */}
         </AnimItem>
       </section>
 

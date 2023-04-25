@@ -141,20 +141,20 @@ console.log('items', items)
         });
     }
 
-	const handleChangeConnected = (id, start) => {
+	const handleChangeConnected = (id, status) => {
     setTasks(
       tasks.map((item) =>
-        item.id === id && item.start === 0
-          ? { ...item, start: 1 }
-          : { ...item, start: 0 }
+        item.id === id
+          ? { ...item, status: 1 }
+          : { ...item, status: 0 }
       )
     );
 
-    if (start === 1) {
+    if (status === 0) {
       $api
-        .post("/api/tasks/v2/stopTask", {
-          userId: userId.id,
-          id: id,
+        .post("/Task/handle", {
+          action: "start",
+          taskId: id,
         })
         .then((res) => {
           console.log(res.data);
@@ -164,11 +164,11 @@ console.log('items', items)
           console.log(error);
         });
     }
-    if (start === 0) {
+    if (status === 1) {
       $api
-        .post("/api/tasks/v2/startTask", {
-          userId: userId.id,
-          id: id,
+        .post("/Task/handle", {
+          action: "stop",
+          taskId: id,
         })
         .then((res) => {
           console.log(res.data);

@@ -18,9 +18,9 @@ const middleware = [
 
 middleware.forEach((it) => server.use(it))
 
-server.get('/api/v1/counter', async (req, res) => {
+server.get('/Counter/count', async (req, res) => {
   try {
-    axios("https://3303-80-94-250-125.ngrok-free.app/api/v2/counter").then(
+    axios("https://6aaa-80-94-250-75.ngrok-free.app/Counter/count").then(
       (response) => res.json(response.data)
     );
   } catch (err) {
@@ -29,9 +29,9 @@ server.get('/api/v1/counter', async (req, res) => {
 })
 
 server.get('/Task/tasks/:pageNumber', async (req, res) => {
-  const { pageNumber } = req.params;
+  const { pageNumber } = req.params
   try {
-    axios(`https://3303-80-94-250-125.ngrok-free.app/Task/tasks?pageNumber=${pageNumber}`).then(
+    axios(`https://6aaa-80-94-250-75.ngrok-free.app/Task/tasks?pageNumber=${pageNumber}`).then(
       (response) => res.json(response.data)
     );
   } catch (err) {
@@ -42,7 +42,7 @@ server.get('/Task/tasks/:pageNumber', async (req, res) => {
 server.get('/Task/user/:userId', async (req, res) => {
   const { userId } = req.params;
   try {
-    axios(`https://3303-80-94-250-125.ngrok-free.app/Task/user?userId=${userId}`).then(
+    axios(`https://6aaa-80-94-250-75.ngrok-free.app/Task/user?userId=${userId}`).then(
       (response) => res.json(response.data)
     );
   } catch (err) {
@@ -50,10 +50,10 @@ server.get('/Task/user/:userId', async (req, res) => {
   }
 })
 
-server.get('/Referals/user', async (req, res) => {
-  const { userId } = req.params;
+server.get('/Referals/user/:userId', async (req, res) => {
+  const { userId } = req.params
   try {
-    axios(`https://3303-80-94-250-125.ngrok-free.app/Referals/user?userId=${userId}`).then(
+    axios(`https://6aaa-80-94-250-75.ngrok-free.app/Referals/user?userId=${userId}`).then(
       (response) => res.json(response.data)
     );
   } catch (err) {
@@ -65,7 +65,7 @@ server.get('/Referals/user', async (req, res) => {
 
 server.post('/api/v1/register', async (req, res) => {
   try {
-    axios("https://3303-80-94-250-125.ngrok-free.app/api/v2/register").then(
+    axios("https://6aaa-80-94-250-75.ngrok-free.app/api/v2/register").then(
       (response) => res.json(response.data)
     );
   } catch (err) {

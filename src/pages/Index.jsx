@@ -37,7 +37,7 @@ export const Index = () => {
     }
   }, [params?.id])
 
-    if (params?.id === userId?.id) {
+    if (params?.id) {
       localStorage.setItem("userLink", params?.id);
       console.log("params", params?.id);
     }
