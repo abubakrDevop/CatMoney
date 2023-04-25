@@ -35,7 +35,7 @@ function Refs({text}, ref) {
   const userId = JSON.parse(localStorage.getItem("regist"))
 
   const data = users.length > 0 ? users : refs
-  const totalReferalIncomes = users.length > 0 ? users.map(it => it.totalReferalIncome).reduce((acc, rec) => {
+  const totalReferalIncome = users.length > 0 ? users.map(it => it.income).reduce((acc, rec) => {
        return acc + rec
     }) : 0
 
@@ -62,7 +62,7 @@ function Refs({text}, ref) {
                 <p className={cls.info_text}>Количество приглашенных: {users.length} </p>
               </div>
               <div className={cls.refs_header_info}>
-                <p className={cls.info_text}>Общий доход от приглашенных: {totalReferalIncomes} ₽ </p>
+                <p className={cls.info_text}>Общий доход от приглашенных: {totalReferalIncome} ₽ </p>
               </div>
             </div>
         {
