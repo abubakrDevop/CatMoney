@@ -15,10 +15,14 @@ export const Ownspace = () => {
   const [getActive, setGetActive] = useState(false)
   const [addAmount, setAddAmount] = useState('')
   const [getAmount, setGetAmount] = useState('')
+
   const [items, setItems] = useState([])
+  const [itemStatus, setItemsStatus] = useState(0)
+
   const [tasks, setTasks] = useState(items.length > 0 ? items : data);
   const [updateTask, setUpdateTask] = useState([]);
   const [updateTaskId, setUpdateTaskId] = useState(0);
+
 
   const userTasks = items.length > 0 ? items : tasks
 
@@ -140,6 +144,37 @@ console.log('items', items)
           console.log(error);
         });
     }
+
+	// const handleChangeConnected = (id) => {
+  //     tasks.map((item) =>
+  //       item.id === id && itemStatus === 0
+  //         ?      
+  //     $api
+  //     .post("/Task/handle", {
+  //       action: "start",
+  //       taskId: id,
+  //     })
+  //     .then((res) => {
+  //       setItemsStatus(res.data.status);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     })
+  //         : 
+  //     $api
+  //     .post("/Task/handle", {
+  //       action: "stop",
+  //       taskId: id,
+  //     })
+  //     .then((res) => {
+  //       setItemsStatus(res.data.status);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     })
+  //     )
+  // };
+
 
 	const handleChangeConnected = (id, status) => {
     setTasks(
