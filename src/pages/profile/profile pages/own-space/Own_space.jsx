@@ -17,7 +17,7 @@ export const Ownspace = () => {
   const [getAmount, setGetAmount] = useState('')
 
   const [items, setItems] = useState([])
-  const [itemStatus, setItemsStatus] = useState(0)
+  const [itemStatus, setItemsStatus] = useState({})
 
   const [tasks, setTasks] = useState(items.length > 0 ? items : data);
   const [updateTask, setUpdateTask] = useState([]);
@@ -145,75 +145,52 @@ console.log('items', items)
         });
     }
 
-	// const handleChangeConnected = (id) => {
-  //     tasks.map((item) =>
-  //       item.id === id && itemStatus === 0
-  //         ?      
-  //     $api
-  //     .post("/Task/handle", {
-  //       action: "start",
-  //       taskId: id,
-  //     })
-  //     .then((res) => {
-  //       setItemsStatus(res.data.status);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     })
-  //         : 
-  //     $api
-  //     .post("/Task/handle", {
-  //       action: "stop",
-  //       taskId: id,
-  //     })
-  //     .then((res) => {
-  //       setItemsStatus(res.data.status);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     })
-  //     )
-  // };
+    console.log('itemStatus', itemStatus)
 
+    const handleChangeConnected = (id, statusId) => {
+      setItems(
+        items.map((item) =>
+          item.id === id
+            ? { ...item, status: 1 }
+            : { ...item, status: 0 }
+        )
+      );
+        $api
+        .post("/Task/handle", {
+          action: itemStatus.status === 1 ? "stop": "start",
+          taskId: id,
+        })
+        .then((res) => {
+          console.log("stop",res.data);
+          setItemsStatus(res.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
 
-	const handleChangeConnected = (id, status) => {
-    setTasks(
-      tasks.map((item) =>
-        item.id === id
-          ? { ...item, status: 1 }
-          : { ...item, status: 0 }
-      )
-    );
-
-    if (status === 0) {
-      $api
+    };
+    const handleButtonClick = (id, statusId) => {
+      setItems(
+        items.map((item) =>
+          item.id === id
+            ? { ...item, status: 0 }
+            : { ...item, status: 1 }
+        )
+      );
+  
+        $api
         .post("/Task/handle", {
           action: "start",
           taskId: id,
         })
         .then((res) => {
-          console.log(res.data);
-          setItems(res.data);
+          console.log("start",res.data);
+          setItemsStatus(res.data);
         })
         .catch((error) => {
           console.log(error);
         });
-    }
-    if (status === 1) {
-      $api
-        .post("/Task/handle", {
-          action: "stop",
-          taskId: id,
-        })
-        .then((res) => {
-          console.log(res.data);
-          setItems(res.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  };
+    };
 
     const editTask = (index, id) => {
         setVisible(!visible)
@@ -374,10 +351,16 @@ console.log('items', items)
                             </div>
                           )}
                         </div>
-                        {item.start === 0 ? (
+                        <button
+                            className={item.status === 0 ? `${cls.task_button1}` : `${cls.task_button_delete}`}
+                            onClick={() => handleButtonClick(item.id)}
+                          >
+                            {item.status === 0 ? 'Запустить' : 'Остановить'}
+                          </button>
+                        {/* {item.status === 0 && itemStatus.status === 0 ? (
                           <button
                             onClick={() =>
-                              handleChangeConnected(item.id, item.start)
+                              handleChangeConnected(item.id, item.status)
                             }
                             className={cls.task_button1}
                           >
@@ -386,15 +369,15 @@ console.log('items', items)
                         ) : (
                           <button
                             onClick={() =>
-                              handleChangeConnected(item.id, item.start)
+                              handleChangeConnectedNew(item.id, item.status)
                             }
                             className={cls.task_button_delete}
                           >
                             Остановить
                           </button>
-                        )}
+                        )} */}
                         <button
-                          onClick={() => editTask(index, item.id)}
+                          onClick={() => editTask(item.id)}
                           className={cls.task_button1}
                         >
                           Редактировать

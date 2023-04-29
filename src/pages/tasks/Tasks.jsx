@@ -70,9 +70,11 @@ export const Tasks = () => {
   const [timeLeft, setTimeLeft] = useState(0);
   const [data, setData] = useState(tasks)
 
+  const userId = JSON.parse(localStorage.getItem("regist"));
+
     useEffect(() => {
       axios
-        .get(`http://localhost:5000/Task/tasks/${count}`)
+        .get(`http://localhost:5000/Task/tasks/${count}/${userId.id}`)
         .then((res) => {
           console.log(res.data);
           setData(res.data);
