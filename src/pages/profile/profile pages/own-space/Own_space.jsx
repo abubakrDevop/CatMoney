@@ -147,45 +147,49 @@ console.log('items', items)
 
     console.log('itemStatus', itemStatus)
 
-    const handleChangeConnected = (id, statusId) => {
-      setItems(
-        items.map((item) =>
-          item.id === id
-            ? { ...item, status: 1 }
-            : { ...item, status: 0 }
-        )
-      );
-        $api
-        .post("/Task/handle", {
-          action: itemStatus.status === 1 ? "stop": "start",
-          taskId: id,
-        })
-        .then((res) => {
-          console.log("stop",res.data);
-          setItemsStatus(res.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    // const handleChangeConnected = (id, statusId) => {
+    //   setItems(
+    //     items.map((item) =>
+    //       item.id === id
+    //         ? { ...item, status: 1 }
+    //         : { ...item, status: 0 }
+    //     )
+    //   );
+    //     $api
+    //     .post("/Task/handle", {
+    //       action: itemStatus.status === 1 ? "stop": "start",
+    //       taskId: id,
+    //     })
+    //     .then((res) => {
+    //       console.log("stop",res.data);
+    //       setItemsStatus(res.data);
+    //     })
+    //     .catch((error) => {
+    //       console.log(error);
+    //     });
 
-    };
-    const handleButtonClick = (id, statusId) => {
-      setItems(
-        items.map((item) =>
-          item.id === id
-            ? { ...item, status: 0 }
-            : { ...item, status: 1 }
-        )
+    // };
+
+    const handleButtonClick = (id) => {
+      const updatedItems = items.map((item) =>
+        item.id === id ? { ...item, status: item.status === 0 ? 1 : 0 } : item
       );
-  
-        $api
+
+      // setItems(updatedItems);
+
+      const updatedItem = updatedItems.find((item) => item.id === id);
+
+      $api
         .post("/Task/handle", {
-          action: "start",
+          action: updatedItem.status === 0 ? "start" : "stop",
           taskId: id,
         })
         .then((res) => {
-          console.log("start",res.data);
-          setItemsStatus(res.data);
+          setItems((items) =>
+            items.map((item) =>
+              item.id === id ? { ...item, status: res.data.status } : item
+            )
+          );
         })
         .catch((error) => {
           console.log(error);

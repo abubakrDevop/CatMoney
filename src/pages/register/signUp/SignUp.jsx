@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Form } from "../../../helpers/form/index";
 // import { useDispatch, useSelector } from "react-redux";
 import { $api } from "../../../helpers/constant/index";
+import axios from "axios";
 import {
   IoAtOutline,
   IoEyeOffOutline,
@@ -11,7 +12,7 @@ import {
   IoLockClosedOutline,
   IoPersonOutline,
 } from "react-icons/io5";
-// import {addUser} from "../../../store/userSlice"; 
+// import {addUser} from "../../../store/userSlice";
 import { useState } from "react";
 
 export const SignUp = () => {
@@ -52,6 +53,26 @@ export const SignUp = () => {
       .catch((error) => {
         console.log(error);
       });
+    // axios
+    //   .post("http://localhost:5000/User/register", body)
+    //   .then((res) => {
+    //     console.log(res);
+    //     if (res.status === 200) {
+    //       reset();
+    //       localStorage.setItem("regist", JSON.stringify(res.data));
+    //       localStorage.setItem("registered", "ok");
+    //       navigate("/profile/own-space");
+    //       setTimeout(() => {
+    //         window.location.reload();
+    //       }, 3000);
+    //     } else if ("Такой пользователь уже зарегистрирован!") {
+    //       reset();
+    //       setError(res.data.status);
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
 
   return (
