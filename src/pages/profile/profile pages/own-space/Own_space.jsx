@@ -114,7 +114,7 @@ console.log('items', items)
     useEffect(() => {
       axios
         .get(
-          `http://localhost:5000/Task/user/${userId.id}`)
+          `http://localhost:5000/Task/user/${userId?.id}`)
         .then((res) => {
           setItems(res.data);
         })
@@ -181,10 +181,11 @@ console.log('items', items)
 
       $api
         .post("/Task/handle", {
-          action: updatedItem.status === 0 ? "start" : "stop",
+          action: updatedItem.status === 0 ? "stop" : "start",
           taskId: id,
         })
         .then((res) => {
+          console.log("status", res.data)
           setItems((items) =>
             items.map((item) =>
               item.id === id ? { ...item, status: res.data.status } : item
