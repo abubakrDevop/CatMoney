@@ -12,6 +12,7 @@ import axios from "axios";
 
 export const Tasks = () => {
   const [count, setCount] = useState(1)
+  console.log('count', count)
 
   const tasks = [
     {
@@ -73,22 +74,30 @@ export const Tasks = () => {
   const userId = JSON.parse(localStorage.getItem("regist"));
 
     useEffect(() => {
-      axios
+      if (count >= 1) {
+        axios
         .get(`http://localhost:5000/Task/tasks/${count}/${userId.id}`)
         .then((res) => {
           console.log(res.data);
           setData(res.data);
         })
-        .catch((error) => {
-          console.log(error);
+        .catch((res) => {
+          console.log(res);
+          if (res.data.status === 404) {
+            alert("Больше нет страниц")
+          }
         });
+      }
+
     }, [count]);
 
     function increment() {
       setCount(count + 1);
     }
     function decrement() {
-      setCount(count - 1);
+      if (count > 1) {
+        setCount(count - 1);
+      }
     }
 
   const handleIframe = (data) => {

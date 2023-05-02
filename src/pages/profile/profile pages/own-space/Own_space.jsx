@@ -147,28 +147,6 @@ console.log('items', items)
 
     console.log('itemStatus', itemStatus)
 
-    // const handleChangeConnected = (id, statusId) => {
-    //   setItems(
-    //     items.map((item) =>
-    //       item.id === id
-    //         ? { ...item, status: 1 }
-    //         : { ...item, status: 0 }
-    //     )
-    //   );
-    //     $api
-    //     .post("/Task/handle", {
-    //       action: itemStatus.status === 1 ? "stop": "start",
-    //       taskId: id,
-    //     })
-    //     .then((res) => {
-    //       console.log("stop",res.data);
-    //       setItemsStatus(res.data);
-    //     })
-    //     .catch((error) => {
-    //       console.log(error);
-    //     });
-
-    // };
 
     const handleButtonClick = (id) => {
       const updatedItems = items.map((item) =>
@@ -362,25 +340,6 @@ console.log('items', items)
                           >
                             {item.status === 0 ? 'Запустить' : 'Остановить'}
                           </button>
-                        {/* {item.status === 0 && itemStatus.status === 0 ? (
-                          <button
-                            onClick={() =>
-                              handleChangeConnected(item.id, item.status)
-                            }
-                            className={cls.task_button1}
-                          >
-                            Запустить
-                          </button>
-                        ) : (
-                          <button
-                            onClick={() =>
-                              handleChangeConnectedNew(item.id, item.status)
-                            }
-                            className={cls.task_button_delete}
-                          >
-                            Остановить
-                          </button>
-                        )} */}
                         <button
                           onClick={() => editTask(item.id)}
                           className={cls.task_button1}
