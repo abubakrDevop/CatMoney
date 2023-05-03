@@ -119,17 +119,17 @@ $mobileSmall: 479.98px; // телефоны s
         .logo_icon {
             width: 45px;
             height: 40px;
-            transform: scale(0.9);
-              @media (max-width: $tablet) {
-                transform: scale(0.7);
+            transform: scale(1) rotate(10deg);
+              @media (max-width: $mobileSmall) {
+                transform: scale(0.8) rotate(10deg);
               }
         }
 
         .logo_text {
             font-family: 'Teko', sans-serif;
-            transform: scale(1.4) translateX(13px) translateY(3px);
+            transform: scale(1.4) translateX(10px) translateY(3px);
               @media (max-width: $tablet) {
-                transform: scale(1.1) translateX(5px) translateY(3px);
+                transform: scale(1.1) translateX(0px) translateY(3px);
               }
             .logo_text_in {
                 background-color: #2AA5A0;

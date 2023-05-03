@@ -16,7 +16,6 @@ export const Settings = () => {
   } = useForm()
 
   const idUser = JSON.parse(localStorage.getItem("regist"))
-  console.log('idUser', idUser.id)
 
   const onSubmit = (data) => {
     const body = {

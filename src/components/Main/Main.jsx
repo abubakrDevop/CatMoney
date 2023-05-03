@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
 import cls from '../Main/Main.module.scss'
-import { IoChevronDownOutline } from 'react-icons/io5'
+import  { IoChevronDownOutline, 
+          IoPlanetOutline,
+          IoPeopleOutline, 
+          IoWalletOutline, 
+          IoCalendarOutline 
+        } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 import axios from "axios";
 
@@ -67,18 +72,25 @@ export const Main = () => {
           {/* {
             userValues.map(item => ( */}
               <div className={cls.statistics_card}>
-                  <span>Пользователей онлайн:{userValues.usersOnline}</span>
+                  <IoPlanetOutline className={cls.card_icon} />
+                  <span className={cls.card_title}>Oнлайн:</span>
+                  <span>{userValues.usersOnline}</span>
               </div>
               <div className={cls.statistics_card}>
-                  <span>Пользователей:{userValues.allUsers}</span>
+                  <IoPeopleOutline className={cls.card_icon} />
+                  <span className={cls.card_title}>Пользователей:</span>
+                  <span>{userValues.allUsers}</span>
               </div>
               <div className={cls.statistics_card}>
-                  <span>Выплаты:{userValues.allPayments}</span>
+                  <IoWalletOutline className={cls.card_icon} />
+                  <span className={cls.card_title}>Выплаты:</span>
+                  <span>{userValues.allPayments}</span>
               </div>
               <div className={cls.statistics_card}>
-                  <span>Работаем:{userValues.workingDays} день(ей)</span>
+                  <IoCalendarOutline className={cls.card_icon} />
+                  <span className={cls.card_title}>Работаем:</span>
+                  <span>{userValues.workingDays} день(ей)</span>
               </div>
-            ))
           {/* } */}
         </AnimItem>
       </section>

@@ -2,6 +2,7 @@ import React from "react";
 import cls from './Header.module.scss'
 import { Link, useLocation } from 'react-router-dom'
 import icon from '../../assets/img/icon.png'
+import petfoot from '../../assets/img/petfoot.png'
 import  {
           IoLogInOutline,
           IoLogOutOutline,
@@ -47,7 +48,7 @@ export const Header = () => {
   return (
     <header className={cls.header}>
       <section className={cls.header_logo}>
-        <img className={cls.logo_icon} src={icon} alt="logo" />
+        <img className={cls.logo_icon} src={petfoot} alt="logo" />
         <h1 className={cls.logo_text}>
           <span className={cls.logo_text_in}>Cat</span>
           <span>Money</span>

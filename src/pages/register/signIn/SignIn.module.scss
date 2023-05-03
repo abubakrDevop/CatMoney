@@ -101,9 +101,20 @@
     .title {
         position: relative;
         top: 50px;
+        padding: 5px 0 0 0;
         color: white;
         font-size: 12px;
         width: 80%;
         text-align: center;
+        border-top: dashed 1px white;
+    }
+
+    .root_password_reset {
+        position: relative;
+        top: 48px;
+        margin: 5px;
+        color: white;
+        text-decoration: none;
+        font-size: 14px;
     }
 }

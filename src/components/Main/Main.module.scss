@@ -223,13 +223,23 @@ $mobileSmall: 479.98px; // телефоны s
         border-top: solid 1px rgba(255, 255, 255, 0.5);
         border-left: solid 1px rgba(255, 255, 255, 0.5);
         box-shadow: 15px 15px 15px 18px rgb(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         @media (max-width: $mobileSmall) {
           width: 100%;
           height: 50px;
           margin: 20px 0 0 0;
         }
 
+        .card_icon {
+          font-size: 50px;
+        }
 
+        .card_title {
+          font-weight: bold;
+        }
       }
     }
 

@@ -9,7 +9,6 @@ export const Register = () => {
   const [active, setActive] = React.useState(false)
 
   const userRefId = localStorage.getItem("userLink")
-  console.log("userRefId", userRefId);
 
   return (
     <div className={cls.register}>

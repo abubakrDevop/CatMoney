@@ -14,6 +14,7 @@ import { About } from "./about-us/About";
 import { AddTask } from "./add-task/AddTask";
 import { Profile } from "./profile/Profile";
 import { Bottom } from "../components/bottomFooter/Bottom";
+import { Reset } from "./register/reset password/Reset";
 
 const StyledMain = styled.main`
   width: 100%;
@@ -28,8 +29,7 @@ export const Index = () => {
   let navigate = useNavigate();
   const params = useParams();
 
-    const userId = JSON.parse(localStorage.getItem("regist"));
-    console.log('userId.id', userId?.id)
+  const userId = JSON.parse(localStorage.getItem("regist"));
 
   useEffect(() => {
     if (params?.id) {
@@ -95,6 +95,7 @@ export const Index = () => {
         <Route path="/about-us" element={<About />} />
         <Route path="/add-task" element={<AddTask />} />
         <Route path="/profile/*" element={<Profile />} />
+        <Route path="/reset" element={<Reset />} />
       </Routes>
       
     </StyledMain>

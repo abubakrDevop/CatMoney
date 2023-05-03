@@ -1,4 +1,4 @@
-import { emailReg, passwordReg } from "./regex"
+import { emailReg, passwordReg, onlyNumbers } from "./regex"
 
 export const required = 'Это поле не может быть пустым!'
 
@@ -19,6 +19,30 @@ export const password = {
     minLength: {
         value: 8,
         message: 'Пароль должень быть больше 8 цифр!'
+    }
+}
+
+export const emailCod = {
+    required,
+    pattern: {
+        value: passwordReg,
+        message: 'Только латинские буквы и цифры!'
+    },
+    minLength: {
+        value: 4,
+        message: 'Код должень быть больше 4 цифр!'
+    }
+}
+
+export const onlyNum = {
+    required,
+    pattern: {
+        value: onlyNumbers,
+        message: 'Только цифры!'
+    },
+    minLength: {
+        value: 4,
+        message: 'Пароль должень быть больше 4 цифр!'
     }
 }
 

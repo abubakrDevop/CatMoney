@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router";
 import cls from '../signIn/SignIn.module.scss'
 import { useForm } from 'react-hook-form'
+import { Link } from "react-router-dom";
 import { Form } from '../../../helpers/form/index'
 import { $api } from "../../../helpers/constant/index";
 import  {
@@ -16,6 +17,8 @@ export const SignIn = () => {
   const [loginError, setLoginError] = React.useState('')
   const [passwordError, setPasswordError] = React.useState('')
   let navigate = useNavigate();
+
+  const userId = JSON.parse(localStorage.getItem("regist"));
 
   const {
     formState,
@@ -33,7 +36,6 @@ export const SignIn = () => {
     $api
       .post("/User/auth", body)
       .then((res) => {
-        console.log(res)
         if (res.status === 200) {
           reset();
           localStorage.setItem("auth", JSON.stringify(res.data));
@@ -44,7 +46,6 @@ export const SignIn = () => {
         }
       })
       .catch((res) => {
-        console.log(res.data)
         if (res.response.status === 400) {
           reset();
           setLoginError(res.response.data);
@@ -111,6 +112,17 @@ export const SignIn = () => {
         </div>
 
         <button type="submit" className={cls.root__button}>Войти</button>
+        <Link 
+          to={'/reset'} 
+          onClick={() => {
+            // $api
+              // .post("", {userId})
+              // .then(res => {})
+              // .catch(res => {});
+          }} 
+          className={cls.root_password_reset}>
+          Забыли пароль?
+        </Link>
         <p className={cls.title}>Продолжая вы даете согласие на обработку персональных данных!</p>
 
       </form>
