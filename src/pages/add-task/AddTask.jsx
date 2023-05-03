@@ -8,6 +8,7 @@ import { $api } from "../../helpers/constant/index";
 export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
   const [activeItem, setActiveItem] = useState(0);
   const [value, setValue] = useState("");
+  const [active, setActive] = useState(false)
 
   const userId = JSON.parse(localStorage.getItem("regist"));
 
@@ -39,7 +40,12 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
 
   console.log('taimerValue', taimerValue, activePrice)
 
-  const { reset, register, handleSubmit } = useForm();
+  const { 
+    formState, 
+    reset, 
+    register, 
+    handleSubmit 
+  } = useForm();
 
   const onSubmit = (data) => {
     console.log("userId", userId.id);
@@ -84,7 +90,8 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
         balance: data.balance === '' ? 5 : data.balance,
       };
 
-      $api
+      if (data.balance >= data.price) {
+        $api
         .post("/Task/add", body)
         .then((res) => {
           console.log(res);
@@ -100,6 +107,10 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
         .catch((error) => {
           console.log(error);
         });
+        setActive(false)
+      } else {
+        setActive(true)
+      }
     }
   };
 
@@ -135,17 +146,37 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
           </p>
 
           <p className={cls.info_text}>
-            На сколько вы хотите пополнить баланс таска:
+            Пополнить баланс задания:
+            {
+              formState.errors.balance && <span className={cls.task_error}> {formState.errors.balance.message} </span>
+            }
             <span className={cls.info_text_box}>
               <FaRubleSign className={cls.info_icon} />
               <input
-                type="number"
                 className={cls.info_text_input}
-                placeholder="5 рублей"
-                {...register("balance", Form.Options.settings)}
+                placeholder="По умолчанию 5₽"
+                {...register("balance", Form.Options.numbers)}
               />
             </span>
           </p>
+
+          <p className={cls.info_text}>
+              Цена за переход:
+              {
+                formState.errors.price && <span className={cls.task_error}> {formState.errors.price.message} </span>
+              }
+              {
+                active && <span className={cls.task_error}> Цена за переход не может превышать цену баланса!</span>
+              }
+              <span className={cls.info_text_box}>
+                <FaRubleSign className={cls.info_icon} />
+                <input
+                  className={cls.info_text_input}
+                  placeholder=""
+                  {...register("price", Form.Options.numbers)}
+                />
+              </span>
+            </p>
 
           <section className={cls.info_select_section}>
             <div className={cls.info_select}>
@@ -168,15 +199,8 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
                 </select>
               </div>
             </div>
-
-            <div className={cls.info_price}>
-              Цена :
-              <span>
-                <span className={cls.info_price_size}>{activePrice}</span> ₽уб
-              </span>
-              <FaRubleSign className={cls.info_price_icon} />
-            </div>
           </section>
+
           <button type="submit" className={cls.add_task_form_changeinfo}>
             {!text ? "Добавить задание" : text}
           </button>

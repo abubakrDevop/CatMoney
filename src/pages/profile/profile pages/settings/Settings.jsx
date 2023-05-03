@@ -8,8 +8,10 @@ import { $api } from "../../../../helpers/constant/index";
 
 export const Settings = () => {
   // const [imageUrl, setImageUrl] = React.useState("")
+  const [active, setActive] = React.useState(false)
 
   const {
+    formState,
     reset,
     register,
     handleSubmit,
@@ -30,7 +32,8 @@ export const Settings = () => {
       walletName: data.wallet
     }
 
-    $api
+    if (data.wallet.startsWith('P')) {
+      $api
       .put("/User/update", body)
       .then((res) => {
         console.log(res);
@@ -45,6 +48,10 @@ export const Settings = () => {
       .catch((error) => {
         console.log(error);
       });
+      setActive(false)
+    } else {
+      setActive(true)
+    }
   }
 
   // const fileReader = new FileReader()
@@ -121,10 +128,17 @@ export const Settings = () => {
           </p>
           <p className={cls.info_text}>
             Введите кошелёк:
+            {
+              formState.errors.wallet && <span className={cls.wallet_error}> {formState.errors.wallet.message} </span>
+            }
+            {
+              active && <span className={cls.wallet_error} > Введите латинскую 'P' в начале!</span>
+            }
             <input
               className={cls.info_text_input}
+              placeholder="Кошелек начинается с большой латинской буквы 'P'"
 
-              {...register('wallet', Form.Options.settings)}
+              {...register('wallet', Form.Options.onlyNum)}
             />
           </p>
           <button type="submit" className={cls.ownspace_changeinfo}>Применить изменения</button>

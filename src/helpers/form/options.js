@@ -6,7 +6,7 @@ export const email = {
     required,
     pattern: {
         value: emailReg,
-        message: 'Email не валиден!'
+        message: 'Email не валиден!',
     }
 }
 
@@ -14,11 +14,11 @@ export const password = {
     required,
     pattern: {
         value: passwordReg,
-        message: 'Только латинские буквы и цифры!'
+        message: 'Только латинские буквы и цифры!',
     },
     minLength: {
         value: 8,
-        message: 'Пароль должень быть больше 8 цифр!'
+        message: 'Пароль должень быть больше 8 цифр!',
     }
 }
 
@@ -26,23 +26,30 @@ export const emailCod = {
     required,
     pattern: {
         value: passwordReg,
-        message: 'Только латинские буквы и цифры!'
+        message: 'Только латинские буквы и цифры!',
     },
     minLength: {
         value: 4,
-        message: 'Код должень быть больше 4 цифр!'
+        message: 'Код должень быть больше 4 цифр!',
     }
 }
 
 export const onlyNum = {
     required,
     pattern: {
-        value: onlyNumbers,
-        message: 'Только цифры!'
+        value: true,
     },
     minLength: {
         value: 4,
-        message: 'Пароль должень быть больше 4 цифр!'
+        message: 'Содержимое должно быть больше 4 цифр!',
+    }
+}
+
+export const numbers = {
+    required,
+    pattern: {
+        value: onlyNumbers,
+        message: 'Только цифры!',
     }
 }
 

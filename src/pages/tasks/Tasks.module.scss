@@ -207,20 +207,64 @@ $mobileSmall: 479.98px; // телефоны s
             }
           }
 
+          .search_box_active {
+            width: 400px !important;
+            @media (max-width: $mobileSmall) {
+              width: 100% !important;
+              margin: 0 0 10px 0;
+            }
+          }
+
           .search_box {
-            width: 400px;
+            position: relative;
+            width: 35px;
             height: 35px;
             border: solid 2px black;
             border-radius: 20px;
-            overflow: hidden;
             margin-right: 10px;
             padding: 0 10px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            background: white;
+            cursor: pointer;
+            transition: .5s;
+
+            .search_apear_item {
+              position: absolute;
+              content: '';
+              bottom: -4px;
+              right: -4px;
+              width: 13px;
+              border: solid 1px black;
+              border-radius: 5px;
+              transform: rotate(45deg);
+              transition: .5s;
+              cursor: pointer;
+            }
+            .apear_item_active {
+              bottom: 13px;
+              right: 9px;
+              &:nth-child(2) {
+                animation: rotate .5s linear;
+                animation-delay: .5s;
+                animation-fill-mode: forwards;
+
+                @keyframes rotate {
+                  from {
+                    transform: rotate(45deg);
+                  }
+                  to {
+                    transform: rotate(-45deg);
+                  }
+                }
+              }
+            }
             @media (max-width: $mobileSmall) {
-              width: 100%;
+              // align-self: flex-end;
+              width: 35px;
               margin: 0 0 10px 0;
+            }
+
+            .search_input_active {
+              display: flex !important;
             }
 
             .search_input {
@@ -228,10 +272,8 @@ $mobileSmall: 479.98px; // телефоны s
               height: 100%;
               background: none;
               border: none;
-            }
-
-            .search_icon {
-              font-size: 20px;
+              display: none;
+              outline: none;
             }
           }
         }

@@ -231,14 +231,29 @@ $mobileSmall: 479.98px; // телефоны s
           width: 100%;
           height: 50px;
           margin: 20px 0 0 0;
+          padding: 0 0 0 15px;
+          flex-direction: row;
+          justify-content: start;
         }
 
         .card_icon {
           font-size: 50px;
+          @media (max-width: $mobileSmall) {
+            font-size: 30px;
+          }
         }
 
         .card_title {
           font-weight: bold;
+          @media (max-width: $mobileSmall) {
+            margin-left: 10px;
+          }
+        }
+
+        .card_numbers {
+          @media (max-width: $mobileSmall) {
+            margin-left: 5px;
+          }
         }
       }
     }

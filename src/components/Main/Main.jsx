@@ -73,23 +73,23 @@ export const Main = () => {
             userValues.map(item => ( */}
               <div className={cls.statistics_card}>
                   <IoPlanetOutline className={cls.card_icon} />
-                  <span className={cls.card_title}>Oнлайн:</span>
-                  <span>{userValues.usersOnline}</span>
+                  <span className={cls.card_title}>Oнлайн: </span>
+                  <span className={cls.card_numbers}>{userValues.usersOnline}</span>
               </div>
               <div className={cls.statistics_card}>
                   <IoPeopleOutline className={cls.card_icon} />
-                  <span className={cls.card_title}>Пользователей:</span>
-                  <span>{userValues.allUsers}</span>
+                  <span className={cls.card_title}>Пользователей: </span>
+                  <span className={cls.card_numbers}>{userValues.allUsers}</span>
               </div>
               <div className={cls.statistics_card}>
                   <IoWalletOutline className={cls.card_icon} />
-                  <span className={cls.card_title}>Выплаты:</span>
-                  <span>{userValues.allPayments}</span>
+                  <span className={cls.card_title}>Выплаты: </span>
+                  <span className={cls.card_numbers}>{userValues.allPayments}</span>
               </div>
               <div className={cls.statistics_card}>
                   <IoCalendarOutline className={cls.card_icon} />
-                  <span className={cls.card_title}>Работаем:</span>
-                  <span>{userValues.workingDays} день(ей)</span>
+                  <span className={cls.card_title}>Работаем: </span>
+                  <span className={cls.card_numbers}>{userValues.workingDays} день(ей)</span>
               </div>
           {/* } */}
         </AnimItem>

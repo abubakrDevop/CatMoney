@@ -12,7 +12,7 @@ import axios from "axios";
 
 export const Tasks = () => {
   const [count, setCount] = useState(1)
-  console.log('count', count)
+  const [active, setActive] = useState(false)
 
   const tasks = [
     {
@@ -148,9 +148,13 @@ export const Tasks = () => {
           )}                                                                                                                       
 
           <Section display='flex' justify='space-between' align='center' className={cls.tasks_header_box}>
-            <div className={cls.search_box}>
-              <input className={cls.search_input} type="text" placeholder="Поиск задании..." />
-              <IoSearchOutline className={cls.search_icon} />
+            <div 
+              className={active === true ? `${cls.search_box} ${cls.search_box_active}` : cls.search_box} 
+              onClick={() => setActive(true)}
+            >
+              <div className={active === true ? `${cls.search_apear_item} ${cls.apear_item_active}` : cls.search_apear_item}></div>
+              <div className={active === true ? `${cls.search_apear_item} ${cls.apear_item_active}` : cls.search_apear_item}></div>
+              <input className={active === true ? `${cls.search_input} ${cls.search_input_active}` : cls.search_input} type="text" placeholder="Поиск задании..." />
             </div>
             <Link to={"/add-task"} className={cls.header_button}>
               Добавить задание
