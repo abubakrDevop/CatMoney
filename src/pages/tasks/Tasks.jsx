@@ -3,14 +3,20 @@ import { $api, baseURL } from '../../helpers/constant/index'
 import cls from '../tasks/Tasks.module.scss'
 import { Link } from "react-router-dom";
 import { FaRegClock } from "react-icons/fa";
-import { IoSearchOutline } from "react-icons/io5";
 import { Page_404 } from "../404-page/Page_404";
 import { Button } from '../../components/small components/button/Button'
 import { Section } from "../../components/small components/section/Section";
 import { IoChevronForwardOutline } from 'react-icons/io5'
+import { useForm } from 'react-hook-form'
 import axios from "axios";
 
 export const Tasks = () => {
+  const {
+    reset,
+    register,
+    handleSubmit,
+  } = useForm()
+
   const [count, setCount] = useState(1)
   const [active, setActive] = useState(false)
 
@@ -100,6 +106,10 @@ export const Tasks = () => {
       }
     }
 
+  const onSubmit = (data) => {
+    data.search = ''
+  }
+
   const handleIframe = (data) => {
     setIframe(data.link)
     setTimeLeft(data.timer / 1000);
@@ -148,14 +158,23 @@ export const Tasks = () => {
           )}                                                                                                                       
 
           <Section display='flex' justify='space-between' align='center' className={cls.tasks_header_box}>
-            <div 
+            <form 
+              onSubmit={handleSubmit(onSubmit)}
               className={active === true ? `${cls.search_box} ${cls.search_box_active}` : cls.search_box} 
               onClick={() => setActive(true)}
             >
               <div className={active === true ? `${cls.search_apear_item} ${cls.apear_item_active}` : cls.search_apear_item}></div>
               <div className={active === true ? `${cls.search_apear_item} ${cls.apear_item_active}` : cls.search_apear_item}></div>
-              <input className={active === true ? `${cls.search_input} ${cls.search_input_active}` : cls.search_input} type="text" placeholder="Поиск задании..." />
-            </div>
+              <input 
+                className={active === true ? 
+                `${cls.search_input} ${cls.search_input_active}` 
+                : 
+                cls.search_input} 
+                type="text" 
+                placeholder="Поиск задании..." 
+                {...register('search')}
+              />
+            </form>
             <Link to={"/add-task"} className={cls.header_button}>
               Добавить задание
             </Link>

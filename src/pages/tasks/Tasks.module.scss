@@ -207,18 +207,11 @@ $mobileSmall: 479.98px; // телефоны s
             }
           }
 
-          .search_box_active {
-            width: 400px !important;
-            @media (max-width: $mobileSmall) {
-              width: 100% !important;
-              margin: 0 0 10px 0;
-            }
-          }
-
           .search_box {
             position: relative;
-            width: 35px;
-            height: 35px;
+            top: -3px;
+            width: 28px;
+            height: 28px;
             border: solid 2px black;
             border-radius: 20px;
             margin-right: 10px;
@@ -226,18 +219,28 @@ $mobileSmall: 479.98px; // телефоны s
             background: white;
             cursor: pointer;
             transition: .5s;
+            @media (max-width: $mobileSmall) {
+              top: 0 !important;
+              width: 100% !important;
+              height: 35px;
+            }
 
             .search_apear_item {
               position: absolute;
               content: '';
-              bottom: -4px;
-              right: -4px;
+              bottom: -5px;
+              right: -5px;
               width: 13px;
               border: solid 1px black;
               border-radius: 5px;
               transform: rotate(45deg);
               transition: .5s;
               cursor: pointer;
+              @media (max-width: $mobileSmall) {
+                bottom: -4px;
+                right: -4px;
+              }
+  
             }
             .apear_item_active {
               bottom: 13px;
@@ -258,7 +261,7 @@ $mobileSmall: 479.98px; // телефоны s
               }
             }
             @media (max-width: $mobileSmall) {
-              // align-self: flex-end;
+              align-self: flex-end;
               width: 35px;
               margin: 0 0 10px 0;
             }
@@ -274,7 +277,20 @@ $mobileSmall: 479.98px; // телефоны s
               border: none;
               display: none;
               outline: none;
+              @media (max-width: $mobileSmall) {
+                display: flex !important;
+              }
             }
+          }
+        }
+        .search_box_active {
+          width: 400px !important;
+          top: 0 !important;
+          height: 35px !important;
+          @media (max-width: $mobileSmall) {
+            width: 100% !important;
+            height: 35px !important;
+            margin: 0 0 10px 0;
           }
         }
     }
