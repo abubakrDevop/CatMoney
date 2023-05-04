@@ -20,7 +20,7 @@ middleware.forEach((it) => server.use(it))
 
 server.get('/Counter/count', async (req, res) => {
   try {
-    axios("https://d0b6-80-94-250-75.ngrok-free.app/Counter/count").then(
+    axios("https://b385-80-94-250-75.ngrok-free.app/Counter/count").then(
       (response) => res.json(response.data)
     );
   } catch (err) {
@@ -31,7 +31,7 @@ server.get('/Counter/count', async (req, res) => {
 server.get('/Task/tasks/:pageNumber/:userId', async (req, res) => {
   const { pageNumber, userId } = req.params
   try {
-    axios(`https://d0b6-80-94-250-75.ngrok-free.app/Task/tasks?pageNumber=${pageNumber}&userId=${userId}`).then(
+    axios(`https://b385-80-94-250-75.ngrok-free.app/Task/tasks?pageNumber=${pageNumber}&userId=${userId}`).then(
       (response) => res.json(response.data)
     );
   } catch (err) {
@@ -42,18 +42,18 @@ server.get('/Task/tasks/:pageNumber/:userId', async (req, res) => {
 server.get('/Task/user/:userId', async (req, res) => {
   const { userId } = req.params;
   try {
-    axios(`https://d0b6-80-94-250-75.ngrok-free.app/Task/user?userId=${userId}`).then(
+    axios(`https://b385-80-94-250-75.ngrok-free.app/Task/user?userId=${userId}`).then(
       (response) => res.json(response.data)
     );
   } catch (err) {
-    console.log(err)
+    res.json(err)
   }
 })
 
 server.get('/Referals/user/:userId', async (req, res) => {
   const { userId } = req.params
   try {
-    axios(`https://d0b6-80-94-250-75.ngrok-free.app/Referals/user?userId=${userId}`).then(
+    axios(`https://b385-80-94-250-75.ngrok-free.app/Referals/user?userId=${userId}`).then(
       (response) => res.json(response.data)
     );
   } catch (err) {
@@ -66,7 +66,7 @@ server.get('/Referals/user/:userId', async (req, res) => {
 server.post("/User/register", async (req, res) => {
   const body = req.body
   try {
-    axios("https://d0b6-80-94-250-75.ngrok-free.app/User/register", body).then(
+    axios("https://b385-80-94-250-75.ngrok-free.app/User/register", body).then(
       (response) => res.json(response.data)
     );
   } catch (err) {

@@ -11,6 +11,7 @@ export const Ownspace = () => {
   const [activeTasksUser, setActiveTasksUser] = useState(false);
   const [visible, setVisible] = useState(false);
   const [activeItem, setActiveItem] = useState(0);
+  const [activeItemUpdate, setActiveItemUpdate] = useState(0);
   const [addAmountTasksUser, setAddAmountTasksUser] = useState('')
   const [getActive, setGetActive] = useState(false)
   const [addAmount, setAddAmount] = useState('')
@@ -118,9 +119,12 @@ console.log('items', items)
         .then((res) => {
           setItems(res.data);
         })
-        .catch((error) => {
-          console.log(error);
-        });
+        .catch((res) => {
+          console.log('response', res);
+          // if (res.data === undefined) {
+          //   alert("У вас нет ни одного задания")
+          // }
+        })
     }, [
       updateTasks?.description,
       updateTasks?.price,
@@ -177,9 +181,10 @@ console.log('items', items)
 
     const editTask = (index, id) => {
         setVisible(!visible)
-        setActiveItem(index)
+        setActiveItemUpdate(index)
         setUpdateTaskId(id);
     }
+
 
   return (
     <div className={cls.ownspace}>
@@ -353,7 +358,7 @@ console.log('items', items)
                           Удалить
                         </button>
                       </section>
-                      {visible && activeItem === index && (
+                      {visible && activeItemUpdate === index && (
                         <AddTask
                           text="Активировать изменения"
                           onClick={setVisible}
