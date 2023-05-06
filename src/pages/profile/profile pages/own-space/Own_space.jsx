@@ -11,7 +11,6 @@ export const Ownspace = () => {
   const [activeTasksUser, setActiveTasksUser] = useState(false);
   const [visible, setVisible] = useState(false);
   const [activeItem, setActiveItem] = useState(0);
-  const [activeItemUpdate, setActiveItemUpdate] = useState(0);
   const [addAmountTasksUser, setAddAmountTasksUser] = useState('')
   const [getActive, setGetActive] = useState(false)
   const [addAmount, setAddAmount] = useState('')
@@ -46,7 +45,11 @@ console.log('items', items)
         balance: items?.balance + addAmountTasksUser
     }
 
-    $api.put("/Task/update", body)
+    $api.put("/Task/update", body, {
+      headers: {
+        Authorization: `Bearer ${userId?.token}`
+      }
+    })
     .then(res => {
       if (res.data.status === 'На вашем балансе недостаточно средств') {
         alert('На вашем балансе недостаточно средств')
@@ -74,7 +77,11 @@ console.log('items', items)
       id: userId.id,
       money: +getAmount
     }
-    $api.post("/User/withdrawal", body).then((res) => {
+    $api.post("/User/withdrawal", body, {
+      headers: {
+        Authorization: `Bearer ${userId?.token}`
+      }
+    }).then((res) => {
       res.status === 200 ? alert("Успешно :D") : alert("Ошибка :(");
     });
   }
@@ -97,7 +104,11 @@ console.log('items', items)
       balance: addAmount,  //баланс на который он хочет пополнить
       // walletName: '',  //название его кошелька
     }
-    $api.post("/User/replenish", body)
+    $api.post("/User/replenish", body, {
+      headers: {
+        Authorization: `Bearer ${userId?.token}`
+      }
+    })
     .then(res => {
       console.log(res)
     });
@@ -116,14 +127,14 @@ console.log('items', items)
       axios
         .get(
           `http://localhost:5000/Task/user/${userId?.id}`)
-        .then((res) => {
-          setItems(res.data);
+        .then((response) => {
+          setItems(response.data);
         })
-        .catch((res) => {
-          console.log('response', res);
-          // if (res.data === undefined) {
-          //   alert("У вас нет ни одного задания")
-          // }
+        .catch((response) => {
+          console.log('response', response.response.data);
+          if (response.response.status === 404) {
+            alert('У вас нет ни одного задания')
+          }
         })
     }, [
       updateTasks?.description,
@@ -139,7 +150,11 @@ console.log('items', items)
       const taskId = userTasks[index].id;
       $api
         .delete(
-          `/Task/delete?taskId=${taskId}&userId=${userId.id}`
+          `/Task/delete?taskId=${taskId}`, {
+            headers: {
+              Authorization: `Bearer ${userId?.token}`
+            }
+          }
         )
         .then((res) => {
           setItems(res.data);
@@ -165,6 +180,10 @@ console.log('items', items)
         .post("/Task/handle", {
           action: updatedItem.status === 0 ? "stop" : "start",
           taskId: id,
+        }, {
+          headers: {
+            Authorization: `Bearer ${userId?.token}`
+          }
         })
         .then((res) => {
           console.log("status", res.data)
@@ -181,7 +200,7 @@ console.log('items', items)
 
     const editTask = (index, id) => {
         setVisible(!visible)
-        setActiveItemUpdate(index)
+        setActiveItem(index)
         setUpdateTaskId(id);
     }
 
@@ -250,27 +269,6 @@ console.log('items', items)
                 </button>
               </div>
             )}
-
-            {/* <button className={cls.buttons_button}>Вывести</button> */}
-            {/*
-            {!active && (
-              <form
-                onSubmit={handleSubmit(getMoney)}
-                className={cls.buttons_popap}
-              >
-                <input
-                  autoFocus
-                  placeholder="Введите сумму"
-                  className={cls.buttons_popap_input}
-                  type="text"
-                  {...register("getmoney", Form.Options.moneyInputs)}
-                />
-                <button type="submit" className={cls.buttons_popap_button}>
-                  {" "}
-                  Подтвердите{" "}
-                </button>
-              </form>
-            )} */}
           </section>
         </section>
 
@@ -345,12 +343,14 @@ console.log('items', items)
                           >
                             {item.status === 0 ? 'Запустить' : 'Остановить'}
                           </button>
+
                         <button
-                          onClick={() => editTask(item.id)}
+                          onClick={() => editTask(index, item.id)}
                           className={cls.task_button1}
                         >
                           Редактировать
                         </button>
+
                         <button
                           onClick={() => deleteTask(index)}
                           className={cls.task_button_delete}
@@ -358,7 +358,7 @@ console.log('items', items)
                           Удалить
                         </button>
                       </section>
-                      {visible && activeItemUpdate === index && (
+                      {visible && activeItem === index && (
                         <AddTask
                           text="Активировать изменения"
                           onClick={setVisible}

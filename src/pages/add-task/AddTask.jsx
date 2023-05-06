@@ -62,7 +62,11 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
       };
 
       $api
-        .put("/Task/update", body)
+        .put("/Task/update", body, {
+          headers: {
+            Authorization: `Bearer ${userId?.token}`
+          }
+        })
         .then((res) => {
           console.log("updateTask", res.data);
           setUpdateTask(res.data);
@@ -92,7 +96,11 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
 
       if (data.balance >= data.price) {
         $api
-        .post("/Task/add", body)
+        .post("/Task/add", body, {
+          headers: {
+            Authorization: `Bearer ${userId?.token}`
+          }
+        })
         .then((res) => {
           console.log(res);
           if (res.status === 200) {

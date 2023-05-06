@@ -3,6 +3,6 @@ import axios from "axios";
 export const baseURL = "https://2c6b-80-94-250-125.ngrok-free.app"
 
 export const $api = axios.create({
-  baseURL: "https://b385-80-94-250-75.ngrok-free.app",
+  baseURL: "https://489e-80-94-250-75.ngrok-free.app",
 });
 

@@ -82,17 +82,17 @@ export const Tasks = () => {
     useEffect(() => {
       if (count >= 1) {
         axios
-        .get(`http://localhost:5000/Task/tasks/${count}/${userId.id}`)
+        .get(`http://localhost:5000/Task/tasks/${count}/${userId?.id}`)
         .then((res) => {
           console.log(res.data);
           setData(res.data);
         })
         .catch((res) => {
-          console.log(res);
-          if (res.data.status === 404) {
+          console.log(res.response.status);
+          if (res.response.status === 404) {
             alert("Больше нет страниц")
           }
-        });
+        })
       }
 
     }, [count]);
@@ -103,6 +103,9 @@ export const Tasks = () => {
     function decrement() {
       if (count > 1) {
         setCount(count - 1);
+      }
+      if (count === 1 || count < 1) {
+        alert("Больше нет страниц")
       }
     }
 
