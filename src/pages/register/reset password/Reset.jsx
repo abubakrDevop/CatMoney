@@ -2,6 +2,8 @@ import React from "react";
 import cls from './Reset.module.scss'
 import { useForm } from 'react-hook-form'
 import { Form } from '../../../helpers/form'
+import { baseURL, $api } from '../../../helpers/constant'
+import { useNavigate } from "react-router";
 import  { IoLockClosedOutline,
           IoLockOpenOutline,
           IoEyeOutline,
@@ -10,7 +12,11 @@ import  { IoLockClosedOutline,
 
 export const Reset = () => {
   const [active, setActive] = React.useState(false)
+  const [resError, setResError] = React.useState(false)
+
   const userId = JSON.parse(localStorage.getItem("regist"));
+
+  let navigate = useNavigate();
 
   const {
     formState,
@@ -21,16 +27,30 @@ export const Reset = () => {
 
   const onSubmit = (data) => {
     const body = {
-      password: data.password1,
-      emailCod: data.emailCod,
-      userId: userId,
+      newPassword: data.password1,
+      code: data.emailCod,
+      userId: userId.id,
     }
 
     if (data.password1 === data.password2) {
-      // $api
-        // .post("", body)
-        // .then(res => {})
-        // .catch(res => {});
+      $api
+        .post("/User/resetPassword", body)
+        .then(res => {
+          if (res.status >= 200 && res.status <= 2010) {
+            reset()
+            navigate('/profile/own-space')
+          } else {
+            reset()
+          }
+        })
+        .catch(error => {
+          if (error.response.status === 400) {
+            setResError(true)
+          } else if (error.response.status === 401) {
+            alert('Пройдите верификацию, это сделано для безопасности вашего аккаунта от злоумышленников!')
+            navigate('/resgister')
+          }
+        });
       setActive(false)
     } else {
       setActive(true)
@@ -47,35 +67,47 @@ export const Reset = () => {
               formState.errors.password1 && <span className={cls.root_error}> {formState.errors.password1.message} </span>
             }
             {
-              active && <span className={cls.root_error}> Пароли не совподают! </span>
+              active && <span className={cls.root_error}> Пароли не совпадают! </span>
             }
-            <input
-              className={cls.info_text_input}
+            <div className={cls.input_box}>
+              <IoLockClosedOutline className={cls.info_text_icon} />
+              <input
+                className={cls.info_text_input}
 
-              {...register('password1', Form.Options.password)}
-            />
+                {...register('password1', Form.Options.password)}
+              />
+            </div>
           </p>
           <p className={cls.info_text}>
             Повторите новый пароль:
             {
               formState.errors.password2 && <span className={cls.root_error}> {formState.errors.password2.message} </span>
             }
-            <input
-              className={cls.info_text_input}
+            <div className={cls.input_box}>
+              <IoLockClosedOutline className={cls.info_text_icon} />
+              <input
+                className={cls.info_text_input}
 
-              {...register('password2', Form.Options.password)}
-            />
+                {...register('password2', Form.Options.password)}
+              />
+            </div>
           </p>
           <p className={cls.info_text}>
             Введите код:
             {
               formState.errors.emailCod && <span className={cls.root_error}> {formState.errors.emailCod.message} </span>
             }
-            <input
-              className={cls.info_text_input}
+            {
+              resError && <span className={cls.root_error}> Неверный код! </span>
+            }
+            <div className={cls.input_box}>
+              <IoLockClosedOutline className={cls.info_text_icon} />
+              <input
+                className={cls.info_text_input}
 
-              {...register('emailCod', Form.Options.emailCod)}
-            />
+                {...register('emailCod', Form.Options.emailCod)}
+              />
+            </div>
           </p>
           <button type="submit" className={cls.reset_changeinfo}>Изменить пароль</button>
         </section>

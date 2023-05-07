@@ -12,7 +12,6 @@ import axios from "axios";
 
 export const Tasks = () => {
   const {
-    reset,
     register,
     handleSubmit,
   } = useForm()
@@ -22,54 +21,22 @@ export const Tasks = () => {
 
   const tasks = [
     {
-      users_id: 1,
       name: "Alex Kendal",
       price: "1.40",
       description: "Зарегистрироваться на сайте",
       url: "https://www.youtube.com/",
       icon: <FaRegClock />,
-      timer: 10000,
-      id: 11,
+      timer: 1000,
+      id: 1,
     },
     {
-      users_id: 2,
-      name: "Misha Kolins",
-      price: "2.23",
-      description: "Поставить лайк и оставить коментарии",
-      url: "https://www.youtube.com/",
-      icon: <FaRegClock />,
-      timer: 15000,
-      id: 12,
-    },
-    {
-      users_id: 3,
-      name: "Jensen Ackels",
-      price: "0.99",
+      name: "Alex Kendal",
+      price: "1.40",
       description: "Зарегистрироваться на сайте",
       url: "https://www.youtube.com/",
       icon: <FaRegClock />,
-      timer: 7000,
-      id: 13,
-    },
-    {
-      users_id: 4,
-      name: "Sasha Gray",
-      price: "1.59",
-      description: "Поставить лайк и оставить коментарии",
-      url: "https://www.youtube.com/",
-      icon: <FaRegClock />,
-      timer: 8000,
-      id: 14,
-    },
-    {
-      users_id: 5,
-      name: "Jorge Bush",
-      price: "0.66",
-      description: "Зарегистрироваться на сайте",
-      url: "https://www.youtube.com/",
-      icon: <FaRegClock />,
-      timer: 6000,
-      id: 15,
+      timer: 2000,
+      id: 2,
     },
   ];
 
@@ -78,23 +45,18 @@ export const Tasks = () => {
   const [data, setData] = useState(tasks)
   const [countTasks, setCountTasks] = useState(tasks)
 
-  console.log('dataaaaaaa', data)
-  console.log('countTasks', countTasks)
-
   const userId = JSON.parse(localStorage.getItem("regist"));
 
     useEffect(() => {
       if (count >= 1 || count < countTasks) {
         axios
-        .get(`http://localhost:5000/Task/tasks/${count}/${userId?.id}`)
+        .get(`${baseURL}/Task/tasks/${count}/${userId?.id}`)
         .then((res) => {
-          console.log('res', res);
-          setData(res.data.tasks);
-          setCountTasks(res.data.pagesCount)
+          // setData(res.data.tasks);
+          // setCountTasks(res.data.pagesCount)
         })
         .catch((res) => {
-          alert("Больше нет страниц")
-          console.log(res); 
+          
         })
       }
 
@@ -105,7 +67,7 @@ export const Tasks = () => {
         setCount(count + 1);
       }
       if (count >= countTasks) {
-        alert("Больше нет страниц")
+        
       }
     }
     function decrement() {
@@ -113,7 +75,7 @@ export const Tasks = () => {
         setCount(count - 1);
       }
       if (count === 1 || count < 2) {
-        alert("Больше нет страниц")
+        
       }
     }
 
@@ -158,13 +120,12 @@ export const Tasks = () => {
             <h1 className={cls.tasks_headtitle}>
               Тариф:
               <span className={cls.tasks_classic}> Classic </span>
-              Купите премиум чтобы получать X2 монет!                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+              Купите премиум чтобы получать повышенный процент                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
             </h1>
           ) : (
             <h1 className={cls.tasks_headtitle}>
               Тариф:
-              <span className={cls.tasks_premium}> Premium </span>У вас режим X2
-              монет!
+              <span className={cls.tasks_premium}> Premium </span>
             </h1>
           )}                                                                                                                       
 
@@ -182,7 +143,7 @@ export const Tasks = () => {
                 : 
                 cls.search_input} 
                 type="text" 
-                placeholder="Поиск задании..." 
+                placeholder="Поиск заданий..." 
                 {...register('search')}
               />
             </form>
@@ -197,7 +158,7 @@ export const Tasks = () => {
             <div key={item.id} className={cls.task}>
               <Section display='flex' align='center' overflow='hidden' className={cls.task_imgname}>
                 {/* <img src={item.img} alt="img" className={cls.task_img} /> */}
-                <p className={cls.task_name}>{item.name}</p>
+                <p className={cls.task_name}>№ {item.id}</p>
               </Section>
 
               <Section display='flex' width='70%' gap='10px' className={cls.task_info}>

@@ -81,6 +81,7 @@ $mobileSmall: 479.98px; // телефоны s
                     width: 100%;
                     height: 520px;
                     padding: 20px 20px 40px 20px;
+                    box-shadow: 0 0 5px black;
                     font-size: 16px;
                     border-radius: 5px;
                     background: rgb(218, 216, 216);
@@ -92,6 +93,24 @@ $mobileSmall: 479.98px; // телефоны s
                     align-items: center;
                     gap: 20px;
                     overflow-y: scroll;
+                    &::-webkit-scrollbar {
+                      width: 10px;
+                      border-top-right-radius: 5px;
+                      border-bottom-right-radius: 5px;
+                      background: rgb(12, 54, 170);
+                    }
+                  
+                    &::-webkit-scrollbar-track {
+                      color: inherit;
+                    }
+                  
+                    &::-webkit-scrollbar-thumb {
+                      width: 100%;
+                      height: 1px;
+                      border-top-right-radius: 5px;
+                      border-bottom-right-radius: 5px;
+                      background: rgb(0, 100, 255);
+                    }
                     @media (max-width: $tablet) {
                       padding: 20px 20px 0 20px;
                       }
@@ -524,7 +543,7 @@ $mobileSmall: 479.98px; // телефоны s
             width: 100%;
             height: 210px;
             box-shadow: 0 0 5px black;
-            border-radius: 20px;
+            border-radius: 5px;
             display: flex;
             flex-direction: column;
             justify-content: center;

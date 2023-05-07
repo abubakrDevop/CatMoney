@@ -14,22 +14,27 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
 
   const taimer = [
     {
+      id: 1,
       title: "Таймер: 5 секунд",
       price: 0.07,
     },
     {
+      id: 2,
       title: "Таймер: 10 секунд",
       price: 0.08,
     },
     {
+      id: 3,
       title: "Таймер: 15 секунд",
       price: 0.09,
     },
     {
+      id: 4,
       title: "Таймер: 20 секунд",
       price: 0.1,
     },
     {
+      id: 5,
       title: "Таймер: 25 секунд",
       price: 0.11,
     },
@@ -138,6 +143,7 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
               <FaEdit className={cls.info_icon} />
               <input
                 className={cls.info_text_input}
+                placeholder="Перейти и зарегистрироваться!"
                 {...register("title", Form.Options.settings)}
               />
             </span>
@@ -148,6 +154,7 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
               <FaLink className={cls.info_icon} />
               <input
                 className={cls.info_text_input}
+                placeholder="https://example.com/"
                 {...register("url", Form.Options.settings)}
               />
             </span>

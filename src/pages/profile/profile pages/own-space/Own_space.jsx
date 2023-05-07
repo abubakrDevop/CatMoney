@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import cls from "../own-space/Own_space.module.scss";
 import axios from "axios";
 import { AddTask } from "../../../add-task/AddTask";
-import { $api } from "../../../../helpers/constant/index";
+import { $api, baseURL } from "../../../../helpers/constant/index";
 import { data } from "../own-space/helpers";
 
 export const Ownspace = () => {
@@ -126,31 +126,15 @@ export const Ownspace = () => {
   useEffect(() => {
     try {
       axios
-      .get(`http://localhost:5000/Task/user/${userId?.id}`)
+      .get(`${baseURL}/Task/user/${userId?.id}`)
       .then((res) => {
         if (res.status === 200) {
           console.log("ressssss", res.data.length);
           setItems(res.data);
         }
-        // else if (res.response.status === 404) {
-        //   document.getElementById("message").innerText = 'У вас нет ни одного задания'
-        // }
-        // else if (res.data && res.data.length === 0) {
-        //   document.getElementById("message").innerText = 'У вас нет ни одного задания'
-        // }
-        else if (res.response.data.status === 404) {
-          console.log("ressssss", res.status);
-          alert("У вас нет ни одного задания");
-        } else if (res.data && res.data.length === 0) {
-          alert("У вас нет ни одного задания");
-        }
       })
-      .catch((error) => {
-        alert("У вас нет ни одного задания");
-        console.log(error);
-      });
     } catch (err) {
-      alert("У вас нет ни одного задания");
+      
     }
 
   }, [
@@ -172,10 +156,6 @@ export const Ownspace = () => {
         },
       })
       .then((res) => {
-        console.log("rettttt", res);
-        if (res.status === 404) {
-          alert("У вас нет ни одного задания");
-        }
         setItems(res.data);
       })
       .catch((error) => {
@@ -183,14 +163,10 @@ export const Ownspace = () => {
       });
   };
 
-  console.log("itemStatus", itemStatus);
-
   const handleButtonClick = (id) => {
     const updatedItems = items.map((item) =>
       item.id === id ? { ...item, status: item.status === 0 ? 1 : 0 } : item
     );
-
-    // setItems(updatedItems);
 
     const updatedItem = updatedItems.find((item) => item.id === id);
 
@@ -297,16 +273,11 @@ export const Ownspace = () => {
         <section className={cls.ownspace_info}>
           <p className={cls.info_text}>Ваш логин:</p>
           <p className={cls.info_text}>Ваш email:</p>
-          <p className={cls.info_text}>Ваш пароль:</p>
           <p className={cls.info_text}>Ваш кошелёк:</p>
           <p className={cls.info_text}>
             Ваш id : <span> {} </span>
           </p>
         </section>
-
-        {/* <button className={cls.ownspace_changeinfo}>
-          Редактировать профиль
-        </button> */}
       </section>
       <section className={cls.ownspace_headsection}>
         <section className={cls.ownspace_section}>

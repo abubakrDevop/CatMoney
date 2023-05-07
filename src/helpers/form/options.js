@@ -61,6 +61,18 @@ export const allInputs = {
     }
 }
 
+export const payeerReg = {
+    required,
+    pattern: {
+        value: false,
+    },
+    minLength: {
+        value: 4,
+        message: 'Содержимое должно быть больше 4 цифр!',
+    }
+}
+
+
 export const settings = {
     pattern: {
         value: false,

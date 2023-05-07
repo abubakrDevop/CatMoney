@@ -353,7 +353,7 @@ $mobileSmall: 479.98px; // телефоны s
             .task_title {
                 width: 87%;
                 min-height: 35px;
-                padding: 0 5px 0 5px;
+                padding: 10px;
                 border-left: solid 2px rgba(87, 85, 85, 0.8);
                 border-right: solid 2px rgba(87, 85, 85, 0.8);
                 border-radius: 20px;
@@ -380,6 +380,7 @@ $mobileSmall: 479.98px; // телефоны s
                 border-radius: 20px;
                 font-weight: bold;
                 font-size: 15px;
+                padding: 10px;
                 display: flex;
                 align-items: center;
                 justify-content: center;

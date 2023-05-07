@@ -14,11 +14,16 @@ import  {
 
 export const SignIn = () => {
   const [active, setActive] = React.useState(false)
-  const [loginError, setLoginError] = React.useState('')
+  const [loginError, setLoginError] = React.useState(false)
   const [passwordError, setPasswordError] = React.useState('')
   let navigate = useNavigate();
 
   const userId = JSON.parse(localStorage.getItem("regist"));
+  console.log(userId.id)
+  const { id } = userId
+  const body = {
+    id: userId.id
+  }
 
   const {
     formState,
@@ -45,10 +50,11 @@ export const SignIn = () => {
           window.location.reload();
         }
       })
-      .catch((res) => {
-        if (res.response.status === 400) {
+      .catch(error => {
+        console.log(error)
+        if (error.response.status === 400) {
           reset();
-          setLoginError(res.response.data);
+          setLoginError(true);
         }
       });
   }
@@ -69,7 +75,7 @@ export const SignIn = () => {
           formState.errors.login && <span className={cls.root_error}> {formState.errors.login.message} </span>
         }
         {
-          loginError && <span className={cls.root_error}> {loginError} </span>
+          loginError && <span className={cls.root_error}> Не верный логин или пароль! </span>
         }
 
         <div className={cls.form_inputbox}>
@@ -107,7 +113,7 @@ export const SignIn = () => {
             <IoEyeOutline
               className={cls.input_eye}
               onClick={() => setActive(false)}
-            />
+            />   
           }
         </div>
 
@@ -115,10 +121,12 @@ export const SignIn = () => {
         <Link 
           to={'/reset'} 
           onClick={() => {
-            // $api
-              // .post("", {userId})
-              // .then(res => {})
-              // .catch(res => {});
+            $api
+              .post("/User/resetPassword", {userId: userId.id})
+              .then(res => {
+                console.log(res)
+              })
+              .catch(res => {});
           }} 
           className={cls.root_password_reset}>
           Забыли пароль?

@@ -3,7 +3,11 @@ import cls from '../settings/Settings.module.scss'
 import axios from "axios";
 import { useForm } from 'react-hook-form'
 import { Form } from '../../../../helpers/form/index'
-import { IoDownloadOutline } from "react-icons/io5";
+import {  IoPersonOutline,
+  IoAtCircleOutline,
+  IoLockClosedOutline,
+  IoWalletOutline,
+          } from "react-icons/io5";
 import { $api } from "../../../../helpers/constant/index";
 
 export const Settings = () => {
@@ -22,14 +26,10 @@ export const Settings = () => {
   const onSubmit = (data) => {
     const body = {
       id: idUser.id,
-      // image: imageUrl,
-      // name: data.name,
-      // lastname: data.lastname,
-      login: data.login,
-      email: data.email,
-      password: data.password,
-      // mode: 1,
-      walletName: data.wallet
+      login: data.login > '' ? data.login : null, 
+      email: data.email > '' ? data.email : null, 
+      password: data.password > '' ? data.password : null, 
+      walletName: data.wallet > '' ? data.wallet : null, 
     }
 
     if (data.wallet.startsWith('P')) {
@@ -104,27 +104,36 @@ export const Settings = () => {
         <section className={cls.ownspace_info}>
           <p className={cls.info_text}>
             Введите логин:
-            <input
-              className={cls.info_text_input}
+            <div className={cls.input_box}>
+              <IoPersonOutline className={cls.info_text_icon} />
+              <input
+                className={cls.info_text_input}
 
-              {...register('login', Form.Options.settings)}
-            />
+                {...register('login', Form.Options.settings)}
+              />
+            </div>
           </p>
           <p className={cls.info_text}>
             Введите email:
-            <input
-              className={cls.info_text_input}
+            <div className={cls.input_box}>
+              <IoAtCircleOutline className={cls.info_text_icon} />
+              <input
+                className={cls.info_text_input}
 
-              {...register('email', Form.Options.settings)}
-            />
+                {...register('email', Form.Options.settings)}
+              />
+            </div>
           </p>
           <p className={cls.info_text}>
             Введите пароль:
-            <input
-              className={cls.info_text_input}
+            <div className={cls.input_box}>
+              <IoLockClosedOutline className={cls.info_text_icon} />
+              <input
+                className={cls.info_text_input}
 
-              {...register('password', Form.Options.settings)}
-            />
+                {...register('password', Form.Options.settings)}
+              />
+            </div>
           </p>
           <p className={cls.info_text}>
             Введите кошелёк:
@@ -132,14 +141,16 @@ export const Settings = () => {
               formState.errors.wallet && <span className={cls.wallet_error}> {formState.errors.wallet.message} </span>
             }
             {
-              active && <span className={cls.wallet_error} > Введите латинскую 'P' в начале!</span>
+              active && <span className={cls.wallet_error} > Начинается с латинской 'P' !</span>
             }
-            <input
-              className={cls.info_text_input}
-              placeholder="Кошелек начинается с большой латинской буквы 'P'"
-
-              {...register('wallet', Form.Options.onlyNum)}
-            />
+            <div className={cls.input_box}>
+              <IoWalletOutline className={cls.info_text_icon} />
+              <input
+                className={cls.info_text_input}
+                placeholder="Example: P1234567890"
+                {...register('wallet', Form.Options.settings)}
+              />
+            </div>
           </p>
           <button type="submit" className={cls.ownspace_changeinfo}>Применить изменения</button>
         </section>

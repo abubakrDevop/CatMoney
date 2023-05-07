@@ -174,6 +174,18 @@ $mobileSmall: 479.98px; // телефоны s
                 width: 100%;
               }
 
+            .input_box {
+              margin: 10px 0 0 0;
+              width: 100%;
+              height: 35px;
+              box-shadow: 0 0 5px black;
+              border-radius: 5px;
+              padding: 0px 10px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+
             .info_text {
                 position: relative;
                 margin: 0px 0 0 0;
@@ -188,18 +200,18 @@ $mobileSmall: 479.98px; // телефоны s
                 }
 
                 .info_text_input {
-                  margin: 10px 0 0 0;
                   width: 100%;
-                  height: 35px;
                   font-size: 16px;
                   border: none;
                   outline: none;
                   padding: 0 10px;
-                  box-shadow: 0 0 5px black;
-                  border-radius: 11px;
                   @media (max-width: $mobileSmall) {
                     width: 100%;
                   }
+                }
+
+                .info_text_icon {
+                  font-size: 20px;
                 }
             }
         }
