@@ -1,117 +1,117 @@
 import React, { useEffect, useState } from "react";
-import cls from '../own-space/Own_space.module.scss'
+import cls from "../own-space/Own_space.module.scss";
 import axios from "axios";
-import { AddTask } from "../../../add-task/AddTask"
+import { AddTask } from "../../../add-task/AddTask";
 import { $api } from "../../../../helpers/constant/index";
-import { data } from '../own-space/helpers'
+import { data } from "../own-space/helpers";
 
 export const Ownspace = () => {
-
-  const [active, setActive] = useState(false)
+  const [active, setActive] = useState(false);
   const [activeTasksUser, setActiveTasksUser] = useState(false);
   const [visible, setVisible] = useState(false);
   const [activeItem, setActiveItem] = useState(0);
-  const [addAmountTasksUser, setAddAmountTasksUser] = useState('')
-  const [getActive, setGetActive] = useState(false)
-  const [addAmount, setAddAmount] = useState('')
-  const [getAmount, setGetAmount] = useState('')
+  const [addAmountTasksUser, setAddAmountTasksUser] = useState("");
+  const [getActive, setGetActive] = useState(false);
+  const [addAmount, setAddAmount] = useState("");
+  const [getAmount, setGetAmount] = useState("");
 
-  const [items, setItems] = useState([])
-  const [itemStatus, setItemsStatus] = useState({})
+  const [items, setItems] = useState([]);
+  const [itemStatus, setItemsStatus] = useState({});
 
   const [tasks, setTasks] = useState(items.length > 0 ? items : data);
   const [updateTask, setUpdateTask] = useState([]);
   const [updateTaskId, setUpdateTaskId] = useState(0);
 
+  const userTasks = items.length > 0 ? items : tasks;
 
-  const userTasks = items.length > 0 ? items : tasks
-
-console.log('items', items)
+  console.log("items", items);
 
   const userId = JSON.parse(localStorage.getItem("regist"));
 
   const handlerAddConfirmTasksUser = (taskId) => {
     setActiveTasksUser(!activeTasksUser);
     alert(`Пополнено на ${addAmountTasksUser ? addAmountTasksUser : 0} рублей`);
-    setAddAmountTasksUser('')
+    setAddAmountTasksUser("");
 
     const body = {
-        taskId: taskId,
-        userId: userId.id,
-        description: items.description,
-        url: items.url,
-        timer: 0,
-        price: 0,
-        balance: items?.balance + addAmountTasksUser
-    }
+      taskId: taskId,
+      userId: userId.id,
+      description: items.description,
+      url: items.url,
+      timer: 0,
+      price: 0,
+      balance: items?.balance + addAmountTasksUser,
+    };
 
-    $api.put("/Task/update", body, {
-      headers: {
-        Authorization: `Bearer ${userId?.token}`
-      }
-    })
-    .then(res => {
-      if (res.data.status === 'На вашем балансе недостаточно средств') {
-        alert('На вашем балансе недостаточно средств')
-      } else if (res.data === 200) {
-        setItems(res.data)
-      }
-    })
-  }
-
+    $api
+      .put("/Task/update", body, {
+        headers: {
+          Authorization: `Bearer ${userId?.token}`,
+        },
+      })
+      .then((res) => {
+        if (res.data.status === "На вашем балансе недостаточно средств") {
+          alert("На вашем балансе недостаточно средств");
+        } else if (res.data === 200) {
+          setItems(res.data);
+        }
+      });
+  };
 
   const handlerTopUPTasksUser = (index) => {
-    setActiveItem(index)
+    setActiveItem(index);
     setActiveTasksUser(!activeTasksUser);
   };
 
   const changeAddAmountTasksUser = (e) => {
     setAddAmountTasksUser(e.target.value);
-  }
+  };
 
   const handlerGetConfirm = () => {
     setGetActive(!getActive);
-    alert(`Вывести ${getAmount ? getAmount : 0} рублей`)
-    setGetAmount('')
+    alert(`Вывести ${getAmount ? getAmount : 0} рублей`);
+    setGetAmount("");
     const body = {
       id: userId.id,
-      money: +getAmount
-    }
-    $api.post("/User/withdrawal", body, {
-      headers: {
-        Authorization: `Bearer ${userId?.token}`
-      }
-    }).then((res) => {
-      res.status === 200 ? alert("Успешно :D") : alert("Ошибка :(");
-    });
-  }
+      money: +getAmount,
+    };
+    $api
+      .post("/User/withdrawal", body, {
+        headers: {
+          Authorization: `Bearer ${userId?.token}`,
+        },
+      })
+      .then((res) => {
+        res.status === 200 ? alert("Успешно :D") : alert("Ошибка :(");
+      });
+  };
   const handlerTopUP = () => {
     setActive(!active);
   };
 
   const changeAddAmount = (e) => {
     setAddAmount(e.target.value);
-  }
-
+  };
 
   const handlerAddConfirm = () => {
     setActive(!active);
     alert(`Пополнено на ${addAmount ? addAmount : 0} рублей`);
-    setAddAmount('')
+    setAddAmount("");
 
     const body = {
-      id: userId.id,  // айди пользователя
-      balance: addAmount,  //баланс на который он хочет пополнить
+      id: userId.id, // айди пользователя
+      balance: addAmount, //баланс на который он хочет пополнить
       // walletName: '',  //название его кошелька
-    }
-    $api.post("/User/replenish", body, {
-      headers: {
-        Authorization: `Bearer ${userId?.token}`
-      }
-    })
-    .then(res => {
-      console.log(res)
-    });
+    };
+    $api
+      .post("/User/replenish", body, {
+        headers: {
+          Authorization: `Bearer ${userId?.token}`,
+        },
+      })
+      .then((res) => {
+        console.log(res);
+      });
   };
   const handlerGetSum = () => {
     setGetActive(!getActive);
@@ -123,91 +123,113 @@ console.log('items', items)
 
   const updateTasks = updateTask.find((item) => item.id === updateTaskId);
 
-    useEffect(() => {
+  useEffect(() => {
+    try {
       axios
-        .get(
-          `http://localhost:5000/Task/user/${userId?.id}`)
-        .then((response) => {
-          setItems(response.data);
-        })
-        .catch((response) => {
-          console.log('response', response.response.data);
-          if (response.response.status === 404) {
-            alert('У вас нет ни одного задания')
-          }
-        })
-    }, [
-      updateTasks?.description,
-      updateTasks?.price,
-      updateTasks?.timer,
-      updateTasks?.URL,
-      updateTasks?.start,
-      updateTasks?.balance,
-      items?.balance
-    ]);
-
-    const deleteTask = (index) => {
-      const taskId = userTasks[index].id;
-      $api
-        .delete(
-          `/Task/delete?taskId=${taskId}`, {
-            headers: {
-              Authorization: `Bearer ${userId?.token}`
-            }
-          }
-        )
-        .then((res) => {
+      .get(`http://localhost:5000/Task/user/${userId?.id}`)
+      .then((res) => {
+        if (res.status === 200) {
+          console.log("ressssss", res.data.length);
           setItems(res.data);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+        }
+        // else if (res.response.status === 404) {
+        //   document.getElementById("message").innerText = 'У вас нет ни одного задания'
+        // }
+        // else if (res.data && res.data.length === 0) {
+        //   document.getElementById("message").innerText = 'У вас нет ни одного задания'
+        // }
+        else if (res.response.data.status === 404) {
+          console.log("ressssss", res.status);
+          alert("У вас нет ни одного задания");
+        } else if (res.data && res.data.length === 0) {
+          alert("У вас нет ни одного задания");
+        }
+      })
+      .catch((error) => {
+        alert("У вас нет ни одного задания");
+        console.log(error);
+      });
+    } catch (err) {
+      alert("У вас нет ни одного задания");
     }
 
-    console.log('itemStatus', itemStatus)
+  }, [
+    updateTasks?.description,
+    updateTasks?.price,
+    updateTasks?.timer,
+    updateTasks?.URL,
+    updateTasks?.start,
+    updateTasks?.balance,
+    items?.balance,
+  ]);
 
+  const deleteTask = (index) => {
+    const taskId = userTasks[index].id;
+    $api
+      .delete(`/Task/delete?taskId=${taskId}`, {
+        headers: {
+          Authorization: `Bearer ${userId?.token}`,
+        },
+      })
+      .then((res) => {
+        console.log("rettttt", res);
+        if (res.status === 404) {
+          alert("У вас нет ни одного задания");
+        }
+        setItems(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-    const handleButtonClick = (id) => {
-      const updatedItems = items.map((item) =>
-        item.id === id ? { ...item, status: item.status === 0 ? 1 : 0 } : item
-      );
+  console.log("itemStatus", itemStatus);
 
-      // setItems(updatedItems);
+  const handleButtonClick = (id) => {
+    const updatedItems = items.map((item) =>
+      item.id === id ? { ...item, status: item.status === 0 ? 1 : 0 } : item
+    );
 
-      const updatedItem = updatedItems.find((item) => item.id === id);
+    // setItems(updatedItems);
 
-      $api
-        .post("/Task/handle", {
+    const updatedItem = updatedItems.find((item) => item.id === id);
+
+    $api
+      .post(
+        "/Task/handle",
+        {
           action: updatedItem.status === 0 ? "stop" : "start",
           taskId: id,
-        }, {
+        },
+        {
           headers: {
-            Authorization: `Bearer ${userId?.token}`
-          }
-        })
-        .then((res) => {
-          console.log("status", res.data)
-          setItems((items) =>
-            items.map((item) =>
-              item.id === id ? { ...item, status: res.data.status } : item
-            )
-          );
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
+            Authorization: `Bearer ${userId?.token}`,
+          },
+        }
+      )
+      .then((res) => {
+        console.log("status", res.data);
+        setItems((items) =>
+          items.map((item) =>
+            item.id === id ? { ...item, status: res.data.status } : item
+          )
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-    const editTask = (index, id) => {
-        setVisible(!visible)
-        setActiveItem(index)
-        setUpdateTaskId(id);
-    }
-
+  const editTask = (index, id) => {
+    setVisible(!visible);
+    setActiveItem(index);
+    setUpdateTaskId(id);
+  };
 
   return (
     <div className={cls.ownspace}>
       <section className={cls.ownspace_headsection}>
+        <div id="message"></div>
         <section className={cls.ownspace_balance}>
           <h1 className={cls.balance_headtitle}>Баланс</h1>
           <h1 className={cls.balance_title}>0 ₽</h1>
@@ -338,11 +360,15 @@ console.log('items', items)
                           )}
                         </div>
                         <button
-                            className={item.status === 0 ? `${cls.task_button1}` : `${cls.task_button_delete}`}
-                            onClick={() => handleButtonClick(item.id)}
-                          >
-                            {item.status === 0 ? 'Запустить' : 'Остановить'}
-                          </button>
+                          className={
+                            item.status === 0
+                              ? `${cls.task_button1}`
+                              : `${cls.task_button_delete}`
+                          }
+                          onClick={() => handleButtonClick(item.id)}
+                        >
+                          {item.status === 0 ? "Запустить" : "Остановить"}
+                        </button>
 
                         <button
                           onClick={() => editTask(index, item.id)}
@@ -376,4 +402,4 @@ console.log('items', items)
       </section>
     </div>
   );
-}
+};

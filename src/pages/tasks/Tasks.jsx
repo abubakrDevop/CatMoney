@@ -76,35 +76,43 @@ export const Tasks = () => {
   const [iframe, setIframe] = useState()
   const [timeLeft, setTimeLeft] = useState(0);
   const [data, setData] = useState(tasks)
+  const [countTasks, setCountTasks] = useState(tasks)
+
+  console.log('dataaaaaaa', data)
+  console.log('countTasks', countTasks)
 
   const userId = JSON.parse(localStorage.getItem("regist"));
 
     useEffect(() => {
-      if (count >= 1) {
+      if (count >= 1 || count < countTasks) {
         axios
         .get(`http://localhost:5000/Task/tasks/${count}/${userId?.id}`)
         .then((res) => {
-          console.log(res.data);
-          setData(res.data);
+          console.log('res', res);
+          setData(res.data.tasks);
+          setCountTasks(res.data.pagesCount)
         })
         .catch((res) => {
-          console.log(res.response.status);
-          if (res.response.status === 404) {
-            alert("Больше нет страниц")
-          }
+          alert("Больше нет страниц")
+          console.log(res); 
         })
       }
 
     }, [count]);
 
     function increment() {
-      setCount(count + 1);
+      if (count < countTasks) {
+        setCount(count + 1);
+      }
+      if (count >= countTasks) {
+        alert("Больше нет страниц")
+      }
     }
     function decrement() {
       if (count > 1) {
         setCount(count - 1);
       }
-      if (count === 1 || count < 1) {
+      if (count === 1 || count < 2) {
         alert("Больше нет страниц")
       }
     }

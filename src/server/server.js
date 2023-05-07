@@ -20,7 +20,7 @@ middleware.forEach((it) => server.use(it))
 
 server.get('/Counter/count', async (req, res) => {
   try {
-    axios("https://489e-80-94-250-75.ngrok-free.app/Counter/count").then(
+    axios("https://029e-80-94-250-75.ngrok-free.app/Counter/count").then(
       (response) => res.json(response.data)
     );
   } catch (err) {
@@ -31,11 +31,10 @@ server.get('/Counter/count', async (req, res) => {
 server.get('/Task/tasks/:pageNumber/:userId', async (req, res) => {
   const { pageNumber, userId } = req.params
   try {
-    axios(`https://489e-80-94-250-75.ngrok-free.app/Task/tasks?pageNumber=${pageNumber}&userId=${userId}`).then(
+    axios(`https://029e-80-94-250-75.ngrok-free.app/Task/tasks?pageNumber=${pageNumber}&userId=${userId}`).then(
       (response) => res.json(response.data)
     );
   } catch (err) {
-    console.log(err)
     res.status(404).send('На данный момент времени нет ни одного таска')
   }
 })
@@ -44,19 +43,19 @@ server.get('/Task/tasks/:pageNumber/:userId', async (req, res) => {
 server.get('/Task/user/:userId', async (req, res) => {
   const { userId } = req.params;
   try {
-    const response = await axios(`https://489e-80-94-250-75.ngrok-free.app/Task/user?userId=${userId}`);
+    const response = await axios(`https://029e-80-94-250-75.ngrok-free.app/Task/user?userId=${userId}`);
     res.json(response.data);
   } catch (error) {
     // console.log(error.message);
     res.status(404).send('У вас нет ни одного задания')
   }
-});
+})
 
 
 server.get('/Referals/user/:userId', async (req, res) => {
   const { userId } = req.params
   try {
-    axios(`https://489e-80-94-250-75.ngrok-free.app/Referals/user?userId=${userId}`).then(
+    axios(`https://029e-80-94-250-75.ngrok-free.app/Referals/user?userId=${userId}`).then(
       (response) => res.json(response.data)
     );
   } catch (err) {
@@ -69,11 +68,11 @@ server.get('/Referals/user/:userId', async (req, res) => {
 server.post("/User/register", async (req, res) => {
   const body = req.body
   try {
-    axios("https://489e-80-94-250-75.ngrok-free.app/User/register", body).then(
+    axios("https://029e-80-94-250-75.ngrok-free.app/User/register", body).then(
       (response) => res.json(response.data)
     );
   } catch (err) {
-    console.log(err);
+    console.log(err)
   }
 });
 
