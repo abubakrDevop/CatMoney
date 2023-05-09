@@ -1,11 +1,13 @@
 import React, { useState } from "react";
-import { useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form';
+import { useNavigate } from "react-router";
 import { FaEdit, FaLink, FaClock, FaRubleSign } from "react-icons/fa";
 import { Form } from '../../helpers/form/index'
 import cls from '../add-task/AddTask.module.scss'
 import { $api } from "../../helpers/constant/index";
 
 export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
+  const navigate = useNavigate()
   const [activeItem, setActiveItem] = useState(0);
   const [value, setValue] = useState("");
   const [active, setActive] = useState(false)
@@ -85,7 +87,11 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
           }
         })
         .catch((error) => {
-          console.log(error);
+          if (error.response.status === 401) {       
+            localStorage.removeItem("regist");  
+            localStorage.removeItem("auth");  
+            navigate("/register")
+          }
         });
     }
 
@@ -118,8 +124,13 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
           }
         })
         .catch((error) => {
-          console.log(error);
+          if (error.response.status === 401) {       
+            localStorage.removeItem("regist");  
+            localStorage.removeItem("auth");  
+            navigate("/register")
+          }
         });
+
         setActive(false)
       } else {
         setActive(true)

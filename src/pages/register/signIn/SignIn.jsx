@@ -19,10 +19,10 @@ export const SignIn = () => {
   let navigate = useNavigate();
 
   const userId = JSON.parse(localStorage.getItem("regist"));
-  console.log(userId.id)
-  const { id } = userId
+  console.log(userId?.id)
+  // const { id } = userId
   const body = {
-    id: userId.id
+    id: userId?.id
   }
 
   const {

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import cls from "../own-space/Own_space.module.scss";
 import axios from "axios";
 import { AddTask } from "../../../add-task/AddTask";
@@ -6,6 +7,8 @@ import { $api, baseURL } from "../../../../helpers/constant/index";
 import { data } from "../own-space/helpers";
 
 export const Ownspace = () => {
+  let navigate = useNavigate();
+
   const [active, setActive] = useState(false);
   const [activeTasksUser, setActiveTasksUser] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -16,13 +19,12 @@ export const Ownspace = () => {
   const [getAmount, setGetAmount] = useState("");
 
   const [items, setItems] = useState([]);
-  const [itemStatus, setItemsStatus] = useState({});
 
   const [tasks, setTasks] = useState(items.length > 0 ? items : data);
   const [updateTask, setUpdateTask] = useState([]);
   const [updateTaskId, setUpdateTaskId] = useState(0);
 
-  const userTasks = items.length > 0 ? items : tasks;
+  // const userTasks = items.length > 0 ? items : tasks;
 
   console.log("items", items);
 
@@ -53,7 +55,12 @@ export const Ownspace = () => {
         if (res.data.status === "На вашем балансе недостаточно средств") {
           alert("На вашем балансе недостаточно средств");
         } else if (res.data === 200) {
-          setItems(res.data);
+          setItems(res.data)
+        }
+      })
+      .catch((error) => {
+        if (error.response.status === 401) {         
+          navigate("/register")
         }
       });
   };
@@ -82,7 +89,14 @@ export const Ownspace = () => {
         },
       })
       .then((res) => {
-        res.status === 200 ? alert("Успешно :D") : alert("Ошибка :(");
+        if (res.status === 200) {
+          alert("Успешно :D")
+        }
+      })
+      .catch((error) => {
+        if (error.response.status === 401) {         
+          navigate("/register")
+        }
       });
   };
   const handlerTopUP = () => {
@@ -111,6 +125,11 @@ export const Ownspace = () => {
       })
       .then((res) => {
         console.log(res);
+      })
+      .catch((error) => {
+        if (error.response.status === 401) {         
+          navigate("/register")
+        }
       });
   };
   const handlerGetSum = () => {
@@ -126,15 +145,15 @@ export const Ownspace = () => {
   useEffect(() => {
     try {
       axios
-      .get(`${baseURL}/Task/user/${userId?.id}`)
+      .get(`http://localhost:5000/Task/user/${userId?.id}`)
       .then((res) => {
         if (res.status === 200) {
-          console.log("ressssss", res.data.length);
+          console.log("ressssss", res.data);
           setItems(res.data);
         }
       })
     } catch (err) {
-      
+      console.log(err)
     }
 
   }, [
@@ -148,7 +167,7 @@ export const Ownspace = () => {
   ]);
 
   const deleteTask = (index) => {
-    const taskId = userTasks[index].id;
+    const taskId = items[index].id;
     $api
       .delete(`/Task/delete?taskId=${taskId}`, {
         headers: {
@@ -156,10 +175,15 @@ export const Ownspace = () => {
         },
       })
       .then((res) => {
+        if (res.data.response.status === 401) {
+          navigate("/register")
+        }
         setItems(res.data);
       })
       .catch((error) => {
-        console.log(error);
+        if (error.response.status === 401) {         
+          navigate("/register")
+        }
       });
   };
 
@@ -184,7 +208,6 @@ export const Ownspace = () => {
         }
       )
       .then((res) => {
-        console.log("status", res.data);
         setItems((items) =>
           items.map((item) =>
             item.id === id ? { ...item, status: res.data.status } : item
@@ -192,7 +215,11 @@ export const Ownspace = () => {
         );
       })
       .catch((error) => {
-        console.log(error);
+        if (error.response.status === 401) {       
+          localStorage.removeItem("regist");  
+          localStorage.removeItem("auth");  
+          navigate("/register")
+        }
       });
   };
 
@@ -285,7 +312,7 @@ export const Ownspace = () => {
             <div className={cls.section_about}>
               <div className={cls.about_title}>Мои задания</div>
               <section className={cls.tasks_inner}>
-                {userTasks.map((item, index) => {
+                {items.map((item, index) => {
                   return (
                     <div key={item.id} className={cls.task}>
                       <div className={cls.task_data}>
@@ -359,7 +386,7 @@ export const Ownspace = () => {
                         <AddTask
                           text="Активировать изменения"
                           onClick={setVisible}
-                          taskId={userTasks[index].id}
+                          taskId={items[index].id}
                           setUpdateTask={setUpdateTask}
                         />
                       )}

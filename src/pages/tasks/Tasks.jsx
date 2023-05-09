@@ -50,10 +50,11 @@ export const Tasks = () => {
     useEffect(() => {
       if (count >= 1 || count < countTasks) {
         axios
-        .get(`${baseURL}/Task/tasks/${count}/${userId?.id}`)
+        .get(`http://localhost:5000/Task/tasks/${count}/${userId?.id}`)
         .then((res) => {
-          // setData(res.data.tasks);
-          // setCountTasks(res.data.pagesCount)
+          console.log('res', res)
+          setData(res.data.tasks);
+          setCountTasks(res.data.pagesCount)
         })
         .catch((res) => {
           
@@ -75,7 +76,7 @@ export const Tasks = () => {
         setCount(count - 1);
       }
       if (count === 1 || count < 2) {
-        
+        console.log('counttttttt', count)
       }
     }
 

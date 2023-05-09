@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router";
 import cls from '../settings/Settings.module.scss'
 import axios from "axios";
 import { useForm } from 'react-hook-form'
@@ -11,6 +12,7 @@ import {  IoPersonOutline,
 import { $api } from "../../../../helpers/constant/index";
 
 export const Settings = () => {
+  const navigate = useNavigate()
   // const [imageUrl, setImageUrl] = React.useState("")
   const [active, setActive] = React.useState(false)
 
@@ -46,7 +48,11 @@ export const Settings = () => {
         }
       })
       .catch((error) => {
-        console.log(error);
+        if (error.response.status === 401) {       
+          localStorage.removeItem("regist");  
+          localStorage.removeItem("auth");  
+          navigate("/register")
+        }
       });
       setActive(false)
     } else {
