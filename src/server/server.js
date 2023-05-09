@@ -20,7 +20,7 @@ middleware.forEach((it) => server.use(it))
 
 server.get('/Counter/count', async (req, res) => {
   try {
-    axios("https://b4de-80-94-250-75.ngrok-free.app/Counter/count").then(
+    axios("https://f47f-80-94-250-75.ngrok-free.app/Counter/count").then(
       (response) => res.json(response.data)
     );
   } catch (err) {
@@ -31,7 +31,7 @@ server.get('/Counter/count', async (req, res) => {
 server.get('/Task/tasks/:pageNumber/:userId', async (req, res) => {
   const { pageNumber, userId } = req.params
   try {
-    axios(`https://b4de-80-94-250-75.ngrok-free.app/Task/tasks?pageNumber=${pageNumber}&userId=${userId}`).then(
+    axios(`https://f47f-80-94-250-75.ngrok-free.app/Task/tasks?pageNumber=${pageNumber}&userId=${userId}`).then(
       (response) => res.json(response.data)
     );
   } catch (err) {
@@ -39,11 +39,33 @@ server.get('/Task/tasks/:pageNumber/:userId', async (req, res) => {
   }
 })
 
+server.get('/Task/tasks/:sortBy/:asc/:pageNumber/:userId', async (req, res) => {
+  const { pageNumber, userId, boolean, option} = req.params
+  try {
+    axios(`/Task/tasks?sortBy=${option}&asc=${boolean}&pageNumber=${pageNumber}&userId=${userId}`).then(
+      (response) => res.json(response.data)
+    );
+  } catch (err) {
+    res.status(404).send('')
+  }
+})
+
+server.get('/Task/tasks/:description/:pageNumber/:userId', async (req, res) => {
+  const { pageNumber, userId, description } = req.params
+  try {
+    axios(`https://f47f-80-94-250-75.ngrok-free.app/Task/tasks?description=${description}&pageNumber=${pageNumber}&userId=${userId}`).then(
+      (response) => res.json(response.data)
+    );
+  } catch (err) {
+    res.status(404).send('')
+  }
+})
+
 
 server.get('/Task/user/:userId', async (req, res) => {
   const { userId } = req.params;
   try {
-    const response = await axios(`https://b4de-80-94-250-75.ngrok-free.app/Task/user?userId=${userId}`);
+    const response = await axios(`https://f47f-80-94-250-75.ngrok-free.app/Task/user?userId=${userId}`);
     res.json(response.data);
   } catch (error) {
     // console.log(error.message);
@@ -51,11 +73,21 @@ server.get('/Task/user/:userId', async (req, res) => {
   }
 })
 
+server.get('/Task/user/:userId', async (req, res) => {
+  const { userId } = req.params;
+  try {
+    const response = await axios(`https://f47f-80-94-250-75.ngrok-free.app/Task/user?userId=${userId}`);
+    res.json(response.data);
+  } catch (error) {
+    res.status(404).send('')
+  }
+})
+
 
 server.get('/Referals/user/:userId', async (req, res) => {
   const { userId } = req.params
   try {
-    axios(`https://b4de-80-94-250-75.ngrok-free.app/Referals/user?userId=${userId}`).then(
+    axios(`https://f47f-80-94-250-75.ngrok-free.app/Referals/user?userId=${userId}`).then(
       (response) => res.json(response.data)
     );
   } catch (err) {
@@ -68,7 +100,7 @@ server.get('/Referals/user/:userId', async (req, res) => {
 server.post("/User/register", async (req, res) => {
   const body = req.body
   try {
-    axios("https://b4de-80-94-250-75.ngrok-free.app/User/register", body).then(
+    axios("https://f47f-80-94-250-75.ngrok-free.app/User/register", body).then(
       (response) => res.json(response.data)
     );
   } catch (err) {
@@ -78,7 +110,7 @@ server.post("/User/register", async (req, res) => {
 
 server.post('/api/v1/visible', async (req, res) => {
   try {
-    axios("https://3303-80-94-250-125.ngrok-free.app/api/v2/exit").then(
+    axios("https://f47f-80-94-250-75.ngrok-free.app/api/v2/exit").then(
       (response) => res.json(response.data)
     );
   } catch (err) {
