@@ -6,6 +6,7 @@ const StyledSection = styled.section `
   width: ${({width}) => width};
   height: ${({height}) => height};
   padding: ${({padding}) => padding};
+  margin: ${({margin}) => margin};
   display: ${({display}) => display};
   align-items: ${({align}) => align};
   overflow: ${({overflow}) => overflow};

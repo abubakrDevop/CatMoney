@@ -19,14 +19,18 @@ export const Ownspace = () => {
   const [getAmount, setGetAmount] = useState("");
 
   const [items, setItems] = useState([]);
+  const [userData, setUserData] = useState({
+    balance: '0',
+    login: '',
+    email: '',
+    walletName: '',
+  })
 
   const [tasks, setTasks] = useState(items.length > 0 ? items : data);
   const [updateTask, setUpdateTask] = useState([]);
   const [updateTaskId, setUpdateTaskId] = useState(0);
 
   // const userTasks = items.length > 0 ? items : tasks;
-
-  console.log("items", items);
 
   const userId = JSON.parse(localStorage.getItem("regist"));
 
@@ -132,6 +136,7 @@ export const Ownspace = () => {
         }
       });
   };
+
   const handlerGetSum = () => {
     setGetActive(!getActive);
   };
@@ -148,8 +153,9 @@ export const Ownspace = () => {
       .get(`http://localhost:5000/Task/user/${userId?.id}`)
       .then((res) => {
         if (res.status === 200) {
-          console.log("ressssss", res.data);
-          setItems(res.data);
+          setItems(res.data.tasks);
+          setUserData(res.data.user)
+          console.log(res.data)
         }
       })
     } catch (err) {
@@ -235,7 +241,7 @@ export const Ownspace = () => {
         <div id="message"></div>
         <section className={cls.ownspace_balance}>
           <h1 className={cls.balance_headtitle}>Баланс</h1>
-          <h1 className={cls.balance_title}>0 ₽</h1>
+          <h1 className={cls.balance_title}>{userData.balance} ₽</h1>
           <section className={cls.ownspace_buttons}>
             <button
               type="button"
@@ -298,12 +304,10 @@ export const Ownspace = () => {
         </section>
 
         <section className={cls.ownspace_info}>
-          <p className={cls.info_text}>Ваш логин:</p>
-          <p className={cls.info_text}>Ваш email:</p>
-          <p className={cls.info_text}>Ваш кошелёк:</p>
-          <p className={cls.info_text}>
-            Ваш id : <span> {} </span>
-          </p>
+          <p className={cls.info_text}>Ваш логин: {userData.login}</p>
+          <p className={cls.info_text}>Ваш email: {userData.email}</p>
+          <p className={cls.info_text}>Ваш кошелёк: {userData.walletName}</p>
+          <p className={cls.info_text}>Ваш id: {userId.id}</p>
         </section>
       </section>
       <section className={cls.ownspace_headsection}>
@@ -312,87 +316,90 @@ export const Ownspace = () => {
             <div className={cls.section_about}>
               <div className={cls.about_title}>Мои задания</div>
               <section className={cls.tasks_inner}>
-                {items.map((item, index) => {
-                  return (
-                    <div key={item.id} className={cls.task}>
-                      <div className={cls.task_data}>
-                        <section className={cls.task_id}>#{item.id}</section>
-                        <p className={cls.task_title}>{item.description}</p>
-                        <p className={cls.task_title}>
-                          Баланс: {item.balance} ₽уб
-                        </p>
-                        <div className={cls.task_price}>
-                          Цена: {item.timer} ₽уб
+                {
+                  items <= [] ? <h1 className={cls.tasks_inner_text}>Создайте свои задания, чтобы их увидеть!</h1> :
+                  items.map((item, index) => {
+                    return (
+                      <div key={item.id} className={cls.task}>
+                        <div className={cls.task_data}>
+                          <section className={cls.task_id}>#{item.id}</section>
+                          <p className={cls.task_title}>{item.description}</p>
+                          <p className={cls.task_title}>
+                            Баланс: {item.balance} ₽уб
+                          </p>
+                          <div className={cls.task_price}>
+                            Цена: {item.timer} ₽уб
+                          </div>
                         </div>
-                      </div>
-
-                      <section className={cls.task_buttons}>
-                        <div className={cls.task_buttons_tasksBlock}>
+  
+                        <section className={cls.task_buttons}>
+                          <div className={cls.task_buttons_tasksBlock}>
+                            <button
+                              onClick={() => handlerTopUPTasksUser(index)}
+                              className={cls.task_button2}
+                            >
+                              Пополнить
+                            </button>
+                            {activeItem === index && activeTasksUser && (
+                              <div className={cls.buttons_popap_tasks}>
+                                <input
+                                  autoFocus
+                                  placeholder="Введите сумму"
+                                  className={cls.buttons_popap_input_tasks}
+                                  type="number"
+                                  onChange={changeAddAmountTasksUser}
+                                  value={addAmountTasksUser}
+                                />
+                                <button
+                                  type="button"
+                                  onClick={() =>
+                                    handlerAddConfirmTasksUser(item.id)
+                                  }
+                                  className={cls.buttons_popap_button_tasks}
+                                >
+                                  {" "}
+                                  Подтвердить{" "}
+                                </button>
+                              </div>
+                            )}
+                          </div>
                           <button
-                            onClick={() => handlerTopUPTasksUser(index)}
-                            className={cls.task_button2}
+                            className={
+                              item.status === 0
+                                ? `${cls.task_button1}`
+                                : `${cls.task_button_delete}`
+                            }
+                            onClick={() => handleButtonClick(item.id)}
                           >
-                            Пополнить
+                            {item.status === 0 ? "Запустить" : "Остановить"}
                           </button>
-                          {activeItem === index && activeTasksUser && (
-                            <div className={cls.buttons_popap_tasks}>
-                              <input
-                                autoFocus
-                                placeholder="Введите сумму"
-                                className={cls.buttons_popap_input_tasks}
-                                type="number"
-                                onChange={changeAddAmountTasksUser}
-                                value={addAmountTasksUser}
-                              />
-                              <button
-                                type="button"
-                                onClick={() =>
-                                  handlerAddConfirmTasksUser(item.id)
-                                }
-                                className={cls.buttons_popap_button_tasks}
-                              >
-                                {" "}
-                                Подтвердить{" "}
-                              </button>
-                            </div>
-                          )}
-                        </div>
-                        <button
-                          className={
-                            item.status === 0
-                              ? `${cls.task_button1}`
-                              : `${cls.task_button_delete}`
-                          }
-                          onClick={() => handleButtonClick(item.id)}
-                        >
-                          {item.status === 0 ? "Запустить" : "Остановить"}
-                        </button>
-
-                        <button
-                          onClick={() => editTask(index, item.id)}
-                          className={cls.task_button1}
-                        >
-                          Редактировать
-                        </button>
-
-                        <button
-                          onClick={() => deleteTask(index)}
-                          className={cls.task_button_delete}
-                        >
-                          Удалить
-                        </button>
-                      </section>
-                      {visible && activeItem === index && (
-                        <AddTask
-                          text="Активировать изменения"
-                          onClick={setVisible}
-                          taskId={items[index].id}
-                          setUpdateTask={setUpdateTask}
-                        />
-                      )}
-                    </div>
-                  );
-                })}
+  
+                          <button
+                            onClick={() => editTask(index, item.id)}
+                            className={cls.task_button1}
+                          >
+                            Редактировать
+                          </button>
+  
+                          <button
+                            onClick={() => deleteTask(index)}
+                            className={cls.task_button_delete}
+                          >
+                            Удалить
+                          </button>
+                        </section>
+                        {visible && activeItem === index && (
+                          <AddTask
+                            text="Активировать изменения"
+                            onClick={setVisible}
+                            taskId={items[index].id}
+                            setUpdateTask={setUpdateTask}
+                          />
+                        )}
+                      </div>
+                    );
+                  })
+                }
               </section>
             </div>
           </div>

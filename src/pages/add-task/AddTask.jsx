@@ -45,8 +45,6 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
   const taimerValue = taimer[activeItem].title.split(" ")[1];
   const activePrice = taimer[activeItem].price;
 
-  console.log('taimerValue', taimerValue, activePrice)
-
   const { 
     formState, 
     reset, 
@@ -55,7 +53,6 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log("userId", userId.id);
     if (taskId) {
       onClick(false);
       const body = {
@@ -75,16 +72,10 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
           }
         })
         .then((res) => {
-          console.log("updateTask", res.data);
           setUpdateTask(res.data);
           if (res.status === 200) {
             reset();
-            alert("Задание получено");
-          } else if (res.data.status === "") {
-            reset();
-          } else if (res.data.status === "") {
-            reset();
-          }
+          } 
         })
         .catch((error) => {
           if (error.response.status === 401) {       
@@ -113,15 +104,10 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
           }
         })
         .then((res) => {
-          console.log(res);
           if (res.status === 200) {
             reset();
-            alert("Задание получено");
-          } else if (res.data.status === "") {
-            reset();
-          } else if (res.data.status === "") {
-            reset();
-          }
+            navigate("/profile")
+          } 
         })
         .catch((error) => {
           if (error.response.status === 401) {       

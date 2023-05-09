@@ -17,33 +17,22 @@ export const Tasks = () => {
   } = useForm()
 
   const [count, setCount] = useState(1)
-  const [active, setActive] = useState(false)
 
-  const tasks = [
+  const sort = [
     {
-      name: "Alex Kendal",
-      price: "1.40",
-      description: "Зарегистрироваться на сайте",
-      url: "https://www.youtube.com/",
-      icon: <FaRegClock />,
-      timer: 1000,
-      id: 1,
+      title: 'По цене',
+      value: 'price'
     },
     {
-      name: "Alex Kendal",
-      price: "1.40",
-      description: "Зарегистрироваться на сайте",
-      url: "https://www.youtube.com/",
-      icon: <FaRegClock />,
-      timer: 2000,
-      id: 2,
+      title: 'По времени',
+      value: 'time'
     },
-  ];
+  ]
 
   const [iframe, setIframe] = useState()
   const [timeLeft, setTimeLeft] = useState(0);
-  const [data, setData] = useState(tasks)
-  const [countTasks, setCountTasks] = useState(tasks)
+  const [data, setData] = useState([])
+  const [countTasks, setCountTasks] = useState([])
 
   const userId = JSON.parse(localStorage.getItem("regist"));
 
@@ -52,9 +41,9 @@ export const Tasks = () => {
         axios
         .get(`http://localhost:5000/Task/tasks/${count}/${userId?.id}`)
         .then((res) => {
-          console.log('res', res)
           setData(res.data.tasks);
           setCountTasks(res.data.pagesCount)
+          console.log(res)
         })
         .catch((res) => {
           
@@ -76,12 +65,32 @@ export const Tasks = () => {
         setCount(count - 1);
       }
       if (count === 1 || count < 2) {
-        console.log('counttttttt', count)
+
       }
     }
 
-  const onSubmit = (data) => {
-    data.search = ''
+  const handleSearch = (description) => {
+    $api
+      .get(`http://localhost:5000/Task/tasks/${description}/${count}/${userId?.id}`)
+      .then(res => {
+        setData(res.data.tasks);
+        setCountTasks(res.data.pagesCount)
+        console.log(res)  
+      })
+  }
+  
+  const handleSort = (option) => {
+    console.log(option)
+    $api
+      .get(`/Task/tasks?${option}/${true}/${count}/${userId?.id}`)
+      .then(res => {
+        console.log(res.data.tasks)
+      })
+  }
+
+  const taskComplete = (body) => {
+    $api
+      .post('Task/complete', body)
   }
 
   const handleIframe = (data) => {
@@ -119,35 +128,44 @@ export const Tasks = () => {
         <Section display='flex' justify='space-between' padding='0 0 10px 0' className={cls.tasks_header}>
           {localStorage.getItem("Premium") !== true ? (
             <h1 className={cls.tasks_headtitle}>
-              Тариф:
+              Подписка:
               <span className={cls.tasks_classic}> Classic </span>
               Купите премиум чтобы получать повышенный процент                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
             </h1>
           ) : (
             <h1 className={cls.tasks_headtitle}>
-              Тариф:
+              Подписка:
               <span className={cls.tasks_premium}> Premium </span>
             </h1>
           )}                                                                                                                       
 
-          <Section display='flex' justify='space-between' align='center' className={cls.tasks_header_box}>
-            <form 
-              onSubmit={handleSubmit(onSubmit)}
-              className={active === true ? `${cls.search_box} ${cls.search_box_active}` : cls.search_box} 
-              onClick={() => setActive(true)}
-            >
-              <div className={active === true ? `${cls.search_apear_item} ${cls.apear_item_active}` : cls.search_apear_item}></div>
-              <div className={active === true ? `${cls.search_apear_item} ${cls.apear_item_active}` : cls.search_apear_item}></div>
-              <input 
-                className={active === true ? 
-                `${cls.search_input} ${cls.search_input_active}` 
-                : 
-                cls.search_input} 
-                type="text" 
-                placeholder="Поиск заданий..." 
-                {...register('search')}
-              />
-            </form>
+          <Section display='flex' direction='column' justify='space-between' align='center' className={cls.tasks_header_box}>
+            <Section display='flex' justify='space-between' align='center' margin='0 0 5px 0' className={cls.tasks_header_sorts}>
+              <div className={cls.search_box} >
+                <input 
+                  className={cls.search_input}
+                  type="search"
+                  placeholder="Поиск заданий..." 
+                  onChange={e => handleSearch(e.target.value)}
+                />
+              </div>
+              <div className={cls.select_box}>
+                <select className={cls.select}>
+                  {
+                    sort.map(item => (
+                      <option 
+                        key={item.title} 
+                        className={cls.option} 
+                        value={item.value}
+                        onClick={console.log('asd')}
+                      >
+                        {item.title}
+                      </option>
+                    ))
+                  }
+                </select>
+              </div>
+            </Section>
             <Link to={"/add-task"} className={cls.header_button}>
               Добавить задание
             </Link>
@@ -155,29 +173,37 @@ export const Tasks = () => {
         </Section>
 
         <Section className={cls.tasks_inner}>
-          {data.map((item) => (
-            <div key={item.id} className={cls.task}>
-              <Section display='flex' align='center' overflow='hidden' className={cls.task_imgname}>
-                {/* <img src={item.img} alt="img" className={cls.task_img} /> */}
-                <p className={cls.task_name}>№ {item.id}</p>
-              </Section>
-
-              <Section display='flex' width='70%' gap='10px' className={cls.task_info}>
-                <p className={cls.task_title}>{item.description}</p>
-                <div className={cls.task_price}>{item.price} ₽уб</div>
-              </Section>
-
-              <Section width='25%' display='flex' align='center' justify='space-between' className={cls.task_buttons} onClick={() => {
-                handleIframe({
-                  link: item.url,
-                  timer: item.timer
-                })
-              }}>
-                <Button width='70%' height='35px'>Выполнить</Button>
-                <div className={cls.task_clock_icon}>{item.icon} {item.timer} сек</div>
-              </Section>
-            </div>
-          ))}
+          {
+            data <= [] ? <h1 className={cls.loading}>Загрузка подождите...</h1> : 
+            data.map((item) => (
+              <div key={item.id} className={cls.task}>
+                <Section display='flex' align='center' overflow='hidden' className={cls.task_imgname}>
+                  {/* <img src={item.img} alt="img" className={cls.task_img} /> */}
+                  <p className={cls.task_name}>№ {item.id}</p>
+                </Section>
+  
+                <Section display='flex' width='70%' gap='10px' className={cls.task_info}>
+                  <p className={cls.task_title}>{item.description}</p>
+                  <div className={cls.task_price}>{item.price} ₽уб</div>
+                </Section>
+  
+                <Section width='25%' display='flex' align='center' justify='space-between' className={cls.task_buttons} onClick={() => {
+                  handleIframe({
+                    link: item.url,
+                    timer: item.timer
+                  })
+                }}>
+                  <Button width='70%' height='35px' onClick={() => taskComplete(
+                    {
+                      userId: userId.id,
+                      taskId: item.id,
+                    }
+                  )}>Выполнить</Button>
+                  <div className={cls.task_clock_icon}>{item.icon} {item.timer} сек</div>
+                </Section>
+              </div>
+            ))
+          }
         </Section>
         <Section width='100%' padding='25px 0 0 0' display='flex' align='center' justify='space-between' className={cls.navigator_btn_box}>
           <Button padding='0 20px' color='black' height='35px' back='white' className={cls.navigator_btn} onClick={decrement}>

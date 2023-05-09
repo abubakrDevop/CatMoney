@@ -1,6 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 .about {
     width: 100%;
     min-height: 100vh;
     overflow: hidden;
     background: white;
+    padding: 90px 15px 20px 20px;
+    font-family: 'Roboto', sans-serif;
+
+    .about_section {
+        width: 100%;
+        padding: 0 10px 0 10px;
+
+        .section_head_title {
+            font-size: 25px;
+            margin: 0 0 10px 0;
+        }
+
+        .section_title {
+            width: 80%;
+            margin: 15px 0 15px 0;
+            font-weight: bold;
+        }
+
+        .section_ul {
+            padding: 0 0 0 20px;
+
+            .section_li {
+                width: 80%;
+            }
+        }
+
+        .section_title_span_font {
+            font-family: 'Teko', sans-serif;
+            font-size: 20px;
+            margin: 0 5px 0 0;
+        }
+
+        .section_title_span {
+            background-color: #2AA5A0;
+            background-image: linear-gradient(to left, rgb(60, 0, 128), rgba(0, 89, 255, 0.5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        &:nth-child(2) {
+            .section_head_title {
+                margin: 20px 0 10px 0;
+            }
+        }
+    }
 }
