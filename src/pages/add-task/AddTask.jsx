@@ -131,7 +131,8 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
   };
 
   return (
-    <div className={taskId ? `${cls.add_task_edit}` : `${cls.add_task}`}>
+    <div className={`${cls.add_task}`}>
+    {/* <div className={taskId ? `${cls.add_task_edit}` : `${cls.add_task}`}> */}
       <form onSubmit={handleSubmit(onSubmit)} className={cls.add_task_form}>
         <section className={cls.add_task_form_info}>
           <p className={cls.info_text}>

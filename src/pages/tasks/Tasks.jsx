@@ -17,15 +17,35 @@ export const Tasks = () => {
   } = useForm()
 
   const [count, setCount] = useState(1)
+  const [selectedSort, setSelectedSort] = useState("sort");
+  const [selectedAsc, setSelectedAsc] = useState()
+
+  console.log('selectedAsc', selectedAsc)
 
   const sort = [
     {
-      title: 'По цене',
-      value: 'price'
+      title: 'Сортировать:',
+      value: 'sort',
     },
     {
-      title: 'По времени',
-      value: 'time'
+      title: 'по возрастанию цены',
+      value: 'price',
+      asc: 1
+    },
+    {
+      title: 'по убыванию цены',
+      value: 'price',
+      asc: 0
+    },
+    {
+      title: 'по возрастанию времени',
+      value: 'time',
+      asc: 1
+    },
+    {
+      title: 'по убыванию времени',
+      value: 'time',
+      asc: 0
     },
   ]
 
@@ -43,7 +63,6 @@ export const Tasks = () => {
         .then((res) => {
           setData(res.data.tasks);
           setCountTasks(res.data.pagesCount)
-          console.log(res)
         })
         .catch((res) => {
 
@@ -80,12 +99,21 @@ export const Tasks = () => {
   }
 
   const handleSort = (option) => {
+    setSelectedSort(option);
+    console.log('option', option)
     $api
-      .get(`/Task/tasks?${option}/${true}/${count}/${userId?.id}`)
+      .get(`http://localhost:5000/Task/tasks/${option}/${selectedAsc}/${count}/${userId?.id}`)
       .then(res => {
-        console.log(res.data.tasks)
+        console.log(res)
+        setData(res.data.tasks);
+        setCountTasks(res.data.pagesCount)
       })
   };
+
+  const onClickAsc = (asc) => {
+    console.log('asc', asc)
+    setSelectedAsc(asc)
+  }
 
   const taskComplete = (body) => {
     $api
@@ -168,7 +196,7 @@ export const Tasks = () => {
                   onChange={(e) => handleSearch(e.target.value)}
                 />
               </div>
-              <div className={cls.select_box}>
+              {/* <div className={cls.select_box}>
                 <select
                   className={cls.select}
                   onChange={(e) => handleSort(e.target.value)}
@@ -183,7 +211,30 @@ export const Tasks = () => {
                     </option>
                   ))}
                 </select>
-              </div>
+              </div> */}
+{/* <div className={cls.select_box}>
+  <select
+    className={cls.select}
+    value={selectedSort}
+    onChange={(e) => handleSort(e.target.value)}
+  >
+    {sort.map((item) => {
+      const selectedOption = sort.find((elem) => elem.value === item.value);
+      if (selectedOption) {
+        setSelectedAsc(selectedOption.asc);
+      }
+      return (
+        <option
+          key={item.title}
+          className={cls.option}
+          value={item.value}
+        >
+          {item.title}
+        </option>
+      );
+    })}
+  </select>
+</div> */}
             </Section>
             <Link to={"/add-task"} className={cls.header_button}>
               Добавить задание
