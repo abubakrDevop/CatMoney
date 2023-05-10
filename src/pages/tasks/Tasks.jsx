@@ -145,7 +145,7 @@ export const Tasks = () => {
     return (
       <Page_404 />
     )
-  }
+    }
 
   return (
     <div className={cls.tasks}>
