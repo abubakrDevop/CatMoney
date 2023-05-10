@@ -46,7 +46,7 @@ export const Tasks = () => {
           console.log(res)
         })
         .catch((res) => {
-          
+
         })
       }
 
@@ -57,7 +57,7 @@ export const Tasks = () => {
         setCount(count + 1);
       }
       if (count >= countTasks) {
-        
+
       }
     }
     function decrement() {
@@ -75,18 +75,17 @@ export const Tasks = () => {
       .then(res => {
         setData(res.data.tasks);
         setCountTasks(res.data.pagesCount)
-        console.log(res)  
+        console.log(res)
       })
   }
-  
+
   const handleSort = (option) => {
-    console.log(option)
     $api
       .get(`/Task/tasks?${option}/${true}/${count}/${userId?.id}`)
       .then(res => {
         console.log(res.data.tasks)
       })
-  }
+  };
 
   const taskComplete = (body) => {
     $api
@@ -120,49 +119,69 @@ export const Tasks = () => {
     )
   }
 
-  return (                                                                                                                                                                                                                                                                                                        
+  return (
     <div className={cls.tasks}>
-      <iframe src={iframe} className={iframe > '' ? cls.iframe_active : cls.iframe}></iframe>
-      {iframe > '' && <div className={cls.timer}> {timeLeft} </div>}
+      <iframe
+        src={iframe}
+        className={iframe > "" ? cls.iframe_active : cls.iframe}
+      ></iframe>
+      {iframe > "" && <div className={cls.timer}> {timeLeft} </div>}
       <div className={cls.tasks_container}>
-        <Section display='flex' justify='space-between' padding='0 0 10px 0' className={cls.tasks_header}>
+        <Section
+          display="flex"
+          justify="space-between"
+          padding="0 0 10px 0"
+          className={cls.tasks_header}
+        >
           {localStorage.getItem("Premium") !== true ? (
             <h1 className={cls.tasks_headtitle}>
               Подписка:
               <span className={cls.tasks_classic}> Classic </span>
-              Купите премиум чтобы получать повышенный процент                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+              Купите премиум чтобы получать повышенный процент
             </h1>
           ) : (
             <h1 className={cls.tasks_headtitle}>
               Подписка:
               <span className={cls.tasks_premium}> Premium </span>
             </h1>
-          )}                                                                                                                       
+          )}
 
-          <Section display='flex' direction='column' justify='space-between' align='center' className={cls.tasks_header_box}>
-            <Section display='flex' justify='space-between' align='center' margin='0 0 5px 0' className={cls.tasks_header_sorts}>
-              <div className={cls.search_box} >
-                <input 
+          <Section
+            display="flex"
+            direction="column"
+            justify="space-between"
+            align="center"
+            className={cls.tasks_header_box}
+          >
+            <Section
+              display="flex"
+              justify="space-between"
+              align="center"
+              margin="0 0 5px 0"
+              className={cls.tasks_header_sorts}
+            >
+              <div className={cls.search_box}>
+                <input
                   className={cls.search_input}
                   type="search"
-                  placeholder="Поиск заданий..." 
-                  onChange={e => handleSearch(e.target.value)}
+                  placeholder="Поиск заданий..."
+                  onChange={(e) => handleSearch(e.target.value)}
                 />
               </div>
               <div className={cls.select_box}>
-                <select className={cls.select}>
-                  {
-                    sort.map(item => (
-                      <option 
-                        key={item.title} 
-                        className={cls.option} 
-                        value={item.value}
-                        onClick={console.log('asd')}
-                      >
-                        {item.title}
-                      </option>
-                    ))
-                  }
+                <select
+                  className={cls.select}
+                  onChange={(e) => handleSort(e.target.value)}
+                >
+                  {sort.map((item) => (
+                    <option
+                      key={item.title}
+                      className={cls.option}
+                      value={item.value}
+                    >
+                      {item.title}
+                    </option>
+                  ))}
                 </select>
               </div>
             </Section>
@@ -173,46 +192,124 @@ export const Tasks = () => {
         </Section>
 
         <Section className={cls.tasks_inner}>
-          {
-            data <= [] ? <h1 className={cls.loading}>Загрузка подождите...</h1> : 
-            data.map((item) => (
-              <div key={item.id} className={cls.task}>
-                <Section display='flex' align='center' overflow='hidden' className={cls.task_imgname}>
-                  {/* <img src={item.img} alt="img" className={cls.task_img} /> */}
-                  <p className={cls.task_name}>№ {item.id}</p>
-                </Section>
-  
-                <Section display='flex' width='70%' gap='10px' className={cls.task_info}>
-                  <p className={cls.task_title}>{item.description}</p>
-                  <div className={cls.task_price}>{item.price} ₽уб</div>
-                </Section>
-  
-                <Section width='25%' display='flex' align='center' justify='space-between' className={cls.task_buttons} onClick={() => {
+          {data <= [] ? (
+            <h1 className={cls.loading}>Загрузка подождите...</h1>
+          ) : (
+            <>
+{            data.map((item) => (
+            <div key={item.id} className={cls.task}>
+              <Section
+                display="flex"
+                align="center"
+                overflow="hidden"
+                className={cls.task_imgname}
+              >
+                {/* <img src={item.img} alt="img" className={cls.task_img} /> */}
+                <p className={cls.task_name}>№ {item.id}</p>
+              </Section>
+
+              <Section
+                display="flex"
+                width="70%"
+                gap="10px"
+                className={cls.task_info}
+              >
+                <p className={cls.task_title}>{item.description}</p>
+                <div className={cls.task_price}>{item.price} ₽уб</div>
+              </Section>
+
+              <Section
+                width="25%"
+                display="flex"
+                align="center"
+                justify="space-between"
+                className={cls.task_buttons}
+                onClick={() => {
                   handleIframe({
                     link: item.url,
-                    timer: item.timer
-                  })
-                }}>
-                  <Button width='70%' height='35px' onClick={() => taskComplete(
-                    {
+                    timer: item.timer,
+                  });
+                }}
+              >
+                <Button
+                  width="70%"
+                  height="35px"
+                  onClick={() =>
+                    taskComplete({
                       userId: userId.id,
                       taskId: item.id,
-                    }
-                  )}>Выполнить</Button>
-                  <div className={cls.task_clock_icon}>{item.icon} {item.timer} сек</div>
-                </Section>
-              </div>
-            ))
-          }
+                    })
+                  }
+                >
+                  Выполнить
+                </Button>
+                <div className={cls.task_clock_icon}>
+                  {item.icon} {item.timer} сек
+                </div>
+              </Section>
+            </div>
+            ))}
+              <Section
+                width="100%"
+                padding="25px 0 0 0"
+                display="flex"
+                align="center"
+                justify="space-between"
+                className={cls.navigator_btn_box}
+              >
+                <Button
+                  padding="0 20px"
+                  color="black"
+                  height="35px"
+                  back="white"
+                  className={cls.navigator_btn}
+                  onClick={decrement}
+                >
+                  <IoChevronForwardOutline className={cls.navigator_icon1} />
+                </Button>
+                <Button
+                  padding="0 20px"
+                  color="black"
+                  height="35px"
+                  back="white"
+                  className={cls.navigator_btn}
+                  onClick={increment}
+                >
+                  <IoChevronForwardOutline className={cls.navigator_icon2} />
+                </Button>
+              </Section>
+            </>
+          )}
         </Section>
-        <Section width='100%' padding='25px 0 0 0' display='flex' align='center' justify='space-between' className={cls.navigator_btn_box}>
-          <Button padding='0 20px' color='black' height='35px' back='white' className={cls.navigator_btn} onClick={decrement}>
+        {/* <Section
+          width="100%"
+          padding="25px 0 0 0"
+          display="flex"
+          align="center"
+          justify="space-between"
+          className={cls.navigator_btn_box}
+        >
+          <Button
+            padding="0 20px"
+            color="black"
+            height="35px"
+            back="white"
+            className={cls.navigator_btn}
+            onClick={decrement}
+          >
             <IoChevronForwardOutline className={cls.navigator_icon1} />
           </Button>
-          <Button padding='0 20px' color='black' height='35px' back='white' className={cls.navigator_btn} onClick={increment}>
+          <Button
+            padding="0 20px"
+            color="black"
+            height="35px"
+            back="white"
+            className={cls.navigator_btn}
+            onClick={increment}
+          >
             <IoChevronForwardOutline className={cls.navigator_icon2} />
           </Button>
-        </Section>
+        </Section> */}
       </div>
     </div>
   );

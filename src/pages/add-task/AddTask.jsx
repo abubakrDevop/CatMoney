@@ -45,11 +45,11 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
   const taimerValue = taimer[activeItem].title.split(" ")[1];
   const activePrice = taimer[activeItem].price;
 
-  const { 
-    formState, 
-    reset, 
-    register, 
-    handleSubmit 
+  const {
+    formState,
+    reset,
+    register,
+    handleSubmit
   } = useForm();
 
   const onSubmit = (data) => {
@@ -75,12 +75,12 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
           setUpdateTask(res.data);
           if (res.status === 200) {
             reset();
-          } 
+          }
         })
         .catch((error) => {
-          if (error.response.status === 401) {       
-            localStorage.removeItem("regist");  
-            localStorage.removeItem("auth");  
+          if (error.response.status === 401) {
+            localStorage.removeItem("regist");
+            localStorage.removeItem("auth");
             navigate("/register")
           }
         });
@@ -107,12 +107,12 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
           if (res.status === 200) {
             reset();
             navigate("/profile")
-          } 
+          }
         })
         .catch((error) => {
-          if (error.response.status === 401) {       
-            localStorage.removeItem("regist");  
-            localStorage.removeItem("auth");  
+          if (error.response.status === 401) {
+            localStorage.removeItem("regist");
+            localStorage.removeItem("auth");
             navigate("/register")
           }
         });

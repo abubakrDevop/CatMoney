@@ -63,7 +63,7 @@ export const Ownspace = () => {
         }
       })
       .catch((error) => {
-        if (error.response.status === 401) {         
+        if (error.response.status === 401) {
           navigate("/register")
         }
       });
@@ -98,7 +98,7 @@ export const Ownspace = () => {
         }
       })
       .catch((error) => {
-        if (error.response.status === 401) {         
+        if (error.response.status === 401) {
           navigate("/register")
         }
       });
@@ -131,7 +131,7 @@ export const Ownspace = () => {
         console.log(res);
       })
       .catch((error) => {
-        if (error.response.status === 401) {         
+        if (error.response.status === 401) {
           navigate("/register")
         }
       });
@@ -187,7 +187,7 @@ export const Ownspace = () => {
         setItems(res.data);
       })
       .catch((error) => {
-        if (error.response.status === 401) {         
+        if (error.response.status === 401) {
           navigate("/register")
         }
       });
@@ -221,9 +221,9 @@ export const Ownspace = () => {
         );
       })
       .catch((error) => {
-        if (error.response.status === 401) {       
-          localStorage.removeItem("regist");  
-          localStorage.removeItem("auth");  
+        if (error.response.status === 401) {
+          localStorage.removeItem("regist");
+          localStorage.removeItem("auth");
           navigate("/register")
         }
       });
@@ -307,7 +307,7 @@ export const Ownspace = () => {
           <p className={cls.info_text}>Ваш логин: {userData.login}</p>
           <p className={cls.info_text}>Ваш email: {userData.email}</p>
           <p className={cls.info_text}>Ваш кошелёк: {userData.walletName}</p>
-          <p className={cls.info_text}>Ваш id: {userId.id}</p>
+          <p className={cls.info_text}>Ваш id: {userId?.id}</p>
         </section>
       </section>
       <section className={cls.ownspace_headsection}>
@@ -331,7 +331,7 @@ export const Ownspace = () => {
                             Цена: {item.timer} ₽уб
                           </div>
                         </div>
-  
+
                         <section className={cls.task_buttons}>
                           <div className={cls.task_buttons_tasksBlock}>
                             <button
@@ -373,14 +373,14 @@ export const Ownspace = () => {
                           >
                             {item.status === 0 ? "Запустить" : "Остановить"}
                           </button>
-  
+
                           <button
                             onClick={() => editTask(index, item.id)}
                             className={cls.task_button1}
                           >
                             Редактировать
                           </button>
-  
+
                           <button
                             onClick={() => deleteTask(index)}
                             className={cls.task_button_delete}
