@@ -1,145 +1,143 @@
 import React, { useEffect, useState } from "react";
-import { $api, baseURL } from '../../helpers/constant/index'
-import cls from '../tasks/Tasks.module.scss'
+import { $api, baseURL } from "../../helpers/constant/index";
+import cls from "../tasks/Tasks.module.scss";
 import { Link } from "react-router-dom";
 import { FaRegClock } from "react-icons/fa";
 import { Page_404 } from "../404-page/Page_404";
-import { Button } from '../../components/small components/button/Button'
+import { Button } from "../../components/small components/button/Button";
 import { Section } from "../../components/small components/section/Section";
-import { IoChevronForwardOutline } from 'react-icons/io5'
-import { useForm } from 'react-hook-form'
+import { IoChevronForwardOutline } from "react-icons/io5";
+import { useForm } from "react-hook-form";
 import axios from "axios";
 
 export const Tasks = () => {
-  const {
-    register,
-    handleSubmit,
-  } = useForm()
+  const { register, handleSubmit } = useForm();
 
-  const [count, setCount] = useState(1)
-  const [selectedSort, setSelectedSort] = useState("sort");
-  const [selectedAsc, setSelectedAsc] = useState()
+  const [count, setCount] = useState(1);
+  const [selectedAsc, setSelectedAsc] = useState();
 
-  console.log('selectedAsc', selectedAsc)
+  console.log("selectedAsc", selectedAsc);
 
   const sort = [
     {
-      title: 'Сортировать:',
-      value: 'sort',
+      title: "Сортировать:",
+      value: "sort",
     },
     {
-      title: 'по возрастанию цены',
-      value: 'price',
-      asc: 1
+      title: "по возрастанию цены",
+      value: "price",
+      asc: 1,
     },
     {
-      title: 'по убыванию цены',
-      value: 'price',
-      asc: 0
+      title: "по убыванию цены",
+      value: "price",
+      asc: 0,
     },
     {
-      title: 'по максимальной времени',
-      value: 'time',
-      asc: 1
+      title: "по максимальной времени",
+      value: "time",
+      asc: 1,
     },
     {
-      title: 'по минимальной времени',
-      value: 'time',
-      asc: 0
+      title: "по минимальной времени",
+      value: "time",
+      asc: 0,
     },
-  ]
+  ];
 
-  const [iframe, setIframe] = useState()
+  const [iframe, setIframe] = useState();
   const [timeLeft, setTimeLeft] = useState(0);
-  const [data, setData] = useState([])
-  const [countTasks, setCountTasks] = useState([])
+  const [data, setData] = useState([]);
+  const [countTasks, setCountTasks] = useState([]);
 
   const userId = JSON.parse(localStorage.getItem("regist"));
 
-    useEffect(() => {
-      if (count >= 1 || count < countTasks) {
-        axios
+  useEffect(() => {
+    if (count >= 1 || count < countTasks) {
+      axios
         .get(`http://localhost:5000/Task/tasks/${count}/${userId?.id}`)
         .then((res) => {
           setData(res.data.tasks);
-          setCountTasks(res.data.pagesCount)
+          setCountTasks(res.data.pagesCount);
         })
-        .catch((res) => {
-
-        })
-      }
-
-    }, [count]);
-
-    function increment() {
-      if (count < countTasks) {
-        setCount(count + 1);
-      }
-      if (count >= countTasks) {
-
-      }
+        .catch((res) => {});
     }
-    function decrement() {
-      if (count > 1) {
-        setCount(count - 1);
-      }
-      if (count === 1 || count < 2) {
+  }, [count]);
 
-      }
+  function increment() {
+    if (count < countTasks) {
+      setCount(count + 1);
     }
+    if (count >= countTasks) {
+    }
+  }
+  function decrement() {
+    if (count > 1) {
+      setCount(count - 1);
+    }
+    if (count === 1 || count < 2) {
+    }
+  }
 
   const handleSearch = (description) => {
     $api
-      .get(`http://localhost:5000/Task/tasks/${description}/${count}/${userId?.id}`)
-      .then(res => {
+      .get(
+        `http://localhost:5000/Task/tasks/${description}/${count}/${userId?.id}`
+      )
+      .then((res) => {
         setData(res.data.tasks);
-        setCountTasks(res.data.pagesCount)
-        console.log(res)
-      })
-  }
+        setCountTasks(res.data.pagesCount);
+        console.log(res);
+      });
+  };
 
   const handleSort = (asc, option) => {
-    setSelectedSort(option);
-    console.log('option', option, asc);
-    console.log('asc', asc);
- 
-    let option1 = '';
+    console.log("option", option, asc);
+    console.log("asc", asc);
 
-    if (option === 'по возрастанию цены') {
+    let option1 = "";
+
+    if (option === "по возрастанию цены") {
       option1 = "price";
-    } else if (option === 'по убыванию цены') {
+    } else if (option === "по убыванию цены") {
       option1 = "price";
-    } else if (option === 'по максимальной времени') {
+    } else if (option === "по максимальной времени") {
       option1 = "time";
-    } else if (option === 'по минимальной времени') {
+    } else if (option === "по минимальной времени") {
       option1 = "time";
     }
 
-    console.log('option1', option1);
+    console.log("option1", option1);
     $api
-      .get(`http://localhost:5000/Task/tasks/${option1}/${asc}/${count}/${userId?.id}`)
-      .then(res => {
+      .get(
+        `http://localhost:5000/Task/tasks/${option1}/${asc}/${count}/${userId?.id}`
+      )
+      .then((res) => {
         console.log(res);
         setData(res.data.tasks);
         setCountTasks(res.data.pagesCount);
       });
   };
 
+  const onClick = (e, asc) => {
+    e.preventDefault();
+    console.log("ascwwwwwwww", asc);
+  };
+
   const taskComplete = (body) => {
-    $api
-      .post('Task/complete', body)
-  }
+    $api.post("Task/complete", body);
+  };
 
   const handleIframe = (data) => {
-    setIframe(data.link)
+    setIframe(data.link);
     setTimeLeft(data.timer / 1000);
     setTimeout(() => {
-      setIframe('')
+      setIframe("");
       if (data.link) {
         window.open(data.link);
       }
-    }, data.timer)
-  }
+    }, data.timer);
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -151,10 +149,8 @@ export const Tasks = () => {
     return () => clearTimeout(timer);
   }, [timeLeft]);
 
-  if (localStorage.getItem('registered') !== 'ok') {
-    return (
-      <Page_404 />
-    )
+  if (localStorage.getItem("registered") !== "ok") {
+    return <Page_404 />;
   }
 
   return (
@@ -222,27 +218,30 @@ export const Tasks = () => {
                   ))}
                 </select>
               </div> */}
-<div className={cls.select_box}>
-  <select
-    className={cls.select}
-    value={selectedSort}
-    onChange={(e) => {
-      console.log(e.target)
-      return handleSort(e.target.value, e.target.options[e.target.selectedIndex].label);
-    }}
-  >
-    {sort.map((item) => (
-      <option
-        key={item.title}
-        className={cls.option}
-        value={item.asc}
-        label={item.title}
-      >
-        {item.title}
-      </option>
-    ))}
-  </select>
-</div>
+              <div className={cls.select_box}>
+                <select
+                  className={cls.select}
+                  onChange={(e) => {
+                    console.log(e.target);
+                    return handleSort(
+                      e.target.value,
+                      e.target.options[e.target.selectedIndex].label
+                    );
+                  }}
+                >
+                  {sort.map((item) => (
+                    <option
+                      key={item.title}
+                      className={cls.option}
+                      value={item.asc}
+                      label={item.title}
+                      onClick={(e) => onClick(e, item.asc)}
+                    >
+                      {item.title}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </Section>
             <Link to={"/add-task"} className={cls.header_button}>
               Добавить задание
@@ -255,59 +254,59 @@ export const Tasks = () => {
             <h1 className={cls.loading}>Загрузка подождите...</h1>
           ) : (
             <>
-{            data.map((item) => (
-            <div key={item.id} className={cls.task}>
-              <Section
-                display="flex"
-                align="center"
-                overflow="hidden"
-                className={cls.task_imgname}
-              >
-                {/* <img src={item.img} alt="img" className={cls.task_img} /> */}
-                <p className={cls.task_name}>№ {item.id}</p>
-              </Section>
+              {data.map((item) => (
+                <div key={item.id} className={cls.task}>
+                  <Section
+                    display="flex"
+                    align="center"
+                    overflow="hidden"
+                    className={cls.task_imgname}
+                  >
+                    {/* <img src={item.img} alt="img" className={cls.task_img} /> */}
+                    <p className={cls.task_name}>№ {item.id}</p>
+                  </Section>
 
-              <Section
-                display="flex"
-                width="70%"
-                gap="10px"
-                className={cls.task_info}
-              >
-                <p className={cls.task_title}>{item.description}</p>
-                <div className={cls.task_price}>{item.price} ₽уб</div>
-              </Section>
+                  <Section
+                    display="flex"
+                    width="70%"
+                    gap="10px"
+                    className={cls.task_info}
+                  >
+                    <p className={cls.task_title}>{item.description}</p>
+                    <div className={cls.task_price}>{item.price} ₽уб</div>
+                  </Section>
 
-              <Section
-                width="25%"
-                display="flex"
-                align="center"
-                justify="space-between"
-                className={cls.task_buttons}
-                onClick={() => {
-                  handleIframe({
-                    link: item.url,
-                    timer: item.timer,
-                  });
-                }}
-              >
-                <Button
-                  width="70%"
-                  height="35px"
-                  onClick={() =>
-                    taskComplete({
-                      userId: userId.id,
-                      taskId: item.id,
-                    })
-                  }
-                >
-                  Выполнить
-                </Button>
-                <div className={cls.task_clock_icon}>
-                  {item.icon} {item.timer} сек
+                  <Section
+                    width="25%"
+                    display="flex"
+                    align="center"
+                    justify="space-between"
+                    className={cls.task_buttons}
+                    onClick={() => {
+                      handleIframe({
+                        link: item.url,
+                        timer: item.timer,
+                      });
+                    }}
+                  >
+                    <Button
+                      width="70%"
+                      height="35px"
+                      onClick={() =>
+                        taskComplete({
+                          userId: userId.id,
+                          taskId: item.id,
+                        })
+                      }
+                    >
+                      Выполнить
+                    </Button>
+                    <div className={cls.task_clock_icon}>
+                      {item.icon} {item.timer} сек
+                    </div>
+                  </Section>
                 </div>
-              </Section>
-            </div>
-            ))}
+              ))}
               <Section
                 width="100%"
                 padding="25px 0 0 0"
@@ -372,4 +371,4 @@ export const Tasks = () => {
       </div>
     </div>
   );
-}
+};
