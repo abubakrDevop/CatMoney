@@ -38,12 +38,12 @@ export const Tasks = () => {
       asc: 0
     },
     {
-      title: 'по возрастанию времени',
+      title: 'по максимальной времени',
       value: 'time',
       asc: 1
     },
     {
-      title: 'по убыванию времени',
+      title: 'по минимальной времени',
       value: 'time',
       asc: 0
     },
@@ -98,22 +98,32 @@ export const Tasks = () => {
       })
   }
 
-  const handleSort = (option) => {
+  const handleSort = (asc, option) => {
     setSelectedSort(option);
-    console.log('option', option)
-    $api
-      .get(`http://localhost:5000/Task/tasks/${option}/${selectedAsc}/${count}/${userId?.id}`)
-      .then(res => {
-        console.log(res)
-        setData(res.data.tasks);
-        setCountTasks(res.data.pagesCount)
-      })
-  };
+    console.log('option', option, asc);
+    console.log('asc', asc);
+ 
+    let option1 = '';
 
-  const onClickAsc = (asc) => {
-    console.log('asc', asc)
-    setSelectedAsc(asc)
-  }
+    if (option === 'по возрастанию цены') {
+      option1 = "price";
+    } else if (option === 'по убыванию цены') {
+      option1 = "price";
+    } else if (option === 'по максимальной времени') {
+      option1 = "time";
+    } else if (option === 'по минимальной времени') {
+      option1 = "time";
+    }
+
+    console.log('option1', option1);
+    $api
+      .get(`http://localhost:5000/Task/tasks/${option1}/${asc}/${count}/${userId?.id}`)
+      .then(res => {
+        console.log(res);
+        setData(res.data.tasks);
+        setCountTasks(res.data.pagesCount);
+      });
+  };
 
   const taskComplete = (body) => {
     $api
@@ -145,7 +155,7 @@ export const Tasks = () => {
     return (
       <Page_404 />
     )
-    }
+  }
 
   return (
     <div className={cls.tasks}>
@@ -212,29 +222,27 @@ export const Tasks = () => {
                   ))}
                 </select>
               </div> */}
-{/* <div className={cls.select_box}>
+<div className={cls.select_box}>
   <select
     className={cls.select}
     value={selectedSort}
-    onChange={(e) => handleSort(e.target.value)}
+    onChange={(e) => {
+      console.log(e.target)
+      return handleSort(e.target.value, e.target.options[e.target.selectedIndex].label);
+    }}
   >
-    {sort.map((item) => {
-      const selectedOption = sort.find((elem) => elem.value === item.value);
-      if (selectedOption) {
-        setSelectedAsc(selectedOption.asc);
-      }
-      return (
-        <option
-          key={item.title}
-          className={cls.option}
-          value={item.value}
-        >
-          {item.title}
-        </option>
-      );
-    })}
+    {sort.map((item) => (
+      <option
+        key={item.title}
+        className={cls.option}
+        value={item.asc}
+        label={item.title}
+      >
+        {item.title}
+      </option>
+    ))}
   </select>
-</div> */}
+</div>
             </Section>
             <Link to={"/add-task"} className={cls.header_button}>
               Добавить задание
