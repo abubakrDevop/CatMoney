@@ -53,46 +53,4 @@ const ref = useRef(null);
 };
 
 export default QRCodeExample;
-// import React, { useRef, forwardRef, useEffect } from "react";
-// import { QRCodeSVG } from "qrcode.react";
 
-// const ForwardedQRCodeSVG = forwardRef((props, ref) => {
-//   return <QRCodeSVG ref={ref} {...props} />;
-// });
-
-// const QRCodeExample = () => {
-//   const qrCodeRef = useRef(null);
-
-//   const saveQRCode = () => {
-//     const dataURL = qrCodeRef.current.toDataURL();
-
-//     // Создаем ссылку для скачивания файла
-//     const link = document.createElement("a");
-//     link.href = dataURL;
-//     link.download = "qrcode.png"; // Указываем имя файла
-//     link.click();
-//   };
-
-//   useEffect(() => {
-//     // Задержка перед вызовом saveQRCode()
-//     const timeoutId = setTimeout(() => {
-//       if (qrCodeRef.current) {
-//         saveQRCode();
-//       }
-//     }, 1000); // Задержка в миллисекундах
-
-//     return () => clearTimeout(timeoutId); // Очистка таймера при размонтировании компонента
-//   }, []);
-
-//   return (
-//     <>
-//       <ForwardedQRCodeSVG
-//         ref={qrCodeRef}
-//         value="https://kot-money-com.vercel.app/"
-//       />
-//       <button onClick={saveQRCode}>Сохранить QR-код</button>
-//     </>
-//   );
-// };
-
-// export default QRCodeExample;
