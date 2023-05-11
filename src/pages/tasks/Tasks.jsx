@@ -91,10 +91,7 @@ export const Tasks = () => {
       });
   };
 
-  const handleSort = (asc, option) => {
-    console.log("option", option, asc);
-    console.log("asc", asc);
-
+  const handleSort = (e, asc, option) => {
     let option1 = "";
 
     if (option === "по возрастанию цены") {
@@ -107,7 +104,6 @@ export const Tasks = () => {
       option1 = "time";
     }
 
-    console.log("option1", option1);
     $api
       .get(
         `http://localhost:5000/Task/tasks/${option1}/${asc}/${count}/${userId?.id}`
@@ -202,22 +198,6 @@ export const Tasks = () => {
                   onChange={(e) => handleSearch(e.target.value)}
                 />
               </div>
-              {/* <div className={cls.select_box}>
-                <select
-                  className={cls.select}
-                  onChange={(e) => handleSort(e.target.value)}
-                >
-                  {sort.map((item) => (
-                    <option
-                      key={item.title}
-                      className={cls.option}
-                      value={item.value}
-                    >
-                      {item.title}
-                    </option>
-                  ))}
-                </select>
-              </div> */}
               <div className={cls.select_box}>
                 <select
                   className={cls.select}
