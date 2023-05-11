@@ -119,11 +119,6 @@ export const Tasks = () => {
       });
   };
 
-  const onClick = (e, asc) => {
-    e.preventDefault();
-    console.log("ascwwwwwwww", asc);
-  };
-
   const taskComplete = (body) => {
     $api.post("Task/complete", body);
   };
@@ -202,22 +197,6 @@ export const Tasks = () => {
                   onChange={(e) => handleSearch(e.target.value)}
                 />
               </div>
-              {/* <div className={cls.select_box}>
-                <select
-                  className={cls.select}
-                  onChange={(e) => handleSort(e.target.value)}
-                >
-                  {sort.map((item) => (
-                    <option
-                      key={item.title}
-                      className={cls.option}
-                      value={item.value}
-                    >
-                      {item.title}
-                    </option>
-                  ))}
-                </select>
-              </div> */}
               <div className={cls.select_box}>
                 <select
                   className={cls.select}
@@ -235,7 +214,6 @@ export const Tasks = () => {
                       className={cls.option}
                       value={item.asc}
                       label={item.title}
-                      onClick={(e) => onClick(e, item.asc)}
                     >
                       {item.title}
                     </option>
