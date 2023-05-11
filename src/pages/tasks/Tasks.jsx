@@ -115,11 +115,6 @@ export const Tasks = () => {
       });
   };
 
-  const onClick = (e, asc) => {
-    e.preventDefault();
-    console.log("ascwwwwwwww", asc);
-  };
-
   const taskComplete = (body) => {
     $api.post("Task/complete", body);
   };
@@ -215,7 +210,6 @@ export const Tasks = () => {
                       className={cls.option}
                       value={item.asc}
                       label={item.title}
-                      onClick={(e) => onClick(e, item.asc)}
                     >
                       {item.title}
                     </option>
