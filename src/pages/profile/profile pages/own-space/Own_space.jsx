@@ -330,6 +330,9 @@ export const Ownspace = () => {
                           <div className={cls.task_price}>
                             Цена: {item.timer} ₽уб
                           </div>
+                          <div className={cls.task_price}>
+                            Просмотров: {item.views}
+                          </div>
                         </div>
 
                         <section className={cls.task_buttons}>
