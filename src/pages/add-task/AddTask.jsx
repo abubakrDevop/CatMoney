@@ -40,10 +40,22 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
       title: "Таймер: 25 секунд",
       price: 0.11,
     },
+    {
+      id: 6,
+      title: "Таймер: 30 секунд",
+      price: 0.15,
+    },   
+    {
+      id: 7,
+      title: "Таймер: 60 секунд",
+      price: 0.20,
+    },
   ];
 
   const taimerValue = taimer[activeItem].title.split(" ")[1];
   const activePrice = taimer[activeItem].price;
+  console.log('taimerValue', taimerValue)
+  console.log('activePrice', activePrice)
 
   const {
     formState,
@@ -96,7 +108,8 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
         balance: data.balance === '' ? 5 : data.balance,
       };
 
-      if (data.balance >= data.price) {
+      // if (data.balance >= data.price) {
+        
         $api
         .post("/Task/add", body, {
           headers: {
@@ -117,10 +130,10 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
           }
         });
 
-        setActive(false)
-      } else {
-        setActive(true)
-      }
+      //   setActive(false)
+      // } else {
+      //   setActive(true)
+      // }
     }
   };
 
@@ -174,19 +187,20 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
           </p>
 
           <p className={cls.info_text}>
-              Цена за переход:
-              {
+              Цена за переход: 
+              {/* {
                 formState.errors.price && <span className={cls.task_error}> {formState.errors.price.message} </span>
               }
               {
                 active && <span className={cls.task_error}> Цена за переход не может превышать цену баланса!</span>
-              }
+              } */}
               <span className={cls.info_text_box}>
                 <FaRubleSign className={cls.info_icon} />
                 <input
                   className={cls.info_text_input}
                   placeholder=""
-                  {...register("price", Form.Options.numbers)}
+                  value={`${value} рубля(ей)`}
+                  // {...register("price", Form.Options.numbers)}
                 />
               </span>
             </p>

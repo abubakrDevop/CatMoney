@@ -26,23 +26,23 @@ export const Tasks = () => {
     {
       title: "по возрастанию цены",
       value: "price",
-      asc: 1,
+      asc: false,
     },
     {
       title: "по убыванию цены",
       value: "price",
-      asc: 0,
+      asc: true,
     },
-    {
-      title: "по максимальной времени",
-      value: "time",
-      asc: 1,
-    },
-    {
-      title: "по минимальной времени",
-      value: "time",
-      asc: 0,
-    },
+    // {
+    //   title: "по максимальной времени",
+    //   value: "time",
+    //   asc: 1,
+    // },
+    // {
+    //   title: "по минимальной времени",
+    //   value: "time",
+    //   asc: 0,
+    // },
   ];
 
   const [iframe, setIframe] = useState();
@@ -91,19 +91,20 @@ export const Tasks = () => {
       });
   };
 
-  const handleSort = (e, asc, option) => {
+  const handleSort = (asc, option) => {
     let option1 = "";
 
     if (option === "по возрастанию цены") {
       option1 = "price";
     } else if (option === "по убыванию цены") {
       option1 = "price";
-    } else if (option === "по максимальной времени") {
-      option1 = "time";
-    } else if (option === "по минимальной времени") {
-      option1 = "time";
     }
-
+    //  else if (option === "по максимальной времени") {
+    //   option1 = "time";
+    // } else if (option === "по минимальной времени") {
+    //   option1 = "time";
+    // }
+   console.log('option1', option1)
     $api
       .get(
         `http://localhost:5000/Task/tasks/${option1}/${asc}/${count}/${userId?.id}`
@@ -197,7 +198,6 @@ export const Tasks = () => {
                 <select
                   className={cls.select}
                   onChange={(e) => {
-                    console.log(e.target);
                     return handleSort(
                       e.target.value,
                       e.target.options[e.target.selectedIndex].label
