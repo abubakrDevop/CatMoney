@@ -1,8 +1,9 @@
 import React from "react";
 import cls from './Header.module.scss'
 import { Link, useLocation } from 'react-router-dom'
-import icon from '../../assets/img/icon.png'
+import { useNavigate } from "react-router";
 import petfoot from '../../assets/img/petfoot.png'
+import { useSelector} from "react-redux";
 import  {
           IoLogInOutline,
           IoLogOutOutline,
@@ -15,7 +16,9 @@ import  {
 
 export const Header = () => {
   const [active, setActive] = React.useState(false)
+  const userData = useSelector(state => state.userData.userData)
   const location = useLocation();
+  let navigate = useNavigate();
 
   const links = [
     {
@@ -94,7 +97,7 @@ export const Header = () => {
                 onClick={() => {setActive(false)}}
               >
                 <IoPersonOutline className={cls.profil_icon} />
-                <span className={cls.profil_text}>Alex Kendal</span>
+                <span className={cls.profil_text}>{userData.login}</span>
               </Link>
             )}
           </div>
@@ -106,8 +109,8 @@ export const Header = () => {
                 <Link className={cls.header__icon} to={"/register"}>
                   <IoLogInOutline
                     onClick={() => {
-                      // localStorage.setItem("registered", "ok");
-                      // window.location.reload();
+                      localStorage.setItem("registered", "ok");
+                      window.location.reload();
                     }}
                   />
                 </Link>
@@ -119,6 +122,7 @@ export const Header = () => {
                   className={cls.header__icon}
                   onClick={() => {
                     localStorage.setItem("registered", "error");
+                    navigate("/register");
                     window.location.reload();
                   }}
                 />

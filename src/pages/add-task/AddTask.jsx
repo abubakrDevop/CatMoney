@@ -9,7 +9,7 @@ import { $api } from "../../helpers/constant/index";
 export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
   const navigate = useNavigate()
   const [activeItem, setActiveItem] = useState(0);
-  const [value, setValue] = useState("");
+  const [value, setValue] = useState(0.50);
   const [active, setActive] = useState(false)
 
   const userId = JSON.parse(localStorage.getItem("regist"));
@@ -18,37 +18,37 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
     {
       id: 1,
       title: "Таймер: 5 секунд",
-      price: 0.07,
+      price: 0.50,
     },
     {
       id: 2,
       title: "Таймер: 10 секунд",
-      price: 0.08,
+      price: 0.60,
     },
     {
       id: 3,
       title: "Таймер: 15 секунд",
-      price: 0.09,
+      price: 0.70,
     },
     {
       id: 4,
       title: "Таймер: 20 секунд",
-      price: 0.1,
+      price: 0.80,
     },
     {
       id: 5,
       title: "Таймер: 25 секунд",
-      price: 0.11,
+      price: 0.90,
     },
     {
       id: 6,
       title: "Таймер: 30 секунд",
-      price: 0.15,
+      price: 1.00,
     },   
     {
       id: 7,
       title: "Таймер: 60 секунд",
-      price: 0.20,
+      price: 2.00,
     },
   ];
 
@@ -199,8 +199,8 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
                 <input
                   className={cls.info_text_input}
                   placeholder=""
-                  value={`${value} рубля(ей)`}
-                  // {...register("price", Form.Options.numbers)}
+                  value={`${value} рубля(ей)!`}
+                  readOnly
                 />
               </span>
             </p>

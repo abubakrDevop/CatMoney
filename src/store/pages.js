@@ -1,4 +1,3 @@
-
 const defaultState = {
   pages: 1,
 }

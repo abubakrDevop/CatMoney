@@ -59,14 +59,6 @@ export const SignIn = () => {
       });
   }
 
-  // useEffect(() => {
-  //   axios.get('http://localhost:5000/api/v1/counter')
-  //    .then((res) => console.log(res) )
-  //    .catch(error => {
-  //     console.log(error)
-  //   })
-  // }, [])
-
   return (
       <form onSubmit={handleSubmit(onSubmit)} className={cls.root__form}>
         <h1 className={cls.headtitle}>Вход</h1>

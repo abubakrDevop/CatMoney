@@ -18,6 +18,7 @@ import { useState } from "react";
 export const SignUp = () => {
   const [active, setActive] = useState(false);
   const [error, setError] = useState("");
+  console.log(error)
   let navigate = useNavigate();
   // const dispatch = useDispatch()
   // const {inputData} = useSelector(state => state.user)
@@ -31,7 +32,6 @@ export const SignUp = () => {
       email: data.email,
       password: data.password,
     };
-    console.log("noneRefBody", body);
 
     $api
       .post("/User/register", body)
@@ -45,34 +45,15 @@ export const SignUp = () => {
           setTimeout(() => {
             window.location.reload();
           }, 3000);
-        } else if ("Такой пользователь уже зарегистрирован!") {
-          reset();
-          setError(res.data.status);
         }
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.response.data.status)
+        if (error.response.data.status) {
+          reset();
+          setError(error.response.data.status);
+        }
       });
-    // axios
-    //   .post("http://localhost:5000/User/register", body)
-    //   .then((res) => {
-    //     console.log(res);
-    //     if (res.status === 200) {
-    //       reset();
-    //       localStorage.setItem("regist", JSON.stringify(res.data));
-    //       localStorage.setItem("registered", "ok");
-    //       navigate("/profile/own-space");
-    //       setTimeout(() => {
-    //         window.location.reload();
-    //       }, 3000);
-    //     } else if ("Такой пользователь уже зарегистрирован!") {
-    //       reset();
-    //       setError(res.data.status);
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
   };
 
   return (
@@ -85,7 +66,8 @@ export const SignUp = () => {
           {formState.errors.login.message}{" "}
         </span>
       )}
-      {error && <span className={cls.root_error}> {error} </span>}
+
+      {error && <span className={cls.root_error}> {error}! </span>}
 
       <div className={cls.form_inputbox}>
         <IoPersonOutline className={cls.input_icon} />

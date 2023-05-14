@@ -133,6 +133,9 @@ $mobileSmall: 479.98px; // телефоны s
                     overflow: hidden;
                     text-decoration: none;
                     box-shadow: 0 0 5px black;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     z-index: 0;
 
                     &::before {
@@ -154,39 +157,12 @@ $mobileSmall: 479.98px; // телефоны s
                     }
                 }
 
-                .card_button2 {
-                    background: none;
-                    border: none;
-                    color: white;
-                    font-size: 16px;
-                    font-weight: bold;
-                    position: relative;
-                    margin: 50px 0 0 0;
-                    width: 80%;
-                    height: 35px;
+                .button_false {
                     background: red;
-                    border-radius: 30px;
-                    overflow: hidden;
-                    text-decoration: none;
-                    box-shadow: 0 0 5px black;
-                    z-index: 0;
+                    cursor: not-allowed;
 
                     &::before {
-                        content: '';
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 0%;
                         background: rgb(163, 6, 6);
-                        transition: .5s;
-                        border-bottom-left-radius: 50%;
-                        border-bottom-right-radius: 50%;
-                        z-index: -1;
-                    }
-
-                    &:hover::before {
-                        height: 180%;
                     }
                 }
         }

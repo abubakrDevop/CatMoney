@@ -36,7 +36,7 @@ export const Share = () => {
         </p>
 
         <div className={cls.share_link}>
-          <div className={cls.share_input} > {userLink} </div>
+          <input className={cls.share_input} defaultValue={userLink} readOnly /> 
           <button onClick={() => {
             setActive(prev => !prev)
             handleClipboard(userLink)

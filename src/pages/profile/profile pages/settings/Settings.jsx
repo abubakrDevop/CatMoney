@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import cls from '../settings/Settings.module.scss'
-import axios from "axios";
 import { useForm } from 'react-hook-form'
 import { Form } from '../../../../helpers/form/index'
 import {  IoPersonOutline,
@@ -15,6 +14,8 @@ export const Settings = () => {
   const navigate = useNavigate()
   // const [imageUrl, setImageUrl] = React.useState("")
   const [active, setActive] = React.useState(false)
+  const [success, setSeccess] = React.useState(true)
+  console.log(success)
 
   const {
     formState,
@@ -39,12 +40,11 @@ export const Settings = () => {
       .put("/User/update", body)
       .then((res) => {
         console.log(res);
-        if (res.data.status === "") {
+        if (res.data.status === 200) {
+          setSeccess(true)
           reset();
-        } else if (res.data.status === "") {
-          reset();
-        } else if (res.data.status === "") {
-          reset();
+        } else {
+
         }
       })
       .catch((error) => {
@@ -108,7 +108,8 @@ export const Settings = () => {
         </div> */}
 
         <section className={cls.ownspace_info}>
-          <p className={cls.info_text}>
+          <div className={success === false ? cls.success : `${cls.success} ${cls.success_active}`}>Ваши данные успешно изменены!</div>
+          <div className={cls.info_text}>
             Введите логин:
             <div className={cls.input_box}>
               <IoPersonOutline className={cls.info_text_icon} />
@@ -118,8 +119,8 @@ export const Settings = () => {
                 {...register('login', Form.Options.settings)}
               />
             </div>
-          </p>
-          <p className={cls.info_text}>
+          </div>
+          <div className={cls.info_text}>
             Введите email:
             <div className={cls.input_box}>
               <IoAtCircleOutline className={cls.info_text_icon} />
@@ -129,8 +130,8 @@ export const Settings = () => {
                 {...register('email', Form.Options.settings)}
               />
             </div>
-          </p>
-          <p className={cls.info_text}>
+          </div>
+          <div className={cls.info_text}>
             Введите пароль:
             <div className={cls.input_box}>
               <IoLockClosedOutline className={cls.info_text_icon} />
@@ -140,8 +141,8 @@ export const Settings = () => {
                 {...register('password', Form.Options.settings)}
               />
             </div>
-          </p>
-          <p className={cls.info_text}>
+          </div>
+          <div className={cls.info_text}>
             Введите кошелёк:
             {
               formState.errors.wallet && <span className={cls.wallet_error}> {formState.errors.wallet.message} </span>
@@ -157,7 +158,7 @@ export const Settings = () => {
                 {...register('wallet', Form.Options.settings)}
               />
             </div>
-          </p>
+          </div>
           <button type="submit" className={cls.ownspace_changeinfo}>Применить изменения</button>
         </section>
       </section>

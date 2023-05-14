@@ -4,7 +4,7 @@ const cors = require('cors')
 
 const app = express()
 
-const API_SERVICE_URL = 'https://f47f-80-94-250-75.ngrok-free.app'
+const API_SERVICE_URL = 'https://fc37-80-94-250-75.ngrok-free.app'
 
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0
 

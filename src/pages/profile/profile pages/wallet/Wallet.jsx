@@ -13,7 +13,7 @@ export const Wallet = () => {
 			walletNum: 'Не указан!',
 			min: '1 ₽',
 			max: '15000 ₽',
-			connected: false,
+			activeWallet: true,
 		},
 		{
 			id: uuidv4(),
@@ -23,7 +23,7 @@ export const Wallet = () => {
 			walletNum: 'Не указан!',
 			min: '0 ₽',
 			max: '0 ₽',
-			connected: false,
+			activeWallet: false,
 		},
 		{
 			id: uuidv4(),
@@ -33,7 +33,7 @@ export const Wallet = () => {
 			walletNum: 'Не указан!',
 			min: '0 ₽',
 			max: '0 ₽',
-			connected: false,
+			activeWallet: false,
 		},
 		{
 			id: uuidv4(),
@@ -43,18 +43,18 @@ export const Wallet = () => {
 			walletNum: 'Не указан!',
 			min: '0 ₽',
 			max: '0 ₽',
-			connected: false,
+			activeWallet: false,
 		},
 	]
 	const [wallets, setWallets] = useState(walletsData)
 
-	const handleChangeConnected = (id) => {
-		setWallets(wallets.map(item => item.id === id ? {...item, connected: !item.connected} : item))
-	}
+	// const handleChangeConnected = (id) => {
+	// 	setWallets(wallets.map(item => item.id === id ? {...item, connected: !item.connected} : item))
+	// }
 
 	return (
 		<div className={cls.wallet}>
-			<h1 className={cls.wallet_headtitle}>Подключите один из кошелков чтобы выводить деньги!</h1>
+			<h1 className={cls.wallet_headtitle}>Доступные кошельки для вводов и выводов, чтобы начать зарабатывать установите один из удобных вариантов!</h1>
 			<section className={cls.wallet_cards}>
 				{
 					wallets.map(item => (
@@ -81,10 +81,10 @@ export const Wallet = () => {
 							</section>
 
 							{
-								item.connected ?
-                <button onClick={() => handleChangeConnected(item.id)} className={cls.card_button2}>Удалить</button>
-                :
-								<button onClick={() => handleChangeConnected(item.id)} className={cls.card_button1}>Установить</button>
+								item.activeWallet === true ?
+								<Link to={'/profile/settings'} onClick={() => {}} className={cls.card_button1}>Настроить</Link>
+								:
+								<button onClick={() => {}} className={`${cls.card_button1} ${cls.button_false}`}>Недоступно</button>
 							}
 
 						</div>

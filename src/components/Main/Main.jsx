@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import cls from '../Main/Main.module.scss'
+import { useDispatch } from "react-redux";
 import  { IoChevronDownOutline, 
           IoPlanetOutline,
           IoPeopleOutline, 
@@ -13,33 +14,9 @@ import AnimItem from "../AnimItem";
 
 export const Main = () => {
   const [userValues, setUsersValues] = useState([])
+  const dispatch = useDispatch()
 
-  const data = [
-    {
-      id: 1,
-      icon: '',
-      text: '',
-      number: '',
-    },
-    {
-      id: 2,
-      icon: '',
-      text: '',
-      number: '',
-    },
-    {
-      id: 3,
-      icon: '',
-      text: '',
-      number: '',
-    },
-    {
-      id: 4,
-      icon: '',
-      text: '',
-      number: '',
-    },
-  ]
+  const userId = JSON.parse(localStorage.getItem("regist"));
 
   useEffect(() => {
   axios.get('http://localhost:5000/Counter/count')
@@ -48,6 +25,14 @@ export const Main = () => {
       setUsersValues(res.data)
     })
     .catch(error => console.log(error))
+
+  axios.get(`http://localhost:5000/Task/user/${userId?.id}`)
+    .then((res) => {
+      console.log(res.data)
+      if (res.status === 200) {
+        dispatch({type: 'add_userData', payload: res.data.user})
+      }
+    })
   }, [])
 
   return (

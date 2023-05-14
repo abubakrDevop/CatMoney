@@ -57,7 +57,7 @@ export const SignRefUp = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={cls.root__form}>
-      <h1 className={cls.headtitle}>Регистрация Ref</h1>
+      <h1 className={cls.headtitle}>Регистрация</h1>
 
       {formState.errors.login && (
         <span className={cls.root_error}>

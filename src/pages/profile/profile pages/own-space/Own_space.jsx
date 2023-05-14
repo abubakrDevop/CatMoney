@@ -5,9 +5,13 @@ import axios from "axios";
 import { AddTask } from "../../../add-task/AddTask";
 import { $api, baseURL } from "../../../../helpers/constant/index";
 import { data } from "../own-space/helpers";
+import { useDispatch, useSelector } from "react-redux";
 
 export const Ownspace = () => {
   let navigate = useNavigate();
+  const dispatch = useDispatch()
+  const userData = useSelector(state => state.userData.userData)
+  const userTasks = useSelector(state => state.userTasks.userTasks)
 
   const [active, setActive] = useState(false);
   const [activeTasksUser, setActiveTasksUser] = useState(false);
@@ -19,12 +23,6 @@ export const Ownspace = () => {
   const [getAmount, setGetAmount] = useState("");
 
   const [items, setItems] = useState([]);
-  const [userData, setUserData] = useState({
-    balance: '0',
-    login: '',
-    email: '',
-    walletName: '',
-  })
 
   const [tasks, setTasks] = useState(items.length > 0 ? items : data);
   const [updateTask, setUpdateTask] = useState([]);
@@ -36,7 +34,6 @@ export const Ownspace = () => {
 
   const handlerAddConfirmTasksUser = (taskId) => {
     setActiveTasksUser(!activeTasksUser);
-    alert(`Пополнено на ${addAmountTasksUser ? addAmountTasksUser : 0} рублей`);
     setAddAmountTasksUser("");
 
     const body = {
@@ -56,6 +53,7 @@ export const Ownspace = () => {
         },
       })
       .then((res) => {
+        console.log(res)
         if (res.data.status === "На вашем балансе недостаточно средств") {
           alert("На вашем балансе недостаточно средств");
         } else if (res.data === 200) {
@@ -63,6 +61,7 @@ export const Ownspace = () => {
         }
       })
       .catch((error) => {
+        console.log(error)
         if (error.response.status === 401) {
           navigate("/register")
         }
@@ -80,7 +79,6 @@ export const Ownspace = () => {
 
   const handlerGetConfirm = () => {
     setGetActive(!getActive);
-    alert(`Вывести ${getAmount ? getAmount : 0} рублей`);
     setGetAmount("");
     const body = {
       id: userId.id,
@@ -152,10 +150,10 @@ export const Ownspace = () => {
       axios
       .get(`http://localhost:5000/Task/user/${userId?.id}`)
       .then((res) => {
+        console.log(res.data.user)
         if (res.status === 200) {
           setItems(res.data.tasks);
-          setUserData(res.data.user)
-          console.log(res.data)
+          dispatch({type: 'add_userData', payload: res.data.user})
         }
       })
     } catch (err) {
