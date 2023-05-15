@@ -17,6 +17,7 @@ export const Main = () => {
   const dispatch = useDispatch()
 
   const userId = JSON.parse(localStorage.getItem("regist"));
+  const registered = localStorage.getItem('registered')
 
   useEffect(() => {
   axios.get('http://localhost:5000/Counter/count')
@@ -51,7 +52,12 @@ export const Main = () => {
             <span className={cls.main__des_in}> премиум </span>
             вы получаете дополнительные x2 монет, плюшки и бонусы :D
           </p>
-          <Link to={'/tasks'} className={cls.main__button}>Перейти к заданиям</Link>
+          {
+            registered === 'ok' ?
+            <Link to={'/tasks'} className={cls.main__button}>Перейти к заданиям</Link>
+            :
+            <Link to={'/register'} className={cls.main__button}>Зарегистрироваться</Link>
+          }
         </AnimItem>
         <AnimItem className={cls.main__statistics} noHide={true} >
           {/* {

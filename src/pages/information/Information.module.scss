@@ -8,4 +8,32 @@ $mobileSmall: 479.98px; // телефоны s
 .information {
    width: 100%;
    min-height: 100vh;
+   overflow: hidden;
+   background: white;
+   padding: 90px 15px 20px 20px;
+   font-family: 'Roboto', sans-serif;
+
+   .information_section {
+      width: 100%;
+      padding: 0 10px 0 10px;
+
+      .section_head_title {
+         font-size: 25px;
+         margin: 0 0 10px 0;
+      }
+
+      .section_title {
+         width: 80%;
+         margin: 15px 0 15px 0;
+         font-weight: bold;
+      } 
+
+      .section_ul {
+         padding: 0 0 0 20px;
+
+         .section_li {
+            width: 80%;
+         }
+      }
+   }
 }

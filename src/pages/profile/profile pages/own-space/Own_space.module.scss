@@ -832,4 +832,24 @@ $mobileSmall: 479.98px; // телефоны s
             }
         }
     }
+    
+    .balanceChecker {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      min-width: 35%;
+      height: 35px;
+      background: red;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: .5s;
+    }
+
+    .balanceChecker_active {
+      top: 5px !important;
+    }
 }

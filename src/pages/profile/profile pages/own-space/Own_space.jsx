@@ -3,8 +3,7 @@ import { useNavigate } from "react-router";
 import cls from "../own-space/Own_space.module.scss";
 import axios from "axios";
 import { AddTask } from "../../../add-task/AddTask";
-import { $api, baseURL } from "../../../../helpers/constant/index";
-import { data } from "../own-space/helpers";
+import { $api } from "../../../../helpers/constant/index";
 import { useDispatch, useSelector } from "react-redux";
 
 export const Ownspace = () => {
@@ -18,17 +17,13 @@ export const Ownspace = () => {
   const [visible, setVisible] = useState(false);
   const [activeItem, setActiveItem] = useState(0);
   const [addAmountTasksUser, setAddAmountTasksUser] = useState("");
+  const [balanceChecker, setBalanceChecker] = useState(false)
   const [getActive, setGetActive] = useState(false);
   const [addAmount, setAddAmount] = useState("");
   const [getAmount, setGetAmount] = useState("");
-
-  const [items, setItems] = useState([]);
-
-  const [tasks, setTasks] = useState(items.length > 0 ? items : data);
+  const [items, setItems] = useState([]); 
   const [updateTask, setUpdateTask] = useState([]);
   const [updateTaskId, setUpdateTaskId] = useState(0);
-
-  // const userTasks = items.length > 0 ? items : tasks;
 
   const userId = JSON.parse(localStorage.getItem("regist"));
 
@@ -43,10 +38,11 @@ export const Ownspace = () => {
       url: items.url,
       timer: 0,
       price: 0,
-      balance: items?.balance + addAmountTasksUser,
+      balance: addAmountTasksUser,
     };
 
-    $api
+    if (addAmountTasksUser < userData.balance) {
+      $api
       .put("/Task/update", body, {
         headers: {
           Authorization: `Bearer ${userId?.token}`,
@@ -66,6 +62,10 @@ export const Ownspace = () => {
           navigate("/register")
         }
       });
+    } else {
+      setBalanceChecker(true)
+      setTimeout(() => {setBalanceChecker(false)}, 2000)
+    }
   };
 
   const handlerTopUPTasksUser = (index) => {
@@ -73,8 +73,8 @@ export const Ownspace = () => {
     setActiveTasksUser(!activeTasksUser);
   };
 
-  const changeAddAmountTasksUser = (e) => {
-    setAddAmountTasksUser(e.target.value);
+  const changeAddAmountTasksUser = (value) => {
+    setAddAmountTasksUser(value);
   };
 
   const handlerGetConfirm = () => {
@@ -150,7 +150,7 @@ export const Ownspace = () => {
       axios
       .get(`http://localhost:5000/Task/user/${userId?.id}`)
       .then((res) => {
-        console.log(res.data.user)
+        console.log(res.data.tasks)
         if (res.status === 200) {
           setItems(res.data.tasks);
           dispatch({type: 'add_userData', payload: res.data.user})
@@ -179,12 +179,19 @@ export const Ownspace = () => {
         },
       })
       .then((res) => {
+        console.log(res)
+        if (res.status === 200) {
+          window.location.reload()
+        }
         if (res.data.response.status === 401) {
           navigate("/register")
         }
         setItems(res.data);
       })
       .catch((error) => {
+        if (error.response.data.status > '') {
+          window.location.reload()
+        }
         if (error.response.status === 401) {
           navigate("/register")
         }
@@ -309,6 +316,9 @@ export const Ownspace = () => {
         </section>
       </section>
       <section className={cls.ownspace_headsection}>
+        <div className={balanceChecker === true ? `${cls.balanceChecker} ${cls.balanceChecker_active}` : cls.balanceChecker}>
+          Недостаточно средств на счету!
+        </div>
         <section className={cls.ownspace_section}>
           <div className={cls.section_aboutbox}>
             <div className={cls.section_about}>
@@ -326,7 +336,7 @@ export const Ownspace = () => {
                             Баланс: {item.balance} ₽уб
                           </p>
                           <div className={cls.task_price}>
-                            Цена: {item.timer} ₽уб
+                            Цена: {item.price} ₽уб
                           </div>
                           <div className={cls.task_price}>
                             Просмотров: {item.views}
@@ -348,7 +358,7 @@ export const Ownspace = () => {
                                   placeholder="Введите сумму"
                                   className={cls.buttons_popap_input_tasks}
                                   type="number"
-                                  onChange={changeAddAmountTasksUser}
+                                  onChange={e => changeAddAmountTasksUser(e.target.value)}
                                   value={addAmountTasksUser}
                                 />
                                 <button

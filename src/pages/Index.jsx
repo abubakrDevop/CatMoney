@@ -15,6 +15,7 @@ import { AddTask } from "./add-task/AddTask";
 import { Profile } from "./profile/Profile";
 import { Bottom } from "../components/bottomFooter/Bottom";
 import { Reset } from "./register/reset password/Reset";
+import { EmailSender } from "./register/reset password/EmailSender";
 
 const StyledMain = styled.main`
   width: 100%;
@@ -96,8 +97,9 @@ export const Index = () => {
         <Route path="/add-task" element={<AddTask />} />
         <Route path="/profile/*" element={<Profile />} />
         <Route path="/reset" element={<Reset />} />
+        <Route path="/email-sender" element={<EmailSender />} />
       </Routes>
-      
+      <Bottom />
     </StyledMain>
   );
 }

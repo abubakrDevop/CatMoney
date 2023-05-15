@@ -111,15 +111,7 @@ export const SignIn = () => {
 
         <button type="submit" className={cls.root__button}>Войти</button>
         <Link 
-          to={'/reset'} 
-          onClick={() => {
-            $api
-              .post("/User/resetPassword", {userId: userId.id})
-              .then(res => {
-                console.log(res)
-              })
-              .catch(res => {});
-          }} 
+          to={'/email-sender'} 
           className={cls.root_password_reset}>
           Забыли пароль?
         </Link>

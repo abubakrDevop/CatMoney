@@ -8,7 +8,7 @@ const PORT = 5000
 
 const server = express()
 
-const baseURL = "https://fc37-80-94-250-75.ngrok-free.app"
+const baseURL = "https://41c1-80-94-250-104.ngrok-free.app"
 
 const middleware = [
   cors(),

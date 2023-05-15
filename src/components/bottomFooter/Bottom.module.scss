@@ -18,6 +18,9 @@ $mobileSmall: 479.98px; // телефоны s
     flex-direction: column;
     align-items: center;
     z-index: 2;
+    @media (max-width: $mobileSmall) {
+        
+    }
 
     .footer_section {
         z-index: 2;

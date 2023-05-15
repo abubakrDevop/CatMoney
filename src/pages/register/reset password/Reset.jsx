@@ -93,7 +93,7 @@ export const Reset = () => {
             </div>
           </p>
           <p className={cls.info_text}>
-            Введите код:
+            Введите код из почты Email:
             {
               formState.errors.emailCod && <span className={cls.root_error}> {formState.errors.emailCod.message} </span>
             }

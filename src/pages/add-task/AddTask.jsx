@@ -54,8 +54,6 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
 
   const taimerValue = taimer[activeItem].title.split(" ")[1];
   const activePrice = taimer[activeItem].price;
-  console.log('taimerValue', taimerValue)
-  console.log('activePrice', activePrice)
 
   const {
     formState,
@@ -71,7 +69,7 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
         description: data.title,
         url: data.url,
         timer: +taimerValue,
-        price: +activePrice,
+        price: value,
         userId: userId.id,
         taskId: taskId,
         balance: data.balance.length === '' ? 5 : +data.balance
@@ -103,12 +101,10 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
         description: data.title,
         url: data.url,
         timer: +taimerValue,
-        price: +activePrice,
+        price: value,
         userId: userId.id,
         balance: data.balance === '' ? 5 : data.balance,
       };
-
-      // if (data.balance >= data.price) {
         
         $api
         .post("/Task/add", body, {
@@ -129,11 +125,6 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
             navigate("/register")
           }
         });
-
-      //   setActive(false)
-      // } else {
-      //   setActive(true)
-      // }
     }
   };
 
@@ -188,12 +179,6 @@ export const AddTask = ({ text, onClick, taskId, setUpdateTask }) => {
 
           <p className={cls.info_text}>
               Цена за переход: 
-              {/* {
-                formState.errors.price && <span className={cls.task_error}> {formState.errors.price.message} </span>
-              }
-              {
-                active && <span className={cls.task_error}> Цена за переход не может превышать цену баланса!</span>
-              } */}
               <span className={cls.info_text_box}>
                 <FaRubleSign className={cls.info_icon} />
                 <input
