@@ -108,7 +108,7 @@ export const Settings = () => {
         </div> */}
 
         <section className={cls.ownspace_info}>
-          <div className={success === false ? cls.success : `${cls.success} ${cls.success_active}`}>Ваши данные успешно изменены!</div>
+          <div className={success !== false ? cls.success : `${cls.success} ${cls.success_active}`}>Ваши данные успешно изменены!</div>
           <div className={cls.info_text}>
             Введите логин:
             <div className={cls.input_box}>

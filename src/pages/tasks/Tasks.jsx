@@ -311,35 +311,6 @@ export const Tasks = () => {
             </>
           )}
         </Section>
-        {/* <Section
-          width="100%"
-          padding="25px 0 0 0"
-          display="flex"
-          align="center"
-          justify="space-between"
-          className={cls.navigator_btn_box}
-        >
-          <Button
-            padding="0 20px"
-            color="black"
-            height="35px"
-            back="white"
-            className={cls.navigator_btn}
-            onClick={decrement}
-          >
-            <IoChevronForwardOutline className={cls.navigator_icon1} />
-          </Button>
-          <Button
-            padding="0 20px"
-            color="black"
-            height="35px"
-            back="white"
-            className={cls.navigator_btn}
-            onClick={increment}
-          >
-            <IoChevronForwardOutline className={cls.navigator_icon2} />
-          </Button>
-        </Section> */}
       </div>
     </div>
   );
