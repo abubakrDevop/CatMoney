@@ -4,7 +4,6 @@ import cls from '../information/Information.module.scss'
 export const Information = () => {
   return (
     <div className={cls.information}>
-<<<<<<< HEAD
       <section className={cls.information_section}>
         <h1 className={cls.section_head_title}>Конфиденциальность</h1>
         <p className={cls.section_title}>
@@ -43,14 +42,6 @@ export const Information = () => {
           </li>
         </ul>
       </section>
-=======
-               <p>Сайт CatMoney.com предлагает вам заработать или раскрутить свой сайт:
-           комментарии, отзывы, форумы, доски объявлений. Продвижение в социальных сетях: 
-           подписчики в группы, лайки, репосты. Продвижение приложений групп или любого 
-           другого бизнеса. После регистрации вам необходимо указать кошелек в настройках
-            и вы сможете спокойно начать зарабатывать или раскручивать свои сервисы. На данный момент
-             времени это демо версия сайта и из основного функционала здесь.</p> 
->>>>>>> a69d3a5156c117140aa0d33d74559954fabed33b
     </div>
   )
 }
