@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { $api, baseURL } from "../../helpers/constant/index";
 import cls from "../tasks/Tasks.module.scss";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router";
 import { FaRegClock } from "react-icons/fa";
 import { Page_404 } from "../404-page/Page_404";
 import { Button } from "../../components/small components/button/Button";
@@ -12,11 +13,10 @@ import axios from "axios";
 
 export const Tasks = () => {
   const { register, handleSubmit } = useForm();
+  let navigate = useNavigate();
 
   const [count, setCount] = useState(1);
   const [selectedAsc, setSelectedAsc] = useState();
-
-  console.log("selectedAsc", selectedAsc);
 
   const sort = [
     {
@@ -33,16 +33,6 @@ export const Tasks = () => {
       value: "price",
       asc: true,
     },
-    // {
-    //   title: "по максимальной времени",
-    //   value: "time",
-    //   asc: 1,
-    // },
-    // {
-    //   title: "по минимальной времени",
-    //   value: "time",
-    //   asc: 0,
-    // },
   ];
 
   const [iframe, setIframe] = useState();
@@ -99,11 +89,6 @@ export const Tasks = () => {
     } else if (option === "по убыванию цены") {
       option1 = "price";
     }
-    //  else if (option === "по максимальной времени") {
-    //   option1 = "time";
-    // } else if (option === "по минимальной времени") {
-    //   option1 = "time";
-    // }
    console.log('option1', option1)
     $api
       .get(
@@ -122,13 +107,22 @@ export const Tasks = () => {
 
   const handleIframe = (data) => {
     setIframe(data.link);
-    setTimeLeft(data.timer / 1000);
+    setTimeLeft(data.timer);
     setTimeout(() => {
-      setIframe("");
       if (data.link) {
         window.open(data.link);
+        $api.post("Task/complete", {
+          userId: userId.id,
+          taskId: data.taskId
+        }).then((res) => {
+
+        }).catch((err) => {
+          if (err.response.status === 400) {
+            alert("Перед тем как выполнять задания, нужно указать свой кошелёк в настройках")
+          }
+        });;
       }
-    }, data.timer);
+    }, data.timer * 1000);
   };
 
   useEffect(() => {
@@ -141,9 +135,12 @@ export const Tasks = () => {
     return () => clearTimeout(timer);
   }, [timeLeft]);
 
+
   if (localStorage.getItem("registered") !== "ok") {
     return <Page_404 />;
   }
+
+ 
 
   return (
     <div className={cls.tasks}>
@@ -260,18 +257,19 @@ export const Tasks = () => {
                       handleIframe({
                         link: item.url,
                         timer: item.timer,
+                        taskId: item.id,
                       });
                     }}
                   >
                     <Button
                       width="70%"
                       height="35px"
-                      onClick={() =>
-                        taskComplete({
-                          userId: userId.id,
-                          taskId: item.id,
-                        })
-                      }
+                      // onClick={() =>
+                      //   taskComplete({
+                      //     userId: userId.id,
+                      //     taskId: item.id,
+                      //   })
+                      // }
                     >
                       Выполнить
                     </Button>
