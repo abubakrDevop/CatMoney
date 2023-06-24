@@ -1,94 +1,118 @@
-import React, { useState, useEffect } from "react";
 import cls from '../Main/Main.module.scss'
 import { useDispatch } from "react-redux";
-import  { IoChevronDownOutline, 
-          IoPlanetOutline,
-          IoPeopleOutline, 
-          IoWalletOutline, 
-          IoCalendarOutline 
-        } from 'react-icons/io5'
-import { Link } from 'react-router-dom'
-import axios from "axios";
+import manInStartPage from '../../assets/img/manInStartPage.jpg'
+import arrows from '../../assets/img/arrows.png'
+import securityRisk from '../../assets/img/securityRisk.svg'
+import payInMoment from '../../assets/img/payInMoment.svg'
+import ofer from '../../assets/img/ofer.svg'
+import helpAllTheTime from '../../assets/img/helpAllTheTime.svg'
 
-import AnimItem from "../AnimItem";
 
 export const Main = () => {
-  const [userValues, setUsersValues] = useState([])
-  const dispatch = useDispatch()
-
-  const userId = JSON.parse(localStorage.getItem("regist"));
-  const registered = localStorage.getItem('registered')
-
-  useEffect(() => {
-  axios.get('http://localhost:5000/Counter/count')
-    .then(res => {
-      console.log(res.data)
-      setUsersValues(res.data)
-    })
-    .catch(error => console.log(error))
-
-  axios.get(`http://localhost:5000/Task/user/${userId?.id}`)
-    .then((res) => {
-      console.log(res.data)
-      if (res.status === 200) {
-        dispatch({type: 'add_userData', payload: res.data.user})
-      }
-    })
-  }, [])
-
   return (
-    <main className={cls.main}>
-      <section className={cls.main__block}>
-        <AnimItem className={cls.main__info} noHide={true} >
-          <p className={cls.main__title}>Начните зарабатывать легко!</p>
-          <h1 className={cls.main__headtitle}>
-            Выполняйте задания <br /> Выводите деньги
-          </h1>
-          <p className={cls.main__description}>
-            Сайт CatMoney.com предлагает вам заработать или раскрутить свой сайт:
-            комментарии, отзывы, форумы, доски объявлений. Продвижение в социальных сетях: 
-            подписчики в группы, лайки, репосты. Продвижение приложений групп или любого 
-            другого бизнеса. После регистрации вам необходимо указать кошелек в настройках
-            и вы сможете спокойно начать зарабатывать или раскручивать свои сервисы. 
-          </p>
-          {
-            registered === 'ok' ?
-            <Link to={'/tasks'} className={cls.main__button}>Перейти к заданиям</Link>
-            :
-            <Link to={'/register'} className={cls.main__button}>Зарегистрироваться</Link>
-          }
-        </AnimItem>
-        <AnimItem className={cls.main__statistics} noHide={true} >
-          {/* {
-            userValues.map(item => ( */}
-              <div className={cls.statistics_card}>
-                  <IoPlanetOutline className={cls.card_icon} />
-                  <span className={cls.card_title}>Oнлайн: </span>
-                  <span className={cls.card_numbers}>{userValues.usersOnline}</span>
-              </div>
-              <div className={cls.statistics_card}>
-                  <IoPeopleOutline className={cls.card_icon} />
-                  <span className={cls.card_title}>Пользователей: </span>
-                  <span className={cls.card_numbers}>{userValues.allUsers}</span>
-              </div>
-              <div className={cls.statistics_card}>
-                  <IoWalletOutline className={cls.card_icon} />
-                  <span className={cls.card_title}>Выплаты: </span>
-                  <span className={cls.card_numbers}>{userValues.allPayments}</span>
-              </div>
-              <div className={cls.statistics_card}>
-                  <IoCalendarOutline className={cls.card_icon} />
-                  <span className={cls.card_title}>Работаем: </span>
-                  <span className={cls.card_numbers}>{userValues.workingDays} день(ей)</span>
-              </div>
-          {/* } */}
-        </AnimItem>
-      </section>
+    <div className={cls.startPage}>
+      <div style={{ display: 'flex' }}>
+        <div className={cls.mainText}>
+          <div className={cls.shadow}></div>
+          <span className={cls.purple}>Зарабатывай</span>
+          <span>деньги выполняя</span>
+          <span><span className={cls.purple}>простые</span> <span>задания</span></span>
+          <p>Начинай выводить деньги после первого<br /> выполненного задания</p>
+          <div className={cls.buttons}>
+            <button>Начать зарабатывать</button>
+            <button>Создать задание</button>
+          </div>
+        </div>
 
-      <section className={cls.main__section}>
-        <IoChevronDownOutline className={cls.scroll_icon} />
-        <IoChevronDownOutline className={cls.scroll_icon} />
-      </section>
-    </main>
-  );
+        <div className={cls.manInStartPage}>
+          <img src={manInStartPage} alt="" ></img>
+          <div className={cls.manShanow}></div>
+        </div>
+      </div>
+
+      <div className={cls.aboutCompanuInNumbers}>
+        <div className={cls.aboutCompanuInNumbersText}>
+          <p>О платформе </p>
+          <p>в цифрах</p>
+        </div>
+
+        <div style={{ display: 'flex' }} >
+          <div className={cls.numberAndArrow}>
+            <span>1000+</span>
+            <p>Заказчиков</p>
+            <img src={arrows} />
+          </div>
+
+          <div className={cls.quantity}>
+            <span>50+</span>
+            <p>Задач ежедневно</p>
+
+          </div>
+
+          <div className={cls.quantity}>
+            <span>175 350</span>
+            <p>Рублей уже выплачено</p>
+
+          </div>
+
+        </div>
+      </div>
+
+      <div className={cls.whyYouCanTrustUs}>
+        <div className={cls.whyText}>
+          <p>Почему нам можно </p>
+          <p>доверять? <span className={cls.purple}>Всё просто</span></p>
+        </div>
+
+        <div className={cls.whyBlocks}>
+          <div className={cls.whyShell}>
+            <div className={cls.whyBlock}>
+              <img src={securityRisk} alt="Безопасность и защита" />
+              <div className={cls.whyTextBlock}>
+                <span>Безопасность и защита</span>
+                <p>Платформа защищена самыми передовыми </p>
+                <p>средствами шифровальных протоколов и надёжно</p>
+                <p>хранит анонимность всех Ваших данных.</p>
+              </div>
+            </div>
+            <div className={cls.whyBlock}>
+              <img src={payInMoment} alt="Выплачиваем мгновенно" />
+              <div className={cls.whyTextBlock}>
+                <span>Выплачиваем мгновенно</span>
+                <p>Наша цель - сделать заработок в интернете</p>
+                <p>реальным, чтоб каждый, кто захотел</p>
+                <p>заработать, мог без затруднений сделать это</p>
+              </div>
+            </div>
+          </div>
+
+          <div className={cls.whyShell}>
+            <div className={cls.whyBlock}>
+              <img src={ofer} alt="Предложения" />
+              <div className={cls.whyTextBlock}>
+                <span>Предложения</span>
+                <p>Различные варианты рекламы, которые помогут</p>
+                <p>вам раскрутить ваши интеренет ресурсы быстро</p>
+                <p>и не дорого.</p>
+              </div>
+            </div>
+
+            <div className={cls.whyBlock}>
+              <img src={helpAllTheTime} alt="Помогаем 24/7" />
+              <div className={cls.whyTextBlock}>
+                <span>Помогаем 24/7</span>
+                <p>Наши отзывчивые операторы круглосуточно находятся</p>
+                <p>на связи и всегда рады Вам помочь. Для быстрого</p>
+                <p>решения вопроса обратитесь в Telegram</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  )
 }
+
+export default Main

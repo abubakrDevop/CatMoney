@@ -1,9 +1,0 @@
-._anim_items {
-    transform: translate(0px, 100%);
-    opacity: 0;
-    transition: all 0s ease;
-  }
-  ._anim_items._active {
-    opacity: 1 !important;
-    transform: translate(0px, 0px) !important;
-  }

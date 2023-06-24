@@ -1,10 +1,9 @@
 import React, { useEffect } from "react";
-import styled from 'styled-components'
-import axios from 'axios'
+import styled from 'styled-components';
 import { useParams, useNavigate } from "react-router";
 
-import { Header } from "../components/header/Header";
-import { Routes, Route } from 'react-router-dom'
+import Header from "../components/header/Header";
+import { Routes, Route } from 'react-router-dom';
 import { Root } from "../components/Root";
 import { Register } from "./register/Register";
 import { Tasks } from "./tasks/Tasks";
@@ -13,18 +12,10 @@ import { Information } from "./information/Information";
 import { About } from "./about-us/About";
 import { AddTask } from "./add-task/AddTask";
 import { Profile } from "./profile/Profile";
-import { Bottom } from "../components/bottomFooter/Bottom";
 import { Reset } from "./register/reset password/Reset";
 import { EmailSender } from "./register/reset password/EmailSender";
+import Footer from "../components/footer/Footer";
 
-const StyledMain = styled.main`
-  width: 100%;
-  min-height: 100vh;
-  background-image: url("../assets/img/city.gif");
-  background-size: 100% 100%;
-  background-attachment: fixed;
-  overflow: hidden;
-`
 
 export const Index = () => {
   let navigate = useNavigate();
@@ -85,21 +76,23 @@ export const Index = () => {
   // });
 
   return (
-    <StyledMain>
-      <Header />
-      <Routes>
-        <Route index element={<Root />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/tasks" element={<Tasks />} />
-        <Route path="/statistics" element={<Statistics />} />
-        <Route path="/information" element={<Information />} />
-        <Route path="/about-us" element={<About />} />
-        <Route path="/add-task" element={<AddTask />} />
-        <Route path="/profile/*" element={<Profile />} />
-        <Route path="/reset" element={<Reset />} />
-        <Route path="/email-sender" element={<EmailSender />} />
-      </Routes>
-      <Bottom />
-    </StyledMain>
+    <div>
+      
+        <Header />
+        <Routes>
+          <Route index element={<Root />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/tasks" element={<Tasks />} />
+          <Route path="/statistics" element={<Statistics />} />
+          <Route path="/information" element={<Information />} />
+          <Route path="/about-us" element={<About />} />
+          <Route path="/add-task" element={<AddTask />} />
+          <Route path="/profile/*" element={<Profile />} />
+          <Route path="/reset" element={<Reset />} />
+          <Route path="/email-sender" element={<EmailSender />} />
+        </Routes>
+        <Footer />
+    </div>
+    
   );
 }

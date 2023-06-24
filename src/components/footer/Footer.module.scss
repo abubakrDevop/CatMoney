@@ -1,98 +1,60 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
-
-$pc: 1480px; // Пкб ноутбуки, некоторые планшеты в горизонтальном положении
-$tablet: 991.98px; // Планшеты, некоторые телефоны в горизонтальном положении
-$mobile: 767.98px; // телефоны L
-$mobileSmall: 479.98px; // телефоны s
-
-@mixin adaptive-value($property, $startSize, $minSize) {
-  $addSize: $startSize - $minSize;
-    #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 320px) / #{$pc - 320}))
-  }
-
 .footer {
-    width: 100%;
-    min-height: 80vh;
-    padding: 0px 80px 50px 80px;
-    font-family: 'Roboto', sans-serif;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    color: white;
-    z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-      @media (max-width: $mobileSmall) {
-        padding: 15px 15px 40px 15px;
-      }
+  padding: 0 120px;
 
-    .footer__section {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        transform: translate(0px, 100%);
-        opacity: 0;
-        transition: all 0.8s ease 0s;
+  width: 100%;
+  height: 169px;
 
-        .section_block {
-            position: relative;
-            top: 25px;
-            width: 500px;
-            height: 230px;
-            border: solid 2px aqua;
-            border-radius: 5px;
-            border-radius: 5px;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
-            border-top: solid 1px rgba(255, 255, 255, 0.5);
-            border-left: solid 1px rgba(255, 255, 255, 0.5);
-            box-shadow: 15px 15px 15px 18px rgb(0, 0, 0, 0.5);
-            color: white;
-            margin: 10px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            overflow: hidden;
-              @media (max-width: $mobileSmall) {
-                width: 100%;
-                height: 230px;
-                border: none;
-                border-bottom: solid 2px aqua;
-                margin: 20px 0 0 0;
-              }
-
-            .block_icon {
-                margin-top: 65px;
-                position: relative;
-                font-size: 60px;
-                transition: .5s;
-            }
-
-            .block_text {
-                font-size: 20px;
-                transition: .5s;
-            }
-
-            .block_title {
-                width: 80%;
-                text-align: left;
-                transform: translateY(100px);
-                transition: .5s;
-            }
-
-            &:hover .block_icon,
-            &:hover .block_text {
-                transform: translateY(-170px);
-            }
-
-            &:hover .block_title {
-                transform: translateY(-100px);
-            }
-        }
-    }
+  background: #F6F7FF;
 }
 
+.logoText span {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  line-height: 110%;
+  font-size: 44px;
+}
+
+.logoText span:nth-child(1) {
+  color: #4E54C8;
+}
+
+.logoText span:nth-child(2) {
+  color: #373737;
+}
+
+.allRightsReserved {
+  color: #75768F;
+  font-size: 18px;
+  font-family: 'Source Sans 3', sans-serif;
+  line-height: 130%;
+
+  margin-top: 20px;
+}
+
+.socialNetworks {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: end;
+}
+
+.socialNetworks img {
+  width: 24px;
+  margin-left: 12px;
+}
+
+.securityPolicy {
+  color: #2663FF;
+  font-size: 16px;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 600;
+  line-height: 130%;
+  text-decoration: none;
+}
+
+.securityPolicy:hover {
+  text-decoration: underline;
+}
