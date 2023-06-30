@@ -1,5 +1,4 @@
 import cls from '../Main/Main.module.scss'
-import { useDispatch } from "react-redux";
 import manInStartPage from '../../assets/img/manInStartPage.jpg'
 import arrows from '../../assets/img/arrows.png'
 import securityRisk from '../../assets/img/securityRisk.svg'
@@ -7,11 +6,10 @@ import payInMoment from '../../assets/img/payInMoment.svg'
 import ofer from '../../assets/img/ofer.svg'
 import helpAllTheTime from '../../assets/img/helpAllTheTime.svg'
 
-
 export const Main = () => {
   return (
     <div className={cls.startPage}>
-      <div style={{ display: 'flex' }}>
+      <div className={cls.firstBlock}>
         <div className={cls.mainText}>
           <div className={cls.shadow}></div>
           <span className={cls.purple}>Зарабатывай</span>
@@ -25,8 +23,8 @@ export const Main = () => {
         </div>
 
         <div className={cls.manInStartPage}>
-          <img src={manInStartPage} alt="" ></img>
-          <div className={cls.manShanow}></div>
+          <img src={manInStartPage} className={cls.man}alt="" ></img>
+          <div className={cls.manShadow}></div>
         </div>
       </div>
 
@@ -36,7 +34,7 @@ export const Main = () => {
           <p>в цифрах</p>
         </div>
 
-        <div style={{ display: 'flex' }} >
+        <div className={cls.numbers}>
           <div className={cls.numberAndArrow}>
             <span>1000+</span>
             <p>Заказчиков</p>
@@ -106,6 +104,9 @@ export const Main = () => {
                 <p>решения вопроса обратитесь в Telegram</p>
               </div>
             </div>
+            
+          
+            
           </div>
 
         </div>

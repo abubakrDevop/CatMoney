@@ -1,10 +1,7 @@
 import React, { useEffect } from "react";
-import styled from 'styled-components';
 import { useParams, useNavigate } from "react-router";
-
 import Header from "../components/header/Header";
 import { Routes, Route } from 'react-router-dom';
-import { Root } from "../components/Root";
 import { Register } from "./register/Register";
 import { Tasks } from "./tasks/Tasks";
 import { Statistics } from "./statistics/Statistics";
@@ -15,6 +12,7 @@ import { Profile } from "./profile/Profile";
 import { Reset } from "./register/reset password/Reset";
 import { EmailSender } from "./register/reset password/EmailSender";
 import Footer from "../components/footer/Footer";
+import Main from "../components/Main/Main";
 
 
 export const Index = () => {
@@ -76,11 +74,11 @@ export const Index = () => {
   // });
 
   return (
-    <div>
+    <>
       
         <Header />
         <Routes>
-          <Route index element={<Root />} />
+          <Route index element={<Main />} />
           <Route path="/register" element={<Register />} />
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/statistics" element={<Statistics />} />
@@ -92,7 +90,7 @@ export const Index = () => {
           <Route path="/email-sender" element={<EmailSender />} />
         </Routes>
         <Footer />
-    </div>
+    </>
     
   );
 }

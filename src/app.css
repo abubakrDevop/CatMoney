@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Ширина и стиль полосы прокрутки */
+body::-webkit-scrollbar {
+    width: 12px;
+    /* Измените значение по своему вкусу */
+}
+
+/* Фон полосы прокрутки */
+body::-webkit-scrollbar-track {
+    background-color: #4E54C8;
+}
+
+/* Цвет самой прокрутки */
+body::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    border-left: 1px solid #f3f4fc;
+}

@@ -16,7 +16,7 @@
 
     background-color: #fff;
     border-bottom: 1px solid #E8E9F2;
-
+    height: 90px;
 }
 
 .logoText {
@@ -89,12 +89,14 @@
     transition: background .2s ease-in-out;
 }
 
-.signUp:hover {
+.signUp:hover,
+.bars:hover {
     color: #fff;
     background-color: #4E54C8;
 }
 
-.signUp:hover img {
+.signUp:hover img,
+.bars img:hover {
     filter: grayscale(100%) brightness(1000%);
 }
 
@@ -104,4 +106,134 @@
 
 .signUp:hover span {
     color: #fff;
+}
+
+.bars {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 64px;
+    height: 54px;
+    padding: 12px 24px;
+
+    border-radius: 100px;
+    border: 1px solid #4E54C8;
+
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+
+    margin-left: 10px;
+}
+
+.bars img {
+    width: 40px;
+}
+
+.mobileLogin {
+    width: 40px;
+}
+
+.dropDownPonel {
+    position: absolute;
+    right: 0;
+    top: 90px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    width: 200px;
+    height: 200px;
+
+    background-color: #fff;
+
+    -webkit-box-shadow: -4px 6px 5px -5px rgba(0, 0, 0, 0.49);
+    -moz-box-shadow: -4px 6px 5px -5px rgba(0, 0, 0, 0.49);
+    box-shadow: -4px 6px 5px -5px rgba(0, 0, 0, 0.49);
+
+    border-radius: 0 0 0 20px;
+    border: 1px solid #efeff2 ;
+}
+
+.dropDownPonel a {
+    text-decoration: none;
+    font-size: 16px;
+    color: black; 
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+
+    padding-left: 10px;
+
+    width: 200px;
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+
+    border-bottom: 1px solid #efeff2;
+    
+}
+
+.dropDownPonel a:last-child {
+    border-radius: 0 0 0 20px;
+    border-bottom: none;
+
+
+}
+
+.dropDownPonel a:hover {
+    color: #fff;
+    background-color: #4E54C8;
+    cursor: pointer;
+    
+}
+
+@media(max-width: 1109px) {
+    .header {
+        justify-content: space-between;
+        padding: 0 25px;
+    }
+
+    .signUp {
+        width: 64px;
+        height: 54px;
+    }
+
+    .buttons {
+        display: flex;
+        align-items: center;
+
+    }
+}
+
+@media(max-width: 500px) {
+    .bars img {
+        width: 30px;
+    }
+
+    .mobileLogin {
+        width: 30px;
+    }
+
+    .bars,
+    .signUp {
+        width: 45px;
+        height: 35px;
+    }
+
+    .logoText span {
+        font-size: 35px;
+    }
+}
+
+@media(max-width: 500px) {
+
+    .logoText span {
+        font-size: 30px;
+    }
+
+    .header {
+        padding: 0 10px;
+    }
 }
