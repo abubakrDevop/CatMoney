@@ -9,17 +9,13 @@ import xMark from '../../assets/img/xMark.png'
 const Header = () => {
     //variables
     const registered = localStorage.getItem('registered')
-    const [isMobile, setIsMobile] = useState(false)
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth)
     const [isActive, setIsActive] = useState(false)
 
-    //phone width meter
+    //mobile width meter "1110px"
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth < 1110) {
-                setIsMobile(true)
-            } else {
-                setIsMobile(false)
-            }
+            setScreenWidth(window.innerWidth)
         }
 
         window.addEventListener('resize', handleResize)
@@ -46,7 +42,7 @@ const Header = () => {
             </Link>
 
             {
-                !isMobile && <div className={cls.headerButtons}>
+                screenWidth > 1110 && <div className={cls.headerButtons}>
                     <NavLink to="/about-us">О платформе</NavLink>
                     <NavLink to="/tasks">Задания</NavLink>
                     <NavLink>Исполнителям</NavLink>
@@ -69,15 +65,15 @@ const Header = () => {
                         <div></div>
                     ) : (
                         <Link to="/register" className={cls.signUp}>
-                            {isMobile
+                            {screenWidth < 1110
                                 ? <img src={loginIn} className={cls.mobileLogin} alt="sign up" />
                                 : <img src={user} alt="sign up" />
                             }
-                            {!isMobile && <span>войти</span>}
+                            {screenWidth > 1110 && <span>войти</span>}
                         </Link>
                     )}
                 {
-                    isMobile && <div className={cls.bars}>
+                    screenWidth < 1110 && <div className={cls.bars}>
                         {isActive
                             ? <img src={xMark} onClick={setIsNotActiveHandler} />
                             : <img src={bars} onClick={setIsActiveHandler} />
