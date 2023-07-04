@@ -1,70 +1,44 @@
-import React from 'react'
 import cls from '../register/Register.module.scss'
-import { IoChevronForwardOutline } from 'react-icons/io5'
-import { SignIn } from './signIn/SignIn'
-import { SignUp } from './signUp/SignUp'
-import { SignRefUp } from "../register/signUp/SignRefUp";
 
 export const Register = () => {
-  const [active, setActive] = React.useState(false)
-
-  const userRefId = localStorage.getItem("userLink")
 
   return (
     <div className={cls.register}>
-      <label className={cls.register__label}>
-        <input type="checkbox" className={cls.label_checkbox} />
+      <div className={cls.registerBlock}>
+        
+          <h3>Добро пожаловать</h3>
+          <span  className={cls.welcome}>Добро пожаловать! Пожалуйста, введите свои данные.</span>
 
-        <div
-          className={cls.label_navigator}
-          onClick={() => setActive((prev) => !prev)}
-        >
-          <div className={cls.register_item}></div>
-          <IoChevronForwardOutline
-            className={
-              active === true
-                ? `${cls.label_icon} ${cls.label_icon_active}`
-                : cls.label_icon
-            }
-          />
-          <IoChevronForwardOutline
-            className={
-              active === true
-                ? `${cls.label_icon} ${cls.label_icon_active}`
-                : cls.label_icon
-            }
-          />
-          <IoChevronForwardOutline
-            className={
-              active === true
-                ? `${cls.label_icon} ${cls.label_icon_active}`
-                : cls.label_icon
-            }
-          />
-        </div>
-      </label>
+          <form>
+            <div className={cls.email}>
+              <p>Login</p>
+              <input type="text" placeholder='Введите свой login' />
+            </div>
 
-      <div className={cls.register_card}>
-        <div
-          className={
-            active === false
-              ? `${cls.register_face} ${cls.register_front}`
-              : `${cls.register_face} ${cls.label_active_front}`
-          }
-        >
-          <SignIn />
-        </div>
+            <div className={cls.password}>
+              <p>Password</p>
+              <input type="password" placeholder='Введите свой пароль' />
+            </div>
 
-        <div
-          className={
-            active === true
-              ? `${cls.register_face} ${cls.register_back}`
-              : `${cls.register_face} ${cls.label_active_back}`
-          }
-        >
-          {userRefId ? <SignRefUp /> : <SignUp />}
-        </div>
+            <a href='' className={cls.forgotPassword} >Забыл пароль</a><br />
+            <button className={cls.signUp}>войти</button>
+          </form>
+
+          <div className={cls.loginIn}>
+            <span>Нету акаунта? <a href="">Зарегестрироватся</a></span>
+          </div>
+
       </div>
+
+      <div className={cls.logoBlock}>
+        <div className={cls.around}>
+          <p><span>cat</span> money</p>
+        </div>
+
+        <div className={cls.filter}></div>
+
+      </div>
+
     </div>
-  );
+  )
 }
