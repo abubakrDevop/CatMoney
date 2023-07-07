@@ -184,24 +184,16 @@ $mainPurple: #4E54C8;
     .register {
         display: flex;
         flex-direction: column;
-        justify-content: start;
+        justify-content: center;
         height: 90vh;
-    
-        margin-top: 88px;
     }
 
     .registerBlock {
         order: 2;
         margin: 0;
         padding: 0;
-        padding-top: 80px;
 
-    }
 
-    .logoBlock {
-        order: 1;
-        align-items: end;
-        height: auto;
     }
 
     .registerBlock h3 {
@@ -262,6 +254,7 @@ $mainPurple: #4E54C8;
         align-items: center;
         justify-content: start;
         flex-direction: column;
+        display: none;
     }
 
     .around {
