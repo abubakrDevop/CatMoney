@@ -1,0 +1,22 @@
+.error {
+    color: red;
+    font-size: 16px;
+    margin-top: -5px;
+    max-width: 450px;
+
+}
+
+body .inputError {
+    border: 1px solid red;
+}
+
+body .inputError:focus {
+    border: 1px solid red;
+}
+
+@media(max-width: 1100px) {
+    .error {
+        max-width: 300px;
+
+    }
+}

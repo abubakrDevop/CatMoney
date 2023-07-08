@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.2.2",
     "chart.js": "^4.2.1",
+    "formik": "^2.4.2",
     "html-to-image": "^1.11.11",
     "qrcode.react": "^3.1.0",
     "ramda": "^0.28.0",
@@ -26,7 +27,8 @@
     "styled-components": "^5.3.6",
     "swiper": "^9.0.3",
     "uuid": "^9.0.0",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

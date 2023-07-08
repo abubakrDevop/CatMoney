@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router";
 import Header from "../components/header/Header";
 import { Routes, Route } from 'react-router-dom';
 import { Register } from "./register/Register";
+import SignUp from "./register/signUp/SignUp";
 import { Tasks } from "./tasks/Tasks";
 import { Statistics } from "./statistics/Statistics";
 import { Information } from "./information/Information";
@@ -16,63 +17,7 @@ import Main from "../components/Main/Main";
 
 
 export const Index = () => {
-  let navigate = useNavigate();
-  const params = useParams();
-
-  const userId = JSON.parse(localStorage.getItem("regist"));
-
-  useEffect(() => {
-    if (params?.id) {
-      navigate("/");
-    }
-  }, [params?.id])
-
-    if (params?.id) {
-      localStorage.setItem("userLink", params?.id);
-      console.log("params", params?.id);
-    }
-
-  //   const [chatFocus, setChatFocus] = useState(true);
-
-  //   const idUser = JSON.parse(localStorage.getItem("regist"))
-  //   const DetectChatFocus = () => {
-  //     useEffect(() => {
-  //         const handleActivityFalse = () => {
-  //             setChatFocus(false);
-  //         };
-  //         const handleActivityTrue = () => {
-  //             setChatFocus(true);
-  //         };
-  //         window.addEventListener('focus', handleActivityTrue);
-  //         window.addEventListener('blur', handleActivityFalse);
-
-  //         return () => {
-  //             window.removeEventListener('focus', handleActivityTrue);
-  //             window.removeEventListener('blur', handleActivityFalse);
-  //         };
-  //     }, [chatFocus]);
-  // };
-  // DetectChatFocus();
-  // console.log('chatFocus', chatFocus)
-
-  // useEffect(() => {
-  //   axios.post('https://088a-80-94-250-40.eu.ngrok.io/api/v2/exit',{ id: idUser.id })
-  //     .then(res => console.log(res.data))
-  // }, [chatFocus === false])
-
-  // const idUser = JSON.parse(localStorage.getItem("regist"))
-
-  // window.addEventListener('beforeunload', function(event) {
-  //   // Отправляем POST запрос с помощью Axios
-  //   axios.post('https://088a-80-94-250-40.eu.ngrok.io/api/v2/exit',{ id: idUser.id })
-  //     .then(response => {
-  //       console.log(response.data);
-  //     })
-  //     .catch(error => {
-  //       console.log(error);
-  //     });
-  // });
-
+  
   return (
     <>
       
@@ -88,6 +33,7 @@ export const Index = () => {
           <Route path="/profile/*" element={<Profile />} />
           <Route path="/reset" element={<Reset />} />
           <Route path="/email-sender" element={<EmailSender />} />
+          <Route path="/sign-up" element={<SignUp />} />
         </Routes>
         <Footer />
     </>

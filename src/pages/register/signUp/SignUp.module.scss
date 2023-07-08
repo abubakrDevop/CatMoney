@@ -1,109 +1,292 @@
-.root__form {
-    width: 100%;
-    height: 100%;
-    padding: 0px 40px;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+$mainBG: #fff;
+$white: #F6F7FF;
+$mainPurple: #4E54C8;
+
+.register {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
+    justify-content: center;
 
-    .headtitle {
-        color: white;
-        margin-top: 30px;
-    }
+    width: 100%;
+    margin: 30px 0;
 
-    .root_error {
-        position: relative;
-        top: 24px;
-        color: red;
-        font-size: 12px;
-        height: 10px;
-        align-self: flex-start;
-    }
+    background-color: $mainBG;
 
-    .form_inputbox {
-        position: relative;
-        top: 20px;
-        width: 100%;
-        height: 35px;
-        border: solid 1px white;
-        border-radius: 5px;
-        margin-top: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.registerBlock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    padding-top: 120px;
+
+}
+
+.registerBlock h3 {
+    font-size: 44px;
+    margin-bottom: 10px;
+}
+
+.welcome {
+    color: #7e7e7e;
+    padding-bottom: 10px;
+    font-size: 16px;
+}
+
+.email,
+.login {
+    margin-top: 20px;
+
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: $mainPurple;
+}
+
+.email input,
+.password input,
+.login input {
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+
+    width: 400px;
+    font-size: 20px;
+
+    border: 1px solid #d6d9ee;
+    outline: 0;
+    border-radius: 4px;
+}
+
+.email input::placeholder,
+.password input::placeholder,
+.login input::placeholder {
+    font-size: 16px;
+}
+
+.email input:focus,
+.password input:focus,
+.login input:focus {
+    border: 1px solid $mainPurple;
+}
+
+.password {
+    margin-top: 15px;
+
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: $mainPurple;
+}
+
+.signUp {
+    width: 400px;
+    height: 45px;
+
+    border: 0;
+    outline: 0;
+
+    background-color: $mainPurple;
+    border-radius: 8px;
+
+    font-size: 20px;
+    color: $white;
+
+    margin-top: 20px;
+    cursor: pointer;
+
+}
+
+.signUp:hover {
+    background-color: #474dbd;
+}
+
+.loginIn {
+    width: 300px;
+
+    color: #7e7e7e;
+
+    margin-top: 15px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.loginIn a {
+    text-decoration: none;
+    color: $mainPurple;
+}
+
+.forgotPassword:hover,
+.loginIn a:hover {
+    text-decoration: underline;
+}
+
+
+.logoBlock {
+    background-color: $white;
+
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: -60px;
+}
+
+.around {
+    width: 200px;
+    height: 200px;
+
+    background-color: $mainPurple;
+
+    border-radius: 50%;
+
+    position: relative;
+}
+
+.around p {
+    position: absolute;
+
+    top: 60px;
+    right: 34px;
+
+    color: $white;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.filter {
+    z-index: 1000;
+    position: absolute;
+    top: 50%;
+    left: -240px;
+
+    width: 500px;
+    height: 300px;
+
+    background-color: #efeffc09;
+    backdrop-filter: blur(40px);
+}
+
+@media(max-width: 1100px) {
+    .register {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .registerBlock {
+        order: 2;
+        margin: 0;
+        margin-top: 100px;
+        margin-bottom: 80px;
+        padding: 0;
+
+    }
+
+    .registerBlock h3 {
+        font-size: 34px;
+    }
+
+    .welcome {
+        font-size: 14px;
+    }
+
+    .email,
+    .login {
+        margin-top: 10px;
+        font-size: 20px;
+
+    }
+
+    .email input,
+    .password input,
+    .login input {
+        padding: 6px;
+
+        width: 300px;
+        font-size: 18px;
+    }
+
+    .email input::placeholder,
+    .password input::placeholder,
+    .login input::placeholder {
+        font-size: 14px;
+    }
+
+    .password {
+        margin-top: 10px;
+        font-size: 20px;
+
+    }
+
+    .forgotPassword {
+        width: 300px;
+        font-size: 14px;
+    }
+
+    .signUp {
+        width: 300px;
+        font-size: 18px;
+
+    }
+
+    .loginIn {
+        font-size: 14px;
+    }
+
+
+    .logoBlock {
+        background-color: $mainBG;
+
+        padding: 0;
+
+        display: flex;
         align-items: center;
-        padding: 0 0 0 7px;
-
-        .input_icon {
-            color: white;
-            font-size: 20px;
-        }
-
-        .form_input {
-            width: 100%;
-            height: 100%;
-            color: white;
-            padding: 0px 5px;
-            outline: none;
-            border: none;
-            background: none;
-
-            &:nth-child(2) {
-                padding: 0 34px 0 5px !important;
-            }
-
-            &::placeholder {
-                color: white;
-            }
-        }
-
-        .input_eye {
-            position: absolute;
-            right: 7px;
-            color: white;
-            font-size: 18px;
-        }
+        justify-content: start;
+        flex-direction: column;
+        display: none;
     }
 
-    .root__button {
-        position: relative;
-        top: 40px;
-        width: 100%;
-        height: 35px;
-        font-weight: bold;
-        border: none;
-        background: linear-gradient(to left, purple, aqua);
-        border-radius: 20px;
-        color: white;
-        font-size: 16px;
-        overflow: hidden;
-        z-index: 0;
+    .around {
+        width: 100px;
+        height: 100px;
 
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 0%;
-            background: linear-gradient(to left, rgb(60, 0, 128), rgba(0, 89, 255, 0.5));
-            transition: .5s;
-            border-bottom-left-radius: 50%;
-            border-bottom-right-radius: 50%;
-            z-index: -1;
-        }
-
-        &:hover::before {
-            height: 180%;
-        }
+        margin-top: 40px;
     }
 
-    .title {
-        position: relative;
-        top: 50px;
-        color: white;
+    .around p {
+        top: 35px;
+        right: 8px;
+        font-size: 15px;
+    }
+
+    .filter {
+        top: 60%;
+        left: -80px;
+
+        width: 250px;
+        height: 80px;
+
+        background-color: #ffffff06;
+        backdrop-filter: blur(20px);
+    }
+
+}
+
+@media(max-width: 470px) {
+    .registerBlock h3 {
+        font-size: 30px;
+    }
+
+    .welcome {
         font-size: 12px;
-        width: 80%;
-        text-align: center;
     }
 }
