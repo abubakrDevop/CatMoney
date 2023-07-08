@@ -12,7 +12,7 @@ export const Register = () => {
     Login: Yup.string()
       .min(3, 'Login не может иметь меньше 3 символов!')
       .max(16, 'Login не может иметь больше 16 символов!')
-      .required('Login обезательное поле!'),
+      .required('Login обязательное поле!'),
 
     Password: Yup.string()
       .required('Password обязательное поле!')

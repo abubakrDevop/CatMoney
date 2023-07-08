@@ -12,10 +12,10 @@ const Register = () => {
     Login: Yup.string()
       .min(3, 'Login не может иметь меньше 3 символов!')
       .max(16, 'Login не может иметь больше 16 символов!')
-      .required('Login обезательное поле!'),
+      .required('Login обязательное поле!'),
 
     Email: Yup.string()
-      .required('Email обезательное поле!')
+      .required('Email обязательное поле!')
       .email('Введите корректный Email'),
 
     Password: Yup.string()
