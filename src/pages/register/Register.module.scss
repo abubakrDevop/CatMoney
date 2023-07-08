@@ -79,6 +79,17 @@ $mainPurple: #4E54C8;
     font-size: 24px;
     font-weight: 600;
     color: $mainPurple;
+    position: relative;
+}
+
+.eye {
+    position: absolute;
+    width: 30px;
+    right: 10px;
+    top: 48px;
+    z-index: 999999;
+
+    cursor: pointer;
 }
 
 .forgotPassword {
@@ -226,6 +237,11 @@ $mainPurple: #4E54C8;
         margin-top: 10px;
         font-size: 20px;
 
+    }
+
+    .eye {
+        right: 10px;
+        top: 38px;
     }
 
     .forgotPassword {

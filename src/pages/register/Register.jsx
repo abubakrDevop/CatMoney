@@ -5,8 +5,13 @@ import { Link } from 'react-router-dom'
 import { Form, Formik } from 'formik'
 import InputField from '../../common/inputField'
 import * as Yup from 'yup'
+import eyeSlash from '../../assets/img/eye-slash.png'
+import eye from '../../assets/img/eye.png'
+import { useState } from 'react'
 
 export const Register = () => {
+
+  const [isPasswordEye, setIsPasswordEye] = useState(false)
 
   const SignupSchema = Yup.object().shape({
     Login: Yup.string()
@@ -62,11 +67,17 @@ export const Register = () => {
                   text={'Password'}
                   error={errors.Password}
                   touched={touched.Password}
-                  type={'password'}
-                  placeholder={'Введите свой пароль'}
+                  type={isPasswordEye ? 'text' : 'password'}
+                  placeholder={'Придумайте пароль'}
                   name={'Password'}
                   onChange={handleChange}
                   value={values.Password} />
+
+                {isPasswordEye
+                  ? <img className={cls.eye} onClick={() => setIsPasswordEye(false)} src={eye} />
+                  : <img className={cls.eye} onClick={() => setIsPasswordEye(true)} src={eyeSlash} />
+                }
+
               </div>
 
               <Link to='/reset' className={cls.forgotPassword}>Забыл пароль</Link><br />

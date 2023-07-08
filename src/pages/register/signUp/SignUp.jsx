@@ -5,8 +5,14 @@ import { Link } from 'react-router-dom'
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
 import InputField from '../../../common/inputField'
+import eyeShash from '../../../assets/img/eye-slash.png'
+import eye from '../../../assets/img/eye.png'
+import { useState } from 'react'
 
 const Register = () => {
+
+  const [isPasswordEye, setIsPasswordEye] = useState(false)
+  const [isRepPasswordEye, setIsRepPasswordEye] = useState(false)
 
   const SignupSchema = Yup.object().shape({
     Login: Yup.string()
@@ -23,7 +29,7 @@ const Register = () => {
       .min(6, 'Пароль не может быть короче 6 символов!')
       .matches(
         /^(?=.*[a-zA-Z])(?=.*\d).*$/,
-        'Пароль должен содержать только латинские буквы и цифры.'),
+        'Пароль должен иметь только латинские буквы и цифры.'),
 
     RepeatPassword: Yup.string()
       .required('Repeat password обязательное поле!')
@@ -79,17 +85,22 @@ const Register = () => {
                   value={values.Email} />
               </div>
 
-
               <div className={cls.password}>
                 <InputField
                   text={'Password'}
                   error={errors.Password}
                   touched={touched.Password}
-                  type={'password'}
+                  type={isPasswordEye ? 'text' : 'password'}
                   placeholder={'Придумайте пароль'}
                   name={'Password'}
                   onChange={handleChange}
                   value={values.Password} />
+
+                {isPasswordEye
+                  ? <img className={cls.eye} onClick={() => setIsPasswordEye(false)} src={eye} />
+                  : <img className={cls.eye} onClick={() => setIsPasswordEye(true)} src={eyeShash} />
+                }
+
               </div>
 
               <div className={cls.password}>
@@ -97,11 +108,16 @@ const Register = () => {
                   text={'Repeat password'}
                   error={errors.RepeatPassword}
                   touched={touched.RepeatPassword}
-                  type={'password'}
+                  type={isRepPasswordEye ? 'text' : 'password'}
                   placeholder={'Повторите пароль'}
                   name={'RepeatPassword'}
                   onChange={handleChange}
                   value={values.RepeatPassword} />
+
+                {isRepPasswordEye
+                  ? <img className={cls.eye} onClick={() => setIsRepPasswordEye(false)} src={eye} />
+                  : <img className={cls.eye} onClick={() => setIsRepPasswordEye(true)} src={eyeShash} />
+                }
               </div>
               <button
                 className={cls.signUp}
@@ -123,8 +139,6 @@ const Register = () => {
           <p><span>cat</span> money</p>
           <div className={cls.filter}></div>
         </div>
-
-
       </div>
 
     </div>
