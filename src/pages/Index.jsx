@@ -1,9 +1,6 @@
-import React, { useEffect } from "react";
-import { useParams, useNavigate } from "react-router";
+import React from "react";
 import Header from "../components/header/Header";
 import { Routes, Route } from 'react-router-dom';
-import { Register } from "./register/Register";
-import SignUp from "./register/signUp/SignUp";
 import { Tasks } from "./tasks/Tasks";
 import { Statistics } from "./statistics/Statistics";
 import { Information } from "./information/Information";
@@ -14,17 +11,17 @@ import { Reset } from "./register/reset password/Reset";
 import { EmailSender } from "./register/reset password/EmailSender";
 import Footer from "../components/footer/Footer";
 import Main from "../components/Main/Main";
-
+import SignUpContainer from "./register/signUp/SignUpContainer";
+import RegisterContainer from "./register/RegisterContainer";
 
 export const Index = () => {
   
   return (
     <>
-      
         <Header />
         <Routes>
           <Route index element={<Main />} />
-          <Route path="/register" element={<Register />} />
+          <Route path="/register" element={<RegisterContainer />} />
           <Route path="/tasks" element={<Tasks />} />
           <Route path="/statistics" element={<Statistics />} />
           <Route path="/information" element={<Information />} />
@@ -33,7 +30,7 @@ export const Index = () => {
           <Route path="/profile/*" element={<Profile />} />
           <Route path="/reset" element={<Reset />} />
           <Route path="/email-sender" element={<EmailSender />} />
-          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/sign-up" element={<SignUpContainer />} />
         </Routes>
         <Footer />
     </>

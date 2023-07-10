@@ -95,7 +95,6 @@ $mainPurple: #4E54C8;
     top: 48px;
     z-index: 999999;
 
-    
     cursor: pointer;
 }
 
@@ -111,9 +110,14 @@ $mainPurple: #4E54C8;
 
     font-size: 20px;
     color: $white;
+    text-decoration: none;
 
     margin-top: 20px;
     cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
 }
 
@@ -141,6 +145,9 @@ $mainPurple: #4E54C8;
     text-decoration: underline;
 }
 
+.registerError {
+    color: red;
+}
 
 .logoBlock {
     background-color: $white;

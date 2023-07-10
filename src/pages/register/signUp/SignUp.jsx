@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import cls from './SignUp.module.scss'
 import { registerAPI } from '../../../dal/api'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
 import InputField from '../../../common/inputField'
@@ -9,10 +9,10 @@ import eyeShash from '../../../assets/img/eye-slash.png'
 import eye from '../../../assets/img/eye.png'
 import { useState } from 'react'
 
-const Register = () => {
-
+export const SignUp = ({ registerError, registerUser }) => {
   const [isPasswordEye, setIsPasswordEye] = useState(false)
   const [isRepPasswordEye, setIsRepPasswordEye] = useState(false)
+  const navigate = useNavigate();
 
   const SignupSchema = Yup.object().shape({
     Login: Yup.string()
@@ -38,7 +38,13 @@ const Register = () => {
   })
 
   const handleSubmit = (values) => {
-    console.log(values)
+    const userData = {
+      login: values.Login,
+      email: values.Email,
+      password: values.Password
+    }
+    registerUser(userData)
+    !registerError && navigate('/')
   }
 
   return (
@@ -47,6 +53,8 @@ const Register = () => {
 
         <h3>Добро пожаловать</h3>
         <span className={cls.welcome}>Добро пожаловать! Пожалуйста, введите свои данные.</span>
+
+        {registerError && <div className={cls.registerError}>{registerError}</div>}
 
         <Formik
           initialValues={{
@@ -145,4 +153,8 @@ const Register = () => {
   )
 }
 
-export default Register
+export default SignUp
+
+
+
+

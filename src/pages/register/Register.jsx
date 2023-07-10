@@ -1,7 +1,5 @@
-import { useEffect } from 'react'
 import cls from '../register/Register.module.scss'
-import { registerAPI } from '../../dal/api'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Form, Formik } from 'formik'
 import InputField from '../../common/inputField'
 import * as Yup from 'yup'
@@ -9,9 +7,9 @@ import eyeSlash from '../../assets/img/eye-slash.png'
 import eye from '../../assets/img/eye.png'
 import { useState } from 'react'
 
-export const Register = () => {
-
+export const Register = ({ authError, authUser }) => {
   const [isPasswordEye, setIsPasswordEye] = useState(false)
+  const navigate = useNavigate();
 
   const SignupSchema = Yup.object().shape({
     Login: Yup.string()
@@ -28,7 +26,13 @@ export const Register = () => {
   })
 
   const handleSubmit = (values) => {
-    console.log(values)
+    const userData = {
+      login: values.Login,
+      password: values.Password
+    }
+
+    authUser(userData)
+    !authError && navigate('/')
   }
 
   return (
@@ -37,6 +41,8 @@ export const Register = () => {
 
         <h3>Добро пожаловать</h3>
         <span className={cls.welcome}>Добро пожаловать! Пожалуйста, введите свои данные.</span>
+
+        {authError && <div className={cls.authError}>{authError}</div>}
 
         <Formik
           initialValues={{
@@ -90,7 +96,6 @@ export const Register = () => {
           )}
         </Formik>
 
-
         <div className={cls.loginIn}>
           <span>Нету акаунта? <Link to='/sign-up'>Зарегестрироватся</Link></span>
         </div>
@@ -102,7 +107,6 @@ export const Register = () => {
           <p><span>cat</span> money</p>
           <div className={cls.filter}></div>
         </div>
-
 
       </div>
 

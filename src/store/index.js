@@ -1,12 +1,13 @@
-import { combineReducers, createStore } from 'redux'
-import { pagesReduser } from './pages'
-import { userDataReduser } from './userData'
-import { userTasksReduser } from './userTasks'
+import { combineReducers, createStore, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
+import { pagesReducer } from './pages'
+import { userDataReducer } from './userData'
+import { userTasksReducer } from './userTasks'
 
-const rootRedusers = combineReducers({
-  pages: pagesReduser,
-  userData: userDataReduser,
-  userTasks: userTasksReduser,
-}) 
+const rootReducer = combineReducers({
+  pages: pagesReducer,
+  userData: userDataReducer,
+  userTasks: userTasksReducer,
+})
 
-export const store = createStore(rootRedusers)
+export const store = createStore(rootReducer, applyMiddleware(thunk))

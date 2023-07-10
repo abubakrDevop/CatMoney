@@ -1,12 +1,32 @@
 import axios from "axios"
 
-
 const instance = axios.create({
     // withCredentials: true,
-    baseURL: 'https://6c4b-80-94-250-14.ngrok-free.app/'
-})
+    baseURL: 'https://267e-80-94-250-124.ngrok-free.app/'
+});
 
-export const registerAPI = (data) => {
-    return instance.get(
-        'api/Referals/user').then(response => response.data)
- }
+export const profileAPI = {
+    register (data) {
+        return instance
+            .post('api/User/register', data, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.data)
+    },
+
+    auth (data) {
+        return instance
+            .post('api/User/auth', data, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.data)
+    }
+
+}
+
+
+

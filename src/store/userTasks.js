@@ -2,7 +2,7 @@ const defaultState = {
     userTasks: []
 }
     
-    export const userTasksReduser = (state = defaultState, action) => {
+    export const userTasksReducer = (state = defaultState, action) => {
       switch (action.type) {
         case 'add_userTasks':
           return {userTasks: [action.payload]}
