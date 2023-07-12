@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+body {
+    overflow-x: hidden;
+
+}
+
 /* Ширина и стиль полосы прокрутки */
 body::-webkit-scrollbar {
     width: 12px;

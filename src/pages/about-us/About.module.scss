@@ -1,53 +1,96 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@600&display=swap');
+
+$mainBG: #fff;
+$white: #F6F7FF;
+$mainPurple: #4E54C8;
+$blockPurple: #7674e2;
 
 .about {
-    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
     min-height: 100vh;
-    overflow: hidden;
-    background: white;
-    padding: 90px 15px 20px 20px;
+    width: 100%;
+
+    background-color: $mainBG;
+
     font-family: 'Roboto', sans-serif;
+}
 
-    .about_section {
+.aboutShell {
+    width: 1360px;
+    font-size: 20px;
+
+    padding: 55px;
+
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 600;
+
+}
+
+.bigText {
+    width: 100%;
+    margin: 10px;
+
+    margin-top: 30px;
+
+    display: flex;
+    justify-content: center;
+
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    color: $mainPurple;
+}
+
+.link {
+    color: $mainPurple;
+    font-family: 'Inter', sans-serif;
+    text-decoration: none;
+}
+
+.list {
+    list-style: decimal;
+    margin-left: 50px;
+    margin-top: 5px;
+    font-size: 18px;
+    line-height: 25px;
+}
+
+@media(max-width: 1360px) {
+    .aboutShell {
         width: 100%;
-        padding: 0 10px 0 10px;
+        padding-top: 85px;
+    }
+}
 
-        .section_head_title {
-            font-size: 25px;
-            margin: 0 0 10px 0;
-        }
+@media(max-width: 900px) {
+    .aboutShell {
+        padding-top: 85px;
+        font-size: 18px;
+    }
+    .bigText {
+        font-size: 26px;
+    }
 
-        .section_title {
-            width: 80%;
-            margin: 15px 0 15px 0;
-            font-weight: bold;
-        }
+    .list {
+        font-size: 16px;
+    }
+}
 
-        .section_ul {
-            padding: 0 0 0 20px;
+@media(max-width: 600px) {
+    .aboutShell {
+        font-size: 16px;
 
-            .section_li {
-                width: 80%;
-            }
-        }
+    }
+    .bigText {
+        font-size: 24px;
+    }
 
-        .section_title_span_font {
-            font-family: 'Teko', sans-serif;
-            font-size: 20px;
-            margin: 0 5px 0 0;
-        }
-
-        .section_title_span {
-            background-color: #2AA5A0;
-            background-image: linear-gradient(to left, rgb(60, 0, 128), rgba(0, 89, 255, 0.5));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        &:nth-child(2) {
-            .section_head_title {
-                margin: 20px 0 10px 0;
-            }
-        }
+    .list {
+        margin-left: 20px;
+        font-size: 14px;
     }
 }
