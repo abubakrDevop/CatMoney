@@ -1,6 +1,4 @@
-import { useEffect } from 'react'
 import cls from './SignUp.module.scss'
-import { registerAPI } from '../../../dal/api'
 import { Link, useNavigate } from 'react-router-dom'
 import { Form, Formik } from 'formik'
 import * as Yup from 'yup'
@@ -29,7 +27,7 @@ export const SignUp = ({ registerError, registerUser }) => {
       .min(6, 'Пароль не может быть короче 6 символов!')
       .matches(
         /^(?=.*[a-zA-Z])(?=.*\d).*$/,
-        'Пароль должен иметь только латинские буквы и цифры.'),
+        'Пароль должен иметь только латинские буквы и цыфры.'),
 
     RepeatPassword: Yup.string()
       .required('Repeat password обязательное поле!')
@@ -131,7 +129,7 @@ export const SignUp = ({ registerError, registerUser }) => {
                 className={cls.signUp}
                 type='submit'
                 onAuxClick={handleSubmit}
-              >войти</button>
+              >Зарегистрироваться</button>
             </Form>
           )}
         </Formik>

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import cls from '../about-us/About.module.scss'
 
+
 export const About = () => {
   return (
     <div className={cls.about}>

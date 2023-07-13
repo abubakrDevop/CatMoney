@@ -68,6 +68,23 @@
 
 }
 
+.goProfile {
+    display: flex;
+    align-items: center;
+
+    border-radius: 30px;
+    border: 1px solid #4E54C8;
+
+    cursor: pointer;
+    transition: background .2s ease-in-out;
+
+    padding: 13px 20px;
+}
+
+.goProfile img {
+    width: 25px;
+}
+
 .signUp {
     display: flex;
     justify-content: center;
@@ -90,13 +107,15 @@
 }
 
 .signUp:hover,
-.bars:hover {
+.bars:hover,
+.goProfile:hover {
     color: #fff;
     background-color: #4E54C8;
 }
 
 .signUp:hover img,
-.bars:hover img {
+.bars:hover img,
+.goProfile:hover img {
     filter: grayscale(100%) brightness(1000%);
 }
 
@@ -153,13 +172,13 @@
     box-shadow: -4px 6px 5px -5px rgba(0, 0, 0, 0.49);
 
     border-radius: 0 0 0 20px;
-    border: 1px solid #efeff2 ;
+    border: 1px solid #efeff2;
 }
 
 .dropDownPonel a {
     text-decoration: none;
     font-size: 16px;
-    color: black; 
+    color: black;
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
 
@@ -172,13 +191,12 @@
     align-items: center;
 
     border-bottom: 1px solid #efeff2;
-    
+
 }
 
 .dropDownPonel a:last-child {
     border-radius: 0 0 0 20px;
     border-bottom: none;
-
 
 }
 
@@ -186,7 +204,7 @@
     color: #fff;
     background-color: #4E54C8;
     cursor: pointer;
-    
+
 }
 
 @media(max-width: 1109px) {
@@ -208,6 +226,15 @@
 }
 
 @media(max-width: 500px) {
+    .goProfile {
+        border-radius: 30px;
+        padding: 6px 13px;
+    }
+
+    .goProfile img {
+        width: 22px;
+    }
+
     .bars img {
         width: 30px;
     }
@@ -228,12 +255,15 @@
 }
 
 @media(max-width: 500px) {
-
     .logoText span {
         font-size: 30px;
     }
 
+}
+
+@media(max-width: 350px) {
     .header {
         padding: 0 10px;
     }
+
 }

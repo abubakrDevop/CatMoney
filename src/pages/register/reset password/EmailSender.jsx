@@ -1,55 +1,72 @@
 import React from "react";
 import cls from './Reset.module.scss'
-import { useForm } from "react-hook-form";
-import { Form } from '../../../helpers/form';
-import { IoAtOutline } from 'react-icons/io5'
-import { $api } from "../../../helpers/constant";
+import arrowLeft from '../../../assets/img/arrowLeft.png'
+import { Link, useNavigate } from "react-router-dom";
+import { Form, Formik } from "formik";
+import InputField from "../../../common/inputField";
+import * as Yup from 'yup'
 
-export const EmailSender = () => {
-  const [active, setActive] = React.useState(false)
+const EmailSender = () => {
+  const navigate = useNavigate()
+  const SignupSchema = Yup.object().shape({
+    Email: Yup.string()
+      .required('Email обязательное поле!')
+      .email('Введите корректный Email'),
 
-  const {
-    formState,
-    reset,
-    register,
-    handleSubmit,
-  } = useForm()
-
-  const onSubmit = (data) => {
-    const body = {
-      email: data.email
-    }
-
-    $api
-      .post('/User/resetPassword', body)
-      .then(res => {
-        console.log(res)
-      })
+  })
+  const handleSubmit = () => {
+    navigate('/reset')
   }
 
   return (
-    <div className={cls.emailSender}>
-      <h1 className={cls.header_title}>Сброс пароля</h1>
-      <form onSubmit={handleSubmit(onSubmit)} className={cls.section}>
-          <div className={cls.info_text}>
-            Введите свой Email:
-            {
-              formState.errors.email && <span className={cls.root_error}> {formState.errors.email.message} </span>
-            }
-            {
-              active && <span className={cls.root_error}> Такой пользователель не найден! </span>
-            }
-            <div className={cls.input_box}>
-              <IoAtOutline className={cls.info_text_icon} />
-              <input
-                className={cls.info_text_input}
+    <>
+      <div>
+        <Link to='/register' className={cls.arrow}>
+          <img src={arrowLeft} alt="arrow" />
+          <span>Назад</span>
+        </Link>
+      </div>
 
-                {...register('email', Form.Options.email)}
-              />
-            </div>
-          </div>
-        <button className={cls.button}>Отправить</button>
-      </form>
-    </div>
+      <div className={cls.emailSender}>
+        <h1>Подтверждение Email</h1>
+
+        <div className={cls.forma}>
+          <Formik
+            initialValues={{
+              Email: '',
+            }}
+            validationSchema={SignupSchema}
+            onSubmit={handleSubmit}
+          >
+            {({ values, errors, touched, handleChange }) => (
+              <Form>
+                <div className={cls.email}>
+                  <InputField
+                    text={'Email'}
+                    error={errors.Email}
+                    touched={touched.Email}
+                    type={'text'}
+                    placeholder={'Введите ваш Email'}
+                    name={'Email'}
+                    onChange={handleChange}
+                    value={values.Email} />
+                </div>
+                <button
+                  className={cls.send}
+                  type='submit'
+                  onAuxClick={handleSubmit}
+                >Отправить</button>
+              </Form>
+            )}
+          </Formik>
+        </div>
+
+      </div>
+
+
+
+    </>
   )
 }
+
+export default EmailSender

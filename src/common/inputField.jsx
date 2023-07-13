@@ -1,6 +1,6 @@
-import cls from './inputField.module.css'
+import cls from './inputField.module.scss'
 
-const InputField = ({ text, error, touched, type, placeholder, name, onChange, value }) => {
+const InputField = ({ text, error, touched, type, placeholder, name, onChange, value, maxLenght=1000000000 }) => {
     return (
         <>
             <p>{text}</p>
@@ -11,6 +11,7 @@ const InputField = ({ text, error, touched, type, placeholder, name, onChange, v
                 name={name}
                 onChange={onChange}
                 value={value}
+                maxLength={maxLenght}
             />
             <p className={cls.error}>{error && touched && error}</p>
         </>

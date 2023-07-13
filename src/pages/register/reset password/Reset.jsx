@@ -1,117 +1,114 @@
 import React from "react";
 import cls from './Reset.module.scss'
-import { useForm } from 'react-hook-form'
-import { Form } from '../../../helpers/form'
-import { baseURL, $api } from '../../../helpers/constant'
-import { useNavigate } from "react-router";
-import  { IoLockClosedOutline,
-          IoLockOpenOutline,
-          IoEyeOutline,
-          IoEyeOffOutline,
-        } from 'react-icons/io5'
+import arrowLeft from '../../../assets/img/arrowLeft.png'
+import { Link, useNavigate } from "react-router-dom";
+import { Form, Formik } from "formik";
+import InputField from "../../../common/inputField";
+import * as Yup from 'yup'
 
-export const Reset = () => {
-  const [active, setActive] = React.useState(false)
-  const [resError, setResError] = React.useState(false)
+const Reset = () => {
+  const navigate = useNavigate()
 
-  const userId = JSON.parse(localStorage.getItem("regist"));
+  const SignupSchema = Yup.object().shape({
+    EmailCod: Yup.string()
+      .matches(/^[0-9]+$/, 'Ваш код должен содержать только цифры!')
+      .min(4, 'Код не может содержать менее 4 символов!')
+      .required('Вы забыли ввести код!'),
 
-  let navigate = useNavigate();
+    Password: Yup.string()
+      .required('Password обязательное поле!')
+      .min(6, 'Пароль не может быть короче 6 символов!')
+      .matches(
+        /^(?=.*[a-zA-Z])(?=.*\d).*$/,
+        'Пароль должен содержать только латинские буквы и цыфры.'),
 
-  const {
-    formState,
-    reset,
-    register,
-    handleSubmit,
-  } = useForm()
+    RepeatPassword: Yup.string()
+      .required('Repeat password обязательное поле!')
+      .oneOf([Yup.ref('Password')], 'Пароли не совпадают!')
+  })
 
-  const onSubmit = (data) => {
-    const body = {
-      newPassword: data.password1,
-      code: data.emailCod,
-      userId: userId.id,
-    }
-
-    if (data.password1 === data.password2) {
-      $api
-        .post("/User/resetPassword", body)
-        .then(res => {
-          if (res.status >= 200 && res.status <= 2010) {
-            reset()
-            navigate('/profile/own-space')
-          } else {
-            reset()
-          }
-        })
-        .catch(error => {
-          if (error.response.status === 400) {
-            setResError(true)
-          } else if (error.response.status === 401) {
-            alert('Пройдите верификацию, это сделано для безопасности вашего аккаунта от злоумышленников!')
-            navigate('/resgister')
-          }
-        });
-      setActive(false)
-    } else {
-      setActive(true)
-    }
+  const handleSubmit = () => {
+    navigate('/')
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={cls.reset}>
-      <section className={cls.reset_headsection}>
-        <section className={cls.reset_info}>
-          <p className={cls.info_text}>
-            Введите новый пароль:
-            {
-              formState.errors.password1 && <span className={cls.root_error}> {formState.errors.password1.message} </span>
-            }
-            {
-              active && <span className={cls.root_error}> Пароли не совпадают! </span>
-            }
-            <div className={cls.input_box}>
-              <IoLockClosedOutline className={cls.info_text_icon} />
-              <input
-                className={cls.info_text_input}
+    <>
+      <div>
+        <Link to='/email-sender' className={cls.arrow}>
+          <img src={arrowLeft} alt="arrow" />
+          <span>Назад</span>
+        </Link>
+      </div>
 
-                {...register('password1', Form.Options.password)}
-              />
-            </div>
-          </p>
-          <p className={cls.info_text}>
-            Повторите новый пароль:
-            {
-              formState.errors.password2 && <span className={cls.root_error}> {formState.errors.password2.message} </span>
-            }
-            <div className={cls.input_box}>
-              <IoLockClosedOutline className={cls.info_text_icon} />
-              <input
-                className={cls.info_text_input}
+      <div className={cls.emailSender}>
+        <h1>Сброс пароля</h1>
 
-                {...register('password2', Form.Options.password)}
-              />
-            </div>
-          </p>
-          <p className={cls.info_text}>
-            Введите код из почты Email:
-            {
-              formState.errors.emailCod && <span className={cls.root_error}> {formState.errors.emailCod.message} </span>
-            }
-            {
-              resError && <span className={cls.root_error}> Неверный код! </span>
-            }
-            <div className={cls.input_box}>
-              <IoLockClosedOutline className={cls.info_text_icon} />
-              <input
-                className={cls.info_text_input}
+        <div className={cls.forma}>
+          <Formik
+            initialValues={{
+              Password: '',
+              RepeatPassword: '',
+              EmailCod: '',
+            }}
+            validationSchema={SignupSchema}
+            onSubmit={handleSubmit}
+          >
+            {({ values, errors, touched, handleChange }) => (
+              <Form>
+                <div className={cls.password}>
+                  <InputField
+                    text={'New password'}
+                    error={errors.Password}
+                    touched={touched.Password}
+                    type={'text'}
+                    placeholder={'Придумайте новый пароль'}
+                    name={'Password'}
+                    onChange={handleChange}
+                    value={values.Login} />
+                </div>
 
-                {...register('emailCod', Form.Options.emailCod)}
-              />
-            </div>
-          </p>
-          <button type="submit" className={cls.reset_changeinfo}>Изменить пароль</button>
-        </section>
-      </section>
-    </form>
+                <div className={cls.repeatPassword}>
+                  <InputField
+                    text={'Repeat a new password'}
+                    error={errors.RepeatPassword}
+                    touched={touched.RepeatPassword}
+                    type={'text'}
+                    placeholder={'Повтарите пароль'}
+                    name={'RepeatPassword'}
+                    onChange={handleChange}
+                    value={values.RepeatPassword} />
+                </div>
+
+                <div className={cls.email}>
+                  <InputField
+                    text={'Введите код из почты'}
+                    error={errors.EmailCod}
+                    touched={touched.EmailCod}
+                    type={'text'}
+                    placeholder={'Введите код из почты'}
+                    name={'EmailCod'}
+                    onChange={handleChange}
+                    value={values.EmailCod}
+                    maxLenght={4}
+                  />
+                </div>
+
+                <button
+                  className={cls.send}
+                  type='submit'
+                  onAuxClick={handleSubmit}
+                >Сбросить</button>
+              </Form>
+            )}
+          </Formik>
+        </div>
+
+      </div>
+
+
+
+    </>
   )
 }
+
+export default Reset

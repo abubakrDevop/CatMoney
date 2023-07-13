@@ -62,7 +62,9 @@ const Header = () => {
             <div className={cls.buttons}>
                 {
                     registered === 'ok' ? (
-                        <div></div>
+                        <Link to='/profile'  className={cls.goProfile} >
+                            <img src={user} alt="profile"/>
+                        </Link>
                     ) : (
                         <Link to="/register" className={cls.signUp}>
                             {screenWidth < 1110

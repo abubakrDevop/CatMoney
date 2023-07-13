@@ -22,7 +22,7 @@ export const Register = ({ authError, authUser }) => {
       .min(6, 'Пароль не может быть короче 6 символов!')
       .matches(
         /^(?=.*[a-zA-Z])(?=.*\d).*$/,
-        'Пароль должен содержать только латинские буквы и цифры.'),
+        'Пароль должен содержать только латинские буквы и цыфры.'),
   })
 
   const handleSubmit = (values) => {
@@ -86,18 +86,18 @@ export const Register = ({ authError, authUser }) => {
 
               </div>
 
-              <Link to='/reset' className={cls.forgotPassword}>Забыл пароль</Link><br />
+              <Link to='/email-sender' className={cls.forgotPassword}>Забыл пароль</Link><br />
               <button
                 className={cls.signUp}
                 type='submit'
                 onAuxClick={handleSubmit}
-              >войти</button>
+              >Войти</button>
             </Form>
           )}
         </Formik>
 
         <div className={cls.loginIn}>
-          <span>Нету акаунта? <Link to='/sign-up'>Зарегестрироватся</Link></span>
+          <span>Нет акаунта? <Link to='/sign-up'>Зарегестрироватся</Link></span>
         </div>
 
       </div>
