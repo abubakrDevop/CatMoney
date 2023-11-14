@@ -23,7 +23,6 @@ const EmailSender = () => {
       <div>
         <Link to='/register' className={cls.arrow}>
           <img src={arrowLeft} alt="arrow" />
-          <span>Назад</span>
         </Link>
       </div>
 

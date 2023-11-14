@@ -16,14 +16,14 @@ const Reset = () => {
       .required('Вы забыли ввести код!'),
 
     Password: Yup.string()
-      .required('Password обязательное поле!')
+      .required('Это обязательное поле!')
       .min(6, 'Пароль не может быть короче 6 символов!')
       .matches(
         /^(?=.*[a-zA-Z])(?=.*\d).*$/,
         'Пароль должен содержать только латинские буквы и цыфры.'),
 
     RepeatPassword: Yup.string()
-      .required('Repeat password обязательное поле!')
+      .required('Это обязательное поле!')
       .oneOf([Yup.ref('Password')], 'Пароли не совпадают!')
   })
 
@@ -36,7 +36,6 @@ const Reset = () => {
       <div>
         <Link to='/email-sender' className={cls.arrow}>
           <img src={arrowLeft} alt="arrow" />
-          <span>Назад</span>
         </Link>
       </div>
 
@@ -57,7 +56,7 @@ const Reset = () => {
               <Form>
                 <div className={cls.password}>
                   <InputField
-                    text={'New password'}
+                    text={'Придумайте новый пароль'}
                     error={errors.Password}
                     touched={touched.Password}
                     type={'text'}
@@ -69,11 +68,11 @@ const Reset = () => {
 
                 <div className={cls.repeatPassword}>
                   <InputField
-                    text={'Repeat a new password'}
+                    text={'Повторите новый пароль'}
                     error={errors.RepeatPassword}
                     touched={touched.RepeatPassword}
                     type={'text'}
-                    placeholder={'Повтарите пароль'}
+                    placeholder={'Повторите пароль'}
                     name={'RepeatPassword'}
                     onChange={handleChange}
                     value={values.RepeatPassword} />

@@ -31,14 +31,6 @@ $mainPurple: #4E54C8;
   width: 35px;
 }
 
-.arrow span {
-  font-size: 30px;
-  font-family: 'Source Sans 3', sans-serif;
-  font-weight: 600;
-
-  margin-left: 5px;
-}
-
 .emailSender h1 {
   width: 100%;
   display: flex;
@@ -98,6 +90,12 @@ $mainPurple: #4E54C8;
 
 }
 
+.emailSender .email input:focus,
+.emailSender .password input:focus,
+.emailSender .repeatPassword input:focus {
+  border: 1px solid $mainPurple;
+}
+
 .send {
   width: 400px;
   height: 45px;
@@ -120,7 +118,6 @@ $mainPurple: #4E54C8;
   justify-content: center;
 
 }
-
 
 .send:hover {
   background-color: #474dbd;
@@ -149,7 +146,8 @@ $mainPurple: #4E54C8;
   }
 
   .email input::placeholder,
-  .password input::placeholder .repeatPassword input::placeholder {
+  .password input::placeholder,
+  .repeatPassword input::placeholder {
     font-size: 14px;
   }
 
@@ -179,12 +177,12 @@ $mainPurple: #4E54C8;
   .arrow img {
     width: 30px;
   }
-  
+
   .arrow span {
     font-size: 25px;
     font-family: 'Source Sans 3', sans-serif;
     font-weight: 600;
-  
+
     margin-left: 5px;
   }
 

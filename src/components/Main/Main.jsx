@@ -23,7 +23,7 @@ export const Main = () => {
         </div>
 
         <div className={cls.manInStartPage}>
-          <img src={manInStartPage} className={cls.man}alt="" ></img>
+          <img src={manInStartPage} className={cls.man} alt="" ></img>
           <div className={cls.manShadow}></div>
         </div>
       </div>
@@ -57,9 +57,14 @@ export const Main = () => {
       </div>
 
       <div className={cls.whyYouCanTrustUs}>
-        <div className={cls.whyText}>
-          <p>Почему нам можно </p>
-          <p>доверять? <span className={cls.purple}>Всё просто</span></p>
+        <div className={cls.whyTextShell}>
+          <div className={cls.whyText}>
+            <p>Почему нам можно </p>
+            <p>доверять? <span className={cls.purple}>Всё просто</span></p>
+          </div>
+
+          <div  className={cls.whyTextIndexBlock}></div> {/* єтот второй блок чтоб выровнять все заголовки по 1 направляющей */} 
+          
         </div>
 
         <div className={cls.whyBlocks}>
@@ -104,9 +109,9 @@ export const Main = () => {
                 <p>решения вопроса обратитесь в Telegram</p>
               </div>
             </div>
-            
-          
-            
+
+
+
           </div>
 
         </div>

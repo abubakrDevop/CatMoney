@@ -1,603 +1,646 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300&display=swap");
 
 .startPage {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 90px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 90px;
 }
 
 .firstBlock {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
 }
 
 .mainText {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    position: relative;
+  position: relative;
 
-    margin-top: 90px;
+  margin-top: 90px;
 }
 
 .mainText span {
-    font-family: 'Montserrat', sans-serif;
-    color: #373737;
-    font-size: 68px;
-    font-family: Montserrat;
-    font-weight: 600;
-    line-height: 110%;
+  font-family: "Montserrat", sans-serif;
+  color: #373737;
+  font-size: 68px;
+  font-family: Montserrat;
+  font-weight: 600;
+  line-height: 110%;
 }
 
 .mainText .purple {
-    color: #4E54C8;
+  color: #4e54c8;
 }
 
 .shadow {
-    position: absolute;
+  position: absolute;
 
-    width: 99.686px;
-    height: 367px;
+  width: 99.686px;
+  height: 367px;
 
-    transform: rotate(39.822deg);
-    flex-shrink: 0;
-    filter: blur(100px);
+  transform: rotate(39.822deg);
+  flex-shrink: 0;
+  filter: blur(100px);
 
-    border-radius: 367px;
-    background: rgba(14, 51, 243, 0.23);
+  border-radius: 367px;
+  background: rgba(14, 51, 243, 0.23);
 }
 
 .mainText p {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    margin-top: 24px;
-    width: 515px;
+  margin-top: 24px;
+  width: 515px;
 
-    color: #000;
-    font-size: 18px;
-    font-family: 'Source Sans 3', sans-serif;
-    font-weight: 600
+  color: #000;
+  font-size: 18px;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 600;
 }
 
 .buttons {
-    margin-top: 32px;
-    display: flex;
+  margin-top: 32px;
+  display: flex;
 }
 
 .buttons button:nth-child(1) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    color: #ffffff;
-    font-size: 16px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+  color: #ffffff;
+  font-size: 16px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
 
-    height: 54px;
-    cursor: pointer;
+  height: 54px;
+  cursor: pointer;
 
-    padding: 12px 24px;
-    gap: 10px;
+  padding: 12px 24px;
+  gap: 10px;
 
-    border: none;
-    border-radius: 100px;
-    background: linear-gradient(135deg, #8F94FB 0%, #4E54C8 100%);
-    transition: .2s ease-in;
+  border: none;
+  border-radius: 100px;
+  background: linear-gradient(135deg, #8f94fb 0%, #4e54c8 100%);
+  transition: 0.2s ease-in;
 }
 
 .buttons button:nth-child(2) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    color: #000;
-    font-size: 14px;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
+  color: #000;
+  font-size: 14px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
 
-    width: 208px;
-    height: 54px;
+  width: 208px;
+  height: 54px;
 
-    padding: 12px 24px;
-    gap: 10px;
+  padding: 12px 24px;
+  gap: 10px;
 
-    border-radius: 100px;
-    border: 1px solid #4E54C8;
-    background-color: transparent;
+  border-radius: 100px;
+  border: 1px solid #4e54c8;
+  background-color: transparent;
 
-    margin-left: 30px;
-    cursor: pointer;
-    transition: .2s ease-in;
+  margin-left: 30px;
+  cursor: pointer;
+  transition: 0.2s ease-in;
 }
 
 .buttons button:hover {
-    -webkit-box-shadow: 1px 2px 17px -4px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 1px 2px 17px -4px rgba(0, 0, 0, 0.75);
-    box-shadow: 1px 2px 17px -4px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 1px 2px 17px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 1px 2px 17px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 1px 2px 17px -4px rgba(0, 0, 0, 0.75);
 }
 
 .manInStartPage img {
-    position: relative;
-    margin-left: 60px;
+  position: relative;
+  margin-left: 60px;
 }
 
 .manShadow {
-    position: absolute;
-    top: 200px;
+  position: absolute;
+  top: 200px;
 
-    width: 99.686px;
-    height: 367px;
+  width: 99.686px;
+  height: 367px;
 
-    margin-left: 60px;
-    transform: rotate(118.785deg);
-    flex-shrink: 0;
+  margin-left: 60px;
+  transform: rotate(118.785deg);
+  flex-shrink: 0;
 
-    border-radius: 367px;
-    background: rgba(14, 51, 243, 0.23);
-    filter: blur(100px);
+  border-radius: 367px;
+  background: rgba(14, 51, 243, 0.23);
+  filter: blur(100px);
 }
 
-
 .aboutCompanuInNumbers {
-    align-items: center;
-    justify-content: space-around;
-    display: flex;
+  align-items: center;
+  justify-content: space-around;
+  display: flex;
 
-    background: #f3f4fc;
+  background: #f3f4fc;
 
-    height: 306px;
-    width: 100%;
+  height: 306px;
+  width: 100%;
 }
 
 .numberAndArrow {
-
-    position: relative;
+  position: relative;
 }
 
 .aboutCompanuInNumbers img {
-    position: absolute;
-    bottom: -60%;
-    right: -120%;
+  position: absolute;
+  bottom: -60%;
+  right: -120%;
 
-    z-index: -1;
-    filter: grayscale(100%) brightness(1000%);
+  z-index: -1;
+  filter: grayscale(100%) brightness(1000%);
 }
 
 .aboutCompanuInNumbersText {
-
-    z-index: 9999;
+  z-index: 9999;
+  margin-left: -45px;
 }
 
 .aboutCompanuInNumbersText p {
-    color: #373737;
-    font-size: 48px;
-    font-family: Montserrat;
-    font-weight: 600;
-    line-height: 110%;
+  color: #373737;
+  font-size: 48px;
+  font-family: Montserrat;
+  font-weight: 600;
+  line-height: 110%;
 }
 
 .numbers {
-    display: flex;
-
+  display: flex;
 }
 
 .quantity,
 .numberAndArrow {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 
-    margin-left: 70px;
-    z-index: 11;
-
+  margin-left: 70px;
+  z-index: 11;
 }
 
 .quantity span,
 .numberAndArrow span {
-    color: #4E54C8;
-    font-size: 62px;
-    font-family: Montserrat;
-    font-weight: 600;
-    line-height: 110%;
-
+  color: #4e54c8;
+  font-size: 62px;
+  font-family: Montserrat;
+  font-weight: 600;
+  line-height: 110%;
 }
 
 .quantity p,
 .numberAndArrow p {
-    color: #373737;
-    font-size: 18px;
-    font-family: 'Source Sans 3', sans-serif;
-    font-weight: 600;
+  color: #373737;
+  font-size: 18px;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 600;
 }
 
 .whyYouCanTrustUs {
-    width: 100%;
-    padding: 100px 120px;
+  width: 100%;
+  padding: 100px 120px;
+}
+ 
+.whyTextShell {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.whyTextIndexBlock {
+  width: 500px;
+  height: 100px;
 }
 
 .whyText {
-    color: #373737;
-    font-size: 48px;
-    font-family: Montserrat;
-    font-weight: 600;
-    line-height: 110%;
+  color: #373737;
+  font-size: 48px;
+  font-family: Montserrat;
+  font-weight: 600;
+  line-height: 110%;
+
+  margin-left: -175px;
 }
 
 .whyText span {
-    color: #4E54C8;
+  color: #4e54c8;
+  
 }
 
 .whyBlocks {
-    width: 100%;
+  width: 100%;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .whyShell {
-    display: flex;
-    flex-direction: column;
-
+  display: flex;
+  flex-direction: column;
 }
 
 .whyBlock {
-    display: flex;
-    margin-top: 65px;
+  display: flex;
+  margin-top: 65px;
 }
 
 .whyBlock img {
-    margin-right: 20px;
+  margin-right: 20px;
 }
 
 .whyTextBlock span {
-    color: #373737;
-    font-size: 24px;
-    font-family: Montserrat;
-    font-weight: 600;
+  color: #373737;
+  font-size: 24px;
+  font-family: Montserrat;
+  font-weight: 600;
 }
 
 .whyTextBlock p {
-    color: #75768F;
-    font-size: 16px;
-    font-family: 'Source Sans 3', sans-serif;
-    font-weight: 600;
+  color: #75768f;
+  font-size: 16px;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 600;
 }
 
 .startPage footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-    padding: 0 120px;
+  padding: 0 120px;
 
-    width: 100%;
-    height: 169px;
+  width: 100%;
+  height: 169px;
 
-    background: #F6F7FF;
+  background: #f6f7ff;
 }
 
 .logoText span {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 600;
-    line-height: 110%;
-    font-size: 44px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  line-height: 110%;
+  font-size: 44px;
 }
 
 .logoText span:nth-child(1) {
-    color: #4E54C8;
+  color: #4e54c8;
 }
 
 .logoText span:nth-child(2) {
-    color: #373737;
+  color: #373737;
 }
 
 .allRightsReserved {
-    color: #75768F;
-    font-size: 18px;
-    font-family: 'Source Sans 3', sans-serif;
-    line-height: 130%;
+  color: #75768f;
+  font-size: 18px;
+  font-family: "Source Sans 3", sans-serif;
+  line-height: 130%;
 
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .socialNetworks {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: end;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: end;
 }
 
 .socialNetworks img {
-    width: 24px;
-    margin-left: 12px;
+  width: 24px;
+  margin-left: 12px;
 }
 
 .securityPolicy {
-    color: #2663FF;
-    font-size: 16px;
-    font-family: 'Source Sans 3', sans-serif;
-    font-weight: 600;
-    line-height: 130%;
-    text-decoration: none;
+  color: #2663ff;
+  font-size: 16px;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 600;
+  line-height: 130%;
+  text-decoration: none;
 }
 
 .securityPolicy:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-//media queris
+//media queries
+
+@media (min-width: 1700px) {
+  .aboutCompanuInNumbers {
+    justify-content: space-evenly;
+  }
+
+  .firstBlock {
+    justify-content: space-evenly;
+  }
+
+  .whyText {
+    margin-left: -125px;
+  }
+
+  .whyTextShell {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .whyTextIndexBlock {
+    width: 500px;
+    height: 100px;
+  }
+
+  .whyBlocks {
+    justify-content: space-evenly;
+  }
+}
 
 @media (max-width: 1420px) {
-    .aboutCompanuInNumbers {
-        flex-direction: column;
-        margin-top: 40px;
-    }
+  .aboutCompanuInNumbers {
+    flex-direction: column;
+    margin-top: 40px;
+  }
 
-    .aboutCompanuInNumbersText {
-        display: flex;
+  .aboutCompanuInNumbersText {
+    display: flex;
+    margin: 0;
+  }
 
-    }
+  .aboutCompanuInNumbersText p:nth-child(1) {
+    padding-right: 12px;
+  }
 
-    .aboutCompanuInNumbersText p:nth-child(1) {
-        padding-right: 12px;
-    }
+  .aboutCompanuInNumbers img {
+    bottom: -30%;
+    left: 10%;
+  }
 
-    .aboutCompanuInNumbers img {
-        bottom: -30%;
-        left: 10%;
-    }
+  .whyText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+  }
 
-    .whyText {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
+  .whyTextIndexBlock {
+    display: none;
+  }
 }
 
 @media (max-width: 1320px) {
-    .startPage {
-        margin-top: 40px;
-    }
+  .startPage {
+    margin-top: 40px;
+  }
 
-    .startPage .man {
-        display: none;
-    }
+  .startPage .man {
+    display: none;
+  }
 
-    .firstBlock {
-        display: flex;
-        justify-content: center;
+  .firstBlock {
+    display: flex;
+    justify-content: center;
+    padding-left: 60px;
+  }
 
-    }
+  .manShadow {
+    display: none;
+  }
 
-    .manShadow {
-        display: none;
-    }
-
-    .numbers div:nth-child(1) {
-        margin: 0;
-    }
-
+  .numbers div:nth-child(1) {
+    margin: 0;
+  }
 }
 
 @media (max-width: 1070px) {
-    .mainText span {
-        font-size: 60px;
-    }
+  .mainText span {
+    font-size: 60px;
+  }
 
-    .startPage .buttons button {
-        width: 220px;
-        height: 50px;
-        font-size: 14px;
-    }
+  .startPage .buttons button {
+    width: 220px;
+    height: 50px;
+    font-size: 14px;
+  }
 
-    .aboutCompanuInNumbers {
-        align-items: start;
-        width: 100%;
-    }
+  .aboutCompanuInNumbers {
+    align-items: start;
+    width: 100%;
+  }
 
-    .aboutCompanuInNumbersText {
-        justify-content: center;
-        width: 100%;
-    }
+  .aboutCompanuInNumbersText {
+    justify-content: center;
+    width: 100%;
+  }
 
-    .whyBlocks {
-        display: flex;
-        flex-direction: column;
-    }
+  .whyBlocks {
+    display: flex;
+    flex-direction: column;
+  }
 
-    .numbers {
-        justify-content: center;
-        width: 100%;
-    }
+  .numbers {
+    justify-content: center;
+    width: 100%;
+  }
 
+  .whyYouCanTrustUs {
+    padding: 60px 0;
+  }
 }
 
 @media (max-width: 720px) {
-    .mainText {
-        align-items: center;
+  .mainText {
+    align-items: center;
+  }
 
-    }
+  .mainText span {
+    font-size: 50px;
+  }
 
-    .mainText span {
-        font-size: 50px;
-    }
+  .mainText p {
+    align-items: center;
+  }
 
-    .mainText p {
-        align-items: center;
-    }
+  .numbers {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+  }
 
-    .numbers {
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 400px;
-    }
+  .numbers div {
+    margin: 0;
+  }
 
-    .numbers div {
-        margin: 0;
-    }
+  .quantity,
+  .numberAndArrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    padding: 15px;
+  }
 
-    .quantity,
-    .numberAndArrow {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 20px;
-        padding: 15px;
-    }
+  .quantity span,
+  .numberAndArrow span {
+    font-size: 50px;
+  }
 
-    .quantity span,
-    .numberAndArrow span {
-        font-size: 50px;
-    }
+  .numberAndArrow img {
+    width: 450px;
+    left: -110%;
+    bottom: -160%;
+  }
 
-    .numberAndArrow img {
-        width: 450px;
-        left: -110%;
-        bottom: -160%;
-    }
+  .aboutCompanuInNumbers {
+    height: 400px;
+    justify-content: space-around;
+  }
 
-    .aboutCompanuInNumbers {
-        height: 400px;
-        justify-content: space-around;
-    }
+  .aboutCompanuInNumbersText p {
+    font-size: 35px;
+  }
 
-    .aboutCompanuInNumbersText p {
-        font-size: 35px;
-    }
+  .whyYouCanTrustUs .whyText {
+    font-size: 36px;
+  }
 
-    .whyYouCanTrustUs .whyText {
-        font-size: 36px;
-    }
+  .whyYouCanTrustUs {
+    padding: 25px 10px;
+  }
 
-    .whyYouCanTrustUs {
-        padding: 25px 10px;
-    }
+  .buttons {
+    align-items: center;
+    flex-direction: column;
+  }
 
-    .buttons {
-        align-items: center;
-        flex-direction: column;
-    }
+  .buttons button {
+    margin: 5px;
+  }
 
-    .buttons button {
-        margin: 5px;
-    }
+  .buttons button:nth-child(2),
+  .buttons button:nth-child(1) {
+    margin-left: 0;
+  }
 
-    .buttons button:nth-child(2),
-    .buttons button:nth-child(1) {
-        margin-left: 0;
-    }
-
-    .whyBlock {
-        margin-top: 20px;
-    }
-
+  .whyBlock {
+    margin-top: 20px;
+  }
 }
 
 @media (max-width: 515px) {
-    .mainText span {
-        font-size: 40px;
-    }
+  .mainText span {
+    font-size: 40px;
+  }
 
-    .mainText p {
-        font-size: 16px;
-    }
+  .mainText p {
+    font-size: 16px;
+  }
 
-    .startPage {
-        margin-top: 30px;
-    }
+  .startPage {
+    margin-top: 30px;
+  }
 
-    .aboutCompanuInNumbersText {
-        margin-top: 20px;
-        flex-direction: column;
-        align-items: center;
-    }
+  .aboutCompanuInNumbersText {
+    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .quantity span,
-    .numberAndArrow span {
-        font-size: 40px;
-    }
+  .quantity span,
+  .numberAndArrow span {
+    font-size: 40px;
+  }
 
-    .numberAndArrow img {
-        display: none;
-    }
+  .numberAndArrow img {
+    display: none;
+  }
 
-    .whyYouCanTrustUs .whyText {
-        font-size: 30px;
-    }
+  .whyYouCanTrustUs .whyText {
+    font-size: 30px;
+  }
 
-    .whyBlock img {
-        width: 50px;
-        margin-right: 10px;
-    }
+  .whyBlock img {
+    width: 50px;
+    margin-right: 10px;
+  }
 
-    .whyBlock .whyTextBlock span {
-        font-size: 20px;
-    }
+  .whyBlock .whyTextBlock span {
+    font-size: 20px;
+  }
 
-    .whyBlock .whyTextBlock p {
-        font-size: 14px;
-    }
+  .whyBlock .whyTextBlock p {
+    font-size: 14px;
+  }
 
-    .mainText p {
-        width: 100%;
-    }
+  .mainText p {
+    width: 100%;
+  }
 }
 
 @media (max-width: 420px) {
-    .mainText span {
-        font-size: 30px;
-    }
+  .mainText {
+    width: 200px;
+    text-align: left;
+  }
 
-    .mainText p {
-        font-size: 15px;
-    }
+  .mainText span {
+    font-size: 30px;
+  }
 
-    .buttons {
-        margin-top: 20px;
-    }
+  .mainText p {
+    font-size: 15px;
+  }
 
-    .startPage .buttons button {
-        font-size: 12px;
-        width: 190px;
-        height: 35px;
-    }
+  .buttons {
+    margin-top: 20px;
+  }
 
-    .aboutCompanuInNumbersText p {
-        font-size: 30px;
-    }
+  .startPage .buttons button {
+    font-size: 12px;
+    width: 190px;
+    height: 35px;
+  }
 
-    .quantity span,
-    .numberAndArrow span {
-        font-size: 30px;
-    }
+  .aboutCompanuInNumbersText p {
+    font-size: 30px;
+  }
 
-    .quantity p,
-    .numberAndArrow p {
-        font-size: 16px;
-    }
+  .quantity span,
+  .numberAndArrow span {
+    font-size: 30px;
+  }
 
-    .whyYouCanTrustUs .whyText {
-        font-size: 25px;
-    }
+  .quantity p,
+  .numberAndArrow p {
+    font-size: 16px;
+  }
 
-    .whyBlock .whyTextBlock span {
-        font-size: 16px;
-    }
+  .whyYouCanTrustUs .whyText {
+    font-size: 25px;
+  }
 
-    .whyBlock .whyTextBlock p {
-        font-size: 13px;
-    }
+  .whyBlock .whyTextBlock span {
+    font-size: 16px;
+  }
 
-    .whyBlock img {
-        width: 40px;
-    }
+  .whyBlock .whyTextBlock p {
+    font-size: 13px;
+  }
 
+  .whyBlock img {
+    width: 40px;
+  }
 }

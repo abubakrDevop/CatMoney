@@ -6,7 +6,7 @@ const instance = axios.create({
 });
 
 export const profileAPI = {
-    register (data) {
+    register(data) {
         return instance
             .post('api/User/register', data, {
                 headers: {
@@ -16,7 +16,7 @@ export const profileAPI = {
             .then(response => response.data)
     },
 
-    auth (data) {
+    auth(data) {
         return instance
             .post('api/User/auth', data, {
                 headers: {
